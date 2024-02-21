@@ -14,11 +14,19 @@ CREATE TABLE member(
     udate		DATE							-- 입사 날짜
 );
 
+-- 관리자 계정 생성
+INSERT INTO member 
+VALUES(null,'admin','admin','abc@gmail.com','01011111111','관리자',
+	   '인사','관리자',0221);
+
+select * from member;
 
 DROP TABLE member; -- member 테이블 지우기
 
-CREATE TABLE model(
-	mNo		INT PRIMATY KEY	auto_increment,         -- 제품게시번호
+
+-- 상품게시판
+CREATE TABLE IF NOT EXISTS model(
+	mNo		INT PRIMARY KEY	auto_increment,         -- 제품게시번호
 	mName	VARCHAR(150) 	NOT NULL,               -- 제품명
 	price	INT				NOT NULL,               -- 제품가격             
 	stock	INT				DEFAULT 0,              -- 재고수량
@@ -26,6 +34,7 @@ CREATE TABLE model(
 	pay     char(1) NOT NULL DEFAULT	'Y',        -- Y-> 결제완료
 	pDate	TIMESTAMP NOT NULL default now()        -- 결제시간
 );
+
 
 -- 공문 게시판
 CREATE TABLE IF NOT EXISTS official(
@@ -41,6 +50,7 @@ CREATE TABLE IF NOT EXISTS official(
 );
 
 SELECT * FROM member;
+
 
 -- 달력/ 일정
 CREATE TABLE IF NOT EXISTS calendar(
