@@ -26,7 +26,7 @@
 	
 	table td{
 		padding: 10px;
-		margin : 10ps;
+		margin : 10px;
 	}
 	
 	table tr td input[type='text'],
