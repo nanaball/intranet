@@ -1,6 +1,7 @@
 create database intranet;
 
-<<<<<<< HEAD
+show tables;
+
 CREATE TABLE member(
 	uno 		INT 			PRIMARY KEY 	auto_increment, 	-- 사원번호 ( 1 부터 순차적으로 증가 )
     uid			VARCHAR(20)		UNIQUE KEY,		-- 아이디
@@ -12,13 +13,9 @@ CREATE TABLE member(
     ujob		VARCHAR(20)		NOT NULL,		-- 직책
     udate		DATE							-- 입사 날짜
 );
-=======
-show tables;
->>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
 
-<<<<<<< HEAD
+
 DROP TABLE member; -- member 테이블 지우기
-=======
 
 CREATE TABLE model(
 	mNo		INT PRIMATY KEY	auto_increment,         -- 제품게시번호
@@ -53,4 +50,3 @@ CREATE TABLE IF NOT EXISTS calendar(
 );
 
 drop table ;
->>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
