@@ -22,6 +22,7 @@
 		background-radius:30px;
 		padding : 20px;
 		margin : auto;
+		height:auto;
 	}
 	
 	table td{
