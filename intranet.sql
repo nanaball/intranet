@@ -1,17 +1,27 @@
 create database intranet;
 
+show tables;
 
--- 공문 db
+-- 공문 게시판
 CREATE TABLE IF NOT EXISTS official(
-	ono		PRIMARY KEY INT AUTO_INCREMENT,			-- 공문번호
-	dep	VARCHAR(20) NOT NULL,		-- 부서
-	job	VARCHAR(20) NOT NULL,		-- 직책
-	title	VARCHAR(50) NOT NULL, 		-- 공문제목
-	content TEXT NOT NULL, 				-- 공문내용
-	writer  VARCHAR(20) NOT NULL, 		-- 작성자
-	approve	VARCHAR(20) NOT NULL,		-- 결재/승인 여부 
-	date datestamp not null,			-- 작성시간
-	FOREIGN KEY (id) REFERENCES members(id)
+	ono	INT	PRIMARY KEY  AUTO_INCREMENT,			-- 공문번호
+	dep	VARCHAR(20) NOT NULL,						-- 부서
+	job	VARCHAR(20) NOT NULL,						-- 직책
+	title	VARCHAR(50) NOT NULL, 					-- 공문제목
+	content TEXT NOT NULL, 							-- 공문내용
+	writer  VARCHAR(20) NOT NULL, 					-- 작성자
+	approve	VARCHAR(20) NOT NULL,					-- 결재/승인 여부 
+	date TIMESTAMP not null DEFAULT now(),			-- 작성시간
+	FOREIGN KEY (writer) REFERENCES member(uid)
 );
 
+SELECT * FROM member;
 
+-- 달력/ 일정
+CREATE TABLE IF NOT EXISTS calendar(
+	cno	INT	PRIMARY KEY  AUTO_INCREMENT,			-- 일정 번호
+	schedule TEXT NOT NULL, 						-- 일정 내용
+	date date not null 								-- 일정 날짜
+);
+
+drop table ;
