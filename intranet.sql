@@ -4,12 +4,12 @@ show tables;
 
 
 CREATE TABLE model(
-	mNo		INT PRIMATY KEY	auto_increment,--�Խñ۹�ȣ
+	mNo		INT PRIMATY KEY	auto_increment,-- 제품게시번호
 	mName	VARCHAR(150) 	NOT NULL,
 	price	INT				NOT NULL,
 	stock	INT				DEFAULT 0,
-	soldout char(1) DEFAULT	'Y',		--�ֵ�ƿ� ���� -> Y ���źҰ��� ��Ȱ��ȭ
-	pay     char(1) DEFAULT	'Y',        --���̵Ȱ�-> Y
+	soldout char(1) DEFAULT	'Y',		-- 솔드아웃 Y -> 비활성화
+	pay     char(1) DEFAULT	'Y',        
 	pDate	TIMESTAMP default now()
 );
 
