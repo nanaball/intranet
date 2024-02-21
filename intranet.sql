@@ -24,7 +24,7 @@ CREATE TABLE model(
 	stock	INT				DEFAULT 0,              -- 재고수량
 	soldout char(1) NOT NULL DEFAULT	'Y',		-- 솔드아웃 Y -> 비활성화
 	pay     char(1) NOT NULL DEFAULT	'Y',        -- Y-> 결제완료
-	pDate	TIMESTAMP NOT NULL default now()        -- 결제시간
+	pDate	TIMESTAMP NOT NULL default now()        -- 결제 시간
 );
 
 -- 공문 게시판
