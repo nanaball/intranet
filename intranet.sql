@@ -1,5 +1,7 @@
 create database intranet;
 
+
+
 CREATE TABLE model(
 	mNo		INT PRIMATY KEY	auto_increment,--게시글번호
 	mName	VARCHAR(150) 	NOT NULL,
