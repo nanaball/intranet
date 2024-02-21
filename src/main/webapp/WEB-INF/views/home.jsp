@@ -13,5 +13,8 @@
 	<a href="main">메인</a>
 	<br/>
 	<a href="memberUpdate">회원수정</a>
+	
+	
+	
 </body>
 </html>
