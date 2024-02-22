@@ -7,6 +7,42 @@
 <meta charset="UTF-8">
 <title>회원 정보 수정</title>
 <link href="resources/css/css.css" rel="stylesheet"/>
+<style>
+	
+
+	table{
+		background-color: white;
+	  	border-collapse: collapse;
+	  	border-radius: 10px;
+	  	border-style: hidden;
+	  	box-shadow: 0 0 0 1px #000;
+	}
+  
+	th,td{
+		padding:10px;
+	}
+	
+	.done,.cancel{
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+	}
+	
+	.done:hover,.cancel:hover{
+	  	animation-name: fadeIn;
+	    animation-duration: 0.4s;
+	    color: white;
+	    background-color : gray;
+	    cursor: pointer;
+	}
+	
+	body{
+		background-image:url(resources/img/bg.jpg);
+	}
+</style>
 </head>
 <body>
 		<form method="POST" name="edit">
@@ -40,8 +76,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<input type="button" value="사원정보 수정 완료"/>
-				<input type="button" value="취소"/>
+				<input type="button" class="done" value="사원정보 수정 완료"/>
+				<input type="button" class="cancel" value="취소"/>
 				</td>
 			</tr>
 			

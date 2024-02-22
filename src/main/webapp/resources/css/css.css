@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 table {
+	background-color : white;
 	border-collapse: collapse;
 	margin : auto;
 	padding : auto;
