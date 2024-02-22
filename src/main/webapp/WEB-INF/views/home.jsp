@@ -35,8 +35,14 @@
             margin-bottom: 30px;
             color: white;
         }
-
-        a {
+        
+        
+        #btn2 {
+            border :1px solid  #1BBC9B;
+            color:  #1BBC9B;
+        }
+       
+	    a {
             text-decoration: none;
             color: #1BBC9B;
             font-size: 12px;
@@ -56,17 +62,13 @@
             <input type="text" placeholder="아이디" class="in" >
             <input type="password" placeholder="비밀번호" class="in">
             <input type="submit" id="btn" value="로그인"><br>
+            <input type="submit" id="btn2" value="회원가입"><br>
         </form>
-        <a href="#none">비밀번호를 잊어버리셨나요?</a>
+ 
+        <a href="location.href='findPass.jsp';" >비밀번호를 잊어버리셨나요?</a>
     </div>
 
-	<a href="join">회원가입</a>
-	<br/>
-	<a href="main">메인</a>
-	<br/>
-	<a href="memberUpdate">회원수정</a>
-	
-	
+
 	
 </body>
 </html>
