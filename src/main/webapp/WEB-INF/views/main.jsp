@@ -20,9 +20,9 @@
 	}
 	#wrap{
     	border:1px solid red;
-        width:96%;
+        width:1450px;
         height:600px;
-        margin:0 auto;
+        margin:10px 0 10px 30px;
         display:flex;
         flex-direction:column;
         justify-content:space-between;
@@ -44,15 +44,13 @@
         background-size:cover;
     }
 </style>
-</head>
-<body>
-	<div class="member">
-		<img src="resources/img/profile.jpg" height="100px"/><br/>
-		<img src="resources/img/mail.jpg" height="30px" /><br/>
-		<h3>부서명/이름</h3>
-	</div>
-	<div id ="wrap">
-		<article>
+	<div class="wrapper" style="display: flex;">
+		<div class="member">
+			<img src="resources/img/profile.jpg" height="100px"><br>
+			<img src="resources/img/mail.jpg" height="30px"><br>
+			<h3>부서명/이름</h3>
+		</div>
+		<div id="wrap">
 			<div id="borders">
 				<div id="border1">게시판1
 				</div>
@@ -65,9 +63,8 @@
 				<div id="border5">게시판5
 				</div>
 			</div>
-		</article>
+		</div>
 	</div>
 
-4545
 </body>
 </html>

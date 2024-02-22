@@ -2,6 +2,8 @@ package com.bitc.intranet.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
+
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.vo.BoardVO;
 
@@ -12,6 +14,7 @@ public interface BoardDAO {
 	 * @param BoardVO db에 등록할 게시글 정보
 	 * @return 등록된 게시글 개수를 수로 반환
 	 */
+	@Insert("INSERT INTO notice()")
 	int create(BoardVO vo) throws Exception;
 	
 	/**
