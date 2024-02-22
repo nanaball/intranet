@@ -20,11 +20,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		
-				
+					
 		return "home";
-		
-		
 	}
 
 	@GetMapping("join")
@@ -35,4 +32,6 @@ public class HomeController {
 	
 	@GetMapping("memberUpdate")
 	public void memberUpdate() {}
+	
+	
 }

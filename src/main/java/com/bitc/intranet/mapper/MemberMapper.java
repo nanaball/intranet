@@ -19,26 +19,18 @@ public interface MemberMapper {
 			+ " VALUES(#{uid}, #{upw}, #{uname}, #{uemail}, #{uphone}, #{udep}, #{ujob}, #{udate})")
 	void create(MemberVO vo)throws Exception;
 
+		
 	/**
 	 * 
-	 * @param mno - 수신 확인할 메세지 번호 
-	 * 사용자가 메세지 수신 확인하면 opendate column 정보를 수신 확인한 시간으로 수정
+	 * @param uno - 찾을 회원 번호 
+	 * @return - uno가 일치하는 하나의 회원 정보 
 	 */
-	@Update("UPDATE tbl_message SET opendate = now() WHERE mno = #{mno}")
-	void updatemessage(int mno) throws Exception;
-	
-	
-	/**
-	 * 
-	 * @param mno - 확인할 메세지 번호 
-	 * @return - mno가 일치하는 하나의 메세지 정보 반환
-	 */
-	@Select("SELECT * FROM tbl_message WHERE mno = #{mno}")
-	MemberVO readMessage(int mno) throws Exception;
+	@Select("SELECT * FROM Member WHERE uno = #{uno}")
+	MemberVO readMember(int uno) throws Exception;
 	
 	/**
 	 * 
-	 * @return - 테이블에 등록된 전체 메세지 목록
+	 * @return - 테이블에 등록된 전체 회원 목록
 	 */
 	@Select("SELECT * FROM member ORDER BY uno DESC")
 	List<MemberVO> list() throws Exception;
