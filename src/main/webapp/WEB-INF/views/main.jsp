@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	body{
+	/* body{
 			background-image : url("resources/img/bg.jpg"); 
 			background-repeat: no-repeat;
 			background-position: center;
-	}
+	} */
 	.member{
 		border : "1";
 		height : "163px";
