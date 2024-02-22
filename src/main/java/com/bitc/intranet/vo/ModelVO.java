@@ -2,13 +2,9 @@ package com.bitc.intranet.vo;
 
 import java.util.Date;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class ModelVO {
 
 	private int mNo;

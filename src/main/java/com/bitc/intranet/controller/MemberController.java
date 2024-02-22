@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bitc.intranet.vo.MemberVO;
@@ -13,7 +14,16 @@ import com.bitc.intranet.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+  
 @Controller
+@RequestMapping("/member")
+public class MemberController {
+	
+	
+	@Controller
 @Slf4j
 public class MemberController {
 	
@@ -42,9 +52,6 @@ public class MemberController {
 		System.out.println("date : " + udate);
 		return "redirect:/";	
 	}
-	
-	
-	
 	
 	
 	/*

@@ -6,13 +6,79 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 수정</title>
-<link href="resources/css/css.css" rel="stylesheet"/>
+<style>
+	
+	body{
+		background-image : url("resources/img/bg.jpg"); 
+		background-repeat: no-repeat;
+	}
+	
+	table{
+		margin : auto;
+		padding : auto;
+		background-color: white;
+	  	border-collapse: collapse;
+	  	border-radius: 10px;
+	  	border-style: hidden;
+	  	box-shadow: 0 0 0 1px #000;
+	  	text-align: center;
+	}
+  
+	table td{
+		text-align:center;
+		padding:10px;
+	}
+	
+	.done,.cancel{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+	}
+	
+	.done:hover,.cancel:hover{
+	    color: black;
+	    cursor: pointer;
+	}
+	
+	table tr {
+		height: 50px;
+	}
+	
+	table tr td,
+	table tr th {
+		border: 1px solid #ccc;
+		text-align: center;
+	}
+	
+	table tr td:first-child{
+		padding:10px;
+		text-align:left;
+	}
+	
+	table tr td input[type='text'],
+	table tr td input[type='password'],
+	table tr td input[type='number'] {
+		outline: none;
+		border: none;
+		padding: 10px;
+		font-size: 14px;
+	}
+	
+	.btn{
+		text-align:center;
+	}
+	
+</style>
 </head>
 <body>
 		<form method="POST" name="edit">
 		<table class="memberUpdate">
 			<tr>
-				<td colspan="2">사원 정보 수정</td>
+				<td colspan="2">🙍‍♂️ 사원 정보 수정 🛠 </td>
 			</tr>
 			<tr>
 				<td>아이디</td>
@@ -28,7 +94,7 @@
 		 	</tr>
 		 	<tr>
 				<td>이름</td>
-				<td><input type="text" name="uname" value="DB에서 데이터 불러올 값" required placeholder="이름을 입력하세요."/></td>
+				<td><input type="text" name="uname" value="${vo.uname}" required placeholder="이름을 입력하세요."/></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
@@ -40,8 +106,10 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<input type="button" value="사원정보 수정 완료"/>
-				<input type="button" value="취소"/>
+					<div class="btn">
+						<input type="button" onclick="history.back(), alert('수정 완료')" class="done" value="사원정보 수정 확인"/>
+						<input type="button" class="cancel" onclick="history.back(), alert('취소 되었습니다.')" value="취소"/>
+					</div>
 				</td>
 			</tr>
 			
