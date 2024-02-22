@@ -2,6 +2,7 @@ package com.bitc.intranet.dao;
 
 import java.util.List;
 
+import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.vo.BoardVO;
 
 public interface BoardDAO {
@@ -57,5 +58,5 @@ public interface BoardDAO {
 	 * @param cri - 페이징 된 게시글 목록을 조회할 정보
 	 * @return - 조회된 게시글 목록
 	 */
-	// List<BoardVO> listCriteria(Criteria cri)throws Exception;
+	List<BoardVO> listCriteria(Criteria cri)throws Exception;
 }

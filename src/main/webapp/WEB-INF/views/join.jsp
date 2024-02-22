@@ -22,11 +22,12 @@
 		background-radius:30px;
 		padding : 20px;
 		margin : auto;
+		height:auto;
 	}
 	
 	table td{
 		padding: 10px;
-		margin : 10ps;
+		margin : 10px;
 	}
 	
 	table tr td input[type='text'],
@@ -56,43 +57,43 @@
 				<tr>
 					<td>아이디</td>
 					<td>
-						<input type="text" name="id" data-msg="아이디" placeholder="아이디를 입력해주세요"/>
+						<input type="text" name="uid" data-msg="아이디" placeholder="아이디를 입력해주세요"/>
 					</td>
 				</tr>	
 				<tr>
 					<td>비밀번호</td>
 					<td>
-						<input type="password" name="pw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+						<input type="password" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
 					</td>
 				</tr>
 				<tr>
 					<td>이름</td>
 					<td>
-						<input type="text" name="name" data-msg="이름" placeholder="이름을 입력해주세요" />
+						<input type="text" name="uname" data-msg="이름" placeholder="이름을 입력해주세요" />
 					</td>
 				</tr>
 				<tr>
 					<td>주소</td>
 					<td>
-						<input type="text" name="addr" data-msg="주소" placeholder="주소를 입력해주세요"/>
+						<input type="text" name="uaddr" data-msg="주소" placeholder="주소를 입력해주세요"/>
 					</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
 					<td>
-						<input type="text" name="phone" data-msg="전화번호" placeholder="전화번호를 입력해주세요"/>
+						<input type="text" name="uphone" data-msg="전화번호" placeholder="전화번호를 입력해주세요"/>
 					</td>
 				</tr>
 				<tr>
 					<td>이메일</td>
 					<td>
-						<input type="email" name="email" data-msg="이메일" placeholder="이메일을 입력해주세요"/>
+						<input type="email" name="uemail" data-msg="이메일" placeholder="이메일을 입력해주세요"/>
 					</td>
 				</tr>
 				<tr>
 					<td>부서</td>
 					<td>
-						<select name="dep" >
+						<select name="udep" >
 							<option value="choice">부서를 선택하세요</option>
 							<option value="develop">개발</option>
 							<option value="plan">기획</option>
@@ -107,7 +108,7 @@
 				<tr>
 					<td>직책</td>
 					<td>
-						<select name="job">
+						<select name="ujob">
 							<option value="choice">직책을 선택하세요</option>
 							<option value="worker">사원</option>
 							<option value="master">팀장</option>
@@ -119,13 +120,13 @@
 				<tr>
 					<td>입사일자</td>
 					<td>
-						<input type="date" name="date" data-msg="입사일" placeholder="입사일을 해주세요"/>
+						<input type="date" name="udate" data-msg="입사일" placeholder="입사일을 해주세요"/>
 					</td>
 				</tr>
 				<tr>
 					<th colspan="2" >
-						<button>가입취소</button>
-						<button>회원가입</button>
+						<button id="joincan">가입취소</button>
+						<button id="joinsuc" >회원가입</button>
 					</th>
 				</tr>
 			</table>
