@@ -2,6 +2,9 @@ package com.bitc.intranet.vo;
 
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class MemberVO {
 
 	private int uno;			// 사원번호
