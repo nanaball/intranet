@@ -1,5 +1,7 @@
 package com.bitc.intranet;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ public class MemberMapperTest {
 	@Autowired
 	MemberMapper mapper;
 	
-	@Test
+	// @Test
 	public void testMapper() throws Exception{
 		MemberVO vo = new MemberVO();
 		vo.setUid("test");
@@ -31,5 +33,14 @@ public class MemberMapperTest {
 		vo.getUdate();
 		
 		mapper.create(vo);
+	}
+	
+	@Test
+	public void testList() throws Exception{
+		List<MemberVO> list = mapper.list();
+		System.out.println(list);
+		
+		MemberVO read = mapper.readMember(1);
+		System.out.println(read);
 	}
 }
