@@ -68,14 +68,7 @@
         <a href="location.href='findPass.jsp';" >비밀번호를 잊어버리셨나요?</a>
     </div>
 
-	
-	
-	<h3>화면 체크체크</h3>
-	<a href="join">회원가입</a>
-	<br/>
-	<a href="main">메인</a>
-	<br/>
-	<a href="memberUpdate">회원수정</a>
+
 	
 	
 	
