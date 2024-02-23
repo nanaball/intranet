@@ -79,6 +79,7 @@
 					</td>
 				</tr>
 				<tr>
+				
 					<td>전화번호</td>
 					<td>
 						<input type="text" name="uphone" data-msg="전화번호" placeholder="전화번호를 입력해주세요"/>
