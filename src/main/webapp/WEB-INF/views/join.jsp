@@ -48,7 +48,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form method="post" action="join" entype="multipart/form-data" >
+	<form method="post" action="member/joinsuc" enctype="application/x-www-form-urlencoded">
 		<H3>회원가입</H3>
 			<table align="center">
 				<tr>
@@ -126,7 +126,7 @@
 				<tr>
 					<th colspan="2" >
 						<button id="joincan" type="button" >가입취소</button>
-						<button id="joinsuc" type="button" >회원가입</button>
+						<button id="joinsuc" type="submit" >회원가입</button>
 					</th>
 				</tr>
 			</table>
@@ -134,32 +134,6 @@
 	
 	<script>
 				
-		$("#joinsuc").on("click",function(){
-			$.ajax({
-				type:"POST",
-				url:"home",
-				data:{
-					uid:("#uid").val(),
-					upw:("#upw").val(),
-					uname:("#uname").val(),
-					udep:("#udep").val(),
-					uemail:("#uemail").val(),
-					uphone:("#uphone").val(),
-					ujob:("#ujob").val(),
-					udate:("#udate").val()
-				},
-				dataType:"text"
-				success:function(result){
-					alert(result);	
-				},
-				error : function(res){
-					alert(res.responseText);
-				}
-			});
-		});
-		
-		
-		
 		$("joincan").on("click",function(){
 			location.href="redirect/";
 		});
