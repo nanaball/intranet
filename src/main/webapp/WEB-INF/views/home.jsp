@@ -68,7 +68,7 @@
         <a href="location.href='findPass.jsp';" >비밀번호를 잊어버리셨나요?</a>
     </div>
 
-
+	
 	
 </body>
 </html>
