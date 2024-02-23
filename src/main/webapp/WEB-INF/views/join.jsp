@@ -48,7 +48,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form action = "joinCheck.jsp" method="post" entype="multipart/form-data">
+	<form method="post" action="member/joinsuc" enctype="application/x-www-form-urlencoded">
 		<H3>회원가입</H3>
 			<table align="center">
 				<tr>
@@ -125,12 +125,22 @@
 				</tr>
 				<tr>
 					<th colspan="2" >
-						<button id="joincan">가입취소</button>
-						<button id="joinsuc" >회원가입</button>
+						<button id="joincan" type="button" >가입취소</button>
+						<button id="joinsuc" type="submit" >회원가입</button>
 					</th>
 				</tr>
 			</table>
 	</form>
+	
+	<script>
+				
+		$("joincan").on("click",function(){
+			location.href="redirect/";
+		});
+	
+		
+		
+	</script>
 
 </body>
 </html>

@@ -2,6 +2,8 @@ package com.bitc.intranet.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -15,6 +17,7 @@ public class MemberVO {
 	private String uname;		// 이름
 	private String udep;		// 부서
 	private String ujob;		// 직책
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date udate;			// 입사일
 	
 }

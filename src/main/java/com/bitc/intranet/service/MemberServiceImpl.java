@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.bitc.intranet.dao.MemberDAO;
 import com.bitc.intranet.mapper.MemberMapper;
 import com.bitc.intranet.vo.MemberVO;
 
@@ -25,7 +26,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVO> list() throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -35,4 +35,13 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 
+	@Override
+	public MemberVO login(MemberVO memberVO) throws Exception {
+		
+		return null;
+	}
+
+
+	
+	
 }
