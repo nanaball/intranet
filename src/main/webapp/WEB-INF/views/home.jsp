@@ -70,5 +70,12 @@
 
 	
 	
+	<h3>화면 체크체크</h3>
+	<a href="join">회원가입</a>
+	<br/>
+	<a href="main">메인</a>
+	<br/>
+	<a href="memberUpdate">회원수정</a>
+	
 </body>
 </html>
