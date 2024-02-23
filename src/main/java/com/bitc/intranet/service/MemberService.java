@@ -9,7 +9,7 @@ public interface MemberService {
 
 
 	/**
-	 * 회원 가입한 회원 정보 등록 -- 완 
+	 * 
 	 * @param vo - 회원 가입한 회원 정보
 	 * uid, upw, uname, uemail, uphone, udep, ujob, udate
 	 */
@@ -23,13 +23,17 @@ public interface MemberService {
 	List<MemberVO> list() throws Exception;
 	
 	/**
-	 * 중복 아이디 검색할 회원아이디 -- 완
+	 * 
 	 * @param uid - 회원 아이디
+	 * @param mno - 회원번호 
 	 * @return
 	 * @throws Exception
 	 */
-	MemberVO readMember (String uid) throws Exception;
+	MemberVO readMember (String uid, int uno) throws Exception;
 	
-	 //로그인 
-	 MemberVO login(MemberVO memberVO) throws Exception;
+
+	//로그인 
+	MemberVO login(MemberVO memberVO) throws Exception;
+	
+
 }
