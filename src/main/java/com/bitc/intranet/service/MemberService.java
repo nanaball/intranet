@@ -29,4 +29,7 @@ public interface MemberService {
 	 * @throws Exception
 	 */
 	MemberVO readMember (String uid) throws Exception;
+	
+	 //로그인 
+	 MemberVO login(MemberVO memberVO) throws Exception;
 }

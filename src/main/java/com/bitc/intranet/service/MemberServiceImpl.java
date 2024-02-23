@@ -17,13 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService {
 
 	private final MemberMapper mapper;
-	
+
 	// 회원가입시 저장할 회원정보- 완
 	@Override
 	public void addMember(MemberVO vo) throws Exception {
 		mapper.create(vo);
 	}
-	
+
 	@Override
 	public List<MemberVO> list() throws Exception {
 		return null;
@@ -35,4 +35,9 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.readMember(uid);
 	}
 
+	@Override
+	public MemberVO login(MemberVO memberVO) throws Exception {
+
+		return null;
+	}
 }
