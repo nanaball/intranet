@@ -25,6 +25,11 @@ public class MemberController {
 	
 	private final MemberService ms;
 	
+
+	
+	
+	// 회원가입 -- 완
+	// 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기 
 	@PostMapping("/joinsuc")
 	public String join( 
 			MemberVO vo,
@@ -32,45 +37,42 @@ public class MemberController {
 			) throws Exception {
 		log.info("vo : {} ", vo);
 		ms.addMember(vo);
-		return "redirect:/";	
-	}
-	
-	//로그인
-	@GetMapping("/login")
-	public String loginForm() {
-		return "login";
-	}
-	
-	@PostMapping("/login")
-	public String login(@ModelAttribute MemberVO memberVO) throws Exception {
-		   System.out.println("ID : " + memberVO.getUid());
-	       System.out.println("PW : " + memberVO.getUpw());
-		MemberVO loginResult = ms.login(memberVO);
-		if(loginResult != null) {
-			return "join";
+		if(vo == null ) {
+			return "redirect:/join";
 		}else {
-			return "login";
-		}
+			return "redirect:/";
+		}	
+	}
+	
+
+	// 아이디 중복 확인 -- 완
+	@PostMapping("/checkId")
+	@ResponseBody
+	public String checkId(String uid) throws Exception{
+		
+        MemberVO vo = ms.readMember(uid);
+		
+		if (vo != null) {
+            return "duplicate";
+        } else {
+            return "not_duplicate";
+        }
 	}
 	
 	
 	
+	 
+	   @PostMapping("/login")
+	   public String login(@ModelAttribute MemberVO memberVO) throws Exception {
+	         System.out.println("ID : " + memberVO.getUid());
+	          System.out.println("PW : " + memberVO.getUpw());
+	      MemberVO loginResult = ms.login(memberVO);
+	      if(loginResult != null) {
+	         return "join";
+	      }else {
+	         return "login";
+	      }
+	   }
+	   
 	
-	
-	
-	/*
-	 * 
-	 * @RequestMapping(value = "/joinsuc", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public ResponseEntity<String> addMember(MemberVO vo){
-	 * System.out.println(vo); ResponseEntity<String> entity = null;
-	 * 
-	 * 
-	 * try { List<MemberVO> list = ms.list(); return new ResponseEntity<>(list); }
-	 * catch (Exception e) { e.printStackTrace(); return new
-	 * ResponseEntity<>(HttpStatus.BAD_REQUEST); }
-	 * 
-	 * }
-	 */
-
 }

@@ -133,6 +133,118 @@
 				</tr>
 			</table>
 	</form>
+
+	<script>
+		
+		$("#joinsuc").click(function() {	
+	
+			// 회원가입 빈칸시 알람
+			if($("#uid").val().length <= 0){
+				alert("사용자아이디를 입력해주세요");
+				$("#uid").val("");
+				$("#uid").focus();
+				return;
+			}
+			
+			if($("#upw").val().length <= 0){
+				alert("비밀번호를 입력해주세요");
+				$("#upw").val("");
+				$("#upw").focus();
+				return;
+			}
+			
+			if($("#upw2").val().length <= 0){
+				alert("비밀번호 확인을 입력해주세요");
+				$("#upw2").val("");
+				$("#upw2").focus();
+				return;
+			}
+			
+			if($("#uname").val().length <= 0){
+				alert("이름을 입력해주세요");
+				$("#uid").val("");
+				$("#uid").focus();
+				return;
+			}
+			
+			if($("#uemail").val().length <= 0){
+				alert("이메일을 입력해주세요");
+				$("#uemail").val("");
+				$("#uemail").focus();
+				return;
+			}
+			
+			if($("#uphone").val().length <= 0){
+				alert("휴대폰 번호를 입력해주세요");
+				$("#uphone").val("");
+				$("#uphone").focus();
+				return;
+			}
+			
+			if($("#udep").val().length <= 0){
+				alert("해당부서를 입력해주세요");
+				$("#udep").val("");
+				$("#udep").focus();
+				return;
+			}
+			
+			if($("#ujob").val().length <= 0){
+				alert("직책을 입력해주세요");
+				$("#ujob").val("");
+				$("#ujob").focus();
+				return;
+			}
+			
+			if($("#udate").val().length <= 0){
+				alert("입사일 입력ㄱㄱ");
+				$("#udate").val("");
+				$("#udate").focus();
+				return;
+			}
+			
+			
+			// 비밀번호 확인 
+			if($("#upw").val() != $("#upw2").val()){
+				alert("비밀번호가 일치하지 않습니다.");
+				$("#upw2").focus();
+				return;				
+			}		
+		}); // $("#joinsuc").on("click",function(){	
+		
+
+			
+		// 아이디 중복 확인 
+		$("#checkId").on("click",function() {
+			$.ajax({
+				type:"POST",
+				url : "member/checkId",
+				data:{
+					uid : $("#uid").val()
+				},
+				dataType:"text",
+				success: function(res){
+					console.log(res)
+					
+					if (res === "duplicate") {
+                      $("#result").text("이미 사용 중인 아이디입니다.");
+                  } else {
+                      $("#result").text("사용할 수 있는 아이디입니다.")
+					}
+				},
+				error : function(res){
+					console.log(res);
+				}
+			});	// $.ajax({
+		});	// $("#checkId").click(function() {
+	
+			
+			
+		// 가입취소 버튼 		
+		$("#joincan").on("click",function(){
+			if(confirm("회원가입을 취소하시겠습니까"));{		
+				location.href = "/intranet/";
+			}
+
 	
 	<script>
 				
@@ -141,7 +253,7 @@
 		});
 	
 		
-		=======
+		
 	</script>
 
 </body>
