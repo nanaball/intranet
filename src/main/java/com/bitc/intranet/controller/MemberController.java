@@ -56,6 +56,8 @@ public class MemberController {
 	
 	
 	
+	
+	
 	/*
 	 * 
 	 * @RequestMapping(value = "/joinsuc", method = RequestMethod.POST)

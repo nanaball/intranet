@@ -33,7 +33,7 @@ public interface MemberService {
 	
 
 	//로그인 
-	MemberVO login(MemberVO memberVO) throws Exception;;
+	MemberVO login(MemberVO memberVO) throws Exception;
 	
 
 }
