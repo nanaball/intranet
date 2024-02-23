@@ -148,56 +148,56 @@
 	
 			// 회원가입 빈칸시 알람
 			if($("#uid").val().length <= 0){
-				alert("사용자아이디를 입력ㄱㄱ");
+				alert("사용자아이디를 입력해주세요");
 				$("#uid").val("");
 				$("#uid").focus();
 				return;
 			}
 			
 			if($("#upw").val().length <= 0){
-				alert("비밀번호를 입력ㄱㄱ");
+				alert("비밀번호를 입력해주세요");
 				$("#upw").val("");
 				$("#upw").focus();
 				return;
 			}
 			
 			if($("#upw2").val().length <= 0){
-				alert("비밀번호 확인를 입력ㄱㄱ");
+				alert("비밀번호 확인을 입력해주세요");
 				$("#upw2").val("");
 				$("#upw2").focus();
 				return;
 			}
 			
 			if($("#uname").val().length <= 0){
-				alert("이름 입력ㄱㄱ");
+				alert("이름을 입력해주세요");
 				$("#uid").val("");
 				$("#uid").focus();
 				return;
 			}
 			
 			if($("#uemail").val().length <= 0){
-				alert("이메일 입력ㄱㄱ");
+				alert("이메일을 입력해주세요");
 				$("#uemail").val("");
 				$("#uemail").focus();
 				return;
 			}
 			
 			if($("#uphone").val().length <= 0){
-				alert("휴대폰 입력ㄱㄱ");
+				alert("휴대폰 번호를 입력해주세요");
 				$("#uphone").val("");
 				$("#uphone").focus();
 				return;
 			}
 			
 			if($("#udep").val().length <= 0){
-				alert("부서 입력ㄱㄱ");
+				alert("해당부서를 입력해주세요");
 				$("#udep").val("");
 				$("#udep").focus();
 				return;
 			}
 			
 			if($("#ujob").val().length <= 0){
-				alert("직책 입력ㄱㄱ");
+				alert("직책을 입력해주세요");
 				$("#ujob").val("");
 				$("#ujob").focus();
 				return;
@@ -249,7 +249,9 @@
 			
 		// 가입취소 버튼 		
 		$("#joincan").on("click",function(){
-			alert("회원가입이 취소되었습니다");
+			if(confirm("회원가입을 취소하시겠습니까"));{		
+				location.href = "/intranet/";
+			}
 		});
 	
 		

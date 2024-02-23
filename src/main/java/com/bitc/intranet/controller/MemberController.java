@@ -29,6 +29,7 @@ public class MemberController {
 	
 	
 	// 회원가입 -- 완
+	// 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기 
 	@PostMapping("/joinsuc")
 	public String join( 
 			MemberVO vo,
@@ -58,12 +59,8 @@ public class MemberController {
         }
 	}
 	
-	// 가입 취소
-	@PostMapping("/joincan")
-	public String home(Locale locale, Model model) {		
-		return "redirect:/";
-	}
-
+	
+	
 	 
 	   @PostMapping("/login")
 	   public String login(@ModelAttribute MemberVO memberVO) throws Exception {
@@ -77,22 +74,5 @@ public class MemberController {
 	      }
 	   }
 	   
-	/*
-	 * 
-	 * @RequestMapping(value = "/joinsuc", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public ResponseEntity<String> addMember(MemberVO vo){
-	 * System.out.println(vo); ResponseEntity<String> entity = null;
-	 * 
-	 * 
-	 * try { List<MemberVO> list = ms.list(); return new ResponseEntity<>(list); }
-	 * catch (Exception e) { e.printStackTrace(); return new
-	 * ResponseEntity<>(HttpStatus.BAD_REQUEST); }
-	 * 
-	 * }
-	 * 
-	 * 
-	 *
-	 */
-
+	
 }
