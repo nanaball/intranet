@@ -20,8 +20,6 @@ public class MemberMapperTest {
 	@Autowired
 	MemberMapper mapper;
 	
-	
-	// 회원 정보 등록
 	// @Test
 	public void testMapper() throws Exception{
 		MemberVO vo = new MemberVO();
@@ -37,14 +35,12 @@ public class MemberMapperTest {
 		mapper.create(vo);
 	}
 	
-	
-	// 회원 리스트 및 아이디 검색
 	@Test
 	public void testList() throws Exception{
 		List<MemberVO> list = mapper.list();
 		System.out.println(list);
 		
-		MemberVO read = mapper.readMember("id001");
+		MemberVO read = mapper.readMember(1);
 		System.out.println(read);
 	}
 }

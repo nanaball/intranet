@@ -1,4 +1,4 @@
-package com.bitc.intranet.dao;
+ package com.bitc.intranet.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

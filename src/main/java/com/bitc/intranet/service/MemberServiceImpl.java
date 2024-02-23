@@ -17,8 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService {
 
 	private final MemberMapper mapper;
-
-	// 회원가입시 저장할 회원정보- 완
+	
+	
 	@Override
 	public void addMember(MemberVO vo) throws Exception {
 		mapper.create(vo);
@@ -29,15 +29,19 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 
-	// 중복 아이디 찾기 위한 아이디 검색 -완
 	@Override
-	public MemberVO readMember(String uid) throws Exception {
-		return mapper.readMember(uid);
+	public MemberVO readMember(String uid, int mno) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public MemberVO login(MemberVO memberVO) throws Exception {
-
+		
 		return null;
 	}
+
+
+	
+	
 }
