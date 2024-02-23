@@ -1,13 +1,12 @@
 package com.bitc.intranet.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -65,7 +64,19 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	
+	 
+	   @PostMapping("/login")
+	   public String login(@ModelAttribute MemberVO memberVO) throws Exception {
+	         System.out.println("ID : " + memberVO.getUid());
+	          System.out.println("PW : " + memberVO.getUpw());
+	      MemberVO loginResult = ms.login(memberVO);
+	      if(loginResult != null) {
+	         return "join";
+	      }else {
+	         return "login";
+	      }
+	   }
+	   
 	/*
 	 * 
 	 * @RequestMapping(value = "/joinsuc", method = RequestMethod.POST)
