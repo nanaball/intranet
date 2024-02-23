@@ -1,12 +1,16 @@
 package com.bitc.intranet.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitc.intranet.service.MemberService;
 import com.bitc.intranet.vo.MemberVO;
@@ -22,7 +26,10 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 	
 	private final MemberService ms;
+
 	
+	
+	// 회원가입 -- 완
 	@PostMapping("/joinsuc")
 	public String join( 
 			MemberVO vo,
@@ -30,11 +37,34 @@ public class MemberController {
 			) throws Exception {
 		log.info("vo : {} ", vo);
 		ms.addMember(vo);
-		return "redirect:/";	
+		if(vo == null ) {
+			return "redirect:/join";
+		}else {
+			return "redirect:/";
+		}	
 	}
 	
+
+	// 아이디 중복 확인 -- 완
+	@PostMapping("/checkId")
+	@ResponseBody
+	public String checkId(String uid) throws Exception{
+		
+        MemberVO vo = ms.readMember(uid);
+		
+		if (vo != null) {
+            return "duplicate";
+        } else {
+            return "not_duplicate";
+        }
+	}
 	
-	
+	// 가입 취소
+	@PostMapping("/joincan")
+	public String home(Locale locale, Model model) {		
+		return "redirect:/";
+	}
+
 	
 	/*
 	 * 
@@ -49,6 +79,9 @@ public class MemberController {
 	 * ResponseEntity<>(HttpStatus.BAD_REQUEST); }
 	 * 
 	 * }
+	 * 
+	 * 
+	 *
 	 */
 
 }
