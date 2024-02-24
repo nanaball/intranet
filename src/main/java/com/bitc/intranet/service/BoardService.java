@@ -2,10 +2,14 @@ package com.bitc.intranet.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
+import org.springframework.stereotype.Service;
+
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.BoardVO;
 
+@Service
 public interface BoardService {
 	
 	/**
@@ -13,6 +17,7 @@ public interface BoardService {
 	 * @param 게시글 등록 정보
 	 * @return	성공 유무 메세지
 	 */
+	@Insert("INSERT INTO notice(title,category,content,writer) VALUES(${title},${category},${content},${writer} ")
 	String regist(BoardVO board) throws Exception;
 	
 	/**
