@@ -25,7 +25,6 @@ public interface MemberService {
 	/**
 	 * 
 	 * @param uid - 회원 아이디
-	 * @param mno - 회원번호 
 	 * @return
 	 * @throws Exception
 	 */

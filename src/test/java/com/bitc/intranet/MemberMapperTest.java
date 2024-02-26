@@ -40,7 +40,7 @@ public class MemberMapperTest {
 		List<MemberVO> list = mapper.list();
 		System.out.println(list);
 		
-		MemberVO read = mapper.readMember(1);
+		MemberVO read = mapper.readMember("id001");
 		System.out.println(read);
 	}
 }
