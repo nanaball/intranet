@@ -21,5 +21,7 @@ CREATE TABLE IF NOT EXISTS notice_comment(
     	INDEX(bno)														-- 인덱스 정렬. 꼭 필요한 값에만 사용할 것
 );
 
-select * from member;
+
+
+select * from notice;
 
