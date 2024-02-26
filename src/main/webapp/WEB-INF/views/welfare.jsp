@@ -49,10 +49,12 @@
 	<h3>복지복지복지</h3>
 	<table>
 		<tr>
-			<td><a href="main"><img src="resources/img/pororo.jpg" height="300px"></a></br>상품1</td>
+			<td><a href=""><img src="resources/img/pororo.jpg" height="300px" onclick="alert('상품1 임시창')"></a></br>
+				뽀로로(DB 값)<br/>
+				30,000원(DB 값)</td>
 			<td><img src="resources/img/pororo.jpg" height="300px"></br>상품2</td>
-			<td><img src="resources/img/pororo.jpg" height="300px"></br>상품3</td>
-			<td><img src="resources/img/pororo.jpg" height="300px"></br>상품4</td>
+			<td><img src="resources/img/woman pororo.jpg" height="300px"></br>상품3</td>
+			<td><img src="resources/img/woman pororo.jpg" height="300px"></br>상품4</td>
 		</tr>
 		<tr>
 			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품5</td>
@@ -61,8 +63,8 @@
 			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품8</td>
 		</tr>
 		<tr>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품9</td>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품10</td>
+			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품9</td>
+			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품10</td>
 			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품11</td>
 			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품12</td>
 		</tr>
