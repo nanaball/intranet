@@ -22,3 +22,4 @@ CREATE TABLE IF NOT EXISTS notice_comment(
 );
 
 select * from member;
+

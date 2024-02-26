@@ -87,9 +87,10 @@ public class MemberController {
 	}
 	*/
 
-   @GetMapping("/views/memberUpdate")
-   public String memberUpdate() {
-	   return" views/memberUpdate";
-   }
+	   @GetMapping("/views/memberUpdate")
+	   public String memberUpdate() {
+		   return" views/memberUpdate";
+	   }
 	
+
 }
