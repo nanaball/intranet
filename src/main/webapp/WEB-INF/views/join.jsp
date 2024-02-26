@@ -248,16 +248,7 @@
 		$("#joincan").on("click",function(){
 			if(confirm("회원가입을 취소하시겠습니까"));{		
 				location.href = "/intranet/";
-			}
-
-	
-	<script>
-				
-		$("joincan").on("click",function(){
-			location.href="redirect/";
-		});
-	
-		
+			}	
 		
 	</script>
 

@@ -71,7 +71,7 @@ public class MemberController {
       }
    }
 
-   // 회원가입 창 -- 
+  // 회원가입 창 -- 완
   // member/join
 	@GetMapping("/join")
 	public String join() {
@@ -87,6 +87,7 @@ public class MemberController {
 	}
 	*/
 
+	// 회원 수정 창 
 	   @GetMapping("/views/memberUpdate")
 	   public String memberUpdate() {
 		   return" views/memberUpdate";
