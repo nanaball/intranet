@@ -35,6 +35,7 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.readMember(uid);
 	}
 
+	
 	@Override
 	public MemberVO login(MemberVO memberVO) throws Exception {
 

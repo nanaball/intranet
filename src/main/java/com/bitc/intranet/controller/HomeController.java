@@ -25,6 +25,8 @@ public class HomeController {
 		return "login";
 	}
 
+	
+	
 	@GetMapping("join")
 	public void join() {}
 	
