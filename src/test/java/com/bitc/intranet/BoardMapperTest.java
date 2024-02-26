@@ -1,33 +1,49 @@
 package com.bitc.intranet;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bitc.intranet.service.BoardService;
+import com.bitc.intranet.mapper.BoardMapper;
 import com.bitc.intranet.vo.BoardVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
 	locations = {"classpath:/spring/root-context.xml"}
 )
-public class BoardServiceTest {
+public class BoardMapperTest {
 	
 	@Autowired
-	BoardService bs;
+	BoardMapper bs;
 	
-	@Test
+	//@Test
 	public void testBoard() throws Exception{
 		BoardVO vo = new BoardVO();
-		vo.setTitle("gd");
-		vo.setCategory("1");
-		vo.setContent("2");
-		vo.setWriter("3");
+		vo.setTitle("qq");
+		vo.setCategory("4");
+		vo.setContent("5");
+		vo.setWriter("6");
 		
 		bs.regist(vo);
-
-		
+	}
+	
+	// @Test
+	public void test() {
+		try {
+			List<BoardVO> list = bs.listAll();
+			System.out.println(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//@Test
+	public void delete() throws Exception{
+		int result = bs.delete(3);
+		System.out.println("result 삭제 : " + result);
 	}
 }
