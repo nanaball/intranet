@@ -69,7 +69,7 @@
 				<li><a href="">공지사항</a>
 				<li><a href="">결재</a>
 				<li><a href="">자유게시판</a>
-				<li><a href="">직원복지몰</a>
+				<li><a href="welfare">직원복지몰</a>
 			</ul>
 		</div>
 		<div>

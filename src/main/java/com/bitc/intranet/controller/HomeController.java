@@ -20,12 +20,13 @@ public class HomeController {
 	
 	}
 
-
 	@GetMapping("main")
 	public void main() {}
 	
 	@GetMapping("memberUpdate")
 	public void memberUpdate() {}
 	
+	@GetMapping("welfare")
+	public void welfare() {}
 	
 }

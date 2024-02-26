@@ -35,11 +35,11 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 
-	
 	@Override
 	public MemberVO login(MemberVO memberVO) throws Exception {
 		return mapper.loginMember(memberVO);
 	}
+
 
 
 	
