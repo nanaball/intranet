@@ -1,11 +1,12 @@
 package com.bitc.intranet.controller;
 
-import java.util.Locale;
+import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 	
 	private final MemberService ms;
+	
 
 	
 	
@@ -37,15 +39,10 @@ public class MemberController {
 			) throws Exception {
 		log.info("vo : {} ", vo);
 		ms.addMember(vo);
-		if(vo == null ) {
-			return "redirect:/join";
-		}else {
-			return "redirect:/";
-		}	
+		return "redirect:/";	
 	}
-	
-
-	// 아이디 중복 확인 -- 완
+  
+  // 아이디 중복 확인 -- 완
 	@PostMapping("/checkId")
 	@ResponseBody
 	public String checkId(String uid) throws Exception{
@@ -59,20 +56,41 @@ public class MemberController {
         }
 	}
 	
+	// 로그인 확인 - 완
+	// member/login
+   @PostMapping("/login")
+   public String loginCheck(@ModelAttribute MemberVO vo,
+		   			   HttpSession session) throws Exception {
+      MemberVO loginResult = ms.login(vo);
+      
+      if(loginResult != null) {
+    	  // 로그인 성공 - 일치하는 사용자 정보 검색 완료
+    	  session.setAttribute("loginMember", loginResult);
+         return "redirect:/main";
+      }else {
+    	  // 로그인 실패  - 일치하는 사용자 정보 없음
+         return "redirect:/";
+      }
+   }
+
+   // 회원가입 창 -- 
+  // member/join
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+	}
+	
+	/*
+		if(vo == null ) {
+			return "redirect:/join";
+		}else {
+			return "redirect:/";
+		}	
+	}
+	*/
+
+
 	
 	
-	 
-	   @PostMapping("/login")
-	   public String login(@ModelAttribute MemberVO memberVO) throws Exception {
-	         System.out.println("ID : " + memberVO.getUid());
-	          System.out.println("PW : " + memberVO.getUpw());
-	      MemberVO loginResult = ms.login(memberVO);
-	      if(loginResult != null) {
-	         return "join";
-	      }else {
-	         return "login";
-	      }
-	   }
-	   
-	
+
 }
