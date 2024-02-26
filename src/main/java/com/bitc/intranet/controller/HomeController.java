@@ -20,8 +20,6 @@ public class HomeController {
 	
 	}
 
-	@GetMapping("join")
-	public void join() {}
 	
 	@GetMapping("main")
 	public void main() {}

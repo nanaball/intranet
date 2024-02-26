@@ -11,7 +11,7 @@
 	}
 	
 	body{
-		background-image:url(resources/img/bg.jpg);
+		background-image:url(/intranet/resources/img/bg.jpg);
 		background-repeat:no-repeat; 
 		background-size:cover;
 		/* background-height:100px; */

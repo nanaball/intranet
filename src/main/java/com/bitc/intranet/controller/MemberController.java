@@ -3,6 +3,7 @@ package com.bitc.intranet.controller;
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,28 +36,27 @@ public class MemberController {
 		return "redirect:/";	
 	}
 	
-	//로그인
-	@GetMapping("/login")
-	public String loginForm() {
-		return "login";
+	// member/login
+   @PostMapping("/login")
+   public String loginCheck(@ModelAttribute MemberVO vo,
+		   			   HttpSession session) throws Exception {
+      MemberVO loginResult = ms.login(vo);
+      
+      if(loginResult != null) {
+    	  // 로그인 성공 - 일치하는 사용자 정보 검색 완료
+    	  session.setAttribute("loginMember", loginResult);
+         return "redirect:/main";
+      }else {
+    	  // 로그인 실패  - 일치하는 사용자 정보 없음
+         return "redirect:/";
+      }
+   }
+
+   // member/join
+	@GetMapping("/join")
+	public String join() {
+		return "join";
 	}
-	
-	@PostMapping("/login")
-	public String login(@ModelAttribute MemberVO memberVO) throws Exception {
-		   System.out.println("ID : " + memberVO.getUid());
-	       System.out.println("PW : " + memberVO.getUpw());
-		MemberVO loginResult = ms.login(memberVO);
-		if(loginResult != null) {
-			return "join";
-		}else {
-			return "login";
-		}
-	}
-	
-	
-	
-	
-	
 	
 	/*
 	 * 

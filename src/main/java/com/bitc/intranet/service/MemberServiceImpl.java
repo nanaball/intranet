@@ -37,8 +37,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO login(MemberVO memberVO) throws Exception {
-		
-		return null;
+		return mapper.loginMember(memberVO);
 	}
 
 
