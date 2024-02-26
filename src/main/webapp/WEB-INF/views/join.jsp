@@ -24,6 +24,8 @@
 		padding : 20px;
 		margin : auto;
 		height:auto;
+		border-radius:10px;
+		
 	}
 	
 	table td{
@@ -41,16 +43,22 @@
 	padding: 10px;
 	font-size: 14px;
 }
-	button{
-		padding : 10px;		
-		margin : 10px
-	}
+	button {
+		padding: 5px;
+		margin: 5px
+}
+	div{
+		font-size:11px;
+		color:red;
+		margin:0;
+		padding:0;
+}
 </style>
-
+ 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form method="post" action="member/joinsuc" enctype="application/x-www-form-urlencoded">
+	<form method="post" action="joinsuc" enctype="application/x-www-form-urlencoded">
 		<H3>회원가입</H3>
 		<table align="center">
 			<tr>
@@ -58,8 +66,7 @@
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" id="uid" name="uid"placeholder="아이디를 입력해주세요" required /></td>
-				
+				<td><input type="text" id="uid" name="uid"placeholder="아이디를 입력해주세요" required /></td>			
 				<td><button type="button" id="checkId">중복 확인</button></td>
 			</tr>
 			<tr>
@@ -101,7 +108,7 @@
 					<td>부서</td>
 					<td>
 						<select name="udep" >
-							<option value="choice">부서를 선택하세요</option>
+							<option disabled selected hidden>부서를 선택하세요</option>
 							<option value="develop">개발</option>
 							<option value="plan">기획</option>
 							<option value="design">디자인</option>
@@ -116,7 +123,7 @@
 					<td>직책</td>
 					<td>
 						<select name="ujob">
-							<option value="choice">직책을 선택하세요</option>
+							<option disabled selected hidden>직책을 선택하세요</option>
 							<option value="worker">사원</option>
 							<option value="master">팀장</option>
 							<!-- 관리자 선택은 숨김 -->	
@@ -131,7 +138,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th colspan="2" >
+					<th colspan="3" >
 						<button id="joincan" type="button" >가입취소</button>
 						<button id="joinsuc" type="submit" >회원가입</button>
 					</th>
@@ -222,7 +229,7 @@
 		$("#checkId").on("click",function() {
 			$.ajax({
 				type:"POST",
-				url : "member/checkId",
+				url : "checkId",
 				data:{
 					uid : $("#uid").val()
 				},
@@ -249,7 +256,7 @@
 			if(confirm("회원가입을 취소하시겠습니까"));{		
 				location.href = "/intranet/";
 			}	
-		
+		});
 	</script>
 
 </body>
