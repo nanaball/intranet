@@ -87,24 +87,9 @@ public class MemberController {
 	}
 	*/
 
-
-	
-	
-	   @PostMapping("/login")
-	   public String login(@ModelAttribute MemberVO memberVO) throws Exception {
-	         System.out.println("ID : " + memberVO.getUid());
-	          System.out.println("PW : " + memberVO.getUpw());
-	      MemberVO loginResult = ms.login(memberVO);
-	      if(loginResult != null) {
-	         return "join";
-	      }else {
-	         return "login";
-	      }
-	   }
-	   
-	   @GetMapping("/views/memberUpdate")
-	   public String memberUpdate() {
-		   return" views/memberUpdate";
-	   }
+   @GetMapping("/views/memberUpdate")
+   public String memberUpdate() {
+	   return" views/memberUpdate";
+   }
 	
 }
