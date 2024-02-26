@@ -20,7 +20,6 @@ public class HomeController {
 	
 	}
 
-
 	@GetMapping("main")
 	public void main() {}
 	
