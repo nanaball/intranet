@@ -29,5 +29,7 @@ public class HomeController {
 	@GetMapping("memberUpdate")
 	public void memberUpdate() {}
 	
+	@GetMapping("welfare")
+	public void welfare() {}
 	
 }

@@ -1,7 +1,5 @@
 package com.bitc.intranet.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -75,5 +73,9 @@ public class MemberController {
 	      }
 	   }
 	   
+	   @GetMapping("/views/memberUpdate")
+	   public String memberUpdate() {
+		   return" views/memberUpdate";
+	   }
 	
 }
