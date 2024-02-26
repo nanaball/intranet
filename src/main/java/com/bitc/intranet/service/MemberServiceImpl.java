@@ -30,7 +30,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO readMember(String uid, int mno) throws Exception {
+	public MemberVO readMember(String uid) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitc.intranet.service.MemberService;
 import com.bitc.intranet.vo.MemberVO;
@@ -26,6 +27,11 @@ public class MemberController {
 	
 	private final MemberService ms;
 	
+
+	
+	
+	// 회원가입 -- 완
+	// 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기 
 	@PostMapping("/joinsuc")
 	public String join( 
 			MemberVO vo,
@@ -35,7 +41,22 @@ public class MemberController {
 		ms.addMember(vo);
 		return "redirect:/";	
 	}
+  
+  // 아이디 중복 확인 -- 완
+	@PostMapping("/checkId")
+	@ResponseBody
+	public String checkId(String uid) throws Exception{
+		
+        MemberVO vo = ms.readMember(uid);
+		
+		if (vo != null) {
+            return "duplicate";
+        } else {
+            return "not_duplicate";
+        }
+	}
 	
+	// 로그인 확인 - 완
 	// member/login
    @PostMapping("/login")
    public String loginCheck(@ModelAttribute MemberVO vo,
@@ -52,25 +73,24 @@ public class MemberController {
       }
    }
 
-   // member/join
+   // 회원가입 창 -- 
+  // member/join
 	@GetMapping("/join")
 	public String join() {
 		return "join";
 	}
 	
 	/*
-	 * 
-	 * @RequestMapping(value = "/joinsuc", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public ResponseEntity<String> addMember(MemberVO vo){
-	 * System.out.println(vo); ResponseEntity<String> entity = null;
-	 * 
-	 * 
-	 * try { List<MemberVO> list = ms.list(); return new ResponseEntity<>(list); }
-	 * catch (Exception e) { e.printStackTrace(); return new
-	 * ResponseEntity<>(HttpStatus.BAD_REQUEST); }
-	 * 
-	 * }
-	 */
+		if(vo == null ) {
+			return "redirect:/join";
+		}else {
+			return "redirect:/";
+		}	
+	}
+	*/
+
+
+	
+	
 
 }
