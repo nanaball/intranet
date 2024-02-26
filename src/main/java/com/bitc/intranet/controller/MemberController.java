@@ -1,6 +1,7 @@
 package com.bitc.intranet.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,15 +37,10 @@ public class MemberController {
 			) throws Exception {
 		log.info("vo : {} ", vo);
 		ms.addMember(vo);
-		if(vo == null ) {
-			return "redirect:/join";
-		}else {
-			return "redirect:/";
-		}	
+		return "redirect:/";	
 	}
-	
-
-	// 아이디 중복 확인 -- 완
+  
+  // 아이디 중복 확인 -- 완
 	@PostMapping("/checkId")
 	@ResponseBody
 	public String checkId(String uid) throws Exception{
@@ -58,6 +54,40 @@ public class MemberController {
         }
 	}
 	
+	// 로그인 확인 - 완
+	// member/login
+   @PostMapping("/login")
+   public String loginCheck(@ModelAttribute MemberVO vo,
+		   			   HttpSession session) throws Exception {
+      MemberVO loginResult = ms.login(vo);
+      
+      if(loginResult != null) {
+    	  // 로그인 성공 - 일치하는 사용자 정보 검색 완료
+    	  session.setAttribute("loginMember", loginResult);
+         return "redirect:/main";
+      }else {
+    	  // 로그인 실패  - 일치하는 사용자 정보 없음
+         return "redirect:/";
+      }
+   }
+
+   // 회원가입 창 -- 
+  // member/join
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+	}
+	
+	/*
+		if(vo == null ) {
+			return "redirect:/join";
+		}else {
+			return "redirect:/";
+		}	
+	}
+	*/
+
+
 	
 	
 	 
@@ -78,4 +108,5 @@ public class MemberController {
 		   return" views/memberUpdate";
 	   }
 	
+
 }

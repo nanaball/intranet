@@ -40,5 +40,5 @@ public interface MemberMapper {
 	 * @param uid와 upw 가 일치하는 로그인정보
 	 */
 	@Select("SELECT * FROM Member WHERE uid = #{uid} and upw = #{upw}")
-	MemberVO loginMember(String uid, String upw ) throws Exception;
+	MemberVO loginMember(MemberVO vo) throws Exception;
 }
