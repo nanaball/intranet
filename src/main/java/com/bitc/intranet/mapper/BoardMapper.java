@@ -1,8 +1,11 @@
-package com.bitc.intranet.service;
+package com.bitc.intranet.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.util.Criteria;
@@ -10,15 +13,15 @@ import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.BoardVO;
 
 @Service
-public interface BoardService {
+public interface BoardMapper {
 	
 	/**
 	 * 게시글 작성
 	 * @param 게시글 등록 정보
 	 * @return	성공 유무 메세지
 	 */
-	@Insert("INSERT INTO notice(title,category,content,writer) VALUES(${title},${category},${content},${writer} ")
-	String regist(BoardVO board) throws Exception;
+	@Insert("INSERT INTO notice(title, category, content, writer) VALUES(#{title}, #{category}, #{content}, #{writer})")
+	int regist(BoardVO board) throws Exception;
 	
 	/**
 	 * 조회수 증가
@@ -37,6 +40,7 @@ public interface BoardService {
 	 * 게시글 전체 목록 페이지
 	 * @return 전체 게시글 목록을 리스트로
 	 */
+	@Select("SELECT * FROM notice WHERE bno")
 	List<BoardVO> listAll() throws Exception;
 	
 	/**
@@ -44,14 +48,16 @@ public interface BoardService {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메세지로 반환
 	 */
-	String modify(BoardVO board) throws Exception;
+	@Update("UPDATE notice SET content = #{content}, writer = #{writer}, updatedate = now() WHERE bno = #{bno}")
+	int modify(BoardVO board) throws Exception;
 	
 	/**
 	 * 게시글 삭제
 	 * @param bno - 삭제할 게시글 번호
 	 * @return - 삭제 완료 여부를 메세지로 반환
 	 */
-	String remove(int bno) throws Exception;
+	@Delete("DELETE FROM notice WHERE bno = #{bno}")
+	int delete(int bno) throws Exception;
 	
 	/**
 	 * 페이징 처리된 리스트 목록 
