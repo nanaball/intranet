@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class BorderController {
+public class BoarderController {
 	
 	
 }
