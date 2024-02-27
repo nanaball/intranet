@@ -31,7 +31,7 @@ public class BoardMapperTest {
 		bs.regist(vo);
 	}
 	
-	// @Test
+	@Test
 	public void test() {
 		try {
 			List<BoardVO> list = bs.listAll();

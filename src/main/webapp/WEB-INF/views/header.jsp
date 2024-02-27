@@ -30,7 +30,7 @@
 		height: 100px;
 		border-bottom: 1px solid #ccc;
 		display:flex;
-		font-size:18px;
+		font-size:15px;
 		align-items:center;
 		justify-content: space-between;
 	}
@@ -62,8 +62,11 @@
 	}
 	
 	ul li a:hover {
-		color: #ccc;
+		color: white;
 		cursor: pointer;
+		font-weight:bolder;	
+		font-style:italic;
+		text-decoration: underline;
 	}
 	
 
@@ -74,19 +77,20 @@
 	<header>
 		<div>
 			<ul>
-				<li><a href="main">회사명</a>
-				<li><a href="Board">공지사항</a>
-				<li><a href="">결재</a>
-				<li><a href="">자유게시판</a>
-				<li><a href="welfare">직원복지몰</a>
+				<li><a href="main">회사명</a></li>
+				<li></li>
+				<li></li>
+				<li><a href="Notice">공지사항</a></li>
+				<li><a href="">결재</a></li>
+				<li><a href="Board">자유게시판</a></li>
+				<li><a href="welfare">직원복지몰</a></li>
 			</ul>
 		</div>
 		<div>
 			<ul>
-				<li><a href="memberUpdate">회원정보수정</a>
-				<li><a href="">로그아웃</a>	
+				<li><a href="memberUpdate">회원정보수정</a></li>
+				<li><a href="">로그아웃</a></li>
 			</ul>
-		</div>
-		
+		</div>		
 	</header>
 </body>
