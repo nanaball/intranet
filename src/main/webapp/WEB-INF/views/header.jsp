@@ -66,7 +66,7 @@
 		<div>
 			<ul>
 				<li><a href="main">회사명</a>
-				<li><a href="">공지사항</a>
+				<li><a href="Board">공지사항</a>
 				<li><a href="">결재</a>
 				<li><a href="">자유게시판</a>
 				<li><a href="welfare">직원복지몰</a>
