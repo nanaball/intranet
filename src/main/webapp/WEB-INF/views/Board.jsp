@@ -11,9 +11,9 @@
 		pageNum = Integer.parseInt(strPageNum);
 	}
 	
-	Criteria cri = new Criteria(pageNum, 10);
+	/* Criteria cri = new Criteria(pageNum, 10);
 	PageMaker pm = new PageMaker();
-	pm.setCri(cri);
+	pm.setCri(cri); */
 	
 	List<BoardVO> boardList = new ArrayList<>();
 %>
@@ -67,7 +67,7 @@
 					<td><%=b.getRegdate() %></td>
 				</tr>
                 <%} %>
-                <tr>
+                <%-- <tr>
 	                <th colspan="4">
 					<%if(pm.isFirst()){ %>
 						<a href="<%=pm.makeQuery(1)%>">[처음]</a>
@@ -85,7 +85,7 @@
 						<a href="<%=pm.makeQuery(pm.getMaxPage())%>">[마지막]</a>
 					<%}%>
 					</th>
-				</tr>
+				</tr> --%>
 				<%}else{ %>
 					<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
 				<%} %>
