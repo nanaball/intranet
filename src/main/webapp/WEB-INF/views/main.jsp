@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +100,9 @@
 		<div class="selfinfo">
 			<img src="resources/img/profile.jpg" height="100px"><br>
 			<img src="resources/img/mail.jpg" height="30px"><br>
-			<h5> \${udep}/\${uname}</h5>
+				<c:if test="${loginMember != null}">					
+  		  			<h5>${loginMember.getUdep()} / ${loginMember.getUname()}</h5>
+				</c:if>
 		</div>
 		<div id="wrap">
 			<div id="borders">
