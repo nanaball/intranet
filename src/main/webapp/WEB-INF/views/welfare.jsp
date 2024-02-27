@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>   
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +10,6 @@
 <style>
 	h3{
 		text-align: center;
-	}
-	
-	body{
-		background-image : url("resources/img/bg.jpg"); 
-		background-repeat: no-repeat;
 	}
 	
 	table{
@@ -46,15 +43,27 @@
 </style>
 </head>
 <body>
-	<h3>복지복지복지</h3>
+	<br/>
+	<h3>직원복지몰</h3>
+	<br/>
+	
 	<table>
 		<tr>
 			<td><a href=""><img src="resources/img/pororo.jpg" height="300px" onclick="alert('상품1 임시창')"></a></br>
 				뽀로로(DB 값)<br/>
 				30,000원(DB 값)</td>
-			<td><img src="resources/img/pororo.jpg" height="300px"></br>상품2</td>
-			<td><img src="resources/img/woman pororo.jpg" height="300px"></br>상품3</td>
-			<td><img src="resources/img/woman pororo.jpg" height="300px"></br>상품4</td>
+			<td class="product"><img src="resources/img/pororo.jpg" height="300px" onclick="alert('상품2 임시창')"></br>
+				뽀로루<br/>
+				40,000원
+			</td>
+			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px" onclick="alert('상품3 임시창')"></br>
+				뽀로롱<br/>
+				50,000원
+			</td>
+			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px" onclick="alert('상품4 임시창')"></br>
+				뽀로렁<br/>
+				60,000워
+			</td>
 		</tr>
 		<tr>
 			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품5</td>

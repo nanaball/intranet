@@ -13,14 +13,14 @@ public interface MemberService {
 	 * @param vo - 회원 가입한 회원 정보
 	 * uid, upw, uname, uemail, uphone, udep, ujob, udate
 	 */
-	void addMember(MemberVO vo) throws Exception;
+	public void addMember(MemberVO vo) throws Exception;
 
 	/**
 	 * 
 	 * @return - 등록된 전체 회원 목록
 	 * @throws Exception
 	 */
-	List<MemberVO> list() throws Exception;
+	public List<MemberVO> list() throws Exception;
 	
 	/**
 	 * 
@@ -29,11 +29,11 @@ public interface MemberService {
 	 * @return
 	 * @throws Exception
 	 */
-	MemberVO readMember (String uid) throws Exception;
+	public MemberVO readMember (String uid) throws Exception;
 	
 
 	//로그인 
-	MemberVO login(MemberVO memberVO) throws Exception;
+	public MemberVO login(MemberVO memberVO) throws Exception;
 
 
 	

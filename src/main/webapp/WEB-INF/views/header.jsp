@@ -64,6 +64,7 @@
 				<li><a href="">결재</a>
 				<li><a href="">자유게시판</a>
 				<li><a href="welfare">직원복지몰</a>
+				<li><a href="memberUpdate">회원수정</a>
 			</ul>
 		</div>
 	</header>
