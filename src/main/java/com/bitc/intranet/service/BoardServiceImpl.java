@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.bitc.intranet.mapper.BoardMapper;
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.BoardVO;
@@ -12,13 +13,13 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService {
+public class BoardServiceImpl implements BoardMapper {
 
 	
 	@Override
-	public String regist(BoardVO board) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public int regist(BoardVO board) throws Exception {
+		
+		return 0;
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -40,15 +41,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public String modify(BoardVO board) throws Exception {
+	public int modify(BoardVO board) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public String remove(int bno) throws Exception {
+	public int delete(int bno) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override

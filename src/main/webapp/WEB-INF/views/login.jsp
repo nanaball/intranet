@@ -59,7 +59,6 @@ h2 {
 </head>
 <body>
 
-
 	<div>
 		<h2>로 그 인</h2>
 		<form name="loginForm" action="member/login" method="POST">
@@ -101,10 +100,6 @@ h2 {
 	    
     });
     </script>
-
-
-
-
 
 </body>
 </html>
