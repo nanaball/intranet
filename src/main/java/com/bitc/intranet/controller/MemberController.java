@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,12 @@ public class MemberController {
 	
 	private final MemberService ms;
 	
-
+	// 회원가입 창 -- 완
+	// member/join
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+		}
 	
 	
 	// 회원가입 -- 완
@@ -78,12 +84,15 @@ public class MemberController {
       }
    }
 
-  // 회원가입 창 -- 완
-  // member/join
-	@GetMapping("/join")
-	public String join() {
-		return "join";
-	}
+   //로그인창에서 비밀번호 찾기
+   @PostMapping("/findPass")
+	public String findPass(@ModelAttribute MemberVO vo,
+							Model model) throws Exception {
+		return "redirect:/main";
+	   
+   }
+
+
 
 	// 회원 수정 창 
 	   @GetMapping("/views/memberUpdate")
