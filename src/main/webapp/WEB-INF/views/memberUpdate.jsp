@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header.jsp" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 정보 수정</title>
+<title>사원 정보 수정</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
 	
 	body{
@@ -54,18 +56,18 @@
 		text-align: center;
 	}
 	
-	table tr td:first-child{
+	table tr .a:first-child{
 		padding:10px;
-		text-align:left;
 	}
 	
 	table tr td input[type='text'],
 	table tr td input[type='password'],
 	table tr td input[type='number'] {
+		width: 200px;
 		outline: none;
 		border: none;
 		padding: 10px;
-		font-size: 14px;
+		font-size: 15px;
 	}
 	
 	.btn{
@@ -77,43 +79,51 @@
 <body>
 		<form method="POST" name="edit">
 		<table class="memberUpdate">
+		<br/><br/>
 			<tr>
-				<td colspan="2">🙍‍♂️ 사원 정보 수정 🛠 </td>
+				<td colspan="2">🙍‍♂️ 사원 정보 수정 </td>
 			</tr>
+			<c:if test="${loginMember != null}">
 			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="uid" value="DB에서 데이터 불러올 값" readonly="readonly"/></td>
+				<td class="a">아이디</td>
+				<td><input type="text" class="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력하세요." readonly="readonly"/></td>
 		  	</tr>
 		  	<tr>
-			  	<td>기존 비밀번호</td>
-				<td> <input type="password" name="password" required placeholder="기존 비밀번호를 입력하세요."/> </td>
+			  	<td class="a">기존 비밀번호</td>
+				<td> <input type="password" class="upw" name="upw" required placeholder="기존 비밀번호를 입력하세요."/> </td>
 			 </tr>
 			 <tr>
-				 <td>새 비밀번호</td> 
-				 <td><input type="password" name="newPassword" required placeholder="새 비밀번호를 입력하세요."/></td>
+				 <td class="a">새 비밀번호</td> 
+				 <td><input type="password" class="rePw" name="rePw" required placeholder="새 비밀번호를 입력하세요."/></td>
 		 	</tr>
 		 	<tr>
-				<td>이름</td>
-				<td><input type="text" name="uname" value="${vo.uname}" required placeholder="이름을 입력하세요."/></td>
+				<td class="a">이름</td>
+				<td><input type="text" class="uname" name="uname" value="${loginMember.getUname()}" required placeholder="이름을 입력하세요."/></td>
 			</tr>
 			<tr>
-				<td>이메일</td>
-				<td><input type="text" name="uemail" value="DB에서 데이터 불러올 값" required placeholder="이메일을 입력하세요."/></td>
+				<td class="a">이메일</td>
+				<td><input type="text" class="uemail" name="uemail" value="${loginMember.getUemail()}" required placeholder="이메일을 입력하세요."/></td>
 			</tr>
 			<tr>
-				<td>전화번호</td>
-				<td><input type="text" name="uphone" value="DB에서 데이터 불러올 값" required placeholder="전화번호를 입력하세요."/></td>
+				<td class="a">전화번호</td>
+				<td><input type="text" class="uphone"  name="uphone" value="${loginMember.getUphone()}" required placeholder="전화번호를 입력하세요."/></td>
 			</tr>
+				</c:if>
 			<tr>
 				<td colspan="2">
 					<div class="btn">
-						<input type="button" onclick="history.back(), alert('수정 완료')" class="done" value="사원정보 수정 확인"/>
-						<input type="button" class="cancel" onclick="history.back(), alert('취소 되었습니다.')" value="취소"/>
+						<!-- onclick 뒤로가기는 나중에 바꿀 예정 -->
+						<input type="button" id="done" class="done" value="사원정보 수정 확인"/>
+						<input type="button" id="cancel" class="cancel" value="취소"/>
 					</div>
 				</td>
 			</tr>
-			
 		</table>
 		</form>
+		
+	<script>
+		// 진짜 큰일났다
+		// 진짜 어떡하지
+   	</script>
 </body>
 </html>

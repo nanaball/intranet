@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bitc.intranet.vo.MemberVO;
@@ -23,6 +25,7 @@ public class MemberDAOImpl implements MemberDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
+	
 	@Override
 	public int insertMember(MemberVO member) {
 		int result = 0;
@@ -105,31 +108,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int updateMember(MemberVO member) {
-		
-//		String sql = "UPDATE member set upw = ?, uemail = ?, uphone = ?, uname = ? where uid = ?";
-//		
-//		try {
-//			conn = ds.getConnection();
-//			PreparedStatement pstmt = conn.prepareStatement(sql);
-//		} catch (SQLException e) {
-//			pstmt.setString(3, member.getUpw());
-//			pstmt.setString(4, member.getUemail());
-//			pstmt.setString(5, member.getUphone());
-//			pstmt.setString(6, member.getUname());
-//		}finally {
-//			try {
-//				if(rs != null) rs.close();
-//			} catch (SQLException e) {}
-//			
-//			try {
-//				if(pstmt != null) pstmt.close();
-//			} catch (SQLException e) {}
-//			
-//			try {
-//				if(conn != null) conn.close();
-//			} catch (SQLException e) {}
-//		}
-//		return member;
 		return 0;
 		}
 
