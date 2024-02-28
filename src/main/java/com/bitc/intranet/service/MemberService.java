@@ -34,6 +34,10 @@ public interface MemberService {
 	//로그인 
 	public MemberVO login(MemberVO memberVO) throws Exception;
 
+	public static void memberUpdate(MemberVO vo) {
+		
+	}
+
 
 	
 

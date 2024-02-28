@@ -25,9 +25,6 @@ public class MemberController {
 	
 	private final MemberService ms;
 	
-
-	
-	
 	// 회원가입 -- 완
 	// TODO 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기 
 	// TODO 중복 아이디 일때 null 값이 아니면 회원 가입 창 뜨는것도 수정
@@ -85,11 +82,11 @@ public class MemberController {
 		return "join";
 	}
 
-	// 회원 수정 창 
-	   @GetMapping("/views/memberUpdate")
-	   public String memberUpdate() {
-		   return" views/memberUpdate";
-	   }
 	
+	// 회원 수정 창 
+	@RequestMapping("/memberUpdate")
+	public String memberUpdate() {
+		return "memberUpdate";
+	}
    
 }

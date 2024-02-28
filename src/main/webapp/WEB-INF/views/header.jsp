@@ -75,7 +75,6 @@
 	<header>
 		<div>
 			<ul>
-<<<<<<< HEAD
 				
 				<li><a href="main">회사명</a>
 				
@@ -84,13 +83,11 @@
 				<li><a href="">자유게시판</a>
 				<li><a href="welfare">직원복지몰</a>
 				<li><a href="memberUpdate">회원수정</a>
-=======
 				<li><a href="${path}/intranet/main">회사명</a>
 				<li><a href="${path}/intranet/Board">공지사항</a>
 				<li><a href="${path}/intranet/">결재</a>
 				<li><a href="${path}/intranet/">자유게시판</a>
 				<li><a href="${path}/intranet/welfare">직원복지몰</a>
->>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
 			</ul>
 		</div>
 		<div>

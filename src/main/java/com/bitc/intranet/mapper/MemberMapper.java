@@ -41,4 +41,7 @@ public interface MemberMapper {
 	 */
 	@Select("SELECT * FROM Member WHERE uid = #{uid} and upw = #{upw}")
 	MemberVO loginMember(MemberVO vo) throws Exception;
+	
+	@Update("UPDATE * FROM member SET upw = #{upw}, uname = #{uname}, uemail = #{uemail}, uphone = #{uphone} WHERE uid = #{uid}")
+	MemberVO updateMember(MemberVO vo) throws Exception;
 }

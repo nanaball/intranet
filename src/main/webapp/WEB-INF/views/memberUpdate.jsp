@@ -83,42 +83,61 @@
 			<tr>
 				<td colspan="2">🙍‍♂️ 사원 정보 수정 </td>
 			</tr>
+			<c:if test="${loginMember != null}">
 			<tr>
 				<td class="a">아이디</td>
-				<td><input type="text" name="uid" value="${uid}" placeholder="아이디를 입력하세요." readonly="readonly"/></td>
+				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력하세요." readonly="readonly"/></td>
 		  	</tr>
 		  	<tr>
 			  	<td class="a">기존 비밀번호</td>
-				<td> <input type="password" name="password" required placeholder="기존 비밀번호를 입력하세요."/> </td>
+				<td> <input type="password" id="upw" name="upw" required placeholder="기존 비밀번호를 입력하세요."/> </td>
 			 </tr>
 			 <tr>
 				 <td class="a">새 비밀번호</td> 
-				 <td><input type="password" name="newPassword" required placeholder="새 비밀번호를 입력하세요."/></td>
+				 <td><input type="password" id="rePw" name="rePw" required placeholder="새 비밀번호를 입력하세요."/></td>
 		 	</tr>
 		 	<tr>
 				<td class="a">이름</td>
-				<td><input type="text" name="uname" value="${vo.uname}" required placeholder="이름을 입력하세요."/></td>
+				<td><input type="text" id="uname" name="uname" value="${loginMember.getUname()}" required placeholder="이름을 입력하세요."/></td>
 			</tr>
 			<tr>
 				<td class="a">이메일</td>
-				<td><input type="text" name="uemail" value="DB에서 데이터 불러올 값" required placeholder="이메일을 입력하세요."/></td>
+				<td><input type="text" id="uemail" name="uemail" value="${loginMember.getUemail()}" required placeholder="이메일을 입력하세요."/></td>
 			</tr>
 			<tr>
 				<td class="a">전화번호</td>
-				<td><input type="text" name="uphone" value="DB에서 데이터 불러올 값" required placeholder="전화번호를 입력하세요."/></td>
+				<td><input type="text" id="uphone" name="uphone" value="${loginMember.getUphone()}" required placeholder="전화번호를 입력하세요."/></td>
 			</tr>
+				</c:if>
 			<tr>
 				<td colspan="2">
 					<div class="btn">
 						<!-- onclick 뒤로가기는 나중에 바꿀 예정 -->
-						<input type="button" onclick="history.back(), alert('수정 완료')" class="done" value="사원정보 수정 확인"/>
-						
-						<input type="button" class="cancel" onclick="history.back(), alert('취소 되었습니다.')" value="취소"/>
+						<input type="button" id="done" class="done" value="사원정보 수정 확인"/>
+						<input type="button" id="cancel" class="cancel" value="취소"/>
 					</div>
 				</td>
 			</tr>
-			
 		</table>
 		</form>
+		
+		<script>
+			$("#done").click(function() {	
+			// 회원가입 빈칸시 알람
+			if($("#upw").val().length <= 0){
+				alert("사용자아이디를 입력해주세요");
+				$("#uid").val("");
+				$("#uid").focus();
+				return;
+			}
+			
+			// 가입취소 버튼 		
+			$("#cancel").on("click",function(){
+				if(confirm("회원수정을 취소하시겠습니까"));{		
+					location.href = "/intranet/";
+				}	
+			});
+		</script>
+		
 </body>
 </html>
