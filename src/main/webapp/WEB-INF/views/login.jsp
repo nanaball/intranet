@@ -66,7 +66,7 @@ h2 {
 			<input type="password" placeholder="비밀번호" name="upw"  id="upw" class="in"> 
 			<input type="button" id="btn" value="로그인"><br/>
 			<input type="button" id="btn2" value="회원가입"><br>
-			<a href="findPass.jsp">비밀번호를 잊어버리셨나요?</a>
+			<a href="findPass">비밀번호를 잊어버리셨나요?</a>
 		</form>
 	</div>
 
