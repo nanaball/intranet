@@ -63,11 +63,11 @@
 	table tr td input[type='text'],
 	table tr td input[type='password'],
 	table tr td input[type='number'] {
+		width: 200px;
 		outline: none;
 		border: none;
-		border-spacing: 5rem;
 		padding: 10px;
-		font-size: 14px;
+		font-size: 15px;
 	}
 	
 	.btn{
@@ -79,12 +79,13 @@
 <body>
 		<form method="POST" name="edit">
 		<table class="memberUpdate">
+		<br/><br/>
 			<tr>
-				<td colspan="2">🙍‍♂️ 사원 정보 수정 🛠 </td>
+				<td colspan="2">🙍‍♂️ 사원 정보 수정 </td>
 			</tr>
 			<tr>
 				<td class="a">아이디</td>
-				<td><input type="text" name="uid" value="${uid}" readonly="readonly"/></td>
+				<td><input type="text" name="uid" value="${uid}" placeholder="아이디를 입력하세요." readonly="readonly"/></td>
 		  	</tr>
 		  	<tr>
 			  	<td class="a">기존 비밀번호</td>

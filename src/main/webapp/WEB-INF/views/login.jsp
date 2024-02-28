@@ -35,17 +35,18 @@ input {
 
 #btn {
 	background-color: #1BBC9B;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	color: white;
 }
 
 #btn2 {
 	border: 1px solid #1BBC9B;
 	color: #1BBC9B;
+	margin-bottom: 10px;
 }
 
 a {
-	text-decoration: none;
+	text-decoration: none; 
 	color: #1BBC9B;
 	font-size: 12px;
 }
@@ -58,18 +59,14 @@ h2 {
 </head>
 <body>
 
-
 	<div>
 		<h2>로 그 인</h2>
 		<form name="loginForm" action="member/login" method="POST">
 			<input type="text" placeholder="아이디" name="uid" id="uid" class="in"> 
 			<input type="password" placeholder="비밀번호" name="upw"  id="upw" class="in"> 
 			<input type="button" id="btn" value="로그인"><br/>
-			<c:if test="${message == 'error'}">
-				<div style="color: red;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-			</c:if>
 			<input type="button" id="btn2" value="회원가입"><br>
-			<a href="location.href='findPass.jsp';">비밀번호를 잊어버리셨나요?</a>
+			<a href="findPass.jsp">비밀번호를 잊어버리셨나요?</a>
 		</form>
 	</div>
 
@@ -103,10 +100,6 @@ h2 {
 	    
     });
     </script>
-
-
-
-
 
 </body>
 </html>

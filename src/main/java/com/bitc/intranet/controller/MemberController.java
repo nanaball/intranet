@@ -29,7 +29,9 @@ public class MemberController {
 	
 	
 	// 회원가입 -- 완
-	// 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기 
+	// TODO 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기 
+	// TODO 중복 아이디 일때 null 값이 아니면 회원 가입 창 뜨는것도 수정
+	// TODO JOIN.JSP 에서 회원가입시 한글 깨짐 오류 
 	@PostMapping("/joinsuc")
 	public String join( 
 			MemberVO vo,
@@ -37,10 +39,15 @@ public class MemberController {
 			) throws Exception {
 		log.info("vo : {} ", vo);
 		ms.addMember(vo);
-		return "redirect:/";	
+		if(vo == null ) {
+			return "redirect:/join";
+		}else {
+			return "redirect:/";
+		}	
 	}
-  
-  // 아이디 중복 확인 -- 완
+	
+	
+    // 아이디 중복 확인 -- 완
 	@PostMapping("/checkId")
 	@ResponseBody
 	public String checkId(String uid) throws Exception{
@@ -71,28 +78,32 @@ public class MemberController {
       }
    }
 
-   // 회원가입 창 -- 
+  // 회원가입 창 -- 완
   // member/join
 	@GetMapping("/join")
 	public String join() {
 		return "join";
 	}
 	
-	/*
-		if(vo == null ) {
-			return "redirect:/join";
-		}else {
-			return "redirect:/";
-		}	
-	}
-	*/
 
+<<<<<<< HEAD
 	   
    @GetMapping("/views/memberUpdate")
    public String memberUpdate() {
 	   
 	   return" views/memberUpdate";
    }
+=======
+		
+	
+
+
+	// 회원 수정 창 
+	   @GetMapping("/views/memberUpdate")
+	   public String memberUpdate() {
+		   return" views/memberUpdate";
+	   }
+>>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
 	
    
 }
