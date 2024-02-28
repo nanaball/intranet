@@ -44,4 +44,11 @@ public interface MemberMapper {
 	
 	@Update("UPDATE * FROM member SET upw = #{upw}, uname = #{uname}, uemail = #{uemail}, uphone = #{uphone} WHERE uid = #{uid}")
 	MemberVO updateMember(MemberVO vo) throws Exception;
+	 
+	/**
+	 * 비밀번호 찾기
+	 * @param uid, uname이 일치하는 회원정보 검색
+	 */
+	@Select("SELECT * FROM Member WHERE uid = #{uid} and uname = #{uname}")
+	MemberVO findPass(MemberVO vo) throws Exception;
 }
