@@ -27,7 +27,7 @@
 		height: 100px;
 		border-bottom: 1px solid #ccc;
 		display:flex;
-		font-size:18px;
+		font-size:15px;
 		align-items:center;
 		justify-content: space-between;
 	}
@@ -59,8 +59,12 @@
 	}
 	
 	ul li a:hover {
-		color: #ccc;
+		color: white;
 		cursor: pointer;
+		font-weight:bolder;	
+		/* font-style:italic; */
+		text-decoration: underline;
+	}
 	}
 	
 
@@ -71,35 +75,20 @@
 	<header>
 		<div>
 			<ul>
-<<<<<<< HEAD
-				<li><a href="${path}/main">회사명</a>
-				<li><a href="${path}/Board">공지사항</a>
-				<li><a href="${path}/NewFile">결재</a>
-				<li><a href="${path}/">자유게시판</a>
-				<li><a href="${path}/welfare">직원복지몰</a>
-=======
-				
-				<li><a href="main">회사명</a>
-				
-				<li><a href="">공지사항</a>
-				<li><a href="">결재</a>
-				<li><a href="">자유게시판</a>
-				<li><a href="welfare">직원복지몰</a>
-				<li><a href="memberUpdate">회원수정</a>
-				<li><a href="${path}/intranet/main">회사명</a>
-				<li><a href="${path}/intranet/Board">공지사항</a>
-				<li><a href="${path}/intranet/">결재</a>
-				<li><a href="${path}/intranet/">자유게시판</a>
-				<li><a href="${path}/intranet/welfare">직원복지몰</a>
->>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
+				<li><a href="${path}/main">회사명</a></li>	
+				<li> </li>	
+				<li> </li>				
+				<li><a href="${path}/Board">공지사항</a></li>
+				<li><a href="${path}/NewFile">결재</a></li>
+				<li><a href="${path}/">자유게시판</a></li>
+				<li><a href="${path}/welfare">직원복지몰</a></li>
 			</ul>
-		</div>
+		</div>	
 		<div>
 			<ul>
-				<li><a href="${path}/memberUpdate">회원정보수정</a>
-				<li><a href="">로그아웃</a>	
+				<li><a href="${path}/memberUpdate">회원정보수정</a></li>
+				<li><a href="">로그아웃</a>	</li>
 			</ul>
-		</div>
-		
+		</div>		
 	</header>
 </body>
