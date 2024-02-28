@@ -84,26 +84,12 @@ public class MemberController {
 	public String join() {
 		return "join";
 	}
-	
-
-<<<<<<< HEAD
-	   
-   @GetMapping("/views/memberUpdate")
-   public String memberUpdate() {
-	   
-	   return" views/memberUpdate";
-   }
-=======
-		
-	
-
 
 	// 회원 수정 창 
 	   @GetMapping("/views/memberUpdate")
 	   public String memberUpdate() {
 		   return" views/memberUpdate";
 	   }
->>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
 	
    
 }
