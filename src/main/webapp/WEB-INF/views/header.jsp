@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.bitc.intranet.vo.MemberVO, java.sql.*" %>
+<c:set var="path" value="${pageContext.request.contextPath}" scope="page" />
 <%
 	MemberVO loginMember = (MemberVO)session.getAttribute("login");
 	Cookie[] cookies = request.getCookies();
@@ -74,16 +75,16 @@
 	<header>
 		<div>
 			<ul>
-				<li><a href="main">회사명</a>
-				<li><a href="Board">공지사항</a>
-				<li><a href="">결재</a>
-				<li><a href="">자유게시판</a>
-				<li><a href="welfare">직원복지몰</a>
+				<li><a href="${path}/intranet/main">회사명</a>
+				<li><a href="${path}/intranet/Board">공지사항</a>
+				<li><a href="${path}/intranet/">결재</a>
+				<li><a href="${path}/intranet/">자유게시판</a>
+				<li><a href="${path}/intranet/welfare">직원복지몰</a>
 			</ul>
 		</div>
 		<div>
 			<ul>
-				<li><a href="memberUpdate">회원정보수정</a>
+				<li><a href="${path}/intranet/memberUpdate">회원정보수정</a>
 				<li><a href="">로그아웃</a>	
 			</ul>
 		</div>
