@@ -12,7 +12,7 @@
 	}
 	
 	body{
-		background-image:url(/intranet/resources/img/bg.jpg);
+		background-image:url(${pageContext.request.contextPath}/resources/img/bg.jpg);
 		background-repeat:no-repeat; 
 		background-size:cover;
 		/* background-height:100px; */
@@ -109,13 +109,13 @@
 					<td>
 						<select name="udep" >
 							<option disabled selected hidden>부서를 선택하세요</option>
-							<option value="develop">개발</option>
-							<option value="plan">기획</option>
-							<option value="design">디자인</option>
-							<option value="marketing">마케팅</option>
-							<option value="business">영업</option>
-							<option value="manager">인사</option>
-							<option value="affair">총무</option>						
+							<option value="개발">개발</option>
+							<option value="기획">기획</option>
+							<option value="디자인">디자인</option>
+							<option value="마케팅">마케팅</option>
+							<option value="영업">영업</option>
+							<option value="인사">인사</option>
+							<option value="총무">총무</option>						
 						</select>
 					</td>
 				</tr>
@@ -124,8 +124,8 @@
 					<td>
 						<select name="ujob">
 							<option disabled selected hidden>직책을 선택하세요</option>
-							<option value="worker">사원</option>
-							<option value="master">팀장</option>
+							<option value="사원">사원</option>
+							<option value="팀장">팀장</option>
 							<!-- 관리자 선택은 숨김 -->	
 							<option hidden value="admin">관리자</option>				
 						</select>

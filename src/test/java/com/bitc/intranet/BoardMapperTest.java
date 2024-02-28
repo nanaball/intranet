@@ -20,7 +20,7 @@ public class BoardMapperTest {
 	@Autowired
 	BoardMapper bs;
 	
-	//@Test
+	@Test
 	public void testBoard() throws Exception{
 		BoardVO vo = new BoardVO();
 		vo.setTitle("qq");

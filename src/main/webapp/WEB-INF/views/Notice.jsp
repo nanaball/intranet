@@ -35,7 +35,6 @@
         justify-content:space-between;
     }
 </style>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 	<div class="wrapper" style="display: flex;">
@@ -92,18 +91,7 @@
 					<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
 				<%} %>
             </table>
-            <input type="button" id="regist" value="새 글 작성" />
 		</div>
 	</div>
-	
-	<script>
-		$(function(){
-			$("#regist").on("click",function(){
-				if(confirm("새 글 작성 페이지로 이동합니다")){
-					location.href="${pageContext.request.contextPath}/Board/BoardRegist";
-				}
-			});
-		});
-	</script>
 </body>
 </html>
