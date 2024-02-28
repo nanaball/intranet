@@ -9,7 +9,8 @@
 </head>
 <body>
 	<h1>새 글 작성</h1>
-	<table action="/Board/Boardregist" method="POST">
+	<form method="GET" action="Boardregist">
+	<table border="1">
 		<tr>
 				<th colspan = "2"><h1>공지글 작성</h1></th>
 			</tr>
@@ -49,5 +50,6 @@
 				</th>
 			</tr>
 	</table>
+	</form>
 </body>
 </html>
