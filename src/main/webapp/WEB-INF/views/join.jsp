@@ -80,6 +80,12 @@
 					</td>
 				</tr>
 				<tr>
+					<td>비밀번호 확인</td>
+					<td>
+						<input type="password" name="upw2" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+					</td>
+				</tr>
+				<tr>
 					<td>이름</td>
 					<td>
 						<input type="text" name="uname" data-msg="이름" placeholder="이름을 입력해주세요" />
@@ -166,7 +172,7 @@
 			}
 			
 			if($("#upw2").val().length <= 0){
-				alert("비밀번호 확인을 입력해주세요");
+				alert("비밀번호를 재입력해주세요");
 				$("#upw2").val("");
 				$("#upw2").focus();
 				return;
@@ -254,7 +260,7 @@
 		// 가입취소 버튼 		
 		$("#joincan").on("click",function(){
 			if(confirm("회원가입을 취소하시겠습니까"));{		
-				location.href = "/intranet/";
+				location.href = "${pageContext.request.contextPath}";
 			}	
 		});
 	</script>
