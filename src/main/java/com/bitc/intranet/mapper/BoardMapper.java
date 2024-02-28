@@ -65,6 +65,7 @@ public interface BoardMapper {
 	 * @return
 	 * @throws Exception
 	 */
+	@Select("SELECT * FROM notice ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}")
 	List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	
 	/**
