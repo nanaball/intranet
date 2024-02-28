@@ -5,6 +5,7 @@
 <%@ page import=
 	"java.sql.*, java.util.*, com.bitc.intranet.vo.BoardVO, com.bitc.intranet.util.*" %>
 <%
+	// 요청한 페이지 번호
 	String strPageNum = request.getParameter("page");
 	int pageNum = 1;
 	if(strPageNum != null){
@@ -16,7 +17,10 @@
 	pm.setCri(cri); */
 	
 	List<BoardVO> boardList = new ArrayList<>();
+	
 %>
+
+
 <style>
 	body{
 		height : 600px;
@@ -35,16 +39,20 @@
         justify-content:space-between;
     }
 </style>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+	/* 2/28 작업 */
+	let result = '${result}';
+	if(result != ''){
+		alert(result);
+	}
+</script>
 </head>
 <body>
 	<div class="wrapper" style="display: flex;">
-		<div class="member">
+		<div class="selfinfo">
 			<img src="resources/img/profile.jpg" height="100px"><br>
 			<img src="resources/img/mail.jpg" height="30px"><br>
-			<h3>부서명/이름</h3>
 		</div>
-	</div>
 	<div id="wrap">
 		<div id="borders">
 			<h2>공지사항</h2>	
@@ -56,7 +64,8 @@
                     <th>작성시간</th>
                     <th>조회수</th>
                 </tr>
-                <% if(!boardList.isEmpty()){ %>
+                
+               <% if(!boardList.isEmpty()){ %>
                 	<% for(BoardVO b : boardList){ %>
                 	<tr>
 						<td><%=b.getBno() %></td>
@@ -67,27 +76,10 @@
 					</td>
 					<td><%=b.getWriter() %></td>
 					<td><%=b.getRegdate() %></td>
+					<td><%=b.getViewcnt() %></td>
 				</tr>
                 <%} %>
-                <%-- <tr>
-	                <th colspan="4">
-					<%if(pm.isFirst()){ %>
-						<a href="<%=pm.makeQuery(1)%>">[처음]</a>
-					<%}%>
-					<%if(pm.isPrev()){ %>
-						<a href="<%=pm.makeQuery(pm.getStartPage()-1)%>">[이전]</a>
-					<%}%>
-					<% for(int i = pm.getStartPage(); i <= pm.getEndPage(); i++){ %>
-						<a href="<%=pm.makeQuery(i)%>">[<%=i%>]</a>					
-					<%} %>
-					<%if(pm.isNext()){ %>
-						<a href="<%=pm.makeQuery(pm.getEndPage()+1)%>">[다음]</a>
-					<%}%>
-					<% if(pm.isLast()){ %>
-						<a href="<%=pm.makeQuery(pm.getMaxPage())%>">[마지막]</a>
-					<%}%>
-					</th>
-				</tr> --%>
+                
 				<%}else{ %>
 					<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
 				<%} %>
