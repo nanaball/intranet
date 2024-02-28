@@ -6,6 +6,8 @@ import com.bitc.intranet.vo.MemberVO;
 
 public interface MemberDAO {
 	
+	
+	
 	/*
 	 * @param member - 등록한 사원 정보
 	 * @return - 삽입된 사원 행 개수
