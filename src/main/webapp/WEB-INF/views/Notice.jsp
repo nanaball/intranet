@@ -55,19 +55,21 @@
                     <th>작성시간</th>
                     <th>조회수</th>
                 </tr>
-                <% if(!boardList.isEmpty()){ %>
-                	<% for(BoardVO b : boardList){ %>
-                	<tr>
-						<td><%=b.getBno() %></td>
+                <c:if test="${!empty boardList}">
+               	<c:forEach var="n" items="${boardList}">
+               	<tr>
+					<td>${n.bno}</td>
 					<td>
 						<a href="#">
-							[<%=b.getCategory() %>] <%=b.getTitle() %>
+							[${n.category}] ${n.title}
 						</a>
 					</td>
-					<td><%=b.getWriter() %></td>
-					<td><%=b.getRegdate() %></td>
+					<td>${n.writer}</td>
+					<td>${n.regdate}</td>
+					<td>${n.viewcnt}</td>
 				</tr>
-                <%} %>
+				</c:forEach>
+			</c:if>
                 <%-- <tr>
 	                <th colspan="4">
 					<%if(pm.isFirst()){ %>
@@ -87,9 +89,9 @@
 					<%}%>
 					</th>
 				</tr> --%>
-				<%}else{ %>
+			<c:if test="${empty boardList}">
 					<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
-				<%} %>
+			</c:if>
             </table>
 		</div>
 	</div>

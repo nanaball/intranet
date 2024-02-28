@@ -2,14 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>    
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 	 
 	body{
@@ -92,7 +84,6 @@
     	border:2px solid #1BBC9B;
     }
      */
-    
 
 </style>
 </head>
@@ -101,13 +92,42 @@
 		<div class="selfinfo">
 			<img src="resources/img/profile.jpg" height="100px"><br>
 			<img src="resources/img/mail.jpg" height="30px"><br>
-				<c:if test="${loginMember != null}">					
+				<c:if test="${not empty loginMember}">					
   		  			<h5>${loginMember.getUdep()} / ${loginMember.getUname()}</h5>
 				</c:if>
+				<c:if test="${empty loginMember}">
+					없음 
+				</c:if>		
 		</div>
 		<div id="wrap">
 			<div id="borders">
-				<div id="border1"><h3>공지사항</h3></div>
+				<div id="border1">
+					<h3>공지사항</h3>
+					 <table border="1" class="list">
+		                <tr>
+		                    <th>글 번호</th>
+		                    <th>글 제목</th>
+		                    <th>작성자</th>
+		                    <th>작성시간</th>
+		                    <th>조회수</th>
+		                </tr>
+		                <c:if test="${!empty notice}">
+		                	<c:forEach var="n" items="${notice}">
+		                	<tr>
+								<td>${n.bno}</td>
+								<td>
+									<a href="#">
+										[${n.category}] ${n.title}
+									</a>
+								</td>
+								<td>${n.writer}</td>
+								<td>${n.regdate}</td>
+								<td>${n.viewcnt}</td>
+							</tr>
+							</c:forEach>
+						</c:if>
+					</table>
+				</div>
 				<div id="border2"><h3>결재</h3></div>
 				<div id="border3"><h3>자유게시판</h3></div>
 				<div id="border4"><h3>직원복지</h3></div>
@@ -115,42 +135,34 @@
 			</div>
 		</div>
 	</div>	
-	<script>
 	
+	
+	
+	<script>
+	/*
 	// border1 에 공지사항 목록 요청
 	$(document).ready(function() {
 	    $.ajax({
 	        type: "GET",
-	        url: "/border/recentNotices",
-	        success: function(notices) {	          
-	            notices.forEach(function(notice) {
-	                $("#latestPosts").append("<p>" + notice.title + "</p>");
-	            });
-	        },
-	        error: function(xhr, status, error) {
-	            console.error("Recent notice Fail : " + error);
+	        url: "${path}/Board/recentNotices",
+	        success: function(notices) {
+	        	// List<BoardVO> == notices
+	        	console.log(notices);
+	        	$(notices).each(function(){
+		            $("#border1").append("<p onclick='alert(\"멍청한!!!!!!!!"+this.bno+"\");'>" + this.bno +"|"+this.title + "</p>");
+	        	});
+	         },
+	        error : function(res){
+				console.log(res);
 	        }
 	    });
 	});
+	*/
+
 	
-	// border 컨트롤러
-	@RestController
-	@RequestMapping("/border")
-	public class NoticeController {
-
-    private final NoticeService noticeService;
-
-    public NoticeController(NoticeService noticeService) {
-        this.noticeService = noticeService;
-    }
-
-    @GetMapping("/recentNotices")
-    public List<Notice> getRecentNotices() {
-        // borderserviceImple에서 최근 목록 가져오기
-        return noticeService.getRecentNotices();
-   	 	}
-	}
 	
-	</script>
+	
+    
+</script>
 </body>
 </html>

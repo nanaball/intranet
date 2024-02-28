@@ -1,20 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.bitc.intranet.vo.MemberVO, java.sql.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="path" value="${pageContext.request.contextPath}" scope="page" />
-<%
-	MemberVO loginMember = (MemberVO)session.getAttribute("login");
-	Cookie[] cookies = request.getCookies();
-	if(loginMember == null && cookies != null){
-		
-	}
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Main</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 	* {
 		padding: 0;
@@ -75,16 +71,16 @@
 	<header>
 		<div>
 			<ul>
-				<li><a href="${path}/intranet/main">회사명</a>
-				<li><a href="${path}/intranet/Board">공지사항</a>
-				<li><a href="${path}/intranet/">결재</a>
-				<li><a href="${path}/intranet/">자유게시판</a>
-				<li><a href="${path}/intranet/welfare">직원복지몰</a>
+				<li><a href="${path}/main">회사명</a>
+				<li><a href="${path}/Board">공지사항</a>
+				<li><a href="${path}/NewFile">결재</a>
+				<li><a href="${path}/">자유게시판</a>
+				<li><a href="${path}/welfare">직원복지몰</a>
 			</ul>
 		</div>
 		<div>
 			<ul>
-				<li><a href="${path}/intranet/memberUpdate">회원정보수정</a>
+				<li><a href="${path}/memberUpdate">회원정보수정</a>
 				<li><a href="">로그아웃</a>	
 			</ul>
 		</div>
