@@ -93,6 +93,10 @@
     }
      */
     
+<<<<<<< HEAD
+=======
+    
+>>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
 </style>
 </head>
 <body>

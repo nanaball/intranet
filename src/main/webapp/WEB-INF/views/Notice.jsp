@@ -91,7 +91,6 @@
 					<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
 				<%} %>
             </table>
-            <button onclick="location.href='BoardRegist';">새 글 작성</button>
 		</div>
 	</div>
 </body>

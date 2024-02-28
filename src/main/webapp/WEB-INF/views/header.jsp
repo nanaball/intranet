@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.bitc.intranet.vo.MemberVO, java.sql.*" %>
+<%
+	MemberVO loginMember = (MemberVO)session.getAttribute("login");
+	Cookie[] cookies = request.getCookies();
+	if(loginMember == null && cookies != null){
+		
+	}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +75,7 @@
 		<div>
 			<ul>
 				<li><a href="main">회사명</a>
-				<li><a href="">공지사항</a>
+				<li><a href="Board">공지사항</a>
 				<li><a href="">결재</a>
 				<li><a href="">자유게시판</a>
 				<li><a href="welfare">직원복지몰</a>

@@ -23,6 +23,9 @@ public class HomeController {
 	@GetMapping("main")
 	public void main() {}
 	
+	@GetMapping("Board")
+	public void Board() {}
+	
 	@GetMapping("memberUpdate")
 	public void memberUpdate() {}
 	

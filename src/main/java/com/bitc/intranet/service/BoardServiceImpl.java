@@ -13,25 +13,27 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardMapper {
+public class BoardServiceImpl implements BoardService {
 
+	private final BoardMapper dao;
 	
 	@Override
-	public int regist(BoardVO board) throws Exception {
-		
-		return 0;
+	public String regist(BoardVO board) throws Exception {
+		int result = dao.regist(board);
+        if (result == 1) {
+            return "success"; // 성공적으로 등록되었음을 알리는 메시지를 반환
+        }
+        return "fail"; // 등록에 실패했음을 알리는 메시지를 반환
 	}
 
 	@Override
 	public void updateCnt(int bno) throws Exception {
-		// TODO Auto-generated method stub
-
+		dao.updateCnt(bno);
 	}
 
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		
-		return null;
+		return dao.read(bno);
 	}
 
 	@Override
@@ -41,26 +43,30 @@ public class BoardServiceImpl implements BoardMapper {
 	}
 
 	@Override
-	public int modify(BoardVO board) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public String modify(BoardVO board) throws Exception {
+		 int result = dao.modify(board);
+	        if (result == 1) {
+	            return "success"; // 성공적으로 수정되었음을 알리는 메시지를 반환
+	        }
+	        return "fail"; // 수정에 실패했음을 알리는 메시지를 반환
 	}
 
 	@Override
-	public int delete(int bno) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
-		// TODO Auto-generated method stub
+	public String remove(int bno) throws Exception {
 		return null;
 	}
 
 	@Override
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+		return dao.listCriteria(cri);
+	}
+
+	@Override
 	public PageMaker getPageMaker(Criteria cri) throws Exception {
-		// TODO Auto-generated method stub
+		/*
+		 * int totalCount = dao.totalCount(); PageMaker pm = new PageMaker(cri,
+		 * totalCount);
+		 */
 		return null;
 	}
 
