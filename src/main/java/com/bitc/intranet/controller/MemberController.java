@@ -123,6 +123,6 @@ public class MemberController {
    @GetMapping("/views/memberUpdate")
    public String memberUpdate() {
 	   return" views/memberUpdate";
-   
+   }
    
 }

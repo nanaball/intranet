@@ -52,6 +52,13 @@ public class BoarderController {
 		
 		// 조회수 증가
 		return "boardRead";
-		
+	}
+	
+	// 게시글 수정 페이지 요청
+	@GetMapping("modify")
+	public String modifyGet(int bno, Model model) throws Exception {
+		BoardVO vo = bs.read(bno);
+		model.addAttribute(vo);
+		return "boardModify";
 	}
 }

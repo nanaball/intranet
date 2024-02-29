@@ -75,4 +75,6 @@ public interface BoardMapper {
 	 * @throws Exception
 	 */
 	PageMaker getPageMaker(Criteria cri) throws Exception;
+
+	
 }

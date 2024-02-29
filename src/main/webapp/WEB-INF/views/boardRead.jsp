@@ -17,5 +17,9 @@
 		<label>작성자</label>
 		<input type="text" name="writer" value="${read.writer}" readonly/>
 	</div>
+	<div>
+		<a href="modify?bno=${read.bno}">수정</a> |
+		<a href="remove?bno=${read.bno}">삭제</a> |
+	</div>
 </body>
 </html>
