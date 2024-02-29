@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
 import com.bitc.intranet.vo.BoardVO;
-import com.mysql.cj.protocol.x.Notice;
 
 public interface RecentMapper {
 	
