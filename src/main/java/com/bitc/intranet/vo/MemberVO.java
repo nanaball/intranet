@@ -12,6 +12,7 @@ public class MemberVO {
 	private int uno;			// 사원번호
 	private String uid;			// 아이디
 	private String upw;			// 비밀번호
+	private String repw;        // 비밀번호 찾기후 변경된 비밀번호
 	private String uemail;		// 이메일
 	private String uphone;		// 전화번호
 	private String uname;		// 이름

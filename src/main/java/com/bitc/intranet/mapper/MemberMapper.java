@@ -51,4 +51,7 @@ public interface MemberMapper {
 	 */
 	@Select("SELECT * FROM Member WHERE uid = #{uid} and uname = #{uname}")
 	MemberVO findPass(MemberVO vo) throws Exception;
+	
+	@Update("UPDATE member SET upw=#{repw} WHERE uid= #{uid}")
+	void changePass(String repw) throws Exception;
 }

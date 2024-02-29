@@ -1,9 +1,11 @@
 package com.bitc.intranet.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -87,17 +89,40 @@ public class MemberController {
    @PostMapping("/findPass")
 	public String findPass(@ModelAttribute MemberVO vo,
 							Model model) throws Exception {
-		return "redirect:/main";
+	   MemberVO findPassResult = ms.findPass(vo);
 	   
+	   if(findPassResult != null) {
+		   //회원이메일로 코드발송
+		   return "";
+	   }else {
+		   return null;
+	   }
+		
    }
+   @GetMapping("/findPass")
+   public String findPass() {
+	   return "/findPass";
+   }
+   
+   //비밀번호 변경 - 이메일 보내기
+   @PostMapping("/changePass")
+   public String changePass(@ModelAttribute MemberVO vo,
+		                    HttpServletRequest request,
+		                    HttpServletResponse  response) throws Exception{
+	   return "redirect:/";
+   }
+   
+   @GetMapping("/changePass")
+   public String changePass() {
+	   return "/changePass";
+   }
+   
+   
 
-
-
-	
-	// 회원 수정 창 
-	@RequestMapping("/memberUpdate")
-	public String memberUpdate() {
-		return "memberUpdate";
-	}
+   // 회원 수정 창 
+   @GetMapping("/views/memberUpdate")
+   public String memberUpdate() {
+	   return" views/memberUpdate";
+   
    
 }

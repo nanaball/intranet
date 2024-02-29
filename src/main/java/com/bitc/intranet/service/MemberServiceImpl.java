@@ -41,5 +41,16 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.loginMember(memberVO);
 	}
 
+	@Override
+	public MemberVO findPass(MemberVO memberVO) throws Exception {
+		return mapper.findPass(memberVO);
+	}
+
+	@Override
+	public void changePass(String repw) throws Exception {
+		//public void changePass(String repw, *String uid추가*) throws Exception {
+		mapper.changePass(repw);
+	}
+
 
 }

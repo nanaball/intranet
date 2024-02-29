@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>findPass</title>
+<title>changePass</title>
 <style>
 
 body {
@@ -59,52 +59,20 @@ a {
 
 <body>
 	<div>
-    <h2>비밀번호 찾기</h2>
-    <a>회원가입 시 등록한 아이디,이름,이메일을 입력해주세요.</a>
+    <h2>비밀번호 변경</h2>
+    <a>새로 사용하실 비밀번호를 입력해주세요.</a>
 		<form method="post" action="member/login" enctype="application/x-www-form-urlencoded">
-		<input type="text" placeholder="아이디" name="uid" id="uid" class="in"> 
-			<input type="text" placeholder="이름" name="uname"  id="uname" class="in"> 
-			<input type="text" placeholder="Email" name="uemail"  id="uemail" class="in"> 
-			<input type="button" id="btn" value="확인"><br/>
+		<input type="text" placeholder="비밀번호" name="repw" id="repw" class="in"> 
+		<input type="button" id="btn" value="확인"><br/>
 			<!-- <tr>
 				<th>
 					<input type="button" id="btn" value="확인"
-					onclick="location.href='findPass.jsp'" />
+					onclick="location.href='changePass.jsp'" />
 				</th>
 			</tr>
 		</table> -->
 	</form>
 	</div>
 </body>
-<script>
-$(function(){
-	
-	$("#btn").click(function(){
-    	 let uid = $("#uid").val();
-    	 let uname = $("#uname").val();
-    	 let uemail = $("#uemail").val();
-    	 
-    	 if(uid == ""){
-    	  alert("아이디를 입력하세요");
-    	  $("#uid").focus(); 
-    	  return;
-    	}
-    	if(uname == ""){
-    	 alert("이름을 입력하세요"); 
-    	 $("#uname").focus();
-    	  return;
-    	}
-    	if(uemail == ""){
-    		alert("이메일을 입력하세요")
-    	 $("#email").focus();
-    	  return;
-    	}
-    	
-    	/* loginForm.submit(); */
-    	
-	});
-	
-});
-
-</script>
+</body>
 </html>
