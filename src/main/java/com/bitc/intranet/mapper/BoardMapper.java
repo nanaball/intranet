@@ -12,7 +12,6 @@ import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.BoardVO;
 
-@Service
 public interface BoardMapper {
 	
 	/**
