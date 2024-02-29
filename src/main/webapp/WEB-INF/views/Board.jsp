@@ -64,25 +64,24 @@
                     <th>작성시간</th>
                     <th>조회수</th>
                 </tr>
-                
-               <% if(!boardList.isEmpty()){ %>
-                	<% for(BoardVO b : boardList){ %>
+               <c:if test="${!empty notice}">
+               		<c:forEach var="b" items="${notice}">
                 	<tr>
-						<td><%=b.getBno() %></td>
-					<td>
-						<a href="#">
-							[<%=b.getCategory() %>] <%=b.getTitle() %>
-						</a>
-					</td>
-					<td><%=b.getWriter() %></td>
-					<td><%=b.getRegdate() %></td>
-					<td><%=b.getViewcnt() %></td>
-				</tr>
-                <%} %>
-                
-				<%}else{ %>
-					<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
-				<%} %>
+						<td>${b.bno}</td>
+						<td>
+							<a href="#">
+								[${b.category}] ${b.Title}
+							</a>
+						</td>
+						<td>${n.writer}</td>
+						<td>${n.regdate}</td>
+						<td>${n.viewcnt}</td>
+					</tr>
+					<c:otherwise>
+						<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
+					</c:otherwise>
+					</c:forEach>
+			</c:if>
             </table>
             <input type="button" id="regist" value="새 글 작성" />
 		</div>
