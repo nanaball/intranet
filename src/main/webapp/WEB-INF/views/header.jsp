@@ -79,12 +79,13 @@
 
 				<li><a href="${path}/Board/board">공지사항</a></li>
 				<li><a href="${path}/NewFile">결재</a></li>
-				<li><a href="${path}/free">자유게시판</a></li>
+				<li><a href="${path}/free/free">자유게시판</a></li>
 
 				<li><a href="${path}/welfare">직원복지몰</a></li>
 			</ul>
 		</div>	
 		<div>
+		
 			<ul>
 				<li><a href="${path}/memberUpdate">회원정보수정</a></li>
 				<li onclick="confirm('로그아웃 하시겠습니까')"><a href="${path}" >로그아웃</a>	</li>

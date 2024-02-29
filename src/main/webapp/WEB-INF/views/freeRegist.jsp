@@ -16,13 +16,9 @@
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td>
-					<c:if test="${not empty loginMember}">
-						 ${loginMember.getUname()}
-					</c:if> <c:if test="${empty loginMember}">
-					없음 
-					</c:if>
-				</td>
+				<td><c:if test="${not empty loginMember}">
+						<input type="text" name="writer" value="${loginMember.getUname()}" />
+					</c:if></td>
 			</tr>
 			<tr>
 				<td>카테고리</td>
@@ -77,14 +73,11 @@
 		});
 
 		// reset 버튼
-		$("#freereset")
-				.on(
-						"click",
-						function() {
-							if (confirm("정말 취소하시겠습니까?")) {
-								location.href = "${pageContext.request.contextPath}/free/free/";
-							}
-						});
+		$("#freereset").on("click", function() {
+			if (confirm("정말 취소하시겠습니까?")) {
+				location.href = "${pageContext.request.contextPath}/free";
+			}
+		});
 	</script>
 </body>
 </html>

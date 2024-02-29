@@ -39,7 +39,7 @@ public interface BoardMapper {
 	 * 게시글 전체 목록 페이지
 	 * @return 전체 게시글 목록을 리스트로
 	 */
-	@Select("SELECT * FROM notice WHERE bno")
+	@Select("SELECT * FROM notice ORDER BY bno DESC")
 	List<BoardVO> listAll() throws Exception;
 	
 	/**
