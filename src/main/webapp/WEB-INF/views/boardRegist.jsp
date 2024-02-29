@@ -17,7 +17,9 @@
 			<tr>
 				<td>작성자</td>
 				<td>
-					<input type="text" name="writer" readonly />
+					<c:if test="${!empty loginMember }">
+						<input type="text" name="writer" value="${loginMember.getUname()}" readonly />
+					</c:if>
 				</td>
 			</tr>
 			<tr>
