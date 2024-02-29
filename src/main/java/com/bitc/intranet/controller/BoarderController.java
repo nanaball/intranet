@@ -2,6 +2,8 @@ package com.bitc.intranet.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,10 +37,21 @@ public class BoarderController {
 	public String regist() throws Exception{
 		return "boardRegist";
 	}
-	
+	// 새 글 작성완료
 	@PostMapping("boardRegist")
 	public String register(BoardVO board) throws Exception{
 		bs.regist(board);
 		return "redirect:/Board/board";
+	}
+	
+	// 게시글 상세 보기
+	@GetMapping("readPage")
+	public String readPage(int bno, Model model, HttpSession session) throws Exception {
+		BoardVO vo = bs.read(bno);
+		model.addAttribute("read",vo);
+		
+		// 조회수 증가
+		return "boardRead";
+		
 	}
 }

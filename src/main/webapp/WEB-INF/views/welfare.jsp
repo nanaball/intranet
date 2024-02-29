@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 	h3{
 		text-align: center;
@@ -53,7 +55,7 @@
 				뽀로로(DB 값)<br/>
 				30,000원(DB 값)</td>
 			<td class="product"><img src="resources/img/pororo.jpg" height="300px" onclick="alert('상품2 임시창')"></br>
-				뽀로루<br/>
+				${getMName()}<br/>
 				40,000원
 			</td>
 			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px" onclick="alert('상품3 임시창')"></br>
@@ -62,7 +64,7 @@
 			</td>
 			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px" onclick="alert('상품4 임시창')"></br>
 				뽀로렁<br/>
-				60,000워
+				60,000원
 			</td>
 		</tr>
 		<tr>
