@@ -40,7 +40,7 @@ public interface FreeMapper {
 	 * 게시글 전체 목록 페이지
 	 * @return 전체 게시글 목록을 리스트로
 	 */
-	@Select("SELECT * FROM free WHERE bno")
+	@Select("SELECT * FROM free ORDER BY bno DESC")
 	List<FreeVO> listAll() throws Exception;
 	
 	/**

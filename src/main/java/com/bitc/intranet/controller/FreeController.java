@@ -28,7 +28,7 @@ public class FreeController {
 	public String Board(Model model) throws Exception{
 		List<FreeVO> list = fs.listAll();
 		model.addAttribute("List",list);
-		return "board";
+		return "free";
 	}
 	
 	/* 게시글 새 글 작성 페이지 요청*/
