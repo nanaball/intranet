@@ -65,7 +65,7 @@
 		/* font-style:italic; */
 		text-decoration: underline;
 	}
-	}
+	
 	
 
 </style>
@@ -78,16 +78,18 @@
 				<li><a href="${path}/main">회사명</a></li>	
 				<li> </li>	
 				<li> </li>				
+
 				<li><a href="${path}/Board/board">공지사항</a></li>
 				<li><a href="${path}/NewFile">결재</a></li>
 				<li><a href="${path}/">자유게시판</a></li>
+
 				<li><a href="${path}/welfare">직원복지몰</a></li>
 			</ul>
 		</div>	
 		<div>
 			<ul>
 				<li><a href="${path}/memberUpdate">회원정보수정</a></li>
-				<li><a href="">로그아웃</a>	</li>
+				<li onclick="confirm('로그아웃 하시겠습니까')"><a href="${path}" >로그아웃</a>	</li>
 			</ul>
 		</div>		
 	</header>

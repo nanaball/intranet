@@ -84,7 +84,19 @@
     	border:2px solid #1BBC9B;
     }
      */
-
+	
+	span{
+		float:right;
+	}
+	
+	span:hover {
+		color: gray;
+		cursor: pointer;
+		font-weight:bolder;	
+		/* font-style:italic; */
+		text-decoration: underline;
+	}
+	
 </style>
 </head>
 <body>
@@ -103,6 +115,11 @@
 			<div id="borders">
 				<div id="border1">
 					<h3>공지사항</h3>
+					<h6>&nbsp;</h6>
+					<span onclick="location.href='Board';"><h5>더보기</h5></span>
+					
+					<h3>&nbsp;</h3>
+					
 					 <table border="1" class="list">
 		                <tr>
 		                    <th>글 번호</th>
