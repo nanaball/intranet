@@ -44,11 +44,16 @@
                     <th>조회수</th>
                 </tr>
 				<c:choose>
-					<c:when test="${!empty List }">
-						<c:forEach var="b" items="${List }">
+					<c:when test="${!empty List}">
+						<c:forEach var="b" items="${List}">
 							<tr>
 								<td>${b.bno}</td>
-								<td>${b.title}</td>
+								<td>
+									<a href="readPage?bno=${b.bno}">
+										[${b.category}] ${b.title}
+									</a>
+									
+								</td>
 								<td>${b.writer}</td>
 								<td>${b.regdate}</td>
 								<td>${b.viewcnt}</td>
@@ -61,6 +66,7 @@
 						</tr>
 					</c:otherwise>
 				</c:choose>
+			
             </table>
             <input type="button" id="regist" value="새 글 작성" />
 		</div>

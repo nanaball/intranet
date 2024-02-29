@@ -135,7 +135,7 @@
 		                	<tr>
 								<td>${n.bno}</td>
 								<td>
-									<a href="#">
+									<a href="readPage?bno=${b.bno}">
 										[${n.category}] ${n.title}
 									</a>
 								</td>

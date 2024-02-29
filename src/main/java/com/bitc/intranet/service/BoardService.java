@@ -43,7 +43,14 @@ public class BoardService {
 	 * @param bno - 상세보기 게시글 번호
 	 * @return 조회된 게시글 정보
 	 */
-	// BoardVO read(int bno) throws Exception;
+	public BoardVO read(int bno) throws Exception{
+		return mapper.read(bno);
+	}
+
+
+	public void updateCnt(int bno) throws Exception {
+		mapper.viewcnt(bno);
+	};
 	
 	
 	/**

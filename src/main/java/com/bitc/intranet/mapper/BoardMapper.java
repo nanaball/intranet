@@ -26,13 +26,14 @@ public interface BoardMapper {
 	 * 조회수 증가
 	 * @param bno 조회수 증가시킬 게시글 번호
 	 */
-	void updateCnt(int bno) throws Exception;
+	void viewcnt(int bno) throws Exception;
 	
 	/**
 	 * 게시글 상세보기
 	 * @param bno - 상세보기 게시글 번호
 	 * @return 조회된 게시글 정보
 	 */
+	@Select("SELECT * FROM notice WHERE bno = #{bno}")
 	BoardVO read(int bno) throws Exception;
 	
 	/**
