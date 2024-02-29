@@ -26,19 +26,19 @@ public class BoarderController {
 	@GetMapping("board")
 	public String Board(Model model) throws Exception{
 		List<BoardVO> list = bs.listAll();
-		model.addAttribute("",list);
+		model.addAttribute("List",list);
 		return "board";
 	}
 	
 	/* 게시글 새 글 작성 페이지 요청*/
-	@GetMapping("/BoardRegist")
+	@GetMapping("boardRegist")
 	public String regist() throws Exception{
-		return "BoardRegist";
+		return "boardRegist";
 	}
 	
-	@PostMapping("BoardRegist")
+	@PostMapping("boardRegist")
 	public String register(BoardVO board) throws Exception{
 		bs.regist(board);
-		return "redirect:/Board";
+		return "redirect:/Board/board";
 	}
 }

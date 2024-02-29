@@ -23,11 +23,11 @@
 			<tr>
 				<td>카테고리</td>
 				<td>
-					<select name="notice_category">
+					<select name="category">
 						<option value="공지">공지</option>
 						<option value="알림" >알림</option>
-						<option value="이벤트" >이벤트</option>
-						<option value="당첨" >당첨</option>
+						<option value="이벤트">이벤트</option>
+						<option value="당첨">당첨</option>
 					</select>
 					<label>카테고리를 선택해주세요</label>
 				</td>
@@ -58,22 +58,15 @@
 		$("#bodsus").click(function(){
 			
 			// 각 칸별 빈칸 알림
-			if($("#notice_category") == null){
+			if($("#category") == null){
 				alert("카테고리를 선택해주세요.");
-				$("#notice_category").val("");
-				$("#notice_category").focus();
+				$("#category").val("");
+				$("#category").focus();
 				return;
 			}
 			
 			if($("#title").val().length <=0){
-				alert("카테고리를 선택해주세요.");
-				$("#title").val("");
-				$("#title").focus();
-				return;
-			}
-			
-			if($("#title").val().length <=0){
-				alert("카테고리를 선택해주세요.");
+				alert("제목을 입력해주세요.");
 				$("#title").val("");
 				$("#title").focus();
 				return;
@@ -90,7 +83,7 @@
 		// reset 버튼
 		$("#bodreset").on("click",function(){
 			if(confirm("정말 취소하시겠습니까?")){
-				location.href = "${pageContext.request.contextPath}/board/";
+				location.href = "${pageContext.request.contextPath}/Board/board/";
 			}
 		});
 	</script>
