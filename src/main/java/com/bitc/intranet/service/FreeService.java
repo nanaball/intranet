@@ -4,22 +4,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.bitc.intranet.mapper.BoardMapper;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.mapper.FreeMapper;
+import com.bitc.intranet.vo.FreeVO;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BoardService {
+public class FreeService {
 
-	private final BoardMapper mapper;
+	private final FreeMapper mapper;
 	
 	/**
 	 * 게시글 전체 목록 페이지
 	 * @return 전체 게시글 목록을 리스트로 반환
 	 */
-	public List<BoardVO> listAll() throws Exception{
+	public List<FreeVO> listAll() throws Exception{
 		return mapper.listAll();
 	}
 
@@ -28,7 +28,7 @@ public class BoardService {
 	 * 게시글 작성 - 성공 유무에 따라 메세지 전달
 	 * @param 게시글 등록 정보
 	 */
-	public void regist(BoardVO board)throws Exception{;
+	public void regist(FreeVO board)throws Exception{;
 		mapper.regist(board);
 	}
 	
@@ -43,14 +43,7 @@ public class BoardService {
 	 * @param bno - 상세보기 게시글 번호
 	 * @return 조회된 게시글 정보
 	 */
-	public BoardVO read(int bno) throws Exception{
-		return mapper.read(bno);
-	}
-
-
-	public void updateCnt(int bno) throws Exception {
-		mapper.viewcnt(bno);
-	};
+	// BoardVO read(int bno) throws Exception;
 	
 	
 	/**
