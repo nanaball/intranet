@@ -35,6 +35,11 @@ public interface MemberService {
 	public MemberVO login(MemberVO memberVO) throws Exception;
 
 
+	//비밀번호찾기 
+	public MemberVO findPass(MemberVO memberVO) throws Exception;
 	
+	//비밀번호 변경
+	public void changePass(String repw) throws Exception;
 
+	
 }
