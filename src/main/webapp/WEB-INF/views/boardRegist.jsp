@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>새 글 작성</h1>
-	<form method="POST" action="Boardregist"> 
+	<form method="POST"> 
 	<table border="1">
 		<tr>
 				<th colspan = "2"><h1>공지글 작성</h1></th>
@@ -90,7 +90,7 @@
 		// reset 버튼
 		$("#bodreset").on("click",function(){
 			if(confirm("정말 취소하시겠습니까?")){
-				location.href = "${pageContext.request.contextPath}/Board/";
+				location.href = "${pageContext.request.contextPath}/board/";
 			}
 		});
 	</script>

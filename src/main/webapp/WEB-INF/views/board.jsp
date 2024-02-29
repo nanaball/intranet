@@ -4,23 +4,6 @@
 <!-- page import 할땐 패키지명을 다 기입할 것. 파일을 열어서 제일 상단에 있는 1줄 -->
 <%@ page import=
 	"java.sql.*, java.util.*, com.bitc.intranet.vo.BoardVO, com.bitc.intranet.util.*" %>
-<%
-	// 요청한 페이지 번호
-	String strPageNum = request.getParameter("page");
-	int pageNum = 1;
-	if(strPageNum != null){
-		pageNum = Integer.parseInt(strPageNum);
-	}
-	
-	/* Criteria cri = new Criteria(pageNum, 10);
-	PageMaker pm = new PageMaker();
-	pm.setCri(cri); */
-	
-	List<BoardVO> boardList = new ArrayList<>();
-	
-%>
-
-
 <style>
 	body{
 		height : 600px;
@@ -48,11 +31,14 @@
 </script>
 </head>
 <body>
+	<!-- 프로필 노출부분 -->
 	<div class="wrapper" style="display: flex;">
 		<div class="selfinfo">
 			<img src="resources/img/profile.jpg" height="100px"><br>
 			<img src="resources/img/mail.jpg" height="30px"><br>
 		</div>
+	</div>
+	<!-- 게시판 리스트 -->
 	<div id="wrap">
 		<div id="borders">
 			<h2>공지사항</h2>	
@@ -64,24 +50,24 @@
                     <th>작성시간</th>
                     <th>조회수</th>
                 </tr>
-               <c:if test="${!empty notice}">
-               		<c:forEach var="b" items="${notice}">
-                	<tr>
-						<td>${b.bno}</td>
-						<td>
-							<a href="#">
-								[${b.category}] ${b.Title}
-							</a>
-						</td>
-						<td>${n.writer}</td>
-						<td>${n.regdate}</td>
-						<td>${n.viewcnt}</td>
-					</tr>
+				<c:choose>
+					<c:when test="${!empty qnaList }">
+						<c:forEach var="board" items="${qnaList }">
+							<tr>
+								<td>${board.bno}</td>
+								<td>${board.title}</td>
+								<td>${board.writer}</td>
+								<td>${board.regdate}</td>
+								<td>${board.viewcnt}</td>
+							</tr>
+						</c:forEach>
+					</c:when>
 					<c:otherwise>
-						<tr><th colspan="4">등록된 게시물이 없습니다</th></tr>
+						<tr>
+							<td colspan="5"> 등록된 게시글이 없습니다.</td>
+						</tr>
 					</c:otherwise>
-					</c:forEach>
-			</c:if>
+				</c:choose>
             </table>
             <input type="button" id="regist" value="새 글 작성" />
 		</div>
@@ -91,7 +77,7 @@
 		$(function(){
 			$("#regist").on("click",function(){
 				if(confirm("새 글 작성 페이지로 이동합니다")){
-					location.href="${pageContext.request.contextPath}/Board/BoardRegist";
+					location.href="${pageContext.request.contextPath}/board/boardRegist";
 				}
 			});
 		});

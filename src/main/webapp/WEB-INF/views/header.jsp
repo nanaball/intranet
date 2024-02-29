@@ -78,7 +78,7 @@
 				<li><a href="${path}/main">회사명</a></li>	
 				<li> </li>	
 				<li> </li>				
-				<li><a href="${path}/Board">공지사항</a></li>
+				<li><a href="${path}/Board/board">공지사항</a></li>
 				<li><a href="${path}/NewFile">결재</a></li>
 				<li><a href="${path}/">자유게시판</a></li>
 				<li><a href="${path}/welfare">직원복지몰</a></li>
