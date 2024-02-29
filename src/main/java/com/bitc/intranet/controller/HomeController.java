@@ -41,7 +41,7 @@ public class HomeController {
 	@GetMapping("welfare")
 	public void welfare() {}
 	
-	@GetMapping("NewFile")
-	public void NewFile() {}
+	@GetMapping("free")
+	public void free() {}
 	
 }

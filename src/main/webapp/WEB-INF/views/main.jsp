@@ -11,10 +11,11 @@
 	 
 	 /* 회원 프로필 */
 	.selfinfo{
-		border : 1px;
-		margin:10px;
-		padding-left:25px;
+		border : 1px black;
+		margin-top:15px;
+		padding-left:100px;
 		height : 200px;
+		width: 200px;	
 	}
 	
 	/* 게시판 모음 */
@@ -102,8 +103,9 @@
 <body>
 	<div class="wrapper" style="display: flex;">
 		<div class="selfinfo">
-			<img src="resources/img/profile.jpg" height="100px"><br>
-			<img src="resources/img/mail.jpg" height="30px"><br>
+			<img src="resources/img/profile.jpg" height="100px"><br/>
+			<img src="resources/img/mail.jpg" height="30px"><br/>
+				<!-- 부서 이름 / 사원명 -->
 				<c:if test="${not empty loginMember}">					
   		  			<h5>${loginMember.getUdep()} / ${loginMember.getUname()}</h5>
 				</c:if>
@@ -116,7 +118,7 @@
 				<div id="border1">
 					<h3>공지사항</h3>
 					<h6>&nbsp;</h6>
-					<span onclick="location.href='Board';"><h5>더보기</h5></span>
+					<span onclick="location.href='Board/board';"><h5>더보기</h5></span>
 					
 					<h3>&nbsp;</h3>
 					

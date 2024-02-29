@@ -65,8 +65,6 @@
 		/* font-style:italic; */
 		text-decoration: underline;
 	}
-	
-	
 
 </style>
 
@@ -81,7 +79,7 @@
 
 				<li><a href="${path}/Board/board">공지사항</a></li>
 				<li><a href="${path}/NewFile">결재</a></li>
-				<li><a href="${path}/">자유게시판</a></li>
+				<li><a href="${path}/free">자유게시판</a></li>
 
 				<li><a href="${path}/welfare">직원복지몰</a></li>
 			</ul>
@@ -93,4 +91,3 @@
 			</ul>
 		</div>		
 	</header>
-</body>
