@@ -58,8 +58,8 @@ public class BoardService {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메시지로 반환
 	 */
-	public int modify(BoardVO board) throws Exception{
-		return mapper.modify(board);
+	public String modify(BoardVO board) throws Exception{
+		return mapper.modify(board) != 0 ? "수정 완료" : "실패";
 	};
 	
 	/**

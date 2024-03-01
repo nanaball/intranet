@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.BoardService;
 import com.bitc.intranet.vo.BoardVO;
@@ -60,5 +61,14 @@ public class BoarderController {
 		BoardVO vo = bs.read(bno);
 		model.addAttribute(vo);
 		return "boardModify";
+	}
+	
+	// 게시글 수정완료 요청
+	@PostMapping("modify")
+	public String modifyPost(RedirectAttributes rtts, BoardVO vo, Model model) throws Exception {
+		String result = bs.modify(vo);
+		rtts.addFlashAttribute("result",result);
+		rtts.addAttribute("bno",vo.getBno());
+		return "reaPage";
 	}
 }
