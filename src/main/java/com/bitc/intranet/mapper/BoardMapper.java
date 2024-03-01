@@ -48,7 +48,7 @@ public interface BoardMapper {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메세지로 반환
 	 */
-	@Update("UPDATE notice SET content = #{content}, writer = #{writer}, updatedate = now() WHERE bno = #{bno}")
+	@Update("UPDATE notice SET title = #{title}, content = #{content}, writer = #{writer}, updatedate = now() WHERE bno = #{bno}")
 	int modify(BoardVO board) throws Exception;
 	
 	/**
