@@ -58,5 +58,7 @@ public interface MemberMapper {
 	 * repw로 비밀번호 변경하기
 	 */
 	@Update("UPDATE member SET upw=#{repw} WHERE uid= #{uid}")
-	void changePass(String repw) throws Exception;
+	void changePass(MemberVO vo) throws Exception;
+
+
 }
