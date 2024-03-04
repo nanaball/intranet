@@ -15,8 +15,8 @@ public interface MemberMapper {
 	 * memeber 등록 (회원가입시 회원 정보 등록) -- 완
 	 * @param vo - 등록할 회원 정보
 	 */
-	@Insert("INSERT INTO member(uid, upw, uname, uemail, uphone, udep, ujob, udate) " 
-			+ " VALUES(#{uid}, #{upw}, #{uname}, #{uemail}, #{uphone}, #{udep}, #{ujob}, #{udate})")
+	@Insert("INSERT INTO member(uid, upw, uname, uemail, uphone, udep, ujob, udate, uaddr) " 
+			+ " VALUES(#{uid}, #{upw}, #{uname}, #{uemail}, #{uphone}, #{udep}, #{ujob}, #{udate}, #{uaddr})")
 	void create(MemberVO vo)throws Exception;
 
 		
