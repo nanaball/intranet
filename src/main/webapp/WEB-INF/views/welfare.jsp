@@ -55,7 +55,7 @@
 				뽀로로(DB 값)<br/>
 				30,000원(DB 값)</td>
 			<td class="product"><img src="resources/img/pororo.jpg" height="300px" onclick="alert('상품2 임시창')"></br>
-				${getMName()}<br/>
+				뿌루루<br/>
 				40,000원
 			</td>
 			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px" onclick="alert('상품3 임시창')"></br>
