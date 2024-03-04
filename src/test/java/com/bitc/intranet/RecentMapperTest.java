@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bitc.intranet.mapper.RecentMapper;
+import com.bitc.intranet.mapper.BoardMapper;
+import com.bitc.intranet.mapper.FreeMapper;
 import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.FreeVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -18,12 +20,23 @@ import com.bitc.intranet.vo.BoardVO;
 public class RecentMapperTest {
 
 	@Autowired
-	RecentMapper mapper;
+	BoardMapper bm;
+	
+	@Autowired
+	FreeMapper fm;
 	
 	@Test
 	public void testNoticeList() throws Exception{
 		
-        List<BoardVO> recentNotices = mapper.findRecentNotices();
+        List<BoardVO> recentNotices = bm.recentNotices();
         System.out.println(recentNotices);
 	}
+	
+	@Test
+	public void testFreeList() throws Exception{
+		
+        List<FreeVO> recentFree = fm.recentFree();
+        System.out.println(recentFree);
+	}
+	
 }

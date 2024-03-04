@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.mapper.FreeMapper;
+import com.bitc.intranet.vo.BoardVO;
 import com.bitc.intranet.vo.FreeVO;
 
 import lombok.RequiredArgsConstructor;
@@ -28,9 +29,22 @@ public class FreeService {
 	 * 게시글 작성 - 성공 유무에 따라 메세지 전달
 	 * @param 게시글 등록 정보
 	 */
-	public void regist(FreeVO board)throws Exception{;
+	public void regist(FreeVO board)throws Exception{
 		mapper.regist(board);
 	}
+
+
+	/** 
+	 * 자유게시판에 등록된 게시글 최근 5개 목록
+	 * @return
+	 * @throws Exception
+	 */
+	public List<FreeVO> recentFree() throws Exception {
+		return mapper.recentFree();
+	}
+
+
+	
 	
 	/**
 	 * 조회수 증가
@@ -43,22 +57,29 @@ public class FreeService {
 	 * @param bno - 상세보기 게시글 번호
 	 * @return 조회된 게시글 정보
 	 */
-	// BoardVO read(int bno) throws Exception;
+	public FreeVO read(int bno) throws Exception{
+		return mapper.read(bno);
+	}
 	
 	
 	/**
 	 * 게시글 수정 - 성공 유무에 따라 메세지 전달
-	 * @param board - 수정할 게시글 정보
+	 * @param vo - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메시지로 반환
 	 */
-	// String modify(BoardVO board) throws Exception;
-	
+	public String modify(FreeVO vo) throws Exception{
+		return mapper.modify(vo) != 0 ? "수정 완료" : "실패";
+	}
 	/**
 	 * 게시글 삭제 - 성공 유무에 따라 메세지 전달
 	 * @param bno - 삭제할 게시글 번호
-	 * @return - 삭제 완료 여부를 메세지로 반환
 	 */
-	// String remove(int bno) throws Exception;
+	public void remove(int bno) throws Exception{
+		mapper.remove(bno);
+	}
+
+
+
 	
 	/**
 	 * 페이징 처리된 리스트 목록
