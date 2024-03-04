@@ -35,7 +35,6 @@
 							<option value="이벤트">이벤트</option>
 							<option value="당첨">당첨</option>
 						</select>
-				
 					</td>
 				</tr>
 				<tr>
