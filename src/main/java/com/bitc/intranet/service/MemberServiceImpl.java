@@ -46,10 +46,10 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.findPass(memberVO);
 	}
 
+	
 	@Override
 	public void changePass(MemberVO vo) throws Exception {
 		mapper.changePass(vo);		
 	}
-
 
 }

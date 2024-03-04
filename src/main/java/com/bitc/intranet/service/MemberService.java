@@ -38,12 +38,13 @@ public interface MemberService {
 		
 	}
 
-
 	//비밀번호찾기 
 	public MemberVO findPass(MemberVO memberVO) throws Exception;
 	
 	//비밀번호 변경
-	void changePass(MemberVO vo) throws Exception;
+
+	public void changePass(MemberVO vo) throws Exception;
+
 
 	
 }

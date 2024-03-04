@@ -65,6 +65,7 @@ a {
 			<input type="hidden" name="uid" value="${vo.uid}"/>
 			<input type="text" placeholder="새비밀번호" name="repw" id="repw" class="in"> 
 			<input type="button" id="btn" value="확인"><br/>
+
 			<!-- <tr>
 				<th>
 					<input type="button" id="btn" value="확인"
@@ -75,6 +76,7 @@ a {
 	</form>
 	</div>
 </body>
+
 
 <script>
 $(function(){

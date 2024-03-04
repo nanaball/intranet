@@ -41,9 +41,5 @@ public class BoardMapperTest {
 		}
 	}
 	
-	//@Test
-	public void delete() throws Exception{
-		int result = bs.delete(3);
-		System.out.println("result 삭제 : " + result);
-	}
+	
 }

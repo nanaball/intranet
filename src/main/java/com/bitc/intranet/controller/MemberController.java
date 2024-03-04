@@ -86,9 +86,8 @@ public class MemberController {
 
    //로그인창에서 비밀번호 찾기
    @PostMapping("/findPass")
-	public String findPassString(
-							// uid, uemail, uname
-							@ModelAttribute(name = "vo") MemberVO vo,
+   public String findPass(@ModelAttribute(name="vo") MemberVO vo,
+
 							Model model) throws Exception {
 	   MemberVO findPassResult = ms.findPass(vo);
 	  System.out.println(vo);
@@ -115,6 +114,7 @@ public class MemberController {
 	   ms.changePass(vo);
 	   return "redirect:/"; 
    }
+
    
    /*
    @GetMapping("/changePass")
