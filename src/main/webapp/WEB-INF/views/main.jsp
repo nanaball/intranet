@@ -9,15 +9,6 @@
 	}
 	 
 	 
-	 /* 회원 프로필 */
-	.selfinfo{
-		border : 1px black;
-		margin-top:15px;
-		padding-left:100px;
-		height : 200px;
-		width: 200px;	
-	}
-	
 	/* 게시판 모음 */
 	#wrap{
     	/* border:1px solid red; */
@@ -101,7 +92,7 @@
 </style>
 </head>
 <body>
-	<div class="wrapper" style="display: flex;">
+<%-- 	<div class="wrapper" style="display: flex;">
 		<div class="selfinfo">
 			<img src="resources/img/profile.jpg" height="100px"><br/>
 			<img src="resources/img/mail.jpg" height="30px"><br/>
@@ -112,7 +103,7 @@
 				<c:if test="${empty loginMember}">
 					없음 
 				</c:if>		
-		</div>
+		</div> --%>
 		<div id="wrap">
 			<div id="borders">
 				<div id="border1">
@@ -121,26 +112,30 @@
 					<span onclick="location.href='Board/board';"><h5>더보기</h5></span>
 					
 					<h3>&nbsp;</h3>
-					
-					 <table border="1" class="list">
-		                <tr>
+					<h3>&nbsp;</h3>
+					 <table align="center" >
+<!-- 		                
+						<tr>
 		                    <th>글 번호</th>
-		                    <th>글 제목</th>
-		                    <th>작성자</th>
+		                    <th>카테고리</th>
+		                    <th>제목</th>
 		                    <th>작성시간</th>
 		                    <th>조회수</th>
 		                </tr>
+-->
 		                <c:if test="${!empty notice}">
 		                	<c:forEach var="n" items="${notice}">
 		                	<tr>
 								<td>${n.bno}</td>
 								<td>
-									<a href="Board/readPage?bno=${n.bno}">
-										[${n.category}] ${n.title}
-									</a>
+									[${n.category}] 
 								</td>
-								<td>${n.writer}</td>
-								<td>${n.regdate}</td>
+								<td>
+									<a href="Board/readPage?bno=${n.bno}">
+										${n.title}
+									</a>
+								<td>
+									<f:formatDate value="${n.regdate}" pattern="yy-MM-dd" />
 								<td>${n.viewcnt}</td>
 							</tr>
 							</c:forEach>
@@ -153,7 +148,7 @@
 				<div id="border5"><h3>일정</h3></div>
 			</div>
 		</div>
-	</div>	
+
 	
 	
 	
@@ -177,11 +172,5 @@
 	    });
 	});
 	*/
-
-	
-	
-	
-    
 </script>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/footer.jsp" %>
