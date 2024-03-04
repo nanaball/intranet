@@ -13,7 +13,7 @@
 		height : "163px";
 	}
 	#wrap{
-    	border:1px solid red;
+
         width:1450px;
         height:600px;
         margin:10px 0 10px 30px;
@@ -34,23 +34,40 @@
 	<!-- 게시판 리스트 -->
 	<div id="wrap">
 		<div id="borders">
-			<h2>자유게시판</h2>	
-			 <table border="1" class="list">
+		<br/>
+			<h1>자유게시판</h1>	
+			<br/>
+			<hr/>
+			<br/>
+			<br/>
+			 <table border="1" class="list" >
                 <tr>
                     <th>글 번호</th>
-                    <th>글 제목</th>
+                    <th>카테고리</th>
+                    <th>글제목</th>
                     <th>작성자</th>
                     <th>작성시간</th>
                     <th>조회수</th>
                 </tr>
 				<c:choose>
 					<c:when test="${!empty List }">
-						<c:forEach var="b" items="${List }">
+						<c:forEach var="b" items="${List}">
 							<tr>
 								<td>${b.bno}</td>
-								<td>${b.title}</td>
-								<td>${b.writer}</td>
-								<td>${b.regdate}</td>
+								<td>
+									${b.category}
+								</td>
+								<td>
+									<a href="readPage?bno=${b.bno}">
+										${b.title}
+									</a>
+								</td>
+								<td>
+									${b.writer}
+								</td>
+								<td>
+									<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd" />
+								</td>
 								<td>${b.viewcnt}</td>
 							</tr>
 						</c:forEach>
@@ -62,6 +79,7 @@
 					</c:otherwise>
 				</c:choose>
             </table>
+            <br/>
             <input type="button" id="regist" value="새 글 작성" />
 		</div>
 	</div>

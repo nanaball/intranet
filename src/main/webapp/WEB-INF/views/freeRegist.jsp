@@ -1,37 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-	<h1>새 글 작성</h1>
+	<br />
+	<h1>자유게시판</h1>
+	<br/>
+	<hr/>
+	<br/>
+	<br/>
 	<form method="POST">
 		<table border="1">
 			<tr>
-				<th colspan="2"><h1>자유게시판</h1></th>
+				<th colspan="2"><h1>자유게시판 글쓰기</h1></th>
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><c:if test="${not empty loginMember}">
-						<input type="text" name="writer" value="${loginMember.getUname()}" />
-					</c:if></td>
+				<td>
+					<c:if test="${not empty loginMember}">
+						${loginMember.getUname()}
+					</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td>카테고리</td>
-				<td><select name="category">
+				<td>
+					<select name="category">
+						<option >카테고리를 선택해주세요</option>
 						<option value="공지">공지</option>
 						<option value="사담">사담</option>
 						<option value="질문">질문</option>
-				</select> <label>카테고리를 선택해주세요</label></td>
+						<option value="답변">답변</option>
+					</select> 
+				</td>
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title" autofocus required
-					style="width: 100%;" /></td>
+				<td>
+					<input type="text" name="title" autofocus required style="width: 100%;" />
+				</td>
 			</tr>
 			<tr>
 				<td>내용</td>
@@ -39,8 +46,11 @@
 						style="resize: none; width: 700px; height: 200px;"></textarea></td>
 			</tr>
 			<tr>
-				<th colspan="2"><input type="submit" id="freesus" value="작성완료" />
-					<input type="reset" id="freereset" value="초기화" /></th>
+				
+				<th colspan="2">
+					<input type="reset" id="freereset" value="초기화" />
+					<input type="submit" id="freesus" value="작성완료" />
+				</th>
 			</tr>
 		</table>
 	</form>
@@ -79,5 +89,3 @@
 			}
 		});
 	</script>
-</body>
-</html>
