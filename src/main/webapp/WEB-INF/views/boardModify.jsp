@@ -29,12 +29,13 @@
 					<td>카테고리</td>
 					<td>
 						<select name="category">
+							<option >카테고리를 선택해주세요</option>
 							<option value="공지">공지</option>
 							<option value="알림" >알림</option>
 							<option value="이벤트">이벤트</option>
 							<option value="당첨">당첨</option>
 						</select>
-						<label>카테고리를 선택해주세요</label>
+				
 					</td>
 				</tr>
 				<tr>
@@ -56,10 +57,6 @@
 					</th>
 				</tr>
 			</table>
-			<div>	
-				<input type="submit" value="수정 완료"/>
-				<a href="listAll">LIST</a>
-			</div>
 		</form>
 </body>
 </html>

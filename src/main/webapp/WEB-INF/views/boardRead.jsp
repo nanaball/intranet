@@ -10,13 +10,13 @@
 	<tr>
 		<td>제목</td>
 		<td> 
-			[${read.category}] ${read.title}
+			${read.title}
 		</td>
 	</tr>
 	<tr>
-		<td>작성자</td>
+		<td>카테고리</td>
 		<td> 
-			${read.writer}
+			${read.category}
 		</td>
 	</tr>
 	<tr>
@@ -25,12 +25,16 @@
 			${read.content}
 		</td>
 	</tr>
-
+	<tr> 
+		<td colspan="2">
+			<a href="modify?bno=${read.bno}">수정</a> |
+			<a href="remove?bno=${read.bno}">삭제</a> |
+			<a href="${path}/Board/board">목록으로</a>
+		</td>
+	</tr>
 	</table>
-	<div>
-		<a href="modify?bno=${read.bno}">수정</a> |
-		<a href="remove?bno=${read.bno}">삭제</a> |
-		<a href="${path}/Board/board">목록으로</a>
-	</div>
+	
+		
+	
 </body>
 </html>
