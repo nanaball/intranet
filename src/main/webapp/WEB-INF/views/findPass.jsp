@@ -61,7 +61,7 @@ a {
 	<div>
     <h2>비밀번호 찾기</h2>
     <a>회원가입 시 등록한 아이디,이름,이메일을 입력해주세요.</a>
-		<form method="post" action="member/login" enctype="application/x-www-form-urlencoded">
+		<form name="info" method="post" action="findPass" enctype="application/x-www-form-urlencoded">
 		<input type="text" placeholder="아이디" name="uid" id="uid" class="in"> 
 			<input type="text" placeholder="이름" name="uname"  id="uname" class="in"> 
 			<input type="text" placeholder="Email" name="uemail"  id="uemail" class="in"> 
@@ -69,7 +69,7 @@ a {
 			<!-- <tr>
 				<th>
 					<input type="button" id="btn" value="확인"
-					onclick="location.href='findPass.jsp'" />
+					onclick="location.href='changePass.jsp'" />
 				</th>
 			</tr>
 		</table> -->
@@ -100,7 +100,7 @@ $(function(){
     	  return;
     	}
     	
-    	/* loginForm.submit(); */
+    	info.submit(); 
     	
 	});
 	
