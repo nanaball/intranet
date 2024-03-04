@@ -72,6 +72,20 @@ public class BoardService {
 	};
 	
 	/**
+	 *  메인화면 공지사항 미리보기 5개 
+	 * @return
+	 * @throws Exception
+	 */
+	public List<BoardVO> recentNotices() throws Exception{
+		return mapper.recentNotices();
+	}
+
+
+
+	
+	
+	
+	/**
 	 * 페이징 처리된 리스트 목록
 	 * @param cri - 페이징 처리된 게시글 목록을 불러올 정보 <br/>
 	 * 				page 요청 페이지    <br/> 
@@ -88,5 +102,7 @@ public class BoardService {
 	 */
 	// PageMaker getPageMaker(Criteria cri)throws Exception;
 
+
+	
 	
 }

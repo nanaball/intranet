@@ -20,7 +20,7 @@ public interface FreeMapper {
 	 * @param 게시글 등록 정보
 	 * @return	성공 유무 메세지
 	 */
-	@Insert("INSERT INTO free(title, category, content, writer) VALUES(#{title}, #{category}, #{content}, #{writer})")
+	@Insert("INSERT INTO free(title, category, content) VALUES(#{title}, #{category}, #{content})")
 	int regist(FreeVO board) throws Exception;
 	
 	/**
@@ -34,6 +34,7 @@ public interface FreeMapper {
 	 * @param bno - 상세보기 게시글 번호
 	 * @return 조회된 게시글 정보
 	 */
+	@Select("SELECT * FROM free WHERE bno = #{bno}")
 	FreeVO read(int bno) throws Exception;
 	
 	/**
@@ -48,7 +49,7 @@ public interface FreeMapper {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메세지로 반환
 	 */
-	@Update("UPDATE free SET content = #{content}, writer = #{writer}, updatedate = now() WHERE bno = #{bno}")
+	@Update("UPDATE free SET title = #{title}, content = #{content}, writer = #{writer}, category = #{category}, regdate = now() WHERE bno = #{bno}")
 	int modify(FreeVO board) throws Exception;
 	
 	/**
@@ -57,7 +58,7 @@ public interface FreeMapper {
 	 * @return - 삭제 완료 여부를 메세지로 반환
 	 */
 	@Delete("DELETE FROM free WHERE bno = #{bno}")
-	int delete(int bno) throws Exception;
+	void remove(int bno) throws Exception;
 	
 	/**
 	 * 페이징 처리된 리스트 목록 
@@ -74,5 +75,21 @@ public interface FreeMapper {
 	 * @return
 	 * @throws Exception
 	 */
+	@Select("SELECT * FROM free ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}")
 	PageMaker getPageMaker(Criteria cri) throws Exception;
+	
+	/**
+	 * 자유게시판에 등록된 게시글 최근 5개 목록
+	 * @return
+	 */
+	@Select("SELECT * FROM free ORDER BY bno DESC LIMIT 5")
+    List<FreeVO> recentFree() throws Exception;
+
+
+
+
+
+
+	
+	
 }
