@@ -34,7 +34,8 @@
 	</tr>
 	</table>
 	
-		
+	<hr/>
+	<%@ include file="comment.jsp" %>	
 	
 </body>
 </html>
