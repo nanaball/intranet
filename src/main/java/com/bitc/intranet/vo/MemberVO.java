@@ -20,5 +20,5 @@ public class MemberVO {
 	private String ujob;		// 직책
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date udate;			// 입사일
-	
+	private String uaddr;		// 주소
 }

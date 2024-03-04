@@ -49,10 +49,13 @@
 							<tr>
 								<td>${b.bno}</td>
 								<td>
-										[${b.category}]
+
+									[${b.category}]
 								</td>
 								<td>
-									<a href="readPage?bno=${b.bno}">${b.title}</a>
+									<a href="readPage?bno=${b.bno}">
+										${b.title}
+									</a>
 								</td>
 								<td>
 									<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd" />
@@ -184,6 +187,3 @@
 </body> --%>
 </html>
 </html>
-
-
-
