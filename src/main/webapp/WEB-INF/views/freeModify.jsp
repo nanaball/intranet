@@ -2,14 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 </head>
-<body>
-	<br />
-	<h1>자유게시판</h1>
-	<br/>
-	<hr/>
-	<br/>
-	<br/>
-		<!-- model boardVO -->
+	<div id="wrap">
+		<div id="borders">
+			<br />
+			<h1>자유게시판</h1>
+			<br />
+			<hr />
+			<br /> 
+			<br />
+		<!-- model FreeVO -->
 		<!-- board/modify POST -->
 		<form method="POST">
 			<input type="hidden" name="bno" value="${freeVO.bno}"/>
@@ -57,5 +58,7 @@
 				</tr>
 			</table>
 		</form>
+		<div>
+		</div>
 </body>
 </html>

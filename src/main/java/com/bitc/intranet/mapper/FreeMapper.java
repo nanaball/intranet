@@ -20,7 +20,7 @@ public interface FreeMapper {
 	 * @param 게시글 등록 정보
 	 * @return	성공 유무 메세지
 	 */
-	@Insert("INSERT INTO free(title, category, content) VALUES(#{title}, #{category}, #{content})")
+	@Insert("INSERT INTO free(title, category, content, writer) VALUES(#{title}, #{category}, #{content}, #{writer})")
 	int regist(FreeVO board) throws Exception;
 	
 	/**
