@@ -38,8 +38,8 @@
 			 <table border="1" class="list">
                 <tr>
                     <th>글 번호</th>
-                    <th>글 제목</th>
-                    <th>작성자</th>
+                    <th>카테고리</th>
+                    <th>제목</th>
                     <th>작성시간</th>
                     <th>조회수</th>
                 </tr>
@@ -50,12 +50,14 @@
 								<td>${b.bno}</td>
 								<td>
 									<a href="readPage?bno=${b.bno}">
-										[${b.category}] ${b.title}
+										[${b.category}]
 									</a>
 									
 								</td>
-								<td>${b.writer}</td>
-								<td>${b.regdate}</td>
+								<td>${b.title}</td>
+								<td>
+									<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd" />
+								</td>
 								<td>${b.viewcnt}</td>
 							</tr>
 						</c:forEach>
