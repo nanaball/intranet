@@ -22,9 +22,7 @@ public class MemberUpdateController {
 	private final MemberUpdateService mus;
 	
 	@GetMapping("memberUpdate")
-	public String memberUpdate() {
-		return "memberUpdate";
-	}
+	public void memberUpdate() {}
 	
 	@PostMapping("/done")
 	public String done() {
