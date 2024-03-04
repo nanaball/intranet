@@ -76,45 +76,45 @@
 				<tr>
 					<td>비밀번호</td>
 					<td>
-						<input type="password" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+						<input type="password" name="upw" placeholder="비밀번호를 입력해주세요" required/>
 					</td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
 					<td>
-						<input type="password" name="upw2" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+						<input type="password" name="upw2" placeholder="비밀번호를 입력해주세요" required/>
 					</td>
 				</tr>
 				<tr>
 					<td>이름</td>
 					<td>
-						<input type="text" name="uname" data-msg="이름" placeholder="이름을 입력해주세요" />
+						<input type="text" name="uname" placeholder="이름을 입력해주세요" required/>
 					</td>
 				</tr>
 				<tr>
 					<td>주소</td>
 					<td>
-						<input type="text" name="uaddr" data-msg="주소" placeholder="주소를 입력해주세요"/>
+						<input type="text" name="uaddr" placeholder="주소를 입력해주세요" required/>
 					</td>
 				</tr>
 				<tr>
 				
 					<td>전화번호</td>
 					<td>
-						<input type="text" name="uphone" data-msg="전화번호" placeholder="전화번호를 입력해주세요"/>
+						<input type="text" name="uphone"  placeholder="전화번호를 입력해주세요" required/>
 					</td>
 				</tr>
 				<tr>
 					<td>이메일</td>
 					<td>
-						<input type="email" name="uemail" data-msg="이메일" placeholder="이메일을 입력해주세요"/>
+						<input type="email" name="uemail" placeholder="이메일을 입력해주세요" required/>
 					</td>
 				</tr>
 				<tr>
 					<td>부서</td>
 					<td>
 						<select name="udep" >
-							<option disabled selected hidden>부서를 선택하세요</option>
+							<option disabled selected hidden required>부서를 선택하세요</option>
 							<option value="개발">개발</option>
 							<option value="기획">기획</option>
 							<option value="디자인">디자인</option>
@@ -129,7 +129,7 @@
 					<td>직책</td>
 					<td>
 						<select name="ujob">
-							<option disabled selected hidden>직책을 선택하세요</option>
+							<option disabled selected hidden required>직책을 선택하세요</option>
 							<option value="사원">사원</option>
 							<option value="팀장">팀장</option>
 							<!-- 관리자 선택은 숨김 -->	

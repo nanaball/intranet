@@ -50,8 +50,6 @@ public class BoarderController {
 	public String readPage(int bno, Model model, HttpSession session) throws Exception {
 		BoardVO vo = bs.read(bno);
 		model.addAttribute("read",vo);
-		
-		// 조회수 증가
 		return "boardRead";
 	}
 	
@@ -69,6 +67,13 @@ public class BoarderController {
 		String result = bs.modify(vo);
 		rtts.addFlashAttribute("result",result);
 		rtts.addAttribute("bno",vo.getBno());
-		return "boardRead";
+		return "redirect:/Board/readPage";
+	}
+	
+	// 게시글 삭제요청
+	@GetMapping("remove")
+	public String remove(int bno) throws Exception{
+		bs.remove(bno);
+		return "redirect:/Board/board";
 	}
 }

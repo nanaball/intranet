@@ -48,7 +48,7 @@ public interface BoardMapper {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메세지로 반환
 	 */
-	@Update("UPDATE notice SET title = #{title}, content = #{content}, writer = #{writer}, regdate = now() WHERE bno = #{bno}")
+	@Update("UPDATE notice SET title = #{title}, content = #{content}, writer = #{writer}, category = #{category}, regdate = now() WHERE bno = #{bno}")
 	int modify(BoardVO board) throws Exception;
 	
 	/**
@@ -57,7 +57,7 @@ public interface BoardMapper {
 	 * @return - 삭제 완료 여부를 메세지로 반환
 	 */
 	@Delete("DELETE FROM notice WHERE bno = #{bno}")
-	int delete(int bno) throws Exception;
+	void remove(int bno) throws Exception;
 	
 	/**
 	 * 페이징 처리된 리스트 목록 
@@ -75,6 +75,7 @@ public interface BoardMapper {
 	 * @throws Exception
 	 */
 	PageMaker getPageMaker(Criteria cri) throws Exception;
+
 
 	
 }

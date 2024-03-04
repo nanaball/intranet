@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.bitc.intranet.vo.MemberVO, java.sql.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="path" value="${pageContext.request.contextPath}" scope="page" />
 <!DOCTYPE html>
@@ -12,10 +13,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
+
 	* {
 		padding: 0;
 		margin: 0;
 	}
+	
+	/* 회원 프로필 */
+	.selfinfo{
+		border : 1px black;
+		margin-top:15px;
+		padding-left:100px;
+		height : 200px;
+		width: 200px;	
+	}
+	
 	
 	body {
 		width: auto;
@@ -80,6 +92,7 @@
 				<li><a href="${path}/Board/board">공지사항</a></li>
 				<li><a href="${path}/NewFile">결재</a></li>
 				<li><a href="${path}/free/free">자유게시판</a></li>
+				<li><a href="${path}/free/free">사내고발</a></li>
 
 				<li><a href="${path}/welfare">직원복지몰</a></li>
 			</ul>
@@ -87,8 +100,20 @@
 		<div>
 		
 			<ul>
-				<li><a href="${path}/memberUpdate">회원정보수정</a></li>
+				<li><a href="${path}/memberUpdate">회원정보관리</a></li>
 				<li onclick="confirm('로그아웃 하시겠습니까')"><a href="${path}" >로그아웃</a>	</li>
 			</ul>
 		</div>		
 	</header>
+	<div class="wrapper" style="display: flex;">
+		<div class="selfinfo">
+			<img src="${path}/resources/img/profile.jpg" height="100px"><br/>
+			<img src="${path}/resources/img/mail.jpg" height="30px"><br/>
+				<!-- 부서 이름 / 사원명 -->
+				<c:if test="${not empty loginMember}">					
+  		  			<h5>${loginMember.getUdep()} / ${loginMember.getUname()}</h5>
+				</c:if>
+				<c:if test="${empty loginMember}">
+					없음 
+				</c:if>		
+		</div>

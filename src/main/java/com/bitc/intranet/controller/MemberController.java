@@ -86,15 +86,16 @@ public class MemberController {
 
    //로그인창에서 비밀번호 찾기
    @PostMapping("/findPass")
-	public String findPass(@ModelAttribute MemberVO vo,
+	public String findPass(@ModelAttribute(name="vo") MemberVO vo,
 							Model model) throws Exception {
 	   MemberVO findPassResult = ms.findPass(vo);
-	   
+	  System.out.println(vo);
+	  System.out.println(findPassResult);
 	   if(findPassResult != null) {
 		   //회원이메일로 코드발송
-		   return "";
+		   return "changePass";
 	   }else {
-		   return null;
+		   return "findPass";
 	   }
 		
    }
@@ -103,18 +104,20 @@ public class MemberController {
 	   return "/findPass";
    }
    
-   //비밀번호 변경 - 이메일 보내기
+   //비밀번호 변경 
    @PostMapping("/changePass")
-   public String changePass(@ModelAttribute MemberVO vo,
-		                    HttpServletRequest request,
-		                    HttpServletResponse  response) throws Exception{
-	   return "redirect:/";
+   public String changePass(MemberVO vo) throws Exception{
+	   System.out.println(vo);
+	   ms.changePass(vo);
+	   return "redirect:/"; 
    }
+
    
+   /*
    @GetMapping("/changePass")
    public String changePass() {
 	   return "/changePass";
-   }
+   }*/
    
    
 
