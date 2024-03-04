@@ -47,9 +47,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void changePass(String repw) throws Exception {
-		//public void changePass(String repw, *String uid추가??*) throws Exception {
-		mapper.changePass(repw);
+	public void changePass(MemberVO vo) throws Exception {
+		mapper.changePass(vo);		
 	}
 
 
