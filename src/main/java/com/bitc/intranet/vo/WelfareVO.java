@@ -1,7 +1,10 @@
 package com.bitc.intranet.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class WelfareVO {
 
 	private int mNo;			// 복지 상품 번호
@@ -13,3 +16,4 @@ public class WelfareVO {
 	private Date pDate;			// 복지 상품 결제 시간
 	
 }
+

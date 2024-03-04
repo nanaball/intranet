@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="header.jsp" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사원 정보 수정</title>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<title>Insert title here</title>
 <style>
-	
+/*
 	body{
 		background-image : url("resources/img/bg.jpg"); 
 		background-repeat: no-repeat;
 	}
+*/
 	
 	table{
 		margin : auto;
@@ -40,6 +38,7 @@
 		padding : 10px;
 		margin-left : 20px;
 		margin-right : 20px;
+		width : 80px;
 	}
 	
 	input[type='button']:hover{
@@ -63,7 +62,8 @@
 	
 	table tr td input[type='text'],
 	table tr td input[type='password'],
-	table tr td input[type='number'] {
+	table tr td input[type='number'],
+	table tr td input[type='email'] {
 		width: 200px;
 		outline: none;
 		border: none;
@@ -74,77 +74,190 @@
 	.btn{
 		text-align:center;
 	}
-	
 </style>
+ 
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-		<form method="POST" name="edit">
-		<table class="memberUpdate">
-		<br/><br/>
+	<form method="post" action="joinsuc" enctype="application/x-www-form-urlencoded">
+	<br/><br/><br/>
+		<table align="center">
 			<tr>
-				<td colspan="2">🙍‍♂️ 사원 정보 수정 </td>
+				<th colspan="3"><h3>👨 회원 정보 수정 👩<h3></th>
 			</tr>
 			<tr>
-				<td class="a">아이디</td>
-				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력하세요." readonly="readonly"/></td>
-		  	</tr>
-		  	<tr>
-			  	<td class="a">기존 비밀번호</td>
-				<td> <input type="password" id="upw" name="upw" value="" required placeholder="기존 비밀번호를 입력하세요."/> </td>
-			 </tr>
-			 <tr>
-				 <td class="a">새 비밀번호</td> 
-				 <td><input type="password" class="rePw" name="rePw" value="" required placeholder="새 비밀번호를 입력하세요."/></td>
-		 	</tr>
-		 	<tr>
-				<td class="a">이름</td>
-				<td><input type="text" class="uname" name="uname" value="${loginMember.getUname()}" required placeholder="이름을 입력하세요."/></td>
+				<td>아이디</td>
+				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" required /></td>			
 			</tr>
-			<tr>
-				<td class="a">이메일</td>
-				<td><input type="text" class="uemail" name="uemail" value="${loginMember.getUemail()}" required placeholder="이메일을 입력하세요."/></td>
-			</tr>
-			<tr>
-				<td class="a">전화번호</td>
-				<td><input type="text" class="uphone"  name="uphone" value="${loginMember.getUphone()}" required placeholder="전화번호를 입력하세요."/></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<div class="btn">
-						<!-- onclick 뒤로가기는 나중에 바꿀 예정 -->
-						<input type="button" id="done" class="done1" value="사원정보 수정 확인"/>
-						<input type="button" id="cancel" class="cancel1" value="취소"/>
-					</div>
-				</td>
-			</tr>
-		</table>
-		</form>
-		
+				<tr>
+					<td>기존 비밀번호</td>
+					<td>
+						<input type="password" id="upw" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+					</td>
+				</tr>
+				<tr>
+					<td>새 비밀번호</td>
+					<td>
+						<input type="password" id="newUpw" name="newUpw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+					</td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td>
+						<input type="text" id="uname" name="uname" value="${loginMember.getUname()}" data-msg="이름" placeholder="이름을 입력해주세요" />
+					</td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td>
+						<input type="text" id="uaddr" name="uaddr" value="${loginMember.getUaddr()}" data-msg="주소" placeholder="주소를 입력해주세요"/>
+					</td>
+				</tr>
+				<tr>
+				
+					<td>전화번호</td>
+					<td>
+						<input type="text" id="uphone" name="uphone" value="${loginMember.getUphone()}" data-msg="전화번호" placeholder="전화번호를 입력해주세요"/>
+					</td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td>
+						<input type="email" id="uemail" name="uemail" value="${loginMember.getUemail()}" data-msg="이메일" placeholder="이메일을 입력해주세요"/>
+					</td>
+				</tr>
+				<tr>
+					<th colspan="3" >
+						<input type="button" id="done" value="수정 완료" />
+						<input type="button" id="cancel" value="수정 취소" />
+						<input type="button" id="bye" value="회원 탈퇴" />
+					</th>
+				</tr>
+			</table>
+	</form>
+
 	<script>
-		// 진짜 큰일났다
-		// 진짜 어떡하지
+	
+	$("#done").on("click",function() {
+			
+			// 회원가입 빈칸시 알람
+			if($("#uid").val().length <= 0){
+				alert("사용자아이디를 입력해주세요");
+				$("#uid").val("");
+				$("#uid").focus();
+				return ;
+			}
+			
+			if($("#upw").val().length <= 0){
+				alert("비밀번호를 입력해주세요");
+				$("#upw").val("");
+				$("#upw").focus();
+				return;
+			}
+			
+			if($("#newUpw").val().length <= 0){
+				alert("새 비밀번호를 입력해주세요.");
+				$("#newUpw").val("");
+				$("#newUpw").focus();
+				return;
+			}
+			
+			if($("#uname").val().length <= 0){
+				alert("이름을 입력해주세요");
+				$("#uname").val("");
+				$("#uname").focus();
+				return;
+			}
+			
+			if($("#uemail").val().length <= 0){
+				alert("이메일을 입력해주세요");
+				$("#uemail").val("");
+				$("#uemail").focus();
+				return;
+			}
+			
+			if($("#uphone").val().length <= 0){
+				alert("휴대폰 번호를 입력해주세요");
+				$("#uphone").val("");
+				$("#uphone").focus();
+				return;
+			}
+			
+			// 비밀번호 확인 
+			if($("#upw").val() == $("#newUpw").val()){
+				alert("새 비밀번호가 기존 비밀번호와 일치합니다.");
+				$("#newUpw").focus();
+				return;				
+			}		
+			
+			/*
+			// DB 비밀번호와 기존 비밀번호 일치 확인
+			if($("#upw").val() != ${loginMember.getUpw()}.val()){
+				alert("기존 비밀번호가 일치하지 않습니다.");
+				$("#upw").val("");
+				$("#newUpw").val("");
+				return;
+			}
+			*/
+			
+			
+		}); // $("#joinsuc").on("click",function(){	
 		
-	$(function(){
-    	
-    	$("#done").click(function(){
-	    	 let uid = $("#uid").val();
-	    	 let upw = $("#upw").val(); 
-	    	 
-	    	 if(uid == ""){
-	    	  alert("아이디를 입력하세요");
-	    	  $("#uid").focus(); 
-	    	  return;
-	    	}
-	    	if(upw == ""){
-	    	 alert("비밀번호를 입력하세요"); 
-	    	 $("#upw").focus();
-	    	  return;
-	    	}
-	    	
-	    	loginForm.submit();
-	    	
-    	});
-	    	
-   	</script>
+
+		/*
+		// 아이디 중복 확인 
+		$("#done").on("click",function() {
+			$.ajax({
+				type:"POST",
+				url : "upw",
+				data:{
+					upw : $("#upw").val()
+				},
+				dataType:"text",
+				success: function(res){
+					console.log(res)
+					
+					if (res === "duplicate") {
+                      $("#result").text("이미 사용 중인 비밀번호입니다.");
+                  } else {
+                      $("#result").text("사용할 수 있는 비밀번호입니다.")
+					}
+				},
+				error : function(res){
+					console.log(res);
+				}
+			});	// $.ajax({
+		});	// $("#checkId").click(function() {
+		*/
+		
+	
+			
+		// 수정 취소 버튼 		
+		$("#cancel").on("click",function(){
+			var result = confirm('회원 수정을 취소하시겠습니까?');
+			
+			if(result){
+				alert("취소");
+				location.href = "${pageContext.request.contextPath}/main";
+			}else{
+				alert("취소의 취소");
+			}
+			
+		});
+		
+		// 회원 탈퇴 버튼 		
+		$("#bye").on("click",function(){
+			var result = confirm('정말 회원을 탈퇴하시겠습니까?');	
+			
+			if(result){
+				alert("회원탈퇴 ㅇㅇ");			
+				location.href = "${pageContext.request.contextPath}";
+			}else{
+				alert("탈퇴 ㄴㄴ");
+			}	
+			
+		});
+	</script>
+
 </body>
 </html>

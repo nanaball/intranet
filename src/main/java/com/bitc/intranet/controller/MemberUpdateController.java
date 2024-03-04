@@ -4,10 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class WelfareController {
+public class MemberUpdateController {
 
-	@GetMapping("welfare")
-	public void welfare() {}
-	
-	
+	@GetMapping("memberUpdate")
+	public void memberUpdate() {}
+
 }
