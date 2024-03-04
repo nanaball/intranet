@@ -30,7 +30,7 @@ public class HomeController {
 	public String home(Locale locale, Model model, HttpServletRequest request, HttpSession session) {		
 //		MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
 //		memberVO 
-		return null;
+		return "login";
 	
 	}
 
