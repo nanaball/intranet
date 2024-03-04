@@ -5,6 +5,7 @@
 <head>
 </head>
 <body>
+<!-- 반복문 처리시킬 것 -->
 	<div>
 		<label>제목</label>
 		<input type="text" name="title" value="${read.title}" readonly/>
