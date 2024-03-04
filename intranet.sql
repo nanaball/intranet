@@ -23,7 +23,7 @@ select * from member;
 
 DROP TABLE member; -- member 테이블 지우기
 
-
+DESC member;
 -- 상품게시판
 CREATE TABLE IF NOT EXISTS model(
 	mNo		INT PRIMARY KEY	auto_increment,         -- 제품게시번호
