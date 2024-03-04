@@ -57,7 +57,7 @@ public interface BoardMapper {
 	 * @return - 삭제 완료 여부를 메세지로 반환
 	 */
 	@Delete("DELETE FROM notice WHERE bno = #{bno}")
-	int delete(int bno) throws Exception;
+	void remove(int bno) throws Exception;
 	
 	/**
 	 * 페이징 처리된 리스트 목록 
@@ -75,6 +75,7 @@ public interface BoardMapper {
 	 * @throws Exception
 	 */
 	PageMaker getPageMaker(Criteria cri) throws Exception;
+
 
 	
 }

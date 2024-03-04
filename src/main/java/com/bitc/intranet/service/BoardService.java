@@ -36,7 +36,7 @@ public class BoardService {
 	 * 조회수 증가
 	 * @param bno 조회수 증가 시킬 게시글 번호 
 	 */
-	// void updateCnt(int bno)throws Exception;
+	// void viewcnt(int bno)throws Exception;
 	
 	/**
 	 * 게시글 상세보기
@@ -60,14 +60,16 @@ public class BoardService {
 	 */
 	public String modify(BoardVO board) throws Exception{
 		return mapper.modify(board) != 0 ? "수정 완료" : "실패";
-	};
-	
+	}
+
 	/**
 	 * 게시글 삭제 - 성공 유무에 따라 메세지 전달
 	 * @param bno - 삭제할 게시글 번호
 	 * @return - 삭제 완료 여부를 메세지로 반환
 	 */
-	// String remove(int bno) throws Exception;
+	public void remove(int bno) throws Exception{
+		mapper.remove(bno);
+	};
 	
 	/**
 	 * 페이징 처리된 리스트 목록
