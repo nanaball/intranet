@@ -89,12 +89,13 @@ public class MemberController {
 	public String findPass(@ModelAttribute MemberVO vo,
 							Model model) throws Exception {
 	   MemberVO findPassResult = ms.findPass(vo);
-	   
+	  System.out.println(vo);
+	  System.out.println(findPassResult);
 	   if(findPassResult != null) {
 		   //회원이메일로 코드발송
-		   return "";
+		   return "changePass";
 	   }else {
-		   return null;
+		   return "findPass";
 	   }
 		
    }
@@ -111,10 +112,11 @@ public class MemberController {
 	   return "redirect:/";
    }
    
+   /*
    @GetMapping("/changePass")
    public String changePass() {
 	   return "/changePass";
-   }
+   }*/
    
    
 

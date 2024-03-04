@@ -15,8 +15,10 @@ public interface MemberMapper {
 	 * memeber 등록 (회원가입시 회원 정보 등록) -- 완
 	 * @param vo - 등록할 회원 정보
 	 */
+
 	@Insert("INSERT INTO member(uid, upw, uname, uemail, uphone, udep, ujob, udate, uaddr) " 
 			+ " VALUES(#{uid}, #{upw}, #{uname}, #{uemail}, #{uphone}, #{udep}, #{ujob}, #{udate}, #{uaddr})")
+
 	void create(MemberVO vo)throws Exception;
 
 		
@@ -49,9 +51,12 @@ public interface MemberMapper {
 	 * 비밀번호 찾기
 	 * @param uid, uname이 일치하는 회원정보 검색
 	 */
-	@Select("SELECT * FROM Member WHERE uid = #{uid} and uname = #{uname}")
+	@Select("SELECT * FROM Member WHERE uid = #{uid} and uname = #{uname} and uemail = #{uemail}")
 	MemberVO findPass(MemberVO vo) throws Exception;
 	
+	/**
+	 * repw로 비밀번호 변경하기
+	 */
 	@Update("UPDATE member SET upw=#{repw} WHERE uid= #{uid}")
 	void changePass(String repw) throws Exception;
 }
