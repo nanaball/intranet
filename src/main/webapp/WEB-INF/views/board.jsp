@@ -49,6 +49,7 @@
 							<tr>
 								<td>${b.bno}</td>
 								<td>
+
 									[${b.category}]
 								</td>
 								<td>
