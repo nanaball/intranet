@@ -61,7 +61,8 @@ a {
 	<div>
     <h2>비밀번호 변경</h2>
     <a>새로 사용하실 비밀번호를 입력해주세요.</a>
-		<form method="post" action="member/login" enctype="application/x-www-form-urlencoded">
+		<form name="rePass" method="post" action="changePass" enctype="application/x-www-form-urlencoded">
+		<input type="hidden" name="uid" value="${vo.uid}" /> 
 		<input type="text" placeholder="비밀번호" name="repw" id="repw" class="in"> 
 		<input type="button" id="btn" value="확인"><br/>
 			<!-- <tr>
@@ -74,5 +75,24 @@ a {
 	</form>
 	</div>
 </body>
-</body>
+<script>
+$(function(){
+	
+	$("#btn").click(function(){
+    	 let repw = $("#repw").val();
+    
+    	 
+    	 if(repw == ""){
+    	  alert("새로운 비밀번호를 입력해주세요");
+    	  $("#repw").focus(); 
+    	  return;
+    	}
+    
+    	rePass.submit(); 
+    	
+	});
+	
+});
+
+</script>
 </html>
