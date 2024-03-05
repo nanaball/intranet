@@ -47,12 +47,4 @@ public class HomeController {
 	@GetMapping("Board")
 	public void Board() {}
 	
-	@GetMapping("memberUpdate")
-	public void memberUpdate() {}
-	
-	@GetMapping("welfare")
-	public void welfare() {}
-	
-
-	
 }
