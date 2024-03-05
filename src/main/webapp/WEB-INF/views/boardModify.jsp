@@ -28,7 +28,7 @@
 					<td>카테고리</td>
 					<td>
 						<select name="category">
-							<option >카테고리를 선택해주세요</option>
+							<option value="${boardVO.category}"></option>
 							<option value="공지">공지</option>
 							<option value="알림" >알림</option>
 							<option value="이벤트">이벤트</option>
@@ -50,6 +50,9 @@
 				</tr>
 				<tr>
 					<th colspan="2">
+						<a href="readPage?bno=${boardVO.bno}">
+							<input type="button" value="이전으로" />
+						</a>
 						<input type="submit" id="bodsus" value="수정완료" />
 						<input type="reset" id="bodreset" value="초기화" />
 					</th>
