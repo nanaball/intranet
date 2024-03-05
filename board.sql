@@ -25,3 +25,4 @@ CREATE TABLE IF NOT EXISTS notice_comment(
 
 select * from notice;
 
+select * from notice_comment;

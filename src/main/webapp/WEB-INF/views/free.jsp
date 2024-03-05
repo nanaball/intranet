@@ -21,6 +21,8 @@
         flex-direction:column;
         justify-content:space-between;
     }
+    
+    
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 	/* 2/28 작업 */
@@ -40,8 +42,8 @@
 			<hr/>
 			<br/>
 			<br/>
-			 <table border="1" class="list" >
-                <tr>
+			 <table border="1" class="list" width="70%">
+                <tr >
                     <th>글 번호</th>
                     <th>카테고리</th>
                     <th>글제목</th>
@@ -66,7 +68,7 @@
 									${b.writer}
 								</td>
 								<td>
-									<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd" />
+									<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd HH:mm" />
 								</td>
 								<td>${b.viewcnt}</td>
 							</tr>

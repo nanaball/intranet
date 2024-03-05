@@ -25,7 +25,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js">
 	/* 2/28 작업 */
 	let result = '${result}';
-	if(result != ''){
+	if(result != '' ){
 		alert(result);
 	}
 </script>

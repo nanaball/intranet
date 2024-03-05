@@ -23,7 +23,7 @@
 					<tr>
 						<td>카테고리</td>
 						<td><select name="category">
-								<option disabled selected hidden required>카테고리를 선택해주세요</option>
+								<option selected hidden>카테고리를 선택해주세요</option>
 								<option value="공지">공지</option>
 								<option value="사담">사담</option>
 								<option value="질문">질문</option>
@@ -38,7 +38,7 @@
 					<tr>
 						<td>내용</td>
 						<td><textarea name="content" required
-								style="resize: none; width: 700px; height: 200px;"></textarea></td>
+								style="resize: none; width: 800px; height: 200px;"></textarea></td>
 					</tr>
 					<tr>
 
