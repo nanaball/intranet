@@ -1,21 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
-<body>
-	<h3>게시글 수정</h3>
-		<!-- model boardVO -->
+	<div id="wrap">
+		<div id="borders">
+			<br />
+			<h1>자유게시판</h1>
+			<br />
+			<hr />
+			<br /> 
+			<br />
+		<!-- model FreeVO -->
 		<!-- board/modify POST -->
 		<form method="POST">
-			<input type="hidden" name="bno" value="${boardVO.bno}"/>
+			<input type="hidden" name="bno" value="${freeVO.bno}"/>
 			<table border="1">
 				<tr>
-					<th colspan = "2"><h1>공지글 작성</h1></th>
+					<th colspan = "2"><h1>자유게시판 게시글 수정</h1></th>
 				</tr>
 				<tr>
 					<td>작성자</td>
@@ -31,22 +32,22 @@
 						<select name="category">
 							<option >카테고리를 선택해주세요</option>
 							<option value="공지">공지</option>
-							<option value="알림" >알림</option>
-							<option value="이벤트">이벤트</option>
-							<option value="당첨">당첨</option>
+							<option value="사담" >사담</option>
+							<option value="질문">질문</option>
+							<option value="답변">답변</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>제목</td>
 					<td>
-						<input type="text" name="title" autofocus required style="width:100%;" value="${boardVO.title}"/>
+						<input type="text" name="title" autofocus required style="width:100%;" value="${freeVO.title}"/>
 					</td>
 				</tr>
 				<tr>
 					<td>내용</td>
 					<td>
-						<textarea name="content" required style="resize:none; width:700px; height:200px;">${boardVO.content}</textarea>
+						<textarea name="content" required style="resize:none; width:700px; height:200px;">${freeVO.content}</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -57,5 +58,7 @@
 				</tr>
 			</table>
 		</form>
+		<div>
+		</div>
 </body>
 </html>

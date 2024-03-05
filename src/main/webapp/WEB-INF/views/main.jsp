@@ -8,7 +8,6 @@
 		background-color:#F3F3F3;
 	}
 	 
-	 
 	/* 게시판 모음 */
 	#wrap{
     	/* border:1px solid red; */
@@ -46,8 +45,7 @@
         border: 2px solid #1BBC9B;
         box-shadow:7px 7px 5px #BDBDBD;
     } 
-  
-  
+   
     #borders{
         display:flex;
         flex-wrap:wrap;
@@ -89,6 +87,8 @@
 		text-decoration: underline;
 	}
 	
+
+
 </style>
 </head>
 <body>
@@ -109,11 +109,10 @@
 				<div id="border1">
 					<h3>공지사항</h3>
 					<h6>&nbsp;</h6>
-					<span onclick="location.href='Board/board';"><h5>더보기</h5></span>
-					
+					<span onclick="location.href='Board/board';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
 					<h3>&nbsp;</h3>
-					 <table align="center" >
+					<table  cellspacing="10"  cellpadding="10" board="1">
 <!-- 		                
 						<tr>
 		                    <th>글 번호</th>
@@ -128,7 +127,7 @@
 		                	<tr>
 								<td>${n.bno}</td>
 								<td>
-									[${n.category}] 
+									${n.category}
 								</td>
 								<td>
 									<a href="Board/readPage?bno=${n.bno}">
@@ -136,14 +135,42 @@
 									</a>
 								<td>
 									<f:formatDate value="${n.regdate}" pattern="yy-MM-dd" />
-								<td>${n.viewcnt}</td>
 							</tr>
 							</c:forEach>
 						</c:if>
-					</table>
+					</table>					
 				</div>
-				<div id="border2"><h3>결재</h3></div>
-				<div id="border3"><h3>자유게시판</h3></div>
+				<div id="border2">
+					<h3>결재</h3>
+				</div>
+				<div id="border3">
+					<h3>자유게시판</h3>
+					<h6>&nbsp;</h6>
+					<span onclick="location.href='free/free';"><h5>더보기</h5></span>					
+					<h3>&nbsp;</h3>
+					<h3>&nbsp;</h3>
+					<table boarder="1" cellspacing="10"  cellpadding="10" >
+		                 <c:if test="${!empty free}">
+		                	<c:forEach var="f" items="${free}">
+		                	<tr>
+								<td>${f.bno}</td>
+								<td>
+									${f.category}
+								</td>
+								<td>
+									<a href="free/readPage?bno=${f.bno}">
+										${f.title}
+									</a>
+								<td>
+									${f.writer} 
+								</td>
+								<td>
+									<f:formatDate value="${f.regdate}" pattern="yy-MM-dd" />
+							</tr>
+							</c:forEach>
+						</c:if>
+					</table>				
+				</div>
 				<div id="border4"><h3>직원복지</h3></div>
 				<div id="border5"><h3>일정</h3></div>
 			</div>

@@ -9,10 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.BoardService;
 import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.FreeVO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,8 +52,6 @@ public class BoarderController {
 	public String readPage(int bno, Model model, HttpSession session) throws Exception {
 		BoardVO vo = bs.read(bno);
 		model.addAttribute("read",vo);
-		
-		// 조회수 증가
 		return "boardRead";
 	}
 	
@@ -71,4 +71,22 @@ public class BoarderController {
 		rtts.addAttribute("bno",vo.getBno());
 		return "redirect:/Board/readPage";
 	}
+	
+	// 게시글 삭제요청
+	@GetMapping("remove")
+	public String remove(int bno) throws Exception{
+		bs.remove(bno);
+		return "redirect:/Board/board";
+	}
+	
+	
+	// 메인화면에 공지사항 최신글 5개 미리보기
+	@GetMapping("/recentNotices")
+	@ResponseBody
+	public List<BoardVO> recentNotices() throws Exception {		 
+		return bs.recentNotices();
+		 
+	 }
+	
+
 }

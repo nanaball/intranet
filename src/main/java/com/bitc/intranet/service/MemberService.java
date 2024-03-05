@@ -42,7 +42,9 @@ public interface MemberService {
 	public MemberVO findPass(MemberVO memberVO) throws Exception;
 	
 	//비밀번호 변경
+
 	public void changePass(MemberVO vo) throws Exception;
+
 
 	
 }

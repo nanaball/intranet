@@ -59,6 +59,4 @@ public interface MemberMapper {
 	 */
 	@Update("UPDATE member SET upw=#{repw} WHERE uid= #{uid}")
 	void changePass(MemberVO vo) throws Exception;
-
-
 }
