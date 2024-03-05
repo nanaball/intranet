@@ -20,7 +20,7 @@ public class BoardMapperTest {
 	@Autowired
 	BoardMapper bs;
 	
-	@Test
+	//@Test
 	public void testBoard() throws Exception{
 		BoardVO vo = new BoardVO();
 		vo.setTitle("qq");
@@ -31,7 +31,7 @@ public class BoardMapperTest {
 		bs.regist(vo);
 	}
 	
-	// @Test
+	@Test
 	public void test() {
 		try {
 			List<BoardVO> list = bs.listAll();
@@ -40,5 +40,4 @@ public class BoardMapperTest {
 			e.printStackTrace();
 		}
 	}
-	
 }
