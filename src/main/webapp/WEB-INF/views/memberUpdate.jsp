@@ -79,7 +79,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form method="post" action="joinsuc" enctype="application/x-www-form-urlencoded">
+	<form method="post" action="memberUpdate" enctype="application/x-www-form-urlencoded">
 	<br/><br/><br/>
 		<table align="center">
 			<tr>

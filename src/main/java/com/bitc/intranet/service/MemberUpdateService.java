@@ -19,10 +19,8 @@ public class MemberUpdateService {
 	}
 	
 	// 회원이 작성한 수정 정보 입력
-	public MemberVO UpdateMember(MemberVO vo) throws Exception{
-		return mapper.updateMember(vo);
+	public String memberUpdate(MemberVO vo) throws Exception{
+		return mapper.updateMember(vo) != 0 ? "정보 수정 완료" : "정보 수정 실패";
 	}
-	
-	
 	
 }
