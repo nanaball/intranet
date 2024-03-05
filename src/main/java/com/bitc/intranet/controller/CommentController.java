@@ -14,7 +14,7 @@ import com.bitc.intranet.vo.CommentVO;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/comment")
+@RequestMapping("/comment/*")
 @RequiredArgsConstructor
 public class CommentController {
 	
@@ -25,8 +25,6 @@ public class CommentController {
 	@ResponseBody
 	public List<CommentVO> commentList(@PathVariable(name="bno") int bno) throws Exception{
 		List<CommentVO> list = cs.commentList(bno);
-		System.out.println("comment/bno/list : " );
-		System.out.println(list);
 		return list; 
 	}
 }
