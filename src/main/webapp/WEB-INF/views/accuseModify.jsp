@@ -15,7 +15,7 @@
 			<input type="hidden" name="bno" value="${freeVO.bno}"/>
 			<table border="1">
 				<tr>
-					<th colspan = "2"><h1>자유게시판 게시글 수정</h1></th>
+					<th colspan = "2"><h1>사내고발 게시글 수정</h1></th>
 				</tr>
 				<tr>
 					<td>작성자</td>
@@ -26,16 +26,6 @@
 					</td>
 				</tr>
 				<tr>
-					<td>카테고리</td>
-					<td>
-						<select name="category"  >
-							<option>${freeVO.category}</option>
-							<option value="공지">공지</option>
-							<option value="사담">사담</option>
-							<option value="질문">질문</option>
-							<option value="답변">답변</option>
-						</select>
-					</td>
 				</tr>
 				<tr>
 					<td>제목</td>
