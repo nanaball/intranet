@@ -83,22 +83,16 @@
 	<br/><br/><br/>
 		<table align="center">
 			<tr>
-				<th colspan="3"><h3>👨 회원 정보 수정 👩<h3></th>
+				<th colspan="3"><h3>😪 회원 탈퇴 😥<h3></th>
 			</tr>
 			<tr>
 				<td>아이디</td>
 				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" required /></td>			
 			</tr>
 				<tr>
-					<td>기존 비밀번호</td>
+					<td>비밀번호</td>
 					<td>
 						<input type="password" id="upw" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
-					</td>
-				</tr>
-				<tr>
-					<td>새 비밀번호</td>
-					<td>
-						<input type="password" id="newUpw" name="newUpw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
 					</td>
 				</tr>
 				<tr>
@@ -108,28 +102,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td>주소</td>
+					<td>탈퇴 사유</td>
 					<td>
-						<input type="text" id="uaddr" name="uaddr" value="${loginMember.getUaddr()}" data-msg="주소" placeholder="주소를 입력해주세요"/>
-					</td>
-				</tr>
-				<tr>
-				
-					<td>전화번호</td>
-					<td>
-						<input type="text" id="uphone" name="uphone" value="${loginMember.getUphone()}" data-msg="전화번호" placeholder="전화번호를 입력해주세요"/>
-					</td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td>
-						<input type="email" id="uemail" name="uemail" value="${loginMember.getUemail()}" data-msg="이메일" placeholder="이메일을 입력해주세요"/>
+						<input type="text" />
 					</td>
 				</tr>
 				<tr>
 					<th colspan="3" >
-						<input type="button" id="done" value="수정 완료" />
-						<input type="button" id="cancel" value="수정 취소" />
+						<input type="button" id="cancel" value="탈퇴 취소" />
 						<input type="button" id="bye" value="회원 탈퇴" />
 					</th>
 				</tr>
@@ -138,27 +118,13 @@
 
 	<script>
 	
-	$("#done").on("click",function() {
+	$("#bye").on("click",function() {
 			
-			// 회원가입 빈칸시 알람
-			if($("#uid").val().length <= 0){
-				alert("사용자아이디를 입력해주세요");
-				$("#uid").val("");
-				$("#uid").focus();
-				return ;
-			}
 			
 			if($("#upw").val().length <= 0){
 				alert("비밀번호를 입력해주세요");
 				$("#upw").val("");
 				$("#upw").focus();
-				return;
-			}
-			
-			if($("#newUpw").val().length <= 0){
-				alert("새 비밀번호를 입력해주세요.");
-				$("#newUpw").val("");
-				$("#newUpw").focus();
 				return;
 			}
 			
@@ -168,27 +134,6 @@
 				$("#uname").focus();
 				return;
 			}
-			
-			if($("#uemail").val().length <= 0){
-				alert("이메일을 입력해주세요");
-				$("#uemail").val("");
-				$("#uemail").focus();
-				return;
-			}
-			
-			if($("#uphone").val().length <= 0){
-				alert("휴대폰 번호를 입력해주세요");
-				$("#uphone").val("");
-				$("#uphone").focus();
-				return;
-			}
-			
-			// 비밀번호 확인 
-			if($("#upw").val() == $("#newUpw").val()){
-				alert("새 비밀번호가 기존 비밀번호와 일치합니다.");
-				$("#newUpw").focus();
-				return;				
-			}		
 			
 			/*
 			// DB 비밀번호와 기존 비밀번호 일치 확인
@@ -200,14 +145,18 @@
 			}
 			*/
 			
-			alert("정보가 수정되었습니다.");
-			location.href = "${pageContext.request.contextPath}/main";
+			var result = confirm('정말 회원을 탈퇴하시겠습니까?');	
+			
+			if(result){
+				alert("탈퇴 되었습니다.");			
+				location.href = "${pageContext.request.contextPath}";
+			}
 			
 		}); 
 		
 		// 수정 취소 버튼 		
 		$("#cancel").on("click",function(){
-			var result = confirm('회원 수정을 취소하시겠습니까?');
+			var result = confirm('탈퇴를 취소하시겠습니까?');
 			
 			if(result){
 				location.href = "${pageContext.request.contextPath}/main";
@@ -215,20 +164,6 @@
 			
 		});
 		
-		// 회원 탈퇴 버튼 		
-		$("#bye").on("click",function(){
-			
-			location.href = "${pageContext.request.contextPath}/memberDelete";
-			
-			/*
-			var result = confirm('정말 회원을 탈퇴하시겠습니까?');	
-			
-			if(result){
-				alert("탈퇴 되었습니다.");			
-				location.href = "${pageContext.request.contextPath}";
-			}
-			*/
-		});
 	</script>
 
 </body>

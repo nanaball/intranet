@@ -8,11 +8,12 @@ import com.bitc.intranet.vo.MemberVO;
 
 public interface MemberUpdateMapper {
 
-	@Select("SELECT * FROM Member WHERE uid = #{uid}")
-	MemberVO readMember(String uid) throws Exception;
+	// 수정할 회원의 비밀번호 읽기
+	@Select("SELECT upw FROM Member WHERE uid = #{uid}")
+	MemberVO readMemberPass(MemberVO vo) throws Exception;
 	
 	// 회원 수정
-	@Update("UPDATE * FROM member SET upw = #{newUpw}, uname = #{uname}, uemail = #{uemail}, uphone = #{uphone}, uaddr = #{uaddr} WHERE uid = #{uid}")
+	@Update("UPDATE member SET upw = #{newUpw}, uname = #{uname}, uemail = #{uemail}, uphone = #{uphone}, uaddr = #{uaddr} WHERE uid = #{uid}")
 	MemberVO updateMember(MemberVO vo) throws Exception;
 	
 	// 회원 탈퇴
