@@ -21,7 +21,18 @@
 			<button id="modBtn">수정</button>
 			<button id="deleteBtn">삭제</button>
 		</div>
+		<!-- 댓글 작성 -->
+		<div>
+			<div>
+				작성자 : <input type="text" id="Auth" value="${loginMember.getUname()}" readonly/>
+			</div>
+			<div>
+				댓글 내용 : <input type="text" id="text"/>
+			</div>
+			<button id="addBtn">등록</button>
+		</div>
 	</div>
+	
 	<!-- 전체 댓글 목록 -->
 	<div>
 		<ul id="comments"></ul>
