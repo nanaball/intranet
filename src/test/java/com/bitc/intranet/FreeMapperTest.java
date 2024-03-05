@@ -1,14 +1,11 @@
 package com.bitc.intranet;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bitc.intranet.mapper.BoardMapper;
 import com.bitc.intranet.mapper.FreeMapper;
 import com.bitc.intranet.vo.BoardVO;
 import com.bitc.intranet.vo.FreeVO;
@@ -17,26 +14,19 @@ import com.bitc.intranet.vo.FreeVO;
 @ContextConfiguration(
 	locations = {"classpath:/spring/root-context.xml"}
 )
-public class RecentMapperTest {
+public class FreeMapperTest {
 
 	@Autowired
-	BoardMapper bm;
-	
-	@Autowired
-	FreeMapper fm;
+	FreeMapper fs;
 	
 	@Test
-	public void testNoticeList() throws Exception{
+	public void testBoard() throws Exception{
+		FreeVO vo = new FreeVO();
+		vo.setTitle("제목ㄱㄱㄱㄱㄱ");
+		vo.setCategory("카테고리");
+		vo.setContent("내용ㅇㅇㅇㅇㅇ");
+		vo.setWriter("작성자ㅏㅏㅏㅏㅏ");
 		
-        List<BoardVO> recentNotices = bm.recentNotices();
-        System.out.println(recentNotices);
+		fs.regist(vo);
 	}
-	
-	@Test
-	public void testFreeList() throws Exception{
-		
-        List<FreeVO> recentFree = fm.recentFree();
-        System.out.println(recentFree);
-	}
-	
 }

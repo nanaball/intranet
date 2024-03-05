@@ -76,6 +76,13 @@ public interface BoardMapper {
 	 */
 	PageMaker getPageMaker(Criteria cri) throws Exception;
 
+	/**
+	 * 메인화면 공지사항 미리보기 5개
+	 * @return
+	 * @throws Exception
+	 */
+	@Select("SELECT * FROM notice ORDER BY bno DESC LIMIT 5")
+    List<BoardVO> recentNotices() throws Exception;
 
 	
 }

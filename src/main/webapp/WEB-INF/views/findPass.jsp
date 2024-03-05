@@ -89,7 +89,7 @@ $(function(){
     	  $("#uid").focus(); 
     	  return;
     	}
-    	if(uname == ""){
+    	if(upw == ""){
     	 alert("이름을 입력하세요"); 
     	 $("#uname").focus();
     	  return;

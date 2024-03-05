@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-import com.bitc.intranet.service.RecentService;
+import com.bitc.intranet.service.BoardService;
+import com.bitc.intranet.service.FreeService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +24,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class HomeController {
 	
-	private final RecentService rs;
+	private final BoardService bs;
+	private final FreeService fs;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request, HttpSession session) {		
@@ -34,10 +35,14 @@ public class HomeController {
 	
 	}
 
+	// 메인에 최근 게시글 5개 띄우기
 	@GetMapping("main")
 	public void main(Model model) throws Exception {
-		model.addAttribute("notice", rs.RecentNotices());
+		model.addAttribute("notice", bs.recentNotices());
+		model.addAttribute("free", fs.recentFree());
 	}
+	
+	
 	
 	@GetMapping("Board")
 	public void Board() {}

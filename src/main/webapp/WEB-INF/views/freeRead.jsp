@@ -5,6 +5,14 @@
 <head>
 </head>
 <body>
+	<div id="wrap">
+		<div id="borders">
+			<br />
+			<h1>자유게시판</h1>
+			<br />
+			<hr />
+			<br /> 
+			<br />
 <!-- 반복문 처리시킬 것 -->
 	<table border="1">
 	<tr>
@@ -29,13 +37,13 @@
 		<td colspan="2">
 			<a href="modify?bno=${read.bno}">수정</a> |
 			<a href="remove?bno=${read.bno}">삭제</a> |
-			<a href="${path}/Board/board">목록으로</a>
+			<a href="${path}/free/free">목록으로</a>
 		</td>
 	</tr>
 	</table>
-	
-	<hr/>
-	<%@ include file="comment.jsp" %>	
+	<div>
+	</div>
+		
 	
 </body>
 </html>
