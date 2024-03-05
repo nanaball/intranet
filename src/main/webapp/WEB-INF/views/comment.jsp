@@ -27,7 +27,7 @@
 				작성자 : <input type="text" id="Auth" value="${loginMember.getUname()}" readonly/>
 			</div>
 			<div>
-				댓글 내용 : <input type="text" id="text"/>
+				댓글 내용 : <input type="text" id="commtext"/>
 			</div>
 			<button id="addBtn">등록</button>
 		</div>
@@ -45,6 +45,7 @@
 		
 		getCommentList();
 		
+		// 댓글 전체 리스트
 		function getCommentList(){
 			let url = "${path}/comment/"+bno+"/list";
 			
@@ -67,4 +68,37 @@
 			console.log(str);
 			$("#comments").html(str); 
 		};
+		
+		// 댓글 삽입
+		$("#addBtn").click(function(){
+			let auth = $("#Auth").val();
+			let text = $("#commtext").val();
+			
+			$.ajax({
+				type : "POST",
+				url : "${path}/comment/joncomment",
+				data : {
+					bno : bno,
+					noti_content : text,
+					author : auth
+				},
+				dataType : "text",
+				success : function(result){
+					alert(result);
+					$("#Auth").val("");
+					$("#Text").val("");
+					getCommentList();
+				},
+				error : function(res){
+					console.log(res);
+					if(res.status === 400){
+						alert("잘못된 요청입니다.");
+						alert(res.responseText);
+					}else if(res.status === 404){
+						alert("요청 경로를 확인하세요.");
+					}
+				}
+				
+			});
+		});
 	</script>
