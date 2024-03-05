@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "header.jsp" %>
-<html>
-<head>
-</head>
-<body>
+<style>
+	#wrap{
+		margin:0;
+		display:flex;
+		flex-direction: column;
+	}
+</style>
+<div id="wrap">
 <!-- 반복문 처리시킬 것 -->
 	<table border="1">
 	<tr>
@@ -33,9 +37,10 @@
 		</td>
 	</tr>
 	</table>
-	
-	<hr/>
-	<%@ include file="comment.jsp" %>	
-	
-</body>
-</html>
+	<br/>
+	<div>
+	<hr style="clear:both;"/>
+	</div>
+<%@ include file="comment.jsp" %>
+</div>
+<%@ include file = "footer.jsp" %>

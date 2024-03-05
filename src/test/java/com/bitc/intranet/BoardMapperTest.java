@@ -20,7 +20,7 @@ public class BoardMapperTest {
 	@Autowired
 	BoardMapper bs;
 	
-	@Test
+	//@Test
 	public void testBoard() throws Exception{
 		BoardVO vo = new BoardVO();
 		vo.setTitle("qq");
@@ -31,7 +31,7 @@ public class BoardMapperTest {
 		bs.regist(vo);
 	}
 	
-	// @Test
+	@Test
 	public void test() {
 		try {
 			List<BoardVO> list = bs.listAll();
@@ -41,12 +41,4 @@ public class BoardMapperTest {
 		}
 	}
 	
-<<<<<<< HEAD
-	
-=======
-	/*
-	 * //@Test public void delete() throws Exception{ int result = bs.delete(2);
-	 * System.out.println("result 삭제 : " + result); }
-	 */
->>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
 }
