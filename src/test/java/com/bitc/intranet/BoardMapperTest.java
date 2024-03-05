@@ -41,12 +41,4 @@ public class BoardMapperTest {
 		}
 	}
 	
-<<<<<<< HEAD
-	
-=======
-	/*
-	 * //@Test public void delete() throws Exception{ int result = bs.delete(2);
-	 * System.out.println("result 삭제 : " + result); }
-	 */
->>>>>>> branch 'main' of https://github.com/nanaball/intranet.git
 }

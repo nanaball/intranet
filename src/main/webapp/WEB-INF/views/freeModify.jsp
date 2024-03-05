@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-</head>
 	<div id="wrap">
 		<div id="borders">
 			<br />
@@ -30,9 +29,9 @@
 					<td>카테고리</td>
 					<td>
 						<select name="category">
-							<option >카테고리를 선택해주세요</option>
+							<option selected hidden>카테고리를 선택해주세요</option>
 							<option value="공지">공지</option>
-							<option value="사담" >사담</option>
+							<option value="사담">사담</option>
 							<option value="질문">질문</option>
 							<option value="답변">답변</option>
 						</select>
@@ -47,13 +46,14 @@
 				<tr>
 					<td>내용</td>
 					<td>
-						<textarea name="content" required style="resize:none; width:700px; height:200px;">${freeVO.content}</textarea>
+						<textarea name="content" required style="resize:none; width:800px; height:200px;">${freeVO.content}</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th colspan="2">
+						<input type="reset" id="bodreset" value="이전으로" />
+						<input type="reset" id="bodreset" value="수정취소" />
 						<input type="submit" id="bodsus" value="수정완료" />
-						<input type="reset" id="bodreset" value="초기화" />
 					</th>
 				</tr>
 			</table>
