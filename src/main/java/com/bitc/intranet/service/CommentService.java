@@ -18,5 +18,11 @@ public class CommentService {
 	public List<CommentVO> commentList(int bno) throws Exception{
 		return mapper.commentList(bno);
 	}
+	
+	public String addComment(CommentVO vo) throws Exception{
+		int result = mapper.insert(vo);
+		String message = result == 0 ? "요청처리 실패" : "요청처리 성공";
+		return message;
+	}
 
 }
