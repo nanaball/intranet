@@ -42,6 +42,14 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
+		<!-- annotation 기반 proxy 객체 생성 -->
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjtools -->
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjtools</artifactId>
+		    <version>${org.aspectj-version}</version>
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
