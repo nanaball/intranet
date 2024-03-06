@@ -33,7 +33,7 @@ public class WelfareController {
 	
 	// 복지 추가
 	@GetMapping("welfareAdd")
-	public String addWelfare() throws Exception{
+	public String welfareAdd() throws Exception{
 		return "welfareAdd";
 	}
 	

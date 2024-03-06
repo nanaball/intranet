@@ -43,8 +43,6 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("welfare")
-	public void welfare() {}
 	
 	@GetMapping("Board")
 	public void Board() {}
