@@ -87,6 +87,10 @@ public interface AccuseMapper {
 	@Select("SELECT * FROM accuse ORDER BY bno DESC LIMIT 5")
     List<AccuseVO> recentAccuse() throws Exception;
 
+	@Update("UPDATE accuse SET origin = LAST_INSERT_ID() "
+			+ " WHERE bno = LAST_INSERT_ID()")
+	void updateOrigin() throws Exception;
+
 
 
 
