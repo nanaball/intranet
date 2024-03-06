@@ -25,4 +25,17 @@ public class CommentService {
 		return message;
 	}
 
+	public String updateComment(CommentVO vo) throws Exception{
+		int result = mapper.update(vo);
+		return getResult(result);
+	}
+
+	private String getResult(int result) {
+		return result == 1? "요청 처리 성공" : "요청처리 실패";
+	}
+
+	public String deleteComment(int cno) throws Exception{
+		return getResult(mapper.delete(cno));
+	}
+
 }
