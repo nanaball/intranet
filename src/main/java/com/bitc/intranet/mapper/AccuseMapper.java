@@ -25,6 +25,10 @@ public interface AccuseMapper {
 			+ " VALUES(#{title}, #{content}, #{writer}, #{uno})")
 	void regist(AccuseVO board) throws Exception;
 	
+	@Update("UPDATE accuse SET origin = LAST_INSERT_ID() "
+			+ " WHERE bno = LAST_INSERT_ID()")
+	void updateOrigin() throws Exception;
+
 	/**
 	 * 조회수 증가
 	 * @param bno 조회수 증가시킬 게시글 번호
@@ -51,7 +55,7 @@ public interface AccuseMapper {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메세지로 반환
 	 */
-	@Update("UPDATE accuse SET title = #{title}, content = #{content}, writer = #{writer}, category = #{category}, regdate = now() WHERE bno = #{bno}")
+	@Update("UPDATE accuse SET title = #{title}, content = #{content}, writer = #{writer}, regdate = now() WHERE bno = #{bno}")
 	int modify(AccuseVO board) throws Exception;
 	
 	/**
@@ -87,10 +91,7 @@ public interface AccuseMapper {
 	@Select("SELECT * FROM accuse ORDER BY bno DESC LIMIT 5")
     List<AccuseVO> recentAccuse() throws Exception;
 
-	@Update("UPDATE accuse SET origin = LAST_INSERT_ID() "
-			+ " WHERE bno = LAST_INSERT_ID()")
-	void updateOrigin() throws Exception;
-
+	
 
 
 

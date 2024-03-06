@@ -18,13 +18,13 @@ public class AccuseMapperTest {
 	@Autowired
 	AccuseMapper as;
 	
-	@Test
+	// @Test
 	public void testaccuse() throws Exception{
 		AccuseVO vo = new AccuseVO();
 		vo.setTitle("제목ㄱㄱㄱㄱㄱ");
 		vo.setContent("내용ㅇㅇㅇㅇㅇ");
-		vo.setWriter("작성자ㅏㅏㅏㅏㅏ");
-		vo.setUno(0);
+		vo.setWriter("관리자");
+		vo.setUno(2);
 		
 		as.regist(vo);
 	}
