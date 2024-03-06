@@ -19,7 +19,7 @@ public class CommonAdvice {
 	 * com.bitc.*.controller package에 있는 모든 class를 타켓으로 지정하고 
 	 * 모든 method를 joinPoints로 지정
 	 */
-	@Around("execution(* com.bitc.*.controller.*.*(..))")
+	@Around("execution(* com.bitc.intranet.controller.*.*(..))")
 	public Object checkControllerLog(ProceedingJoinPoint pjp) throws Throwable{
 		
 		log.info("----------------------------------advice CheckController START-----");
@@ -32,7 +32,7 @@ public class CommonAdvice {
 		return o;
 	}
 	
-	@Around("execution(* com.bitc.*.service.*.*(..))")
+	@Around("execution(* com.bitc.intranet.service.*.*(..))")
 	public Object checkServiceLog(ProceedingJoinPoint pjp) throws Throwable{
 	
 		log.info("----------------------------------advice CheckService log START-----");

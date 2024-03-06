@@ -30,11 +30,11 @@ public class AccuseController {
 	
 	
 	// list 전체 보여주기
-	@GetMapping
+	@GetMapping("accuse")
 	public String Board(Model model) throws Exception {
 		List<AccuseVO> list = as.listAll();
 		model.addAttribute("List", list);
-		return "/accuse";
+		return "accuse";
 	}
 
 	/* 게시글 새 글 작성 페이지 요청 */
@@ -44,10 +44,10 @@ public class AccuseController {
 	}
 
 	// 새 글 작성완료
-	@PostMapping("accuseRegist")
+	@PostMapping("regist")
 	public String register(AccuseVO board) throws Exception {
 		as.regist(board);
-		return "redirect:/accuse";
+		return "redirect:/accuse/accuse";
 	}
 
 	// 게시글 상세 보기
@@ -62,30 +62,30 @@ public class AccuseController {
 	@GetMapping("modify")
 	public String modifyGet(int bno, Model model) throws Exception {
 		AccuseVO vo = as.read(bno);
-		model.addAttribute(vo);
+		model.addAttribute("read", vo);
 		return "accuseModify";
 	}
 
 	// 게시글 수정완료 요청
-		@PostMapping("modify")
-		public String modifyPost(RedirectAttributes rtts, AccuseVO vo, Model model) throws Exception {
-			String result = as.modify(vo);
-			rtts.addFlashAttribute("result",result);
-			rtts.addAttribute("bno",vo.getBno());
-			return "redirect:/accuse/readPage";
-		}
+	@PostMapping("modify")
+	public String modifyPost(RedirectAttributes rtts, AccuseVO vo, Model model) throws Exception {
+		String result = as.modify(vo);
+		rtts.addFlashAttribute("result",result);
+		rtts.addAttribute("bno",vo.getBno());
+		return "redirect:/accuse/readPage";
+	}
 
 	// 게시글 삭제요청
-	@GetMapping("remove")
+	@PostMapping("remove")
 	public String remove(int bno) throws Exception {
 		as.remove(bno);
-		return "redirect:/accuse";
+		return "redirect:/accuse/accuse";
 	}
 
 	// 메인화면에 최근 게시물 목록 5개 보여주기
 	@GetMapping("/recentAccuse")
 	@ResponseBody
-	public List<AccuseVO> recentFree() throws Exception {
+	public List<AccuseVO> recentAccuse() throws Exception {
 		return as.recentAccuse();
 
 	}

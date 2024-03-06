@@ -4,15 +4,15 @@
 	<div>
 		<div>
 			<br />
-			<h1>자유게시판</h1>
+			<h1>사내고발 게시판</h1>
 			<br />
 			<hr />
 			<br /> 
 			<br />
-		<!-- model FreeVO -->
-		<!-- board/modify POST -->
+		<!-- model AccuseVO -->
+		<!-- accuse/modify POST -->
 		<form method="POST">
-			<input type="hidden" name="bno" value="${freeVO.bno}"/>
+			<input type="hidden" name="bno" value="${read.bno}"/>
 			<table border="1">
 				<tr>
 					<th colspan = "2"><h1>사내고발 게시글 수정</h1></th>
@@ -26,22 +26,20 @@
 					</td>
 				</tr>
 				<tr>
-				</tr>
-				<tr>
 					<td>제목</td>
 					<td>
-						<input name="title" autofocus required style="width:800px;" value="${freeVO.title}"/>
+						<input name="title" autofocus required style="width:800px;" value="${read.title}"/>
 					</td>
 				</tr>
 				<tr>
 					<td>내용</td>
 					<td>
-						<textarea name="content" required style="resize:none; width:800px; height:200px;">${freeVO.content}</textarea>
+						<textarea name="content" required style="resize:none; width:800px; height:200px;">${read.content}</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th colspan="2">
-						<a href="readPage?bno=${freeVO.bno}">
+						<a href="readPage?bno=${read.bno}">
 							<input type="button" value="이전페이지"/>
 						</a>
 						<input type="reset"  value="수정취소" />
