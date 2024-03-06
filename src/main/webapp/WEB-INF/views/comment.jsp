@@ -1,6 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	#comments li{
+		list-style:none;
+		padding:10px;
+		border:1px solid blue;
+		height:100px;
+		margin : 5px 0;
+	}
+	#modcom{
+		border:1px solid black;
+		padding:10px;
+		display:none;
+	}
+	#comments span{
+		border:1px solid skyblue;
+		padding:5px 10px;
+	}
+	
+	#comments span:hover{
+		border:1px solid black;
+		color:#D1B2FF;
+		cursor:pointer;
+		
+	}
+	
+</style>
 	<!-- 댓글 수정 화면 -->
 	<div id="modcom">
 		<!-- 수정할 댓글 번호 출력 -->
@@ -21,6 +47,7 @@
 			<button id="modBtn">수정</button>
 			<button id="deleteBtn">삭제</button>
 		</div>
+	</div>
 		<!-- 댓글 작성 -->
 		<div>
 			<div>
@@ -31,7 +58,6 @@
 			</div>
 			<button id="addBtn">등록</button>
 		</div>
-	</div>
 	
 	<!-- 전체 댓글 목록 -->
 	<div>
@@ -101,4 +127,20 @@
 				
 			});
 		});
+		
+		// 댓글 수정 - 삭제 창 호출
+		$("#comments").on("click","li button",function(){
+			console.log(this);
+			let cno = $(this).attr("data-cno");
+			let auth = $(this).attr("data-author");
+			let content = $(this).attr("data-content");
+			
+			$("#numcom").text(cno);
+			$("#").val(content);
+			$("#").val(auth);
+			
+			$(this).parent().after($("#modcom"));
+			
+			$("#modcom").toggle("slow");
+		})
 	</script>
