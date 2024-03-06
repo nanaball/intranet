@@ -2,9 +2,13 @@ package com.bitc.intranet.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,5 +30,23 @@ public class CommentController {
 	public List<CommentVO> commentList(@PathVariable(name="bno") int bno) throws Exception{
 		List<CommentVO> list = cs.commentList(bno);
 		return list; 
+	}
+	
+	// 댓글 등록
+	@PostMapping("joncomment")
+	public ResponseEntity<String> addComment(CommentVO vo){
+		System.out.println(vo);
+		ResponseEntity<String> entity = null;
+		// 인코딩용
+	
+	 	HttpHeaders headers = new HttpHeaders();
+	 	try{
+	 		String message = cs.addComment(vo);
+	 		headers.add("Content-Type", "text/plain;charset=utf8");
+	 		entity = new ResponseEntity<>(message,headers,HttpStatus.OK);
+	 	}catch(Exception e){
+	 		entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	 	}
+		return entity;
 	}
 }
