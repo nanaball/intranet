@@ -51,10 +51,11 @@
 	
 	<table>
 		<tr>
-			<td><a href=""><img src="resources/img/pororo.jpg" height="300px" onclick="alert('상품1 임시창')"></a></br>
-				뽀로로(DB 값)<br/>
+			<!-- 음.. 테이블을 bno로 지정하고 detail은 그 bno를 통해서 이동하도록 만들어야 되나 어떡해야 되나 -->
+			<td><a href="welfareDetail?mNo=${m.mNo}"><img src="resources/img/pororo.jpg" height="300px" ></a></br>
+				뽀로로로로로<br/>
 				30,000원(DB 값)</td>
-			<td class="product"><img src="resources/img/pororo.jpg" height="300px" onclick="alert('상품2 임시창')"></br>
+			<td class="product"><img src="resources/img/pororo.jpg" height="300px" ></br>
 				뿌루루<br/>
 				40,000원
 			</td>

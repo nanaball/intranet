@@ -87,30 +87,30 @@
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" required /></td>			
+				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" readonly required /></td>			
 			</tr>
 				<tr>
 					<td>비밀번호</td>
 					<td>
-						<input type="password" id="upw" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+						<input type="password" id="upw" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" required />
 					</td>
 				</tr>
 				<tr>
 					<td>이름</td>
 					<td>
-						<input type="text" id="uname" name="uname" value="${loginMember.getUname()}" data-msg="이름" placeholder="이름을 입력해주세요" />
+						<input type="text" id="uname" name="uname" value="${loginMember.getUname()}" data-msg="이름" placeholder="이름을 입력해주세요" required />
 					</td>
 				</tr>
 				<tr>
 					<td>탈퇴 사유</td>
 					<td>
-						<input type="text" />
+						<input type="text" id="reason" />
 					</td>
 				</tr>
 				<tr>
 					<th colspan="3" >
-						<input type="button" id="cancel" value="탈퇴 취소" />
 						<input type="button" id="bye" value="회원 탈퇴" />
+						<input type="button" id="cancel" value="탈퇴 취소" />
 					</th>
 				</tr>
 			</table>
@@ -135,15 +135,12 @@
 				return;
 			}
 			
-			/*
-			// DB 비밀번호와 기존 비밀번호 일치 확인
-			if($("#upw").val() != ${loginMember.getUpw()}.val()){
-				alert("기존 비밀번호가 일치하지 않습니다.");
+			// 로그인한 비밀번호와 입력한 비밀번호의 일치 확인
+			if($("#upw").val() !== "${loginMember.getUpw()}"){
+				alert("비밀번호가 일치하지 않습니다.");
 				$("#upw").val("");
-				$("#newUpw").val("");
 				return;
 			}
-			*/
 			
 			var result = confirm('정말 회원을 탈퇴하시겠습니까?');	
 			

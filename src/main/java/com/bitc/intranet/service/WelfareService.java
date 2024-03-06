@@ -2,19 +2,27 @@ package com.bitc.intranet.service;
 
 import java.util.List;
 
-import com.bitc.intranet.util.Criteria;
-import com.bitc.intranet.util.PageMaker;
+import org.springframework.stereotype.Service;
+
+import com.bitc.intranet.mapper.WelfareMapper;
 import com.bitc.intranet.vo.WelfareVO;
 
-public interface WelfareService {
+import lombok.RequiredArgsConstructor;
 
+@Service
+@RequiredArgsConstructor
+public class WelfareService {
+
+	private final WelfareMapper mapper;
 	
 	/**
 	 * 복지 상품 추가
 	 * @param vo
 	 * @throws Exception
 	 */
-	void addWelfare (WelfareVO vo) throws Exception;
+	public void addWelfare (WelfareVO vo) throws Exception{
+		mapper.addWelfare(vo);
+	}
 	
 	
 	/**
@@ -22,7 +30,9 @@ public interface WelfareService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<WelfareVO> list() throws Exception;
+	public List<WelfareVO> list() throws Exception{
+		return mapper.list();
+	}
 	
 
 	/**
@@ -31,7 +41,9 @@ public interface WelfareService {
 	 * @return
 	 * @throws Exception
 	 */
-	WelfareVO read(int mNo) throws Exception;
+	public WelfareVO read(int mNo) throws Exception{
+		return mapper.detail(mNo);
+	}
 	
 	
 	/**
@@ -40,7 +52,10 @@ public interface WelfareService {
 	 * @return
 	 * @throws Exception
 	 */
-	String modify(WelfareVO welfare) throws Exception;
+	public String modify(WelfareVO vo) throws Exception{
+		return mapper.modify(vo) != 0 ? "수정완료" : "실패";
+		
+	}
 	
 	
 	/**
@@ -48,23 +63,32 @@ public interface WelfareService {
 	 * @param vo
 	 * @throws Exception
 	 */
-	void removeWelfare (WelfareVO vo) throws Exception;
+	public void removeWelfare (int mNo) throws Exception{
+		mapper.delete(mNo);
+	}
+	
+//	/**
+//	 * 제품 미리보기
+//	 */
+//	public List<WelfareVO> recentWelfare() throws Exception{
+//		return mapper.recentWelfare();
+//	}
 	
 	
-	/**
-	 * 페이징 처리된 리스트 목록
-	 * @param cri
-	 * @return
-	 * @throws Exception
-	 */
-	List<WelfareVO> listCriteria(Criteria cri) throws Exception;
-	
-	
-	/**
-	 * 페이징 정보 처리
-	 * @param cri
-	 * @return
-	 * @throws Exception
-	 */
-	PageMaker getPageMaker (Criteria cri) throws Exception;
+//	/**
+//	 * 페이징 처리된 리스트 목록
+//	 * @param cri
+//	 * @return
+//	 * @throws Exception
+//	 */
+//	public List<WelfareVO> listCriteria(Criteria cri) throws Exception{
+//	
+//	
+//	/**
+//	 * 페이징 정보 처리
+//	 * @param cri
+//	 * @return
+//	 * @throws Exception
+//	 */
+//	public PageMaker getPageMaker (Criteria cri) throws Exception;
 }
