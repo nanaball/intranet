@@ -94,7 +94,7 @@
 				<li><a href="${path}/messages/message">결재</a></li>
 				<li><a href="${path}/free/free">자유게시판</a></li>
 				<li><a href="${path}/accuse/accuse">사내고발</a></li>
-				<li><a href="${path}/welfare">직원복지몰</a></li>
+				<li><a href="${path}/Welfare/welfare">직원복지몰</a></li>
 			</ul>
 		</div>	
 		<div>

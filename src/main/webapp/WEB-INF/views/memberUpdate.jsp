@@ -79,7 +79,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form method="post" action="joinsuc" enctype="application/x-www-form-urlencoded">
+	<form method="post" action="memberUpdate" enctype="application/x-www-form-urlencoded">
 	<br/><br/><br/>
 		<table align="center">
 			<tr>
@@ -87,7 +87,7 @@
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" required /></td>			
+				<td><input type="text" id="uid" name="uid" value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" readonly required /></td>			
 			</tr>
 				<tr>
 					<td>기존 비밀번호</td>
@@ -183,22 +183,20 @@
 				return;
 			}
 			
-			// 비밀번호 확인 
+			// 비밀번호 중복 확인 
 			if($("#upw").val() == $("#newUpw").val()){
 				alert("새 비밀번호가 기존 비밀번호와 일치합니다.");
 				$("#newUpw").focus();
 				return;				
 			}		
 			
-			/*
-			// DB 비밀번호와 기존 비밀번호 일치 확인
-			if($("#upw").val() != ${loginMember.getUpw()}.val()){
+			// 로그인한 비밀번호와 입력한 비밀번호의 일치 확인
+			if($("#upw").val() !== "${loginMember.getUpw()}"){
 				alert("기존 비밀번호가 일치하지 않습니다.");
 				$("#upw").val("");
 				$("#newUpw").val("");
 				return;
 			}
-			*/
 			
 			alert("정보가 수정되었습니다.");
 			location.href = "${pageContext.request.contextPath}/main";

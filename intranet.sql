@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS model(
 	pDate	TIMESTAMP NOT NULL default now()        -- 결제 시간
 );
 
-
 -- 공문 게시판
 CREATE TABLE IF NOT EXISTS official(
 	ono	INT	PRIMARY KEY  AUTO_INCREMENT,			-- 공문번호

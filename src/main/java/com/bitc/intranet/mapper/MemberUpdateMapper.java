@@ -14,10 +14,10 @@ public interface MemberUpdateMapper {
 	
 	// 회원 수정
 	@Update("UPDATE member SET upw = #{newUpw}, uname = #{uname}, uemail = #{uemail}, uphone = #{uphone}, uaddr = #{uaddr} WHERE uid = #{uid}")
-	MemberVO updateMember(MemberVO vo) throws Exception;
+	int updateMember(MemberVO vo) throws Exception;
 	
 	// 회원 탈퇴
 	@Delete("DELETE FROM member WHERE uid = (#uid)")
-	void Delete (MemberVO vo) throws Exception;
+	void Delete (int uno) throws Exception;
 	
 }
