@@ -33,22 +33,28 @@ public class WelfareController {
 	
 	// 복지 추가
 	@GetMapping("welfareAdd")
-	public String welfareAdd() throws Exception{
+	public String addWelfare() throws Exception{
 		return "welfareAdd";
 	}
 	
-	// 복지 상세보기
-	@GetMapping("welfareDetail")
-	public  String welfareDetail(int mNo, Model model, HttpSession session) throws Exception {
-		WelfareVO vo = ws.read(mNo);
-		model.addAttribute("read", vo);
-		return "welfareDetail";
+	@PostMapping("welfareAdd")
+	public String addWelfare(WelfareVO vo) throws Exception{
+		ws.addWelfare(vo);
+		return "redirect:/Welfare/welfare";
 	}
+	
+//	// 복지 상세보기
+//	@GetMapping("welfareDetail")
+//	public  String welfareDetail(int mNo, Model model) throws Exception {
+//		WelfareVO vo = ws.detail(mNo);
+//		model.addAttribute("read", vo);
+//		return "welfareDetail";
+//	}
 	
 	// 복지 수정
 	@GetMapping("modify")
 	public String welfareModify(int mNo, Model model) throws Exception {
-		WelfareVO vo = ws.read(mNo);
+		WelfareVO vo = ws.detail(mNo);
 		model.addAttribute(vo);
 		return "welfareModify";
 	}
@@ -76,5 +82,7 @@ public class WelfareController {
 //		return ws.recentWelfare();
 //	}
 	
+	@GetMapping("welfareDetail")
+	public void welfareDetail() {}
 	
 }

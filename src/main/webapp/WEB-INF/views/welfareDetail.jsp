@@ -23,11 +23,6 @@
     }
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
-	/* 2/28 작업 */
-	let result = '${result}';
-	if(result != '' ){
-		alert(result);
-	}
 </script>
 </head>
 <body>
@@ -47,18 +42,17 @@
 					<c:when test="${!empty List}">
 						<c:forEach var="m" items="${List}">
 							<tr>
-								<td>${m.mNo}</td>
+								<td>$1</td>
 								<td>
 
-									[${m.mName}]
+									2
 								</td>
 								<td>
-									<a href="welfareDetail?mNo=${m.mNo}">
-										${b.price}
+									3
 									</a>
 								</td>
 								<td>
-									<f:formatDate value="${m.pDate}" pattern="yyyy-MM-dd" />
+									<f:formatDate value="4" pattern="yyyy-MM-dd" />
 								</td>
 							</tr>
 						</c:forEach>

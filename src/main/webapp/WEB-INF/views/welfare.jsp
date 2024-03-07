@@ -10,27 +10,34 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
-	h3{
+	
+
+	div{
 		text-align: center;
 	}
 	
 	table{
-		margin : auto;
-		padding : auto;
+		margin : 100px;
+		padding : 100px;
 		background-color: white;
 	  	border-collapse: collapse;
 	  	border-radius: 10px;
 	  	border-style: hidden;
 	  	box-shadow: 0 0 0 1px #000;
 	  	text-align: center;
+	  	table-layout: fixed;
+	  	word-spacing: normal;
 	}
   
 	
-	table tr td,
-	table tr th {
-		border: 1px solid #ccc;
+	table tr td{
+		width : 1500px;
+		height : 200px;
+		border-bottom: 1px solid #ccc;
 		padding:10px;
 		text-align: center;
+		word-spacing: normal;
+		
 	}
 	
 	.product:hover{
@@ -38,48 +45,79 @@
 		
 	}
 	
-	.btn{
-		text-align:center;
+	input[type='button']{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+		width : 130px;
+	}
+	
+	input[type='button']:hover{
+	    color: black;
+	    cursor: pointer;
 	}
 	
 </style>
 </head>
 <body>
+<form method="post" action="welfare" enctype="application/x-www-form-urlencoded">
 	<br/>
-	<h3>직원복지몰</h3>
 	<br/>
+	<div id="wrap"> <br/><br/>직원복지몰
 	
-	<table>
-		<tr>
-			<!-- 음.. 테이블을 bno로 지정하고 detail은 그 bno를 통해서 이동하도록 만들어야 되나 어떡해야 되나 -->
-			<td><a href="welfareDetail?mNo=${m.mNo}"><img src="resources/img/pororo.jpg" height="300px" ></a></br>
-				뽀로로로로로<br/>
-				30,000원(DB 값)</td>
-			<td class="product"><img src="resources/img/pororo.jpg" height="300px" ></br>
-				뿌루루<br/>
-				40,000원
-			</td>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px" onclick="alert('상품3 임시창')"></br>
-				뽀로롱<br/>
-				50,000원
-			</td>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px" onclick="alert('상품4 임시창')"></br>
-				뽀로렁<br/>
-				60,000원
-			</td>
-		</tr>
-		<tr>
-			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품5</td>
-			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품6</td>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품7</td>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품8</td>
-		</tr>
-		<tr>
-			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품9</td>
-			<td class="product"><img src="resources/img/pororo.jpg" height="300px"></br>상품10</td>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품11</td>
-			<td class="product"><img src="resources/img/woman pororo.jpg" height="300px"></br>상품12</td>
-		</tr>
-	</table>
+		<div id="welfare">
+			<table class="product">
+				<c:choose>
+					<c:when test="${!empty List}">
+					<!-- 여기에 tr 넣으면 가로로 늘어나는데 끝도없이 가로로만 늘어남 -->
+						<c:forEach var="m" items="${List}">
+							<tr>
+							<!-- Each 안에 tr 넣으면 밑으로 늘어나는데.. -->
+									<!-- 음.. 테이블을 bno로 지정하고 detail은 그 bno를 통해서 이동하도록 만들어야 되나 어떡해야 되나 -->
+									<td>
+										<a href=""><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></a></br>
+									</td>
+									<td></td>
+									<td>재고 DB 값</td>
+									<td>가격 DB 값</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+				
+					<c:otherwise>
+						<tr>
+							<td>등록된 상품이 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</table>
+			
+			<!-- 관리자만 보이게 -->
+			<c:choose>
+					<c:when test="${'관리자' == loginMember.getUjob()}">
+						<br/>
+						<hr/>
+						<br/>
+						<input type="button" id="add" value="상품 추가하기"/>
+					</c:when>
+			</c:choose>
+			<br/>
+			<br/>
+		</div>
+	</div>
+	</form>
+	<script>
+		$(function(){
+			$("#add").on("click",function(){
+				location.href="${pageContext.request.contextPath}/Welfare/welfareAdd";
+			});
+			
+		});
+		
+	</script>
 </body>
 </html>

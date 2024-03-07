@@ -41,7 +41,7 @@ public class WelfareService {
 	 * @return
 	 * @throws Exception
 	 */
-	public WelfareVO read(int mNo) throws Exception{
+	public WelfareVO detail(int mNo) throws Exception{
 		return mapper.detail(mNo);
 	}
 	
