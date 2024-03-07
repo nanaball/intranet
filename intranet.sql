@@ -6,7 +6,7 @@ CREATE TABLE member(
 	  uno 		INT 			PRIMARY KEY 	auto_increment, 	-- 사원번호 ( 1 부터 순차적으로 증가 )
     uid			VARCHAR(20)		UNIQUE KEY,		-- 아이디
     upw			VARCHAR(20)		NOT NULL,		-- 비밀번호
-    repw        VARCHAR(20),       -- 새비밀번호 변경시
+    repw        VARCHAR(20),                    -- 새비밀번호 변경시
     uemail  	VARCHAR(200) 	NOT NULL,		-- 사원 이메일
     uphone  	VARCHAR(20)  	NOT NULL,		-- 사원 전화번호
     uname   	VARCHAR(20)   	NOT NULL,		-- 사원이름
@@ -61,3 +61,40 @@ CREATE TABLE IF NOT EXISTS calendar(
 );
 
 drop table ;
+
+-- 메세지전달
+
+CREATE TABLE message_tbl(
+ 	mno INT PRIMARY KEY auto_increment,			-- 메세지 번호
+	targetid VARCHAR(50) NOT NULL,				-- 수신자 아이디
+	sender VARCHAR(50),                         -- 수신자 아이디(로그인된 사용자 생략가능)
+	message TEXT NOT NULL,						-- 발신 메세지
+	opendate TIMESTAMP NULL,					-- 수신 확인 시간
+	senddate TIMESTAMP NOT NULL DEFAULT now(),	-- 발신 시간
+	FOREIGN KEY(targetid) REFERENCES member(uid),
+	FOREIGN KEY(sender) REFERENCES member(uid)
+);
+
+SELECT * FROM message_tbl;
+
+-- 첨부파일 저장 table
+CREATE TABLE attach_tbl(
+	fullName VARCHAR(300) NOT NULL,			-- 첨부파일 이름
+	mno INT NOT NULL,						-- 게시글 번호
+	regdate TIMESTAMP NULL DEFAULT now(),	-- 등록 시간
+	CONSTRAINT fk_tbl_attach FOREIGN KEY(bno)
+	REFERENCES re_tbl_board(bno)
+);
+
+SELECT * FROM attach_tbl;
+
+
+
+
+
+
+
+
+
+
+
