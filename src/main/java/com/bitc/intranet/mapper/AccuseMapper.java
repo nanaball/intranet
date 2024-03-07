@@ -25,7 +25,7 @@ public interface AccuseMapper {
 			+ " VALUES(#{title}, #{content}, #{writer}, #{uno})")
 	void regist(AccuseVO board) throws Exception;
 	
-	@Update("UPDATE re_tbl_board SET origin = LAST_INSERT_ID() "
+	@Update("UPDATE accuse SET origin = LAST_INSERT_ID() "
 			+ " WHERE bno = LAST_INSERT_ID()")
 	void updateOrigin() throws Exception;
 	
