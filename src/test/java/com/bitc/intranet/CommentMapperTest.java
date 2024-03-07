@@ -2,6 +2,8 @@ package com.bitc.intranet;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Update;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class CommentMapperTest {
 		cm.insert(vo);
 	}
 	
-	@Test
+	//@Test
 	public void testCommentList() {
 		try {
 			List<CommentVO> list = cm.commentList(23);
@@ -39,4 +41,6 @@ public class CommentMapperTest {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

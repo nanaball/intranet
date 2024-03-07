@@ -28,20 +28,16 @@
 	
 </style>
 	<!-- 댓글 수정 화면 -->
-	<div id="modcom">
+	<div id="modCom">
 		<!-- 수정할 댓글 번호 출력 -->
-		<div id="numcom">
-			<div>
-			<!-- 댓글 작성자 -->
-			댓글 작성자 - 
-			<c:if test="${!empty loginMember }">
-				<input type="text" name="writer" value="${loginMember.getUname()}" readonly />
-			</c:if>	
-			</div>
-			<div>
-				<!-- 댓글 내용 수정 -->
-				댓글 내용 - <input type="text" id="comText"/>
-			</div>
+		<div id="numCom"></div>
+		<div>
+		<!-- 댓글 작성자 -->
+			댓글 작성자 - <input type="text" name="writer" value="${loginMember.getUname()}" readonly />
+		</div>
+		<div>
+			<!-- 댓글 내용 수정 -->
+			댓글 내용 - <input type="text" id="comText"/>
 		</div>
 		<div>
 			<button id="modBtn">수정</button>
@@ -51,7 +47,7 @@
 		<!-- 댓글 작성 -->
 		<div>
 			<div>
-				작성자 : <input type="text" id="Auth" value="${loginMember.getUname()}" readonly/>
+				작성자 : <input type="text" id="auth" value="${loginMember.getUname()}" readonly/>
 			</div>
 			<div>
 				댓글 내용 : <input type="text" id="commtext"/>
@@ -97,7 +93,7 @@
 		
 		// 댓글 삽입
 		$("#addBtn").click(function(){
-			let auth = $("#Auth").val();
+			let auth = $("#auth").val();
 			let text = $("#commtext").val();
 			
 			$.ajax({
@@ -111,7 +107,7 @@
 				dataType : "text",
 				success : function(result){
 					alert(result);
-					$("#Auth").val("");
+					$("#auth").val("");
 					$("#Text").val("");
 					getCommentList();
 				},
@@ -135,12 +131,74 @@
 			let auth = $(this).attr("data-author");
 			let content = $(this).attr("data-content");
 			
-			$("#numcom").text(cno);
-			$("#").val(content);
-			$("#").val(auth);
+			$("#numCom").text(cno);
+			$("#comText").val(content);
+			$("#auth").val(auth);
+			console.log(cno);
+			console.log(content);
+			console.log(auth);
 			
-			$(this).parent().after($("#modcom"));
+			$(this).parent().after($("#modCom"));
 			
-			$("#modcom").toggle("slow");
+			$("#modCom").toggle("slow");
 		})
+		
+		// 댓글 수정창 호츨 - modify 버튼 이벤트
+		function modifyPage(span, cno, content, auth){
+			console.log(cno, content, auth);
+			
+			$("#numCom").text(cno);
+			$("#comText").val(content);
+			$("#auth").val(auth);
+			
+			$(span).parent().after($("#modCom"));
+			
+			$("#modCom").toggle("slow");
+		}
+		
+		// 댓글 수정 요청 처리
+		$("#modBtn").click(function(){
+			let cno = $("#numCom").text();
+			let content = $("#text").val();
+			let auth = $("#auth").val();
+			console.log(cno,content,auth);
+/* 경로문제 */		
+			$.ajax({
+				type : "PATCH",
+				/* url : "${path}/comment/joncomment", */
+				url : "${path}/comment/"+cno,
+				headers : {
+					"Content-Type" : "application/json",
+				},
+				data : JSON.stringify({
+					author : auth,
+					content : noti_content
+				}),
+				dataType : "test",
+				success : function(result){
+					alert(result);
+				},
+				error : function(res){
+					alert(res.responseText);
+				}
+			});
+		});
+		
+		// 댓글 삭제 요청 처리
+		$("#deleteBtn").click(function(){
+			let cno = $("#numCom").text();
+/* 경로문제 */			
+			$.ajax({
+				type : "DELETE",
+				url : "${path}/comment/"+cno,
+				dataType : "text",
+				success : function(result){
+					alert(result);
+				},
+				error : function(res){
+					console.log(res);
+				}
+			});
+		});
+		
 	</script>

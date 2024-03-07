@@ -3,17 +3,10 @@
 <%@ include file = "header.jsp" %>
 <!-- page import 할땐 패키지명을 다 기입할 것. 파일을 열어서 제일 상단에 있는 1줄 -->
 <%@ page import=
-	"java.sql.*, java.util.*, com.bitc.intranet.vo.FreeVO, com.bitc.intranet.util.*" %>
+	"java.sql.*, java.util.*, com.bitc.intranet.vo.AccuseVO, com.bitc.intranet.util.*" %>
 <style>
-	body{
-		height : 600px;
-	}
-	.member{
-		border : "1";
-		height : "163px";
-	}
-	#wrap{
 
+	#wrap{
         width:1450px;
         height:600px;
         margin:10px 0 10px 30px;

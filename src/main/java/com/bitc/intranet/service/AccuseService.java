@@ -30,6 +30,7 @@ public class AccuseService {
 	 */
 	public void regist(AccuseVO board)throws Exception{
 		mapper.regist(board);
+		mapper.updateOrigin();
 	}
 
 

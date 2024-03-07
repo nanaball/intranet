@@ -16,3 +16,4 @@ CREATE TABLE accuse(
 	INDEX(origin)
 );
 
+select * from accuse;
