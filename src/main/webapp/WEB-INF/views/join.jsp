@@ -153,7 +153,7 @@
 	</form>
 
 	<script>
-		
+	$(document).ready(function() {	
 		$("#joinsuc").click(function() {	
 	
 			// 회원가입 빈칸시 알람
@@ -161,63 +161,63 @@
 				alert("사용자아이디를 입력해주세요");
 				$("#uid").val("");
 				$("#uid").focus();
-				return;
+				return false;
 			}
 			
 			if($("#upw").val().length <= 0){
 				alert("비밀번호를 입력해주세요");
 				$("#upw").val("");
 				$("#upw").focus();
-				return;
+				return false;
 			}
 			
 			if($("#upw2").val().length <= 0){
 				alert("비밀번호를 재입력해주세요");
 				$("#upw2").val("");
 				$("#upw2").focus();
-				return;
+				return false;
 			}
 			
 			if($("#uname").val().length <= 0){
 				alert("이름을 입력해주세요");
 				$("#uid").val("");
 				$("#uid").focus();
-				return;
+				return false;
 			}
 			
 			if($("#uemail").val().length <= 0){
 				alert("이메일을 입력해주세요");
 				$("#uemail").val("");
 				$("#uemail").focus();
-				return;
+				return false;
 			}
 			
 			if($("#uphone").val().length <= 0){
 				alert("휴대폰 번호를 입력해주세요");
 				$("#uphone").val("");
 				$("#uphone").focus();
-				return;
+				return false;
 			}
 			
 			if($("#udep").val().length <= 0){
 				alert("해당부서를 입력해주세요");
 				$("#udep").val("");
 				$("#udep").focus();
-				return;
+				return false;
 			}
 			
 			if($("#ujob").val().length <= 0){
 				alert("직책을 입력해주세요");
 				$("#ujob").val("");
 				$("#ujob").focus();
-				return;
+				return false;
 			}
 			
 			if($("#udate").val().length <= 0){
-				alert("입사일 입력ㄱㄱ");
+				alert("입사일을 입력해주세요");
 				$("#udate").val("");
 				$("#udate").focus();
-				return;
+				return false;
 			}
 			
 			
@@ -225,7 +225,7 @@
 			if($("#upw").val() != $("#upw2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
 				$("#upw2").focus();
-				return;				
+				return false;			
 			}		
 		}); // $("#joinsuc").on("click",function(){	
 		
@@ -263,6 +263,7 @@
 				location.href = "${pageContext.request.contextPath}";
 			}	
 		});
+	});
 	</script>
 
 </body>

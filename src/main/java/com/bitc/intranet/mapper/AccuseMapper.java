@@ -25,14 +25,15 @@ public interface AccuseMapper {
 			+ " VALUES(#{title}, #{content}, #{writer}, #{uno})")
 	void regist(AccuseVO board) throws Exception;
 	
-	@Update("UPDATE accuse SET origin = LAST_INSERT_ID() "
+	@Update("UPDATE re_tbl_board SET origin = LAST_INSERT_ID() "
 			+ " WHERE bno = LAST_INSERT_ID()")
 	void updateOrigin() throws Exception;
-
+	
 	/**
 	 * 조회수 증가
 	 * @param bno 조회수 증가시킬 게시글 번호
 	 */
+	@Update("UPDATE accuse SET viewcnt = viewcnt + 1 WHERE bno = #{bno}")
 	void updateCnt(int bno) throws Exception;
 	
 	/**
@@ -47,7 +48,7 @@ public interface AccuseMapper {
 	 * 게시글 전체 목록 페이지
 	 * @return 전체 게시글 목록을 리스트로
 	 */
-	@Select("SELECT * FROM accuse ORDER BY bno DESC")
+	@Select("SELECT * FROM accuse ORDER BY origin DESC, seq ASC")
 	List<AccuseVO> listAll() throws Exception;
 	
 	/**
@@ -55,7 +56,7 @@ public interface AccuseMapper {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메세지로 반환
 	 */
-	@Update("UPDATE accuse SET title = #{title}, content = #{content}, writer = #{writer}, regdate = now() WHERE bno = #{bno}")
+	@Update("UPDATE accuse SET title = #{title}, content = #{content}, writer = #{writer}, updatedate = now() WHERE bno = #{bno}")
 	int modify(AccuseVO board) throws Exception;
 	
 	/**
@@ -63,7 +64,10 @@ public interface AccuseMapper {
 	 * @param bno - 삭제할 게시글 번호
 	 * @return - 삭제 완료 여부를 메세지로 반환
 	 */
-	@Delete("DELETE FROM accuse WHERE bno = #{bno}")
+	@Update("Update accuse set "
+			+ " showboard = 'n' , "
+			+ " updatedate = now() "
+			+ " WHERE bno = #{bno}")
 	void remove(int bno) throws Exception;
 	
 	/**
@@ -92,7 +96,12 @@ public interface AccuseMapper {
     List<AccuseVO> recentAccuse() throws Exception;
 
 	
+	@Insert("INSERT INTO accuse(title,content,writer,origin,depth,seq,uno) "
+			+ "VALUES(#{title},#{content},#{writer},#{origin},#{depth},#{seq},#{uno})")
+	public void accuseReplyRegister(AccuseVO reply) throws Exception;
 
+	@Update("UPDATE accuse SET seq = seq + 1 WHERE origin = #{origin} AND seq > #{seq}")
+	void updateReply(AccuseVO reply)throws Exception;
 
 
 
