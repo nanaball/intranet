@@ -23,9 +23,13 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+
 	<context:component-scan base-package="com.bitc.intranet.controller" />
 	<context:component-scan base-package="com.bitc.intranet.service" />
  	<context:component-scan base-package="com.bitc.intranet.aop" />
+
+	<context:component-scan base-package="com.bitc.intranet.*" />
+
  	<aop:aspectj-autoproxy />
 	
 	

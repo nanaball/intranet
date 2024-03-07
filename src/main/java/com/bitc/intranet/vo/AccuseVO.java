@@ -18,7 +18,7 @@ public class AccuseVO {
 	private Date updatedate;
 	private int viewcnt;
 	private String showboard;
-	private  int uno;
+	private int uno;
 	
 
 }

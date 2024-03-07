@@ -3,6 +3,7 @@ package com.bitc.intranet.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bitc.intranet.mapper.FreeMapper;
 import com.bitc.intranet.vo.BoardVO;

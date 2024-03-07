@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS calendar(
 
 drop table ;
 
+
 -- 메세지전달
 
 CREATE TABLE message_tbl(
@@ -90,11 +91,18 @@ SELECT * FROM attach_tbl;
 
 
 
+SELECT * FROM member WHERE uno = 'your_uno_value';
 
+SELECT COUNT(*) FROM member WHERE uno = 'your_uno_value';
 
+SELECT COUNT(*)
+FROM member
+WHERE 1 = 1;
 
+SELECT COUNT(*)
+FROM member
+WHERE 28 = 28;
 
-
-
+Cannot add or update a child row: a foreign key constraint fails (`intranet`.`accuse`, CONSTRAINT `fk_accuse_uno` FOREIGN KEY (`uno`) REFERENCES `member` (`uno`));
 
 

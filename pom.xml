@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bitc</groupId>
@@ -7,7 +8,7 @@
 	<name>Intranet</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-	
+
 	<properties>
 		<java-version>11</java-version>
 		<org.springframework-version>5.3.31</org.springframework-version>
@@ -42,13 +43,15 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
-		<!-- annotation 기반 proxy 객체 생성 -->
+
+
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjtools -->
 		<dependency>
 		    <groupId>org.aspectj</groupId>
 		    <artifactId>aspectjtools</artifactId>
 		    <version>${org.aspectj-version}</version>
 		</dependency>
+
 
 		<!-- Logging -->
 		<dependency>
