@@ -159,20 +159,19 @@
 		// 댓글 수정 요청 처리
 		$("#modBtn").click(function(){
 			let cno = $("#numCom").text();
-			let content = $("#text").val();
+			let content = $("#comText").val();		// 수정
 			let auth = $("#auth").val();
 			console.log(cno,content,auth);
-/* 경로문제 */		
+/* 화면에 바로 노출되지않음 */		
 			$.ajax({
 				type : "PATCH",
-				/* url : "${path}/comment/joncomment", */
 				url : "${path}/comment/"+cno,
 				headers : {
 					"Content-Type" : "application/json",
 				},
 				data : JSON.stringify({
 					author : auth,
-					content : noti_content
+					noti_content : content
 				}),
 				dataType : "test",
 				success : function(result){

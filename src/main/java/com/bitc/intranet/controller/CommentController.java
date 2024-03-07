@@ -59,8 +59,8 @@ public class CommentController {
 			@PathVariable(name="cno") int cno,
 			@RequestBody CommentVO vo
 			){
-		System.out.println(cno);
-		System.out.println(vo);
+		System.out.println("cno : " + cno);
+		System.out.println("vo : " + vo);
 		vo.setNoti_cno(cno);
 		try {
 			String result = cs.updateComment(vo);

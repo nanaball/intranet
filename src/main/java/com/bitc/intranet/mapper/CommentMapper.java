@@ -22,7 +22,7 @@ public interface CommentMapper {
 	@Insert("INSERT INTO notice_comment(bno,noti_content,author) VALUES(#{bno},#{noti_content},#{author})")
 	int insert(CommentVO vo) throws Exception;
 
-	@Update("UPDATE notice_comment SET noti_content = #{noti_content}, author = #{author} WHERE noti_cno =#{noti_cno}")
+	@Update("UPDATE notice_comment SET noti_content = #{noti_content}, author = #{author}, noti_updatedate = now() WHERE noti_cno = #{noti_cno}")
 	int update(CommentVO vo) throws Exception;
 
 	@Delete("DELETE FROM notice_comment WHERE noti_cno = #{noti_cno}")
