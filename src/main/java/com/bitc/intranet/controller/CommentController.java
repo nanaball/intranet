@@ -1,6 +1,7 @@
 package com.bitc.intranet.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitc.intranet.service.CommentService;
+import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.vo.CommentVO;
 
 import lombok.RequiredArgsConstructor;
@@ -76,5 +78,14 @@ public class CommentController {
 			) throws Exception{
 		return cs.deleteComment(cno);
 		
+	}
+	
+	// 페이징처리
+	@GetMapping("/{bno}/{page}/{parPageNum}")
+	public Map<String, Object> listpage(
+			@PathVariable("bno") int bno,
+			Criteria cri) throws Exception{
+		System.out.println(cri);
+		return cs.commentListPage(bno,cri);
 	}
 }

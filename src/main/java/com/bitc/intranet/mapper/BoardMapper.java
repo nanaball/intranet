@@ -84,5 +84,8 @@ public interface BoardMapper {
 	@Select("SELECT * FROM notice ORDER BY bno DESC LIMIT 5")
     List<BoardVO> recentNotices() throws Exception;
 
+	@Select("SELECT count(*) FROM notice")
+	int totalCount();
+
 	
 }

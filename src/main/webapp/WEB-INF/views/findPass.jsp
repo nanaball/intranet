@@ -11,7 +11,7 @@ body {
 	background-image: url("${pageContext.request.contextPath}/resources/img/bg.jpg");
 	background-size:cover;
 	background-repeat: no-repeat;
-	background-position: center;
+/* 	background-position: center; */
 }
 div {
 	margin: auto;

@@ -64,6 +64,42 @@
 	
 	<script>
 		var bno = ${read.bno};
+		var parPageNum = 5;
+		var page = 1;
+		
+		
+		listPage(page);
+		
+		function listPage(page){
+			$("body").prepend($("#modCom"));
+			let url = "${path}/comment/"+bno+"/"+page+"/"+parPageNum;
+			$.getJSON(url,function(data){
+				console.log(data);
+				printpage(data);
+			});
+		}
+		
+		function printPage(data){
+			let list = data.list;
+			let pm = data.pm;
+			console.log(list);
+			console.log(pm);
+			
+			let str = "";
+			for(let i = 0; i<list.length;i++){
+				let comment = list[i];
+				let cno = list[i].noti_cno;
+				let content = list[i].noti_content;
+				let auth = lint[i].author;
+				console.log(comment, noti_cno, noti_content, auth);
+				str += `<li>\${noti_cno}-\${author} - <span onclick='modifyPage(this,"\${noti_cno}","\${noti_content}","\${auth}");'>수정</span></br></hr>\${noti_content}</li>`;
+			}
+			if(page == 1){
+				$("#comments").html(str);
+			}else{
+				$("#comments").append(str);	
+			}
+		}
 		
 		getCommentList();
 		
@@ -91,7 +127,7 @@
 			$("#comments").html(str); 
 		};
 		
-		// 댓글 삽입
+		// 댓글 삽입 처리
 		$("#addBtn").click(function(){
 			let auth = $("#auth").val();
 			let text = $("#commtext").val();
@@ -102,7 +138,7 @@
 				data : {
 					bno : bno,
 					noti_content : text,
-					author : auth
+					author : auth,
 				},
 				dataType : "text",
 				success : function(result){
@@ -159,9 +195,9 @@
 		// 댓글 수정 요청 처리
 		$("#modBtn").click(function(){
 			let cno = $("#numCom").text();
-			let content = $("#comText").val();		// 수정
+			let content = $("#comText").val();
 			let auth = $("#auth").val();
-			console.log(cno,content,auth);
+			console.log(cno,content,auth);		// 데이터 전달 완료
 /* 화면에 바로 노출되지않음 */		
 			$.ajax({
 				type : "PATCH",
@@ -170,12 +206,16 @@
 					"Content-Type" : "application/json",
 				},
 				data : JSON.stringify({
+					noti_cno : cno,
+					bno : bno,
 					author : auth,
 					noti_content : content
 				}),
 				dataType : "test",
 				success : function(result){
 					alert(result);
+					page = 1;
+					listPage(page);
 				},
 				error : function(res){
 					alert(res.responseText);

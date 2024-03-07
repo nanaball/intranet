@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "header.jsp" %>
-<!-- page import 할땐 패키지명을 다 기입할 것. 파일을 열어서 제일 상단에 있는 1줄 -->
-<%@ page import=
+  <%@ page import=
 	"java.sql.*, java.util.*, com.bitc.intranet.vo.BoardVO, com.bitc.intranet.util.*" %>
 <style>
 	body{
@@ -13,7 +12,7 @@
 		height : "163px";
 	}
 	#wrap{
-    	border:1px solid red;
+ 
         width:1450px;
         height:600px;
         margin:10px 0 10px 30px;
@@ -34,57 +33,37 @@
 	<!-- 게시판 리스트 -->
 	<div id="wrap">
 		<div id="borders">
-			<h2>공지사항</h2>	
+			<h2>결제사항</h2>	
+			<br/>
+			<hr/>
+			<br/>
+			<br/>
 			 <table border="1" class="list">
                 <tr>
                     <th>글 번호</th>
-                    <th>카테고리</th>
                     <th>제목</th>
+                    <th>발신자</th>
                     <th>작성시간</th>
-                    <th>조회수</th>
+                   
                 </tr>
 				<c:choose>
 					<c:when test="${!empty List}">
-						<c:forEach var="b" items="${List}">
+						<c:forEach var="m" items="${List}">
 							<tr>
-								<td>${b.bno}</td>
+								<td>${m.mno}</td>
 								<td>
-
-									[${b.category}]
-								</td>
-								<td>
-		<!-- 추가된 내용 -->						
-									<a href="boardRead${pm.makeQuery(pm.cri.page)}&bno=${b.bno}">
-										${b.title}
+									<a href="readPage?mno=${m.mno}">
+										${m.title}
 									</a>
 								</td>
 								<td>
-									<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd" />
+									${m.sender}
 								</td>
-								<td>${b.viewcnt}</td>
+								<td>
+									<f:formatDate value="${m.senddate}" pattern="yyyy-MM-dd HH:mm" />
+								</td>
 							</tr>
 						</c:forEach>
-							<c:if test="${!empty pm and pm.maxPage > 1}">
-								<tr>
-									<th colspan="5">
-										<c:if test="${pm.first}">
-											<a href="board?page=1">[&laquo;]</a>
-										</c:if>
-										<c:if test="${pm.prev}">
-											<a href="board?page=${pm.startPage-1}">[%lt;]</a>
-										</c:if>
-										<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
-											<a href="board?page=${i}">[${i}]</a>
-										</c:forEach>
-										<c:if test="${pm.next}">
-											<a href="board?page=${pm.endPage+1}">[&gt;]</a>
-										</c:if>
-										<c:if test="${pm.last}">
-											<a href="board?page=${pm.maxPage}">[&raquo;]</a>
-										</c:if>
-									</th>
-								</tr>
-							</c:if>
 					</c:when>
 					<c:otherwise>
 						<tr>
@@ -102,7 +81,7 @@
 		$(function(){
 			$("#regist").on("click",function(){
 				if(confirm("새 글 작성 페이지로 이동합니다")){
-					location.href="${pageContext.request.contextPath}/Board/boardRegist";
+					location.href="${pageContext.request.contextPath}/message/messageRegist";
 				}
 			});
 		});

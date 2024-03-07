@@ -53,6 +53,7 @@ public class AccuseController {
 	// 게시글 상세 보기
 	@GetMapping("readPage")
 	public String readPage(int bno, Model model, HttpSession session) throws Exception {
+		as.updateCnt(bno);
 		AccuseVO vo = as.read(bno);
 		model.addAttribute("read", vo);
 		return "accuseRead";
@@ -81,6 +82,28 @@ public class AccuseController {
 		as.remove(bno);
 		return "redirect:/accuse/accuse";
 	}
+	
+	// 답변글 작성 페이지 요청
+	@GetMapping("accuseReplyRegister")
+	public String accuseReplyRegister(int bno, Model model) throws Exception{
+		// bno : 답변을 달려는 원본 게시글 번호
+		AccuseVO origin = as.read(bno);
+		model.addAttribute("origin", origin);
+			// [/WEB-INF/views/accuseReplyRegister.jsp] 파일의 주소
+		return "accuseReplyRegister";
+	}
+	
+	// 답변글 등록 요청 처리
+	// accuse/replyRegister - POST
+	@PostMapping("accuseReplyRegister")
+	public String accuseReplyRegister(AccuseVO reply) throws Exception{
+		// 답변글 등록
+		as.accuseReplyRegister(reply);
+		
+		// 답변글 등록 완료 시 게시글 목록 페이지 이동
+		return "redirect:/accuse/accuse";
+	}
+		
 
 	// 메인화면에 최근 게시물 목록 5개 보여주기
 	@GetMapping("/recentAccuse")
