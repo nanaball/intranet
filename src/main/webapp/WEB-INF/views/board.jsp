@@ -53,7 +53,8 @@
 									[${b.category}]
 								</td>
 								<td>
-									<a href="readPage?bno=${b.bno}">
+		<!-- 추가된 내용 -->						
+									<a href="boardRead${pm.makeQuery(pm.cri.page)}&bno=${b.bno}">
 										${b.title}
 									</a>
 								</td>
@@ -63,6 +64,27 @@
 								<td>${b.viewcnt}</td>
 							</tr>
 						</c:forEach>
+							<c:if test="${!empty pm and pm.maxPage > 1}">
+								<tr>
+									<th colspan="5">
+										<c:if test="${pm.first}">
+											<a href="board?page=1">[&laquo;]</a>
+										</c:if>
+										<c:if test="${pm.prev}">
+											<a href="board?page=${pm.startPage-1}">[%lt;]</a>
+										</c:if>
+										<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+											<a href="board?page=${i}">[${i}]</a>
+										</c:forEach>
+										<c:if test="${pm.next}">
+											<a href="board?page=${pm.endPage+1}">[&gt;]</a>
+										</c:if>
+										<c:if test="${pm.last}">
+											<a href="board?page=${pm.maxPage}">[&raquo;]</a>
+										</c:if>
+									</th>
+								</tr>
+							</c:if>
 					</c:when>
 					<c:otherwise>
 						<tr>

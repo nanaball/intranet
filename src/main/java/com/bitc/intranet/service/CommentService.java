@@ -1,10 +1,14 @@
 package com.bitc.intranet.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.mapper.CommentMapper;
+import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.CommentVO;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +40,21 @@ public class CommentService {
 
 	public String deleteComment(int cno) throws Exception{
 		return getResult(mapper.delete(cno));
+	}
+
+	public Map<String, Object> commentListPage(int bno, Criteria cri) {
+		Map<String, Object> map = new HashMap<>();
+		List<CommentVO> list = mapper.listPage(bno,cri);
+		map.put("list", list);
+		
+		PageMaker pm = new PageMaker();
+		pm.setCri(cri);
+		
+		int totalCount = mapper.totalCount(bno);
+		pm.setTotalCount(totalCount);
+		map.put("pm", pm);
+		
+		return map;
 	}
 
 }
