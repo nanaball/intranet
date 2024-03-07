@@ -60,9 +60,9 @@
 														⤷
 												</c:if> 
 												<c:if test="${b.regdate ne b.updatedate}">
-												[수정]
+												&nbsp;[수정]
 												</c:if>
-												${b.title} 
+												&nbsp;${b.title} 
 											</a>
 											</td>
 											<td align="center">${b.writer}</td>
