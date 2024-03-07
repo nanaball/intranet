@@ -2,6 +2,7 @@ package com.bitc.intranet.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.mapper.AccuseMapper;
@@ -43,15 +44,6 @@ public class AccuseService {
 		return mapper.recentAccuse();
 	}
 
-
-	
-	
-	/**
-	 * 조회수 증가
-	 * @param bno 조회수 증가 시킬 게시글 번호 
-	 */
-	// void updateCnt(int bno)throws Exception;
-	
 	/**
 	 * 게시글 상세보기
 	 * @param bno - 상세보기 게시글 번호
@@ -59,8 +51,7 @@ public class AccuseService {
 	 */
 	public AccuseVO read(int bno) throws Exception{
 		return mapper.read(bno);
-	}
-	
+	}	
 	
 	/**
 	 * 게시글 수정 - 성공 유무에 따라 메세지 전달
@@ -70,6 +61,7 @@ public class AccuseService {
 	public String modify(AccuseVO vo) throws Exception{
 		return mapper.modify(vo) != 0 ? "수정 완료" : "실패";
 	}
+	
 	/**
 	 * 게시글 삭제 - 성공 유무에 따라 메세지 전달
 	 * @param bno - 삭제할 게시글 번호
@@ -78,9 +70,32 @@ public class AccuseService {
 		mapper.remove(bno);
 	}
 
-
-
-
+	/**
+	 * 답변글 위치 
+	 * @param reply
+	 * @throws Exception
+	 */
+	public void accuseReplyRegister(AccuseVO reply) throws Exception{
+		// origin이 같은 그룹의 원본글보다 아래쪽에 배치된 답변글을 한칸 아래 쪽으로 배치 되도록 seq 값 수정
+		mapper.updateReply(reply);
+				
+		// 원본글 한칸 아래
+		reply.setSeq(reply.getSeq()+1);
+		// 원본글에서 답글의 공백을 출력
+		reply.setDepth(reply.getDepth()+1);
+				
+		// 답변글 등록
+		mapper.accuseReplyRegister(reply);
+	}	
+	
+	/**
+	 * 조회수 증가
+	 * @param bno 조회수 증가 시킬 게시글 번호 
+	 */
+	public void updateCnt(int bno)throws Exception{
+		mapper.updateCnt(bno);
+	}
+	
 
 
 

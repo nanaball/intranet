@@ -29,11 +29,14 @@
 
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="button" id="listBtn" value="게시글 목록" /> 
+			<td colspan="2" align="center">
+				<c:if test="${loginMember.uno eq read.uno or loginMember.uid eq 'admin'}">
+					<input type="button" id="deleteBtn" value="게시글 삭제" />					
+				</c:if>
 				<input type="button" id="replyBtn" value="답변글 작성" />
+				<input type="button" id="listBtn" value="게시글 목록" /> 
 				<c:if test="${loginMember.uno eq read.uno}">
 					<input type="button" id="modifyBtn" value="게시글 수정" />
-					<input type="button" id="deleteBtn" value="게시글 삭제" />
 				</c:if>
 			</td>
 		</tr>
@@ -53,7 +56,7 @@
  	let formObj = $("#readForm");
  	
  	$("#replyBtn").click(function(){
- 		formObj.attr("action","${path}/accuse/accusereplyRegister");
+ 		formObj.attr("action","${path}/accuse/accuseReplyRegister");
  		formObj.submit();	
  	});
  	
@@ -63,9 +66,11 @@
  
  	$("#deleteBtn").click(function(){
  		// 게시글 삭제
- 		formObj.attr("action","${path}/accuse/remove");
- 		formObj.attr("method","POST");
- 		formObj.submit();
+ 		if(confirm("게시글을 삭제하시겠습니까?")){
+ 			formObj.attr("action","${path}/accuse/remove");
+ 			formObj.attr("method","POST");
+ 			formObj.submit();
+ 		} 	
  	});
  	
  </script>

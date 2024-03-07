@@ -46,23 +46,47 @@
 				<c:choose>
 					<c:when test="${!empty List }">
 						<c:forEach var="b" items="${List}">
-							<tr>
-								<td>${b.bno}</td>
-								<td>
-									<a href="readPage?bno=${b.bno}">
-										${b.title}
-									</a>
-								</td>
-								<td>
-									${b.writer}
-								</td>
-								<td>
-									<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd HH:mm" />
-								</td>
-								<td>${b.viewcnt}</td>
-							</tr>
-						</c:forEach>
-					</c:when>
+							<c:choose>
+								<c:when test="${b.showboard == 'y'}">
+									<tr>
+										<td align="center">${b.bno}</td>
+										<td>
+											<a href="${path}/accuse/readPage?bno=${b.bno}"> 
+												<!-- 답변글일 경우 -->
+												<c:if test="${b.depth != 0}">
+													<c:forEach var="i" begin="1" end="${b.depth}">
+														&nbsp;&nbsp;
+													</c:forEach>
+														⤷
+												</c:if> 
+												<c:if test="${b.regdate ne b.updatedate}">
+												[수정]
+												</c:if>
+												${b.title} 
+											</a>
+											</td>
+											<td align="center">${b.writer}</td>
+											<td align="center">
+												<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd HH:mm" />
+											</td align="center">
+											<td align="center">${b.viewcnt}</td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td colspan="3" align="center">
+												&nbsp;삭제된 게시물 입니다.
+											</td>
+											<td align="center">
+												<!-- 게시글 삭제요청 처리 시간 --> 
+												<f:formatDate value="${b.updatedate}" pattern="yyyy-MM-dd HH:mm" />
+											</td>
+											<td></td>
+										</tr>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</c:when>
 					<c:otherwise>
 						<tr>
 							<td colspan="5"> 등록된 게시글이 없습니다.</td>
