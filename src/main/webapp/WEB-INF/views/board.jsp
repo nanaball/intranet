@@ -8,10 +8,6 @@
 	body{
 		height : 600px;
 	}
-	.member{
-		border : "1";
-		height : "163px";
-	}
 	#wrap{
     	border:1px solid red;
         width:1450px;

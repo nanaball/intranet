@@ -74,7 +74,7 @@
 				<c:choose>
 					<c:when test="${!empty List}">
 					<!-- 여기에 tr 넣으면 가로로 늘어나는데 끝도없이 가로로만 늘어남 -->
-						<c:forEach var="m" items="${List}">
+						<c:forEach var="a" items="${List}">
 							<tr>
 							<!-- Each 안에 tr 넣으면 밑으로 늘어나는데.. -->
 									<!-- 음.. 테이블을 bno로 지정하고 detail은 그 bno를 통해서 이동하도록 만들어야 되나 어떡해야 되나 -->
@@ -82,12 +82,11 @@
 										<a href=""><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></a></br>
 									</td>
 									<td></td>
-									<td>재고 DB 값</td>
-									<td>가격 DB 값</td>
+									<td>${a.mname}</td> 
+									<td>${a.price}</td>
 							</tr>
 						</c:forEach>
-					</c:when>
-				
+					</c:when>				
 					<c:otherwise>
 						<tr>
 							<td>등록된 상품이 없습니다.</td>
