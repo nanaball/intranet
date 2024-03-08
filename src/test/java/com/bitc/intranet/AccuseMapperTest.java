@@ -1,5 +1,7 @@
 package com.bitc.intranet;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bitc.intranet.mapper.AccuseMapper;
 import com.bitc.intranet.vo.AccuseVO;
+import com.bitc.intranet.vo.MemberVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -28,4 +31,12 @@ public class AccuseMapperTest {
 		
 		as.regist(vo);
 	}
+	
+/*
+	@Test
+	public void accuseSearch() throws Exception{		
+		List<AccuseVO> read = as.accuseSearch("테스트");
+		System.out.println(read);
+	}
+*/
 }

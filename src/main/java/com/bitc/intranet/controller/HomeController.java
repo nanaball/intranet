@@ -43,8 +43,13 @@ public class HomeController {
 	}
 	
 	
-	
-	@GetMapping("Board")
-	public void Board() {}
-	
+
+	// 로그아웃
+	@GetMapping("/logOut")
+	public String logOut(HttpServletRequest request, HttpSession session) throws Exception {
+	// 세션에서 사용자 정보를 제거
+	session.removeAttribute("loginMember");
+
+	return "redirect:/";
+	}
 }

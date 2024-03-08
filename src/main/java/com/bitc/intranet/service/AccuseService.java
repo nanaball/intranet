@@ -2,10 +2,11 @@ package com.bitc.intranet.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.mapper.AccuseMapper;
+import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.AccuseVO;
 
 import lombok.RequiredArgsConstructor;
@@ -96,11 +97,6 @@ public class AccuseService {
 		mapper.updateCnt(bno);
 	}
 	
-
-
-
-
-
 	
 	/**
 	 * 페이징 처리된 리스트 목록
@@ -110,14 +106,36 @@ public class AccuseService {
 	 * 				perPageNum(검색할 게시글 개수) 	<br/>
 	 * @return - 페이징 처리된 게시글 목록을 리스트로 반환
 	 */
-	// List<BoardVO> listCriteria(Criteria cri)throws Exception;
+	public List<AccuseVO> listCriteria(Criteria cri)throws Exception{
+		return mapper.listCriteria(cri);
+	}
 	
 	/**
 	 * 페이징 정보 처리
 	 * @param cri - 페이징 처리에 필요한 정보
 	 * @return	페이징 블럭 출력을 위한 정보를 저장하는 PageMaker 객체 반환
 	 */
-	// PageMaker getPageMaker(Criteria cri)throws Exception;
+	public PageMaker getPageMaker(Criteria cri)throws Exception{
+		int totalCount = mapper.totalCount();
+		PageMaker pm = new PageMaker(cri, totalCount);
+		return pm;
+	}
 
+	
+	
+
+	
+	
+	/**
+	 * 게시글 검색
+	 * @param search
+	 * @return
+	 */
+/*
+	public List<AccuseVO> accuseSearch(String search) {
+		
+		return mapper.accuseSearch(search);
+	}
+*/
 	
 }

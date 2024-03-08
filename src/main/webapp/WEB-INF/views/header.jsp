@@ -97,11 +97,11 @@
 				<li><a href="${path}/Welfare/welfare">직원복지몰</a></li>
 			</ul>
 		</div>	
-		<div>
-		
-			<ul>
-				<li><a href="${path}/memberUpdate">회원정보관리</a></li>
-				<li onclick="confirm('로그아웃 하시겠습니까')"><a href="${path}" >로그아웃</a>	</li>
+		<div>		
+			<ul>									
+				<li><a href="${path}/memberInfo" ${sessionScope.loginMember == 'admin' ? '' : 'style="display:none;"'}>회원정보관리</a></li>
+				<li><a href="${path}/memberUpdate" >회원정보수정</a></li>
+				<li><a href="${path}/logOut" onclick="confirm('로그아웃 하시겠습니까')">로그아웃</a></li>
 			</ul>
 		</div>		
 	</header>

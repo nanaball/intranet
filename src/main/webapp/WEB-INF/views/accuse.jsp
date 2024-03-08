@@ -23,6 +23,8 @@
 	if(result != ''){
 		alert(result);
 	}
+	
+
 </script>
 </head>
 <body>
@@ -68,7 +70,7 @@
 											<td align="center">${b.writer}</td>
 											<td align="center">
 												<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd HH:mm" />
-											</td align="center">
+											</td>
 											<td align="center">${b.viewcnt}</td>
 										</tr>
 									</c:when>
@@ -86,6 +88,27 @@
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
+							<c:if test="${!empty pm and pm.maxPage > 1}">
+								<tr>
+									<th colspan="5">
+										<c:if test="${pm.first}">
+											<a href="accuse?page=1">[&laquo;]</a>
+										</c:if>
+										<c:if test="${pm.prev}">
+											<a href="accuse?page=${pm.startPage-1}">[%lt;]</a>
+										</c:if>
+										<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+											<a href="accuse?page=${i}">[${i}]</a>
+										</c:forEach>
+										<c:if test="${pm.next}">
+											<a href="accuse?page=${pm.endPage+1}">[&gt;]</a>
+										</c:if>
+										<c:if test="${pm.last}">
+											<a href="accuse?page=${pm.maxPage}">[&raquo;]</a>
+										</c:if>
+									</th>
+								</tr>
+							</c:if>
 						</c:when>
 					<c:otherwise>
 						<tr>
@@ -95,11 +118,18 @@
 				</c:choose>
             </table>
             <br/>
-            <input type="button" id="regist" value="새 글 작성" />
+
+<!-- 					
+            <input type="text" class="form-control" id="search" placeholder="검색할 게시글 제목" style="border:1px solid gray;" />
+			<input type="button" id="searchBtn" value="검색" />
+			
+  -->          
+  			<input type="button" id="regist" value="새 글 작성" />
 		</div>
 	</div>
 	
 	<script>
+		// 새글 작성 
 		$(function(){
 			$("#regist").on("click",function(){
 				if(confirm("새 글 작성 페이지로 이동합니다")){
@@ -107,6 +137,27 @@
 				}
 			});
 		});
+
+		/*		
+		// 게시글 제목 검색
+		$("#searchBtn").on("click"', function(){
+			let search = $("search").val()
+			
+			$.ajax({
+				url : "/accuseSearch",
+				type : "get",
+				datatype:"json",
+				data:{
+					"search" : search,
+				},
+				seccess:makeTable,
+				error:function(e){
+					alert(e);
+				}
+			});
+		});
+		
+*/		
 	</script>
 </body>
 </html>

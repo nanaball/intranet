@@ -1,7 +1,6 @@
 package com.bitc.intranet.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.MemberService;
 import com.bitc.intranet.vo.MemberVO;
@@ -41,15 +41,14 @@ public class MemberController {
 	@PostMapping("/joinsuc")
 	public String join( 
 			MemberVO vo,
-			HttpServletRequest request
+//			HttpServletRequest request,
+			RedirectAttributes rttr
 			) throws Exception {
 		log.info("vo : {} ", vo);
 		ms.addMember(vo);
-		if(vo == null ) {
-			return "redirect:/join";
-		}else {
+			rttr.addFlashAttribute("message", "회원가입 성공");
 			return "redirect:/";
-		}	
+
 	}
 	
 	
@@ -129,5 +128,6 @@ public class MemberController {
    public String memberUpdate() {
 	   return" views/memberUpdate";
    }
+   
    
 }

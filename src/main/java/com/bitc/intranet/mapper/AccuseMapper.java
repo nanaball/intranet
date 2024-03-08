@@ -76,7 +76,7 @@ public interface AccuseMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	@Select("SELECT * FROM accuse ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}")
+	@Select("SELECT * FROM accuse ORDER BY origin DESC, seq ASC LIMIT #{startRow}, #{perPageNum}")
 	List<AccuseVO> listCriteria(Criteria cri) throws Exception;
 	
 	/**
@@ -85,8 +85,15 @@ public interface AccuseMapper {
 	 * @return
 	 * @throws Exception
 	 */
-	@Select("SELECT * FROM accuse ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}")
 	PageMaker getPageMaker(Criteria cri) throws Exception;
+
+	/**
+	 * 총 게시글 갯수
+	 * @return
+	 */
+	@Select("SELECT count(*) FROM accuse")
+	int totalCount();
+
 	
 	/**
 	 * 자유게시판에 등록된 게시글 최근 5개 목록
@@ -95,15 +102,26 @@ public interface AccuseMapper {
 	@Select("SELECT * FROM accuse ORDER BY bno DESC LIMIT 5")
     List<AccuseVO> recentAccuse() throws Exception;
 
-	
+	/**
+	 * 답변글 작성 등록
+	 */
 	@Insert("INSERT INTO accuse(title,content,writer,origin,depth,seq,uno) "
 			+ "VALUES(#{title},#{content},#{writer},#{origin},#{depth},#{seq},#{uno})")
 	public void accuseReplyRegister(AccuseVO reply) throws Exception;
 
+	/**
+	 * 작성한 답변글 페이지 위치
+	 * @param reply
+	 * @throws Exception
+	 */
 	@Update("UPDATE accuse SET seq = seq + 1 WHERE origin = #{origin} AND seq > #{seq}")
 	void updateReply(AccuseVO reply)throws Exception;
 
-
+/*	
+	// 게시글 검색 
+	@Select("SELECT * FROM accuse WHERE title like#{search}")
+	public List<AccuseVO> accuseSearch(String search);
+*/	
 
 
 
