@@ -10,8 +10,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
-	
-
 	div{
 		text-align: center;
 	}
@@ -34,10 +32,16 @@
 		width : 1500px;
 		height : 200px;
 		border-bottom: 1px solid #ccc;
+		border-right: 1px solid #ccc;
 		padding:10px;
 		text-align: center;
 		word-spacing: normal;
 		
+	}
+	
+	#title{
+		height: 50px;
+		border-bottom: 1px solid black;
 	}
 	
 	.product:hover{
@@ -67,23 +71,31 @@
 <form method="post" action="welfare" enctype="application/x-www-form-urlencoded">
 	<br/>
 	<br/>
-	<div id="wrap"> <br/><br/>직원복지몰
+	<div id="wrap"> 
 	
 		<div id="welfare">
 			<table class="product">
+				<tr id="title">
+					<th>상품 이미지</th>
+					<th>상품 이름</th>
+					<th>상품 설명</th>
+					<th>상품 가격</th>
+				</tr>
 				<c:choose>
 					<c:when test="${!empty List}">
 					<!-- 여기에 tr 넣으면 가로로 늘어나는데 끝도없이 가로로만 늘어남 -->
-						<c:forEach var="a" items="${List}">
+						<c:forEach var="m" items="${List}">
 							<tr>
 							<!-- Each 안에 tr 넣으면 밑으로 늘어나는데.. -->
 									<!-- 음.. 테이블을 bno로 지정하고 detail은 그 bno를 통해서 이동하도록 만들어야 되나 어떡해야 되나 -->
 									<td>
-										<a href=""><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></a></br>
+										<a href="welfareDetail?num=${m.num}"><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></a></br>
 									</td>
-									<td></td>
-									<td>${a.mname}</td> 
-									<td>${a.price}</td>
+									<td>${m.model}</td>
+									<td>${m.intro}</td>
+									<td>
+										<f:formatNumber value="${m.price}" type="number" /> 원
+									</td>
 							</tr>
 						</c:forEach>
 					</c:when>				
