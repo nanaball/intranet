@@ -9,7 +9,6 @@
 		height : 600px;
 	}
 	#wrap{
-    	border:1px solid red;
         width:1450px;
         height:600px;
         margin:10px 0 10px 30px;
@@ -30,8 +29,13 @@
 	<!-- 게시판 리스트 -->
 	<div id="wrap">
 		<div id="borders">
-			<h2>공지사항</h2>	
-			 <table border="1" class="list">
+			<br/>
+			<h1>공지사항</h1>
+			<br/>
+			<hr/>
+			<br/>
+			<br/>
+			 <table border="1" class="list" width="70%">
                 <tr>
                     <th>글 번호</th>
                     <th>카테고리</th>

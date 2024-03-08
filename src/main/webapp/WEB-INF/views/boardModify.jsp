@@ -50,7 +50,7 @@
 				</tr>
 				<tr>
 					<th colspan="2">
-						<a href="readPage?bno=${boardVO.bno}">
+						<a href="read?bno=${boardVO.bno}">
 							<input type="button" value="이전으로" />
 						</a>
 						<input type="submit" id="bodsus" value="수정완료" />

@@ -44,12 +44,12 @@ public interface CommentMapper {
 	 * @return - 페이징 처리된 게시글 목록
 	 */
 	@Select("SELECT * FROM notice_comment WHERE bno = #{bno} ORDER BY noti_cno DESC limit #{cri.startRow}, #{cri.perPageNum}")
-	List<CommentVO> listPage(@Param("bno")int bno, @Param("cri")Criteria cri);
+	List<CommentVO> listPage(@Param("bno")int bno, @Param("cri")Criteria cri) throws Exception;
 	
 	/**
 	 * @param bno - 검색할 게시글 번호
 	 * @return
 	 */
 	@Select("SELECT count(*) FROM notice_comment WHERE bno = #{bno}")
-	int totalCount(int bno);
+	int totalCount(int bno) throws Exception;
 }
