@@ -51,7 +51,7 @@ public class BoarderController {
 	}
 	
 	// 게시글 상세 보기
-	@GetMapping("boardRead")
+	@GetMapping("read")
 	public String readPage(
 			@ModelAttribute("cri")Criteria cri, 
 			int bno, 
@@ -61,6 +61,15 @@ public class BoarderController {
 		model.addAttribute(cri);
 		model.addAttribute("read",vo);
 		return "boardRead";
+	}
+	
+	// 게시글 상세보기 페이지 요청
+	@GetMapping("boardRead")
+	public String readPage(int bno, RedirectAttributes rttr) throws Exception{
+		// 조회수 증가
+		bs.updateCnt(bno);
+		rttr.addAttribute("bno",bno);
+		return "redirect:/Board/read";
 	}
 	
 	// 게시글 수정 페이지 요청
