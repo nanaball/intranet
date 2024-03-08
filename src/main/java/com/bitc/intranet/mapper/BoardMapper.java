@@ -26,6 +26,7 @@ public interface BoardMapper {
 	 * 조회수 증가
 	 * @param bno 조회수 증가시킬 게시글 번호
 	 */
+	@Update("UPDATE notice SET viewcnt = viewcnt+1 WHERE bno = #{bno}")
 	void viewcnt(int bno) throws Exception;
 	
 	/**
