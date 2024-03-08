@@ -5,22 +5,60 @@
 <%@ page import=
 	"java.sql.*, java.util.*, com.bitc.intranet.vo.WelfareVO, com.bitc.intranet.util.*" %>
 <style>
-	body{
-		height : 600px;
+	div{
+		text-align: center;
 	}
-	.member{
-		border : "1";
-		height : "163px";
+	
+	table{
+		margin : 100px;
+		padding : 100px;
+		background-color: white;
+	  	border-collapse: collapse;
+	  	border-radius: 10px;
+	  	border-style: hidden;
+	  	box-shadow: 0 0 0 1px #000;
+	  	text-align: center;
+	  	table-layout: fixed;
+	  	word-spacing: normal;
 	}
-	#wrap{
-    	border:1px solid red;
-        width:1450px;
-        height:600px;
-        margin:10px 0 10px 30px;
-        display:flex;
-        flex-direction:column;
-        justify-content:space-between;
-    }
+  
+	
+	table tr td{
+		width : 1500px;
+		height : 200px;
+		border-bottom: 1px solid #ccc;
+		padding:10px;
+		text-align: center;
+		word-spacing: normal;
+		
+	}
+	
+	#title{
+		text-align: center;
+		height:30px;
+	}
+	
+	.product:hover{
+		cursor: pointer;
+		
+	}
+	
+	input[type='button']{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+		width : 130px;
+	}
+	
+	input[type='button']:hover{
+	    color: black;
+	    cursor: pointer;
+	}
+	
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
@@ -31,51 +69,49 @@
 		<div id="detail">
 			<h2>상품 상세보기</h2>	
 			 <table border="1" class="list">
-                <tr>
-                    <th>글 번호</th>
-                    <th>카테고리</th>
-                    <th>제목</th>
-                    <th>작성시간</th>
-                    <th>조회수</th>
+                <tr id="title">
+                    <th>상품 이미지</th>
+                    <th>상품명</th>
+                    <th>상품 설명</th>
+                    <th>가격</th>
+                    <th>재고 수량</th>
                 </tr>
-				<c:choose>
-					<c:when test="${!empty List}">
-						<c:forEach var="m" items="${List}">
-							<tr>
-								<td>$1</td>
-								<td>
-
-									2
-								</td>
-								<td>
-									3
-									</a>
-								</td>
-								<td>
-									<f:formatDate value="4" pattern="yyyy-MM-dd" />
-								</td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="5"> 등록된 게시글이 없습니다.</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			
+                <tr>
+                	<td>이미지</td>
+					<td>${Detail.model}</td>
+					<td>${Detail.intro}</td>
+					<td>
+						<f:formatNumber value="${Detail.price}" type="number" /> 원
+					</td>
+					<td>
+						<f:formatNumber value="${Detail.stock}" type="number" /> 개
+					</td>
+				</tr>
             </table>
-            <input type="button" id="Add" value="새 글 작성" />
+            <hr/>
+            <br/>
+            <input type="button" id="buy" value="구매하기" />
+            <c:choose>
+					<c:when test="${'관리자' == loginMember.getUjob()}">
+						<input type="button" id="modify" value="상품 수정하기"/>
+					</c:when>
+			</c:choose>
 		</div>
 	</div>
 	
 	<script>
 		$(function(){
-			$("#Add").on("click",function(){
-				if(confirm("상품을 새로 등록합니다.")){
-					location.href="${pageContext.request.contextPath}/welfareAdd";
+			$("#buy").on("click",function(){
+				if(confirm("상품을 구매합니다.")){
+					location.href="${pageContext.request.contextPath}/Welfare/welfare";
 				}
 			});
+			
+			$("#modify").on("click",function(){
+				if(confirm("상품을 수정합니다.")){
+					location.href="${pageContext.request.contextPath}/Welfare/welfareModify";
+				}
+			})
 		});
 	</script>
 </body>
