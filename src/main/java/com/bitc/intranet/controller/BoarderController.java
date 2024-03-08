@@ -86,7 +86,7 @@ public class BoarderController {
 		String result = bs.modify(vo);
 		rtts.addFlashAttribute("result",result);
 		rtts.addAttribute("bno",vo.getBno());
-		return "redirect:/Board/readPage";
+		return "redirect:/Board/read";
 	}
 	
 	// 게시글 삭제요청

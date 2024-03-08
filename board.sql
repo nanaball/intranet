@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS notice_comment(
     noti_updatedate TIMESTAMP NOT NULL DEFAULT now(),				-- 수정 시간
 	CONSTRAINT fk_tbl_bno FOREIGN KEY(bno) REFERENCES notice(bno),	-- 제약조건 생성
 	REFERENCES notice(bno) ON DELETE CASCADE,						-- 게시글 삭제시 댓글 삭제
-    	INDEX(bno)														-- 인덱스 정렬. 꼭 필요한 값에만 사용할 것
+    INDEX(bno)														-- 인덱스 정렬. 꼭 필요한 값에만 사용할 것
 );
 
 

@@ -64,15 +64,15 @@
 	
 	<script>
 		var bno = ${read.bno};
-		var parPageNum = 5;
+		var perPageNum = 5;
 		var page = 1;
-		
 		
 		listPage(page);
 		
 		function listPage(page){
+			$("#modCom").css("display","none");
 			$("body").prepend($("#modCom"));
-			let url = "${path}/comment/"+bno+"/"+page+"/"+parPageNum;
+			let url = "${path}/comment/"+bno+"/"+page+"/"+perPageNum;
 			$.getJSON(url,function(data){
 				console.log(data);
 				printpage(data);
@@ -86,13 +86,13 @@
 			console.log(pm);
 			
 			let str = "";
-			for(let i = 0; i<list.length;i++){
+			for(let i = 0; i < list.length; i++){
 				let comment = list[i];
 				let cno = list[i].noti_cno;
 				let content = list[i].noti_content;
 				let auth = lint[i].author;
 				console.log(comment, noti_cno, noti_content, auth);
-				str += `<li>\${noti_cno}-\${author} - <span onclick='modifyPage(this,"\${noti_cno}","\${noti_content}","\${auth}");'>수정</span></br></hr>\${noti_content}</li>`;
+				str += `<li>\${noti_cno}-\${auth} - <span onclick='modifyPage(this,"\${noti_cno}","\${noti_content}","\${auth}");'>수정</span></br></hr>\${noti_content}</li>`;
 			}
 			if(page == 1){
 				$("#comments").html(str);
@@ -105,6 +105,8 @@
 		
 		// 댓글 전체 리스트
 		function getCommentList(){
+			$("#modCom").css("display","none");
+			$("body").prepend($("modCom"));
 			let url = "${path}/comment/"+bno+"/list";
 			
 			$.getJSON(url, function(data){
@@ -112,11 +114,11 @@
 				printList(data);
 			});
 		}	
-	
+	// 서버에서 전달 받은 댓글 목록을 페이지에 출력
 		 function printList(list){
 			console.log(list);
 			let str ="";
-			for(var i = 0; i<list.length;i++){
+			for(var i = 0; i<list.length; i++){
 				str += `<li>
 							\${list[i].noti_cno} - \${list[i].author} - <button data-cno='\${list[i].noti_cno}' data-content='\${list[i].noti_content}' data-author='\${list[i].author}'>수정</button>
 							<br/><hr/>
@@ -127,14 +129,14 @@
 			$("#comments").html(str); 
 		};
 		
-		// 댓글 삽입 처리
+		// 댓글 등록 처리
 		$("#addBtn").click(function(){
 			let auth = $("#auth").val();
 			let text = $("#commtext").val();
 			
 			$.ajax({
 				type : "POST",
-				url : "${path}/comment/joncomment",
+				url : "${path}/comment/joinComment",
 				data : {
 					bno : bno,
 					noti_content : text,
@@ -144,7 +146,7 @@
 				success : function(result){
 					alert(result);
 					$("#auth").val("");
-					$("#Text").val("");
+					$("#commtext").val("");
 					getCommentList();
 				},
 				error : function(res){
@@ -179,7 +181,7 @@
 			$("#modCom").toggle("slow");
 		})
 		
-		// 댓글 수정창 호츨 - modify 버튼 이벤트
+		// 댓글 수정창 호츨 - 수정 버튼 이벤트
 		function modifyPage(span, cno, content, auth){
 			console.log(cno, content, auth);
 			
@@ -203,7 +205,7 @@
 				type : "PATCH",
 				url : "${path}/comment/"+cno,
 				headers : {
-					"Content-Type" : "application/json",
+					"Content-Type" : "application/json"
 				},
 				data : JSON.stringify({
 					noti_cno : cno,
@@ -233,11 +235,28 @@
 				dataType : "text",
 				success : function(result){
 					alert(result);
+					page = 1;
+					listPage(page);
 				},
 				error : function(res){
 					console.log(res);
 				}
 			});
 		});
+		
+		// 마우스 스크롤로 이벤트 처리
+		/* $(window).scroll(function(){
+			let dh = $(document).height();
+			let wh = $(window).height();
+			let wt = $(window).scrollTop();
+			
+			console.log(dh, wh, wt);
+			
+			if((wh+wt)>=(dh)){
+				console.log("조건에 만족");
+				page++;
+				listPage(page);
+			}
+		}) */
 		
 	</script>

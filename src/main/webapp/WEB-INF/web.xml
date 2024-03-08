@@ -39,6 +39,12 @@
 			<param-value>classpath:/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<!-- 아래 2줄은 default 값이기에 생략 가능 -->
+		<!--<max-file-size>20971520</max-file-size>
+			<max-request-size>41943040</max-request-size> -->
+			<file-size-threshold>1024</file-size-threshold>		<!-- 요청이 들어온 파일 정보를 저장하는 것 -->
+		</multipart-config>
 	</servlet>
 		
 	<servlet-mapping>
