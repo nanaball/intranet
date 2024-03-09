@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.MessageVO;
 
 public interface MessageMapper {
@@ -39,7 +39,7 @@ public interface MessageMapper {
 	MessageVO readMessage(int mno) throws Exception;
 
 	@Select("SELECT * FROM message_tbl ORDER BY mno DESC LIMIT 5")
-    List<BoardVO> recentNotices() throws Exception;
+    List<NoticeVO> recentNotices() throws Exception;
 	
 }
 

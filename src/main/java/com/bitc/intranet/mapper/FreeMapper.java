@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.FreeVO;
 
 public interface FreeMapper {

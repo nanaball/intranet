@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.FreeService;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.FreeVO;
 
 import lombok.RequiredArgsConstructor;

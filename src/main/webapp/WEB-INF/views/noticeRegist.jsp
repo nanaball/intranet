@@ -61,8 +61,8 @@
 			</tr>
 			<tr>
 				<th colspan="2">
-					<input type="button" id="boardSuccess" value="작성완료" />
-					<input type="reset" id="boardReset" value="이전으로" />
+					<input type="button" id="noticeSuccess" value="작성완료" />
+					<input type="reset" id="noticeReset" value="이전으로" />
 				</th>
 			</tr>
 	</table>
@@ -80,7 +80,7 @@
 	
 	<script>
 		// 작성완료 버튼 클릭시
-		$("#boardSuccess").click(function(){
+		$("#noticeSuccess").click(function(){
 			
 			// 각 칸별 빈칸 알림
 			if($("#category") == null){
@@ -117,7 +117,7 @@
 		// reset 버튼
 		$("#boardReset").on("click",function(){
 			if(confirm("정말 취소하시겠습니까?")){
-				location.href = "${pageContext.request.contextPath}/Board/board/";
+				location.href = "${pageContext.request.contextPath}/Notice/notice/";
 			}
 		});
 	</script>

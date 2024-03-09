@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bitc.intranet.mapper.FreeMapper;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.FreeVO;
 
 import lombok.RequiredArgsConstructor;

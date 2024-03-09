@@ -11,7 +11,7 @@
 		<!-- model boardVO -->
 		<!-- board/modify POST -->
 		<form method="POST">
-			<input type="hidden" name="bno" value="${boardVO.bno}"/>
+			<input type="hidden" name="bno" value="${noticeVO.bno}"/>
 			<table border="1">
 				<tr>
 					<th colspan = "2"><h1>공지글 작성</h1></th>
@@ -28,7 +28,7 @@
 					<td>카테고리</td>
 					<td>
 						<select name="category">
-							<option value="${boardVO.category}"></option>
+							<option value="${noticeVO.category}"></option>
 							<option value="공지">공지</option>
 							<option value="알림" >알림</option>
 							<option value="이벤트">이벤트</option>
@@ -39,18 +39,18 @@
 				<tr>
 					<td>제목</td>
 					<td>
-						<input type="text" name="title" autofocus required style="width:100%;" value="${boardVO.title}"/>
+						<input type="text" name="title" autofocus required style="width:100%;" value="${noticeVO.title}"/>
 					</td>
 				</tr>
 				<tr>
 					<td>내용</td>
 					<td>
-						<textarea name="content" required style="resize:none; width:700px; height:200px;">${boardVO.content}</textarea>
+						<textarea name="content" required style="resize:none; width:700px; height:200px;">${noticeVO.content}</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th colspan="2">
-						<a href="read?bno=${boardVO.bno}">
+						<a href="read?bno=${noticeVO.bno}">
 							<input type="button" value="이전으로" />
 						</a>
 						<input type="submit" id="bodsus" value="수정완료" />

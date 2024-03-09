@@ -4,24 +4,24 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.bitc.intranet.mapper.BoardMapper;
+import com.bitc.intranet.mapper.NoticeMapper;
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BoardService {
+public class NoticeService {
 
-	private final BoardMapper mapper;
+	private final NoticeMapper mapper;
 	
 	/**
 	 * 게시글 전체 목록 페이지
 	 * @return 전체 게시글 목록을 리스트로 반환
 	 */
-	public List<BoardVO> listAll() throws Exception{
+	public List<NoticeVO> listAll() throws Exception{
 		return mapper.listAll();
 	}
 
@@ -30,8 +30,8 @@ public class BoardService {
 	 * 게시글 작성 - 성공 유무에 따라 메세지 전달
 	 * @param 게시글 등록 정보
 	 */
-	public void regist(BoardVO board)throws Exception{;
-		mapper.regist(board);
+	public void regist(NoticeVO notice)throws Exception{;
+		mapper.regist(notice);
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class BoardService {
 	 * @param bno - 상세보기 게시글 번호
 	 * @return 조회된 게시글 정보
 	 */
-	public BoardVO read(int bno) throws Exception{
+	public NoticeVO read(int bno) throws Exception{
 		return mapper.read(bno);
 	}
 
@@ -60,8 +60,8 @@ public class BoardService {
 	 * @param board - 수정할 게시글 정보
 	 * @return - 수정 작업 완료 여부를 메시지로 반환
 	 */
-	public String modify(BoardVO board) throws Exception{
-		return mapper.modify(board) != 0 ? "수정 완료" : "실패";
+	public String modify(NoticeVO notice) throws Exception{
+		return mapper.modify(notice) != 0 ? "수정 완료" : "실패";
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class BoardService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<BoardVO> recentNotices() throws Exception{
+	public List<NoticeVO> recentNotices() throws Exception{
 		return mapper.recentNotices();
 	}
 
@@ -90,7 +90,7 @@ public class BoardService {
 	 * 				perPageNum(검색할 게시글 개수) 	<br/>
 	 * @return - 페이징 처리된 게시글 목록을 리스트로 반환
 	 */
-	public List<BoardVO> listCriteria(Criteria cri)throws Exception{
+	public List<NoticeVO> listCriteria(Criteria cri)throws Exception{
 		return mapper.listCriteria(cri);
 	};
 	

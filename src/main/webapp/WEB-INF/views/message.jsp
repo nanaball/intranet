@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "header.jsp" %>
   <%@ page import=
-	"java.sql.*, java.util.*, com.bitc.intranet.vo.BoardVO, com.bitc.intranet.util.*" %>
+	"java.sql.*, java.util.*,com.bitc.intranet.vo.NoticeVO, com.bitc.intranet.util.*" %>
 <style>
 	body{
 		height : 600px;

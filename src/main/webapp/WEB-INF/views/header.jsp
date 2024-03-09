@@ -90,7 +90,7 @@
 				<li> </li>	
 				<li> </li>				
 
-				<li><a href="${path}/Board/board">공지사항</a></li>
+				<li><a href="${path}/Notice/notice">공지사항</a></li>
 				<li><a href="${path}/messages/message">결재</a></li>
 				<li><a href="${path}/free/free">자유게시판</a></li>
 				<li><a href="${path}/accuse/accuse">사내고발</a></li>

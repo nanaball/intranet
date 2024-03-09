@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bitc.intranet.mapper.BoardMapper;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.mapper.NoticeMapper;
+import com.bitc.intranet.vo.NoticeVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -18,11 +18,11 @@ import com.bitc.intranet.vo.BoardVO;
 public class BoardMapperTest {
 	
 	@Autowired
-	BoardMapper bs;
+	NoticeMapper bs;
 	
 	//@Test
 	public void testBoard() throws Exception{
-		BoardVO vo = new BoardVO();
+		NoticeVO vo = new NoticeVO();
 		vo.setTitle("qq");
 		vo.setCategory("4");
 		vo.setContent("5");
@@ -34,7 +34,7 @@ public class BoardMapperTest {
 	@Test
 	public void test() {
 		try {
-			List<BoardVO> list = bs.listAll();
+			List<NoticeVO> list = bs.listAll();
 			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
