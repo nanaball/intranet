@@ -3,7 +3,9 @@ package com.bitc.intranet.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.bitc.intranet.mapper.AttachmentMapper;
 import com.bitc.intranet.mapper.NoticeMapper;
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
@@ -16,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class NoticeService {
 
 	private final NoticeMapper mapper;
+	private final AttachmentMapper attachMapper;
 	
 	/**
 	 * 게시글 전체 목록 페이지
@@ -30,8 +33,16 @@ public class NoticeService {
 	 * 게시글 작성 - 성공 유무에 따라 메세지 전달
 	 * @param 게시글 등록 정보
 	 */
+	@Transactional
 	public void regist(NoticeVO notice)throws Exception{;
 		mapper.regist(notice);
+		
+		List<String> files = notice.getFiles();
+		if(files != null && !files.isEmpty()) {
+			for(String fullName : files) {
+				attachMapper.addAttach(fullName);
+			}
+		}
 	}
 	
 	/**

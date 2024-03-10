@@ -21,8 +21,16 @@ CREATE TABLE IF NOT EXISTS notice_comment(
     INDEX(bno)														-- 인덱스 정렬. 꼭 필요한 값에만 사용할 것
 );
 
-
+CREATE TABLE noti_attach(
+	fullName VARCHAR(300) NOT NULL,				-- 첨부파일 이름
+	bno INT NOT NULL,							-- 게시글 번호
+	regdate TIMESTAMP NULL DEFAULT now(),		-- 등록 시간
+	CONSTRAINT fk_noti_attach FOREIGN KEY(bno)
+	REFERENCES notice(bno)
+);
 
 select * from notice;
 
 select * from notice_comment;
+
+desc notice_comment;

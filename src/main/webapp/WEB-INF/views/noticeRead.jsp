@@ -8,7 +8,6 @@
 		flex-direction: column;
 	}
 </style>
-<div id="wrap">
 <!-- 반복문 처리시킬 것 -->
 	<table border="1">
 	<tr>
@@ -37,10 +36,39 @@
 		</td>
 	</tr>
 	</table>
+	<div>
+	<!-- 등록된 파일이 있을 시 -->
+		<c:if test="${!empty read.files} ">
+			<ul class="uploadList">
+				<c:forEach var="file" items="${read.files} ">
+					<li data-src="${file}">
+						<c:choose>
+							<c:when test="${fn:contains(file,'s_')}">
+								<img src="${path}/display?fileName=${file}" />
+								<div>
+									<a href="${path}/displayFile?fileName=${fn:replace(file,'s_','' }" target="_blank">
+										${fn:substringAfter(fn:replace(file,'s_',''),'_') }
+									</a>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<!-- 일반 파일 -->
+								<img src="${path}/resources/img/file.png"/>
+								<div>
+									<a href="${path}/displayFile?fileName=${file}">
+										${fn:substringAfter(file,'_')}
+									</a>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</li>
+				</c:forEach>
+			</ul>
+		</c:if>
+	</div>
 	<br/>
 	<div>
 	<hr style="clear:both;"/>
 	</div>
 <%@ include file="comment.jsp" %>
-</div>
 <%@ include file = "footer.jsp" %>

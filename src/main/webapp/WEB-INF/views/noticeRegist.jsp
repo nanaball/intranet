@@ -82,28 +82,6 @@
 		// 작성완료 버튼 클릭시
 		$("#noticeSuccess").click(function(){
 			
-			// 각 칸별 빈칸 알림
-			if($("#category") == null){
-				alert("카테고리를 선택해주세요.");
-				$("#category").val("");
-				$("#category").focus();
-				return;
-			}
-			
-			if($("#title").val().length <=0){
-				alert("제목을 입력해주세요.");
-				$("#title").val("");
-				$("#title").focus();
-				return;
-			}
-			
-			if($("#content").val().length <=0){
-				alert("카테고리를 선택해주세요.");
-				$("#content").val("");
-				$("#content").focus();
-				return;
-			}
-			
 			let str = "";
 			let fileList = $(".uploadList .delBtn");
 			console.log(fileList);
@@ -112,7 +90,10 @@
 			}
 			$("#registerForm").append(str);
 			$("#registerForm").submit();
+			
+		
 		});
+	
 		
 		// reset 버튼
 		$("#boardReset").on("click",function(){

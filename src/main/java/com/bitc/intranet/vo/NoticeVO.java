@@ -1,6 +1,7 @@
 package com.bitc.intranet.vo;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -14,4 +15,7 @@ public class NoticeVO {
 	private String writer;
 	private Date regdate;
 	private int viewcnt;
+	
+	// 파일목록 출력용
+	private List<String> files;
 }
