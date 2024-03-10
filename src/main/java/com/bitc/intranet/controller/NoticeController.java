@@ -45,8 +45,8 @@ public class NoticeController {
 	}
 	// 새 글 작성완료
 	@PostMapping("noticeRegist")
-	public String register(NoticeVO board) throws Exception{
-		bs.regist(board);
+	public String register(NoticeVO notice) throws Exception{
+		bs.regist(notice);
 		return "redirect:/Notice/notice";
 	}
 	

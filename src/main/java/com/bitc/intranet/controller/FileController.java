@@ -28,6 +28,7 @@ public class FileController {
 	
 	private String realPath;
 	
+	// 폴더 만들기
 	@PostConstruct
 	public void initPath() {
 		realPath = context.getRealPath(File.separator+uploadPath);
