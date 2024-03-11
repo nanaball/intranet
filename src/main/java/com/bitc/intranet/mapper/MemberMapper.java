@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.vo.AccuseVO;
 import com.bitc.intranet.vo.MemberVO;
 
 public interface MemberMapper {
@@ -35,8 +37,8 @@ public interface MemberMapper {
 	 * @return - 테이블에 등록된 전체 회원 목록
 	 */
 	@Select("SELECT * FROM member ORDER BY uno DESC")
-	List<MemberVO> list() throws Exception;
-	
+	List<MemberVO> listAll() throws Exception;
+
 	/**
 	 * 
 	 * @param uid와 upw 가 일치하는 로그인정보
@@ -59,4 +61,15 @@ public interface MemberMapper {
 	 */
 	@Update("UPDATE member SET upw=#{repw} WHERE uid= #{uid}")
 	void changePass(MemberVO vo) throws Exception;
+
+	@Select("SELECT count(*) FROM member")
+	int totalCount();
+			
+	@Select("SELECT * FROM member ORDER BY uno DESC LIMIT #{startRow}, #{perPageNum}")
+	List<MemberVO> listCriteria(Criteria cri);
+
+	@Select("SELECT * FROM member WHERE uname LIKE CONCAT('%',#{search},'%') ")
+	/* + " ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}") */ 
+	public List<MemberVO> accuseSearch(String search);
+
 }

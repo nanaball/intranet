@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>    
+<%@ include file="header2.jsp" %>    
 
 <style>
 	 
@@ -29,9 +29,6 @@
     }
     
     
-    #borders div:last-child{
-        width:36.5%    
-    }
     
     #borders div{
         width:48%;
@@ -196,14 +193,10 @@
 					</table>				
 				</div>
 				<div id="border4"><h3>직원복지</h3></div>
-				<div id="border5"><h3>일정</h3></div>
 			</div>
 		</div>
-
-	
-	
-	
 	<script>
+	
 	/*
 	// border1 에 공지사항 목록 요청
 	$(document).ready(function() {
