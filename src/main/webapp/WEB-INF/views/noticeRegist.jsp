@@ -20,6 +20,7 @@
 	float:left;
 	padding:20px;
 	list-style:none;
+	color:black;
 }
 </style>
 	<form id="registerForm" method="POST"> 
@@ -113,7 +114,7 @@
 			
 			let files = e.originalEvent.dataTransfer.files;
 			
-			console.log(files);
+			// console.log(files);
 			let maxSize = 31457280;			// 30MB
 			
 			let formData = new FormData();
@@ -148,6 +149,7 @@
 						html += "<a href='"+data[i]+"' class='delBtn'>[삭제]</a>";
 						html += "</div>";
 						html += "</li>";
+						console.log(html);
 						$(".uploadList").append(html);
 					}
 				},
@@ -168,18 +170,18 @@
 			let imgSrc, fileName, getLink;
 			
 			if(checkImage(fullName)){
-				imgSrc = contextPath + "/displayFile?fileName="+fullName;
-				getLink = contextPath + "/displayFile?fileName="+fullName.replace("s_","");
+				imgSrc = contextPath+"/displayFile?fileName="+fullName;
+				getLink = contextPath+"/displayFile?fileName="+fullName.replace("s_","");
 			}else{
 				imgSrc = contextPath + "/resources/img/file.png";
 				getLink = contextPath + "/displayFile?fileName="+fullName;
 			}
 			fileName = fullName.substr(fullName.lastIndexOf("_")+1);
-			return {fileName : fileName, imgSrc : imgSrc, getLint : getLink};
+			return {fileName : fileName, imgSrc : imgSrc, getLink : getLink};
 		}
 		
 		// 첨부파일 삭제
-		$(".uploadList").on("click","delBtn",function(event){
+		$(".uploadList").on("click",".delBtn",function(event){
 			event.preventDefault();
 			let target = $(this);
 			let fullName = target.attr("href");

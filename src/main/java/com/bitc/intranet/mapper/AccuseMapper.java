@@ -117,11 +117,12 @@ public interface AccuseMapper {
 	@Update("UPDATE accuse SET seq = seq + 1 WHERE origin = #{origin} AND seq > #{seq}")
 	void updateReply(AccuseVO reply)throws Exception;
 
-/*	
+
+	
 	// 게시글 검색 
 	@Select("SELECT * FROM accuse WHERE title like#{search}")
-	public List<AccuseVO> accuseSearch(String search);
-*/	
+	public List<AccuseVO> accuseSearch(String search) throws Exception;
+	
 
 
 
