@@ -20,7 +20,7 @@ public interface CommentMapper {
 	List<CommentVO> commentList(int bno);
 
 	/**
-	 * 댓글 삽입
+	 * 댓글 등록
 	 */
 	@Insert("INSERT INTO notice_comment(bno,noti_content,author) VALUES(#{bno},#{noti_content},#{author})")
 	int insert(CommentVO vo) throws Exception;
