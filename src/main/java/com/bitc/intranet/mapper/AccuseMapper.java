@@ -114,6 +114,7 @@ public interface AccuseMapper {
 	@Update("UPDATE accuse SET seq = seq + 1 WHERE origin = #{origin} AND seq > #{seq}")
 	void updateReply(AccuseVO reply)throws Exception;
 
+
 	/**
 	 * 게시글 제목으로 검색
 	 * @param search
@@ -122,6 +123,7 @@ public interface AccuseMapper {
 	@Select("SELECT * FROM accuse WHERE title LIKE CONCAT('%',#{search},'%') ")
 	/* + " ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}") */ 
 	public List<AccuseVO> accuseSearch(String search);
+
 	
 
 

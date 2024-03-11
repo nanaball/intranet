@@ -39,7 +39,7 @@ public class MessageController {
 	// 게시글 새 글 작성 페이지 요청
 	@GetMapping("messageRegist")
 	public String regist() throws Exception{
-		return "regist";
+		return "messageRegist";
 	}
 	
 	// 결제하기 글 등록 처리 요청

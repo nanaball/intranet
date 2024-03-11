@@ -82,9 +82,8 @@ public class NoticeController {
 	
 	// 게시글 수정완료 요청
 	@PostMapping("modify")
-	public String modifyPost(RedirectAttributes rtts, NoticeVO vo, Model model) throws Exception {
-		String result = bs.modify(vo);
-		rtts.addFlashAttribute("result",result);
+	public String modifyPost(RedirectAttributes rtts, NoticeVO vo) throws Exception {
+		bs.modify(vo);
 		rtts.addAttribute("bno",vo.getBno());
 		return "redirect:/Notice/read";
 	}
