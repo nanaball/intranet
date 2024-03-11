@@ -34,13 +34,9 @@ public class AccuseMapperTest {
 	
 
 	@Test
-	public void accuseSearch(){		
-		try {
-			List<AccuseVO> read = as.accuseSearch("테스트");
-			System.out.println(read);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void accuseSearch() throws Exception{		
+		List<AccuseVO> read = as.accuseSearch("테스트");
+		System.out.println(read);		
 	}
 
 }
