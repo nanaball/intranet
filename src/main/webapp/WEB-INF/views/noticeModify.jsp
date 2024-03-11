@@ -5,6 +5,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+.fileDrop{
+	width:100%;
+	height:150px;
+	border:1px solid red;
+	background-color:lightgray;
+	margin:auto;
+}
+
+.uploadList{
+	border:1px solid skyblue;
+	width:100%;
+	height:250px;
+}
+
+.uploadList li{
+	float:left;
+	padding:20px;
+	list-style:none;
+	color:black;
+}
+</style>
 </head>
 <body>
 	<h3>게시글 수정</h3>
