@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.WelfareService;
 import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.WelfareVO;
 
 import lombok.RequiredArgsConstructor;
@@ -54,16 +55,16 @@ public class WelfareController {
 	}
 	
 	// 복지 수정
-	@GetMapping("modify")
-	public String welfareModify(int num, Model model) throws Exception {
+	@GetMapping("welfareModify")
+	public String modifyGet(int num, Model model) throws Exception {
 		WelfareVO vo = ws.detail(num);
 		model.addAttribute(vo);
 		return "welfareModify";
 	}
 	
 	// 복지 수정완료
-	@PostMapping("modify")
-	public String modifyWelfare(RedirectAttributes rtts, WelfareVO vo, Model model) throws Exception{
+	@PostMapping("welfaremodify")
+	public String modifyPost(RedirectAttributes rtts, WelfareVO vo, Model model) throws Exception{
 		String result = ws.modify(vo);
 		rtts.addFlashAttribute("result", result);
 		rtts.addAttribute("num", vo.getNum());
