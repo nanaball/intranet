@@ -67,9 +67,10 @@ drop table ;
 -- 메세지전달
 
 CREATE TABLE message_tbl(
- 	mno INT PRIMARY KEY auto_increment,			-- 메세지 번호
+ 	mno INT  PRIMARY KEY auto_increment,		-- 메세지 번호
+ 	title	 VARCHAR(50) NOT NULL, 	
 	targetid VARCHAR(50) NOT NULL,				-- 수신자 아이디
-	sender VARCHAR(50),                         -- 수신자 아이디(로그인된 사용자 생략가능)
+	sender   VARCHAR(50),                       -- 수신자 아이디(로그인된 사용자 생략가능)
 	message TEXT NOT NULL,						-- 발신 메세지
 	opendate TIMESTAMP NULL,					-- 수신 확인 시간
 	senddate TIMESTAMP NOT NULL DEFAULT now(),	-- 발신 시간

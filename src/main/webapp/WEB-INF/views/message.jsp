@@ -81,7 +81,7 @@
 		$(function(){
 			$("#regist").on("click",function(){
 				if(confirm("새 글 작성 페이지로 이동합니다")){
-					location.href="${pageContext.request.contextPath}/message/messageRegist";
+					location.href="${pageContext.request.contextPath}/messages/messageRegist";
 				}
 			});
 		});
