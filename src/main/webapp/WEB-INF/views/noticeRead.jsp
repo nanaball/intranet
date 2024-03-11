@@ -46,7 +46,7 @@
 							<c:when test="${fn:contains(file,'s_')}">
 								<img src="${path}/display?fileName=${file}" />
 								<div>
-									<a href="${path}/displayFile?fileName=${fn:replace(file,'s_','' }" target="_blank">
+									<a href="${path}/displayFile?fileName=${fn:replace(file,'s_','') }" target="_blank">
 										${fn:substringAfter(fn:replace(file,'s_',''),'_') }
 									</a>
 								</div>

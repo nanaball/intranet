@@ -57,7 +57,11 @@ public class NoticeService {
 	 * @return 조회된 게시글 정보
 	 */
 	public NoticeVO read(int bno) throws Exception{
-		return mapper.read(bno);
+		NoticeVO vo = mapper.read(bno);
+		
+		List<String> fileList = attachMapper.getAttach(bno);
+		vo.setFiles(fileList);
+		return vo;
 	}
 
 
