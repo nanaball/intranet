@@ -55,12 +55,12 @@ public class CommentController {
 	}
 	
 	// 댓글 수정
-	@PatchMapping(value="/{cno}", produces="text/plain;charset=utf-8")
+	@PatchMapping(value="/{noti_cno}", produces="text/plain;charset=utf-8")
 	public ResponseEntity<String> update(
-			@PathVariable(name="cno") int cno,
+			@PathVariable(name="noti_cno") int cno,
 			@RequestBody CommentVO vo
 			){
-		System.out.println("cno : " + cno);
+		System.out.println("noti_cno : " + cno);
 		System.out.println("vo : " + vo);
 		vo.setNoti_cno(cno);
 		try {

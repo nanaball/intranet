@@ -67,7 +67,7 @@
 		var perPageNum = 5;
 		var page = 1;
 		
-		listPage(page);
+		//listPage(page);
 		
 		function listPage(page){
 			$("#modCom").css("display","none");
@@ -92,7 +92,7 @@
 				let content = list[i].noti_content;
 				let auth = lint[i].author;
 				console.log(comment, noti_cno, noti_content, auth);
-				str += `<li>\${noti_cno}-\${auth} - <span onclick='modifyPage(this,"\${noti_cno}","\${noti_content}","\${auth}");'>수정</span></br></hr>\${noti_content}</li>`;
+				str += `<li>\${noti_cno}-\${auth} - <span onclick='modifyPage(this,"\${noti_cno}","\${noti_content}","\${auth}");'>수정</span><br/><hr/>\${noti_content}</li>`;
 			}
 			if(page == 1){
 				$("#comments").html(str);
@@ -106,7 +106,7 @@
 		// 댓글 전체 리스트
 		function getCommentList(){
 			$("#modCom").css("display","none");
-			$("body").prepend($("modCom"));
+			$("body").prepend($("#modCom"));
 			let url = "${path}/comment/"+bno+"/list";
 			
 			$.getJSON(url, function(data){
@@ -199,7 +199,7 @@
 			let cno = $("#numCom").text();
 			let content = $("#comText").val();
 			let auth = $("#auth").val();
-			console.log(cno,content,auth);		// 데이터 전달 완료
+			console.log(cno,content,auth);
 /* 화면에 바로 노출되지않음 */		
 			$.ajax({
 				type : "PATCH",
@@ -208,12 +208,12 @@
 					"Content-Type" : "application/json"
 				},
 				data : JSON.stringify({
-					noti_cno : cno,
-					bno : bno,
+					// noti_cno : cno,
+					// bno : bno,
 					author : auth,
 					noti_content : content
 				}),
-				dataType : "test",
+				dataType : "text",
 				success : function(result){
 					alert(result);
 					page = 1;
@@ -236,7 +236,7 @@
 				success : function(result){
 					alert(result);
 					page = 1;
-					listPage(page);
+					//listPage(page);
 				},
 				error : function(res){
 					console.log(res);
@@ -245,7 +245,7 @@
 		});
 		
 		// 마우스 스크롤로 이벤트 처리
-		/* $(window).scroll(function(){
+/*		 $(window).scroll(function(){
 			let dh = $(document).height();
 			let wh = $(window).height();
 			let wt = $(window).scrollTop();
@@ -257,6 +257,6 @@
 				page++;
 				listPage(page);
 			}
-		}) */
-		
+		})
+*/		
 	</script>
