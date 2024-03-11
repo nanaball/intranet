@@ -15,16 +15,20 @@
         justify-content:space-between;
     }
     
+    #wrap > .search{
+    	justify-content: center;
+    }
+    
+    #div > #wrap > #searchBtn{
+    	hegiht : 500px;
+    }
+    
+    #regist {
+        margin-left: auto; /* 버튼을 오른쪽으로 이동 */
+    }
     
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
-	/* 2/28 작업 */
-	let result = '${result}';
-	if(result != ''){
-		alert(result);
-	}
-	
-
 </script>
 </head>
 <body>
@@ -118,46 +122,64 @@
 				</c:choose>
             </table>
             <br/>
-
-<!-- 					
-            <input type="text" class="form-control" id="search" placeholder="검색할 게시글 제목" style="border:1px solid gray;" />
-			<input type="button" id="searchBtn" value="검색" />
-			
-  -->          
-  			<input type="button" id="regist" value="새 글 작성" />
+			<span class="search">
+            	<input type="text" id="search" placeholder="검색할 게시글 제목" style="border:1px solid gray;" />
+				<input type="button" id="searchBtn" value="검색" />
+			</span>
+  			<input type="button" class="regist" id="regist" value="새 글 작성" />
 		</div>
 	</div>
 	
 	<script>
 		// 새글 작성 
 		$(function(){
-			$("#regist").on("click",function(){
+			$("#regist").click(function(){
 				if(confirm("새 글 작성 페이지로 이동합니다")){
 					location.href="${pageContext.request.contextPath}/accuse/accuseRegist";
 				}
 			});
 		});
 
-		/*		
+			
 		// 게시글 제목 검색
-		$("#searchBtn").on("click"', function(){
-			let search = $("search").val()
+		$("#searchBtn").click(function(){
+			let search = $("#search").val();
 			
 			$.ajax({
-				url : "/accuseSearch",
+				url : "${path}/accuse/accuseSearch",
 				type : "get",
 				datatype:"json",
 				data:{
 					"search" : search,
 				},
-				seccess:makeTable,
-				error:function(e){
+				 success: function(data, statusText, response) {
+			            // 결과를 표시할 테이블 요소를 찾기
+			            let html = $("#borders table.list tbody");
+			            // 이전 검색 결과를 삭제
+			            html.empty();
+			            // 검색 결과를 테이블에 추가.
+
+			          
+			            html.append("<tr><th>글번호</th><th>제목</th><th>작성자</th><th>작성시간</th><th>조회수</th></tr>");
+			            for (let i = 0; i < data.length; i++) {
+			            	console.log(data[i]);
+			                let row = $("<tr>");
+			                row.append($("<td>").text(data[i].bno));
+			                row.append($("<td>").append($("<a>").attr("href", "${path}/accuse/readPage?bno=" + data[i].bno).text(data[i].title)));
+			                row.append($("<td>").text(data[i].writer));
+			                row.append($("<td>").text(data[i].regdate));
+			                row.append($("<td>").text(data[i].viewcnt));
+			                html.append(row);
+			            }			           
+				 },
+				error:function(e, status){
 					alert(e);
+					console.log("error response : ", e);
+					console.log("처리상태 : " , status);
+					console.log("error message : " , e.responseText);
 				}
 			});
 		});
-		
-*/		
 	</script>
 </body>
 </html>
