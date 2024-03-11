@@ -79,7 +79,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form method="post" action="memberUpdate" enctype="application/x-www-form-urlencoded">
+	<form name="memberUpdate" method="post" action="memberUpdate" enctype="application/x-www-form-urlencoded">
 	<br/><br/><br/>
 		<table align="center">
 			<tr>
@@ -92,13 +92,13 @@
 				<tr>
 					<td>기존 비밀번호</td>
 					<td>
-						<input type="password" id="upw" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+						<input type="password" id="upw" name="upw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" required />
 					</td>
 				</tr>
 				<tr>
 					<td>새 비밀번호</td>
 					<td>
-						<input type="password" id="newUpw" name="newUpw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" />
+						<input type="password" id="newUpw" name="newUpw" data-msg="비밀번호" placeholder="비밀번호를 입력해주세요"  />
 					</td>
 				</tr>
 				<tr>
@@ -155,13 +155,6 @@
 				return;
 			}
 			
-			if($("#newUpw").val().length <= 0){
-				alert("새 비밀번호를 입력해주세요.");
-				$("#newUpw").val("");
-				$("#newUpw").focus();
-				return;
-			}
-			
 			if($("#uname").val().length <= 0){
 				alert("이름을 입력해주세요");
 				$("#uname").val("");
@@ -198,6 +191,8 @@
 				return;
 			}
 			
+			memberUpdate.submit();
+			
 			alert("정보가 수정되었습니다.");
 			location.href = "${pageContext.request.contextPath}/main";
 			
@@ -226,7 +221,12 @@
 				location.href = "${pageContext.request.contextPath}";
 			}
 			*/
+			
 		});
+		
+		
+		
+		
 	</script>
 
 </body>
