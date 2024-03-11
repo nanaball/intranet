@@ -71,6 +71,14 @@ h2 {
 	</div>
 
 	<script>
+	$(function(){
+		$("input").keydown(function(event){
+			if(event.keyCode === 13){
+				$("#btn").click();
+			}
+		})
+	});
+	// 여기까지 추가
     $(function(){
     	
     	$("#btn").click(function(){
