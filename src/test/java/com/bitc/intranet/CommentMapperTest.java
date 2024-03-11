@@ -32,7 +32,7 @@ public class CommentMapperTest {
 		cm.insert(vo);
 	}
 	
-	//@Test
+	@Test
 	public void testCommentList() {
 		try {
 			List<CommentVO> list = cm.commentList(23);

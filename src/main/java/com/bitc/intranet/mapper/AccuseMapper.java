@@ -2,17 +2,14 @@ package com.bitc.intranet.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.AccuseVO;
-import com.bitc.intranet.vo.NoticeVO;
-import com.bitc.intranet.vo.FreeVO;
 
 public interface AccuseMapper {
 	
@@ -118,10 +115,15 @@ public interface AccuseMapper {
 	void updateReply(AccuseVO reply)throws Exception;
 
 
-	
-	// 게시글 검색 
-	@Select("SELECT * FROM accuse WHERE title like#{search}")
-	public List<AccuseVO> accuseSearch(String search) throws Exception;
+	/**
+	 * 게시글 제목으로 검색
+	 * @param search
+	 * @return
+	 */
+	@Select("SELECT * FROM accuse WHERE title LIKE CONCAT('%',#{search},'%') ")
+	/* + " ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}") */ 
+	public List<AccuseVO> accuseSearch(String search);
+
 	
 
 

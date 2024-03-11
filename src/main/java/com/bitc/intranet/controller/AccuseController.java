@@ -144,10 +144,11 @@ public class AccuseController {
 	
 	
 	
-/*
+
 	// 게시글 검색
 	@RequestMapping("/accuseSearch")
-	public @ResponseBody List<AccuseVO> accuseSearch(String search){
+	@ResponseBody 
+	public List<AccuseVO> accuseSearch(String search){
 		System.out.println(search);
 		
 		search = "%" + search + "%";
@@ -156,7 +157,7 @@ public class AccuseController {
 		
 		return serchList;
 	}
-*/
+
 	
 	
 }
