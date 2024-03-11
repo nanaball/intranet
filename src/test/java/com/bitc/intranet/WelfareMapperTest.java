@@ -25,7 +25,7 @@ public class WelfareMapperTest {
 	// @Test
 	public void testWelfare() throws Exception{
 		WelfareVO vo = new WelfareVO();
-		vo.setMName("크롱");
+		vo.setModel("크롱");
 		vo.setPrice(30);
 		vo.setStock(50000);
 		vo.setSoldout("Y");

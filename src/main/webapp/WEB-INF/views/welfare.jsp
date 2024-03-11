@@ -85,11 +85,11 @@
 					<c:when test="${!empty List}">
 					<!-- 여기에 tr 넣으면 가로로 늘어나는데 끝도없이 가로로만 늘어남 -->
 						<c:forEach var="m" items="${List}">
-							<tr>
+							<tr onclick="location.href='welfareDetail?num=${m.num}'">
 							<!-- Each 안에 tr 넣으면 밑으로 늘어나는데.. -->
 									<!-- 음.. 테이블을 bno로 지정하고 detail은 그 bno를 통해서 이동하도록 만들어야 되나 어떡해야 되나 -->
 									<td>
-										<a href="welfareDetail?num=${m.num}"><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></a></br>
+										<img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></a></br>
 									</td>
 									<td>${m.model}</td>
 									<td>${m.intro}</td>

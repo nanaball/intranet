@@ -37,12 +37,12 @@ public class WelfareService {
 
 	/**
 	 * 복지 상품 상세보기
-	 * @param mNo
+	 * @param num
 	 * @return
 	 * @throws Exception
 	 */
-	public WelfareVO detail(int mNo) throws Exception{
-		return mapper.detail(mNo);
+	public WelfareVO detail(int num) throws Exception{
+		return mapper.detail(num);
 	}
 	
 	
@@ -63,8 +63,8 @@ public class WelfareService {
 	 * @param vo
 	 * @throws Exception
 	 */
-	public void removeWelfare (int mNo) throws Exception{
-		mapper.delete(mNo);
+	public void removeWelfare (int num) throws Exception{
+		mapper.delete(num);
 	}
 	
 //	/**

@@ -2,6 +2,7 @@ package com.bitc.intranet.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.mapper.AccuseMapper;
@@ -120,10 +121,6 @@ public class AccuseService {
 		PageMaker pm = new PageMaker(cri, totalCount);
 		return pm;
 	}
-
-	
-	
-
 	
 	
 	/**
@@ -131,11 +128,10 @@ public class AccuseService {
 	 * @param search
 	 * @return
 	 */
-/*
-	public List<AccuseVO> accuseSearch(String search) {
-		
+
+	public List<AccuseVO> accuseSearch(String search) {		
 		return mapper.accuseSearch(search);
 	}
-*/
+
 	
 }
