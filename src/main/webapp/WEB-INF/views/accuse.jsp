@@ -181,9 +181,6 @@
 			});
 		});
 	</script>
-</body>
-</html>
-</html>
 
 
 

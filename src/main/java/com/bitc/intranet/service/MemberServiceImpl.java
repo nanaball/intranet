@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.mapper.MemberMapper;
+import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.util.PageMaker;
+import com.bitc.intranet.vo.AccuseVO;
 import com.bitc.intranet.vo.MemberVO;
 
 import lombok.RequiredArgsConstructor;
@@ -25,8 +28,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberVO> list() throws Exception {
-		return null;
+	public List<MemberVO> listAll() throws Exception {
+		return mapper.listAll();
 	}
 
 	// 중복 아이디 찾기 위한 아이디 검색 -완
@@ -50,6 +53,23 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void changePass(MemberVO vo) throws Exception {
 		mapper.changePass(vo);		
+	}
+
+	@Override
+	public List<MemberVO> listCriteria(Criteria cri) {
+		return mapper.listCriteria(cri);
+	}
+
+	@Override
+	public PageMaker getPageMaker(Criteria cri) {
+		int totalCount = mapper.totalCount();
+		PageMaker pm = new PageMaker(cri, totalCount);
+		return pm;
+	}
+
+	@Override
+	public List<MemberVO> accuseSearch(String search) {
+		return mapper.accuseSearch(search);
 	}
 
 }
