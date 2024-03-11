@@ -3,17 +3,12 @@
 <%@ include file = "header.jsp" %>
 <!-- page import 할땐 패키지명을 다 기입할 것. 파일을 열어서 제일 상단에 있는 1줄 -->
 <%@ page import=
-	"java.sql.*, java.util.*, com.bitc.intranet.vo.BoardVO, com.bitc.intranet.util.*" %>
+	"java.sql.*, java.util.*,com.bitc.intranet.vo.NoticeVO, com.bitc.intranet.util.*" %>
 <style>
 	body{
 		height : 600px;
 	}
-	.member{
-		border : "1";
-		height : "163px";
-	}
 	#wrap{
-    	border:1px solid red;
         width:1450px;
         height:600px;
         margin:10px 0 10px 30px;
@@ -34,8 +29,13 @@
 	<!-- 게시판 리스트 -->
 	<div id="wrap">
 		<div id="borders">
-			<h2>공지사항</h2>	
-			 <table border="1" class="list">
+			<br/>
+			<h1>공지사항</h1>
+			<br/>
+			<hr/>
+			<br/>
+			<br/>
+			 <table border="1" class="list" width="70%">
                 <tr>
                     <th>글 번호</th>
                     <th>카테고리</th>
@@ -54,7 +54,7 @@
 								</td>
 								<td>
 		<!-- 추가된 내용 -->						
-									<a href="boardRead${pm.makeQuery(pm.cri.page)}&bno=${b.bno}">
+									<a href="noticeRead${pm.makeQuery(pm.cri.page)}&bno=${b.bno}">
 										${b.title}
 									</a>
 								</td>
@@ -68,19 +68,19 @@
 								<tr>
 									<th colspan="5">
 										<c:if test="${pm.first}">
-											<a href="board?page=1">[&laquo;]</a>
+											<a href="notice?page=1">[&laquo;]</a>
 										</c:if>
 										<c:if test="${pm.prev}">
-											<a href="board?page=${pm.startPage-1}">[%lt;]</a>
+											<a href="notice?page=${pm.startPage-1}">[%lt;]</a>
 										</c:if>
 										<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
-											<a href="board?page=${i}">[${i}]</a>
+											<a href="notice?page=${i}">[${i}]</a>
 										</c:forEach>
 										<c:if test="${pm.next}">
-											<a href="board?page=${pm.endPage+1}">[&gt;]</a>
+											<a href="notice?page=${pm.endPage+1}">[&gt;]</a>
 										</c:if>
 										<c:if test="${pm.last}">
-											<a href="board?page=${pm.maxPage}">[&raquo;]</a>
+											<a href="notice?page=${pm.maxPage}">[&raquo;]</a>
 										</c:if>
 									</th>
 								</tr>
@@ -102,7 +102,7 @@
 		$(function(){
 			$("#regist").on("click",function(){
 				if(confirm("새 글 작성 페이지로 이동합니다")){
-					location.href="${pageContext.request.contextPath}/Board/boardRegist";
+					location.href="${pageContext.request.contextPath}/Notice/noticeRegist";
 				}
 			});
 		});

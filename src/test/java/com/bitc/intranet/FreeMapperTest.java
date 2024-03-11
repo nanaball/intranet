@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bitc.intranet.mapper.FreeMapper;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.FreeVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)

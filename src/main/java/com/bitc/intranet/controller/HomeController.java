@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bitc.intranet.service.BoardService;
+import com.bitc.intranet.service.NoticeService;
 import com.bitc.intranet.service.FreeService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class HomeController {
 	
-	private final BoardService bs;
+	private final NoticeService bs;
 	private final FreeService fs;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -43,8 +43,13 @@ public class HomeController {
 	}
 	
 	
-	
-	@GetMapping("Board")
-	public void Board() {}
-	
+
+	// 로그아웃
+	@GetMapping("/logOut")
+	public String logOut(HttpServletRequest request, HttpSession session) throws Exception {
+	// 세션에서 사용자 정보를 제거
+	session.removeAttribute("loginMember");
+
+	return "redirect:/";
+	}
 }

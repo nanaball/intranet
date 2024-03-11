@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.MessageService;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.MessageVO;
 
 import lombok.RequiredArgsConstructor;
@@ -92,7 +92,7 @@ public class MessageController {
 		// 메인화면에 공지사항 최신글 5개 미리보기
 		@GetMapping("/recentNotices")
 		@ResponseBody
-		public List<BoardVO> recentNotices() throws Exception {		 
+		public List<NoticeVO> recentNotices() throws Exception {		 
 			return ms.recentNotices();
 			 
 		 }

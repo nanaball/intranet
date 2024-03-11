@@ -79,12 +79,10 @@
 		});
 
 		// reset 버튼
-		$("#freereset")
-				.on(
-						"click",
-						function() {
-							if (confirm("정말 취소하시겠습니까?")) {
-								location.href = "${pageContext.request.contextPath}/free/free/";
-							}
-						});
+		$("#freereset").on("click",
+			function() {
+			if (confirm("정말 취소하시겠습니까?")) {
+					location.href = "${pageContext.request.contextPath}/free/free/";
+			}
+		});
 	</script>

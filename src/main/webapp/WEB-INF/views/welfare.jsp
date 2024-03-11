@@ -98,8 +98,7 @@
 									</td>
 							</tr>
 						</c:forEach>
-					</c:when>
-				
+					</c:when>				
 					<c:otherwise>
 						<tr>
 							<td>등록된 상품이 없습니다.</td>

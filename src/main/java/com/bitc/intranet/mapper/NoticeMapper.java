@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
-import com.bitc.intranet.vo.BoardVO;
+import com.bitc.intranet.vo.NoticeVO;
 
-public interface BoardMapper {
+public interface NoticeMapper {
 	
 	/**
 	 * 게시글 작성
@@ -20,7 +20,7 @@ public interface BoardMapper {
 	 * @return	성공 유무 메세지
 	 */
 	@Insert("INSERT INTO notice(title, category, content, writer) VALUES(#{title}, #{category}, #{content}, #{writer})")
-	int regist(BoardVO board) throws Exception;
+	int regist(NoticeVO notice) throws Exception;
 	
 	/**
 	 * 조회수 증가
@@ -35,14 +35,14 @@ public interface BoardMapper {
 	 * @return 조회된 게시글 정보
 	 */
 	@Select("SELECT * FROM notice WHERE bno = #{bno}")
-	BoardVO read(int bno) throws Exception;
+	NoticeVO read(int bno) throws Exception;
 	
 	/**
 	 * 게시글 전체 목록 페이지
 	 * @return 전체 게시글 목록을 리스트로
 	 */
 	@Select("SELECT * FROM notice ORDER BY bno DESC")
-	List<BoardVO> listAll() throws Exception;
+	List<NoticeVO> listAll() throws Exception;
 	
 	/**
 	 *  게시글 수정 - 성공 유무에 따라 메세지 전달
@@ -50,7 +50,7 @@ public interface BoardMapper {
 	 * @return - 수정 작업 완료 여부를 메세지로 반환
 	 */
 	@Update("UPDATE notice SET title = #{title}, content = #{content}, writer = #{writer}, category = #{category}, regdate = now() WHERE bno = #{bno}")
-	int modify(BoardVO board) throws Exception;
+	int modify(NoticeVO notice) throws Exception;
 	
 	/**
 	 * 게시글 삭제
@@ -67,7 +67,7 @@ public interface BoardMapper {
 	 * @throws Exception
 	 */
 	@Select("SELECT * FROM notice ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}")
-	List<BoardVO> listCriteria(Criteria cri) throws Exception;
+	List<NoticeVO> listCriteria(Criteria cri) throws Exception;
 	
 	/**
 	 * 페이징 정보 처리
@@ -83,7 +83,7 @@ public interface BoardMapper {
 	 * @throws Exception
 	 */
 	@Select("SELECT * FROM notice ORDER BY bno DESC LIMIT 5")
-    List<BoardVO> recentNotices() throws Exception;
+    List<NoticeVO> recentNotices() throws Exception;
 
 	@Select("SELECT count(*) FROM notice")
 	int totalCount();

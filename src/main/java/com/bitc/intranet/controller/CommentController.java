@@ -38,12 +38,11 @@ public class CommentController {
 	}
 	
 	// 댓글 등록
-	@PostMapping("joncomment")
+	@PostMapping("joinComment")
 	public ResponseEntity<String> addComment(CommentVO vo){
 		System.out.println(vo);
 		ResponseEntity<String> entity = null;
 		// 인코딩용
-	
 	 	HttpHeaders headers = new HttpHeaders();
 	 	try{
 	 		String message = cs.addComment(vo);
@@ -56,7 +55,7 @@ public class CommentController {
 	}
 	
 	// 댓글 수정
-	@PatchMapping(value="/{cno}",produces="text/plain;charset=utf-8")
+	@PatchMapping(value="/{cno}", produces="text/plain;charset=utf-8")
 	public ResponseEntity<String> update(
 			@PathVariable(name="cno") int cno,
 			@RequestBody CommentVO vo
@@ -70,8 +69,10 @@ public class CommentController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
+			
 	}
 	
+	// 댓글 삭제
 	@DeleteMapping(value="/{cno}",produces="text/plain;charset=utf-8")
 	public String delete(
 			@PathVariable(name="cno") int cno
@@ -86,6 +87,6 @@ public class CommentController {
 			@PathVariable("bno") int bno,
 			Criteria cri) throws Exception{
 		System.out.println(cri);
-		return cs.commentListPage(bno,cri);
+		return cs.commentListPage(bno, cri);
 	}
 }

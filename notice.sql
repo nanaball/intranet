@@ -18,11 +18,19 @@ CREATE TABLE IF NOT EXISTS notice_comment(
     noti_updatedate TIMESTAMP NOT NULL DEFAULT now(),				-- 수정 시간
 	CONSTRAINT fk_tbl_bno FOREIGN KEY(bno) REFERENCES notice(bno),	-- 제약조건 생성
 	REFERENCES notice(bno) ON DELETE CASCADE,						-- 게시글 삭제시 댓글 삭제
-    	INDEX(bno)														-- 인덱스 정렬. 꼭 필요한 값에만 사용할 것
+    INDEX(bno)														-- 인덱스 정렬. 꼭 필요한 값에만 사용할 것
 );
 
-
+CREATE TABLE noti_attach(
+	fullName VARCHAR(300) NOT NULL,				-- 첨부파일 이름
+	bno INT NOT NULL,							-- 게시글 번호
+	regdate TIMESTAMP NULL DEFAULT now(),		-- 등록 시간
+	CONSTRAINT fk_noti_attach FOREIGN KEY(bno)
+	REFERENCES notice(bno)
+);
 
 select * from notice;
 
 select * from notice_comment;
+
+desc notice_comment;

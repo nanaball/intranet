@@ -42,7 +42,7 @@ public class CommentService {
 		return getResult(mapper.delete(cno));
 	}
 
-	public Map<String, Object> commentListPage(int bno, Criteria cri) {
+	public Map<String, Object> commentListPage(int bno, Criteria cri) throws Exception{
 		Map<String, Object> map = new HashMap<>();
 		List<CommentVO> list = mapper.listPage(bno,cri);
 		map.put("list", list);

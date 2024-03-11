@@ -99,6 +99,14 @@ h2 {
 	    });
 	    
     });
+    
+    
+    // 회원가입 성공시 알림 메세지
+	const msg = '${message}';
+	if(msg != ''){
+		alert(msg);
+	}
+</script>
     </script>
 
 </body>

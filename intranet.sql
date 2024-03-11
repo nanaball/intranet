@@ -51,6 +51,8 @@ CREATE TABLE IF NOT EXISTS official(
 
 SELECT * FROM member;
 
+SELECT * FROM model;
+
 
 -- 달력/ 일정
 CREATE TABLE IF NOT EXISTS calendar(
