@@ -37,8 +37,8 @@ public class MemberMapperTest {
 	
 	@Test
 	public void testList() throws Exception{
-		List<MemberVO> list = mapper.list();
-		System.out.println(list);
+		List<MemberVO> list = mapper.listAll();
+		System.out.println("회원 전체 목록" + list);
 		
 		MemberVO read = mapper.readMember("id001");
 		System.out.println(read);

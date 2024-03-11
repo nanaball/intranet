@@ -2,6 +2,9 @@ package com.bitc.intranet.service;
 
 import java.util.List;
 
+import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.util.PageMaker;
+import com.bitc.intranet.vo.AccuseVO;
 import com.bitc.intranet.vo.MemberVO;
 
 public interface MemberService {
@@ -20,7 +23,7 @@ public interface MemberService {
 	 * @return - 등록된 전체 회원 목록
 	 * @throws Exception
 	 */
-	public List<MemberVO> list() throws Exception;
+	public List<MemberVO> listAll() throws Exception;
 	
 	/**
 	 * 
@@ -44,6 +47,19 @@ public interface MemberService {
 	//비밀번호 변경
 
 	public void changePass(MemberVO vo) throws Exception;
+
+	// 페이징 처리된 리스트 목록
+	public List<MemberVO> listCriteria(Criteria cri);
+
+	// 페이징 정보 처리
+	public PageMaker getPageMaker(Criteria cri);
+	
+	// 회원 이름 검색
+	public List<MemberVO> accuseSearch(String search);
+
+
+
+
 
 
 	

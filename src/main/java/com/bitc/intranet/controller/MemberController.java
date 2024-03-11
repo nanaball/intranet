@@ -1,5 +1,7 @@
 package com.bitc.intranet.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,121 +15,142 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.MemberService;
+import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.util.PageMaker;
+import com.bitc.intranet.vo.AccuseVO;
 import com.bitc.intranet.vo.MemberVO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-  
 @Controller
 @RequestMapping("/member")
 @RequiredArgsConstructor
 @Slf4j
 public class MemberController {
-	
+
 	private final MemberService ms;
-	
+
 	// 회원가입 창 -- 완
 	// member/join
 	@GetMapping("/join")
 	public String join() {
 		return "join";
-		}
-	
-	
+	}
+
 	// 회원가입 -- 완
-	// TODO 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기 
+	// TODO 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기
 	// TODO 중복 아이디 일때 null 값이 아니면 회원 가입 창 뜨는것도 수정
 	@PostMapping("/joinsuc")
-	public String join( 
-			MemberVO vo,
+	public String join(MemberVO vo,
 //			HttpServletRequest request,
-			RedirectAttributes rttr
-			) throws Exception {
+			RedirectAttributes rttr) throws Exception {
 		log.info("vo : {} ", vo);
 		ms.addMember(vo);
-			rttr.addFlashAttribute("message", "회원가입 성공");
-			return "redirect:/";
+		rttr.addFlashAttribute("message", "회원가입 성공");
+		return "redirect:/";
 
 	}
-	
-	
-    // 아이디 중복 확인 -- 완
+
+	// 아이디 중복 확인 -- 완
 	@PostMapping("/checkId")
 	@ResponseBody
-	public String checkId(String uid) throws Exception{
-		
-        MemberVO vo = ms.readMember(uid);
-		
+	public String checkId(String uid) throws Exception {
+
+		MemberVO vo = ms.readMember(uid);
+
 		if (vo != null) {
-            return "duplicate";
-        } else {
-            return "not_duplicate";
-        }
+			return "duplicate";
+		} else {
+			return "not_duplicate";
+		}
 	}
-	
+
 	// 로그인 확인 - 완
 	// member/login
-   @PostMapping("/login")
-   public String loginCheck(@ModelAttribute MemberVO vo,
-		   			   HttpSession session) throws Exception {
-      MemberVO loginResult = ms.login(vo);
-      
-      if(loginResult != null) {
-    	  // 로그인 성공 - 일치하는 사용자 정보 검색 완료
-    	  session.setAttribute("loginMember", loginResult);
-         return "redirect:/main";
-      }else {
-    	  // 로그인 실패  - 일치하는 사용자 정보 없음
-         return "redirect:/";
-      }
-   }
+	@PostMapping("/login")
+	public String loginCheck(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {
+		MemberVO loginResult = ms.login(vo);
 
-   //로그인창에서 비밀번호 찾기
-   @PostMapping("/findPass")
-   public String findPass(@ModelAttribute(name="vo") MemberVO vo,
+		if (loginResult != null) {
+			// 로그인 성공 - 일치하는 사용자 정보 검색 완료
+			session.setAttribute("loginMember", loginResult);
+			return "redirect:/main";
+		} else {
+			// 로그인 실패 - 일치하는 사용자 정보 없음
+			return "redirect:/";
+		}
+	}
 
-							Model model) throws Exception {
-	   MemberVO findPassResult = ms.findPass(vo);
-	  System.out.println(vo);
-	  System.out.println(findPassResult);
-	   if(findPassResult != null) {
-		   //아이디,이름,메일 정보가 확인되면 비밀번호 변경창으로 이동
-		   return "changePass";
-	   }else {
-		   return "findPass";
-	   }
+	// 로그인창에서 비밀번호 찾기
+	@PostMapping("/findPass")
+	public String findPass(@ModelAttribute(name = "vo") MemberVO vo,
+
+			Model model) throws Exception {
+		MemberVO findPassResult = ms.findPass(vo);
+		System.out.println(vo);
+		System.out.println(findPassResult);
+		if (findPassResult != null) {
+			// 아이디,이름,메일 정보가 확인되면 비밀번호 변경창으로 이동
+			return "changePass";
+		} else {
+			return "findPass";
+		}
+
+	}
+
+	@GetMapping("/findPass")
+	public String findPass() {
+		return "/findPass";
+	}
+
+	// 비밀번호 변경
+	@PostMapping("/changePass")
+	public String changePass(@ModelAttribute MemberVO vo, Model model) throws Exception {
+		System.out.println(vo);
+		ms.changePass(vo);
+		return "redirect:/";
+	}
+
+	/*
+	 * @GetMapping("/changePass") public String changePass() { return "/changePass";
+	 * }
+	 */
+
+	// 회원 수정 창
+	@GetMapping("/views/memberUpdate")
+	public String memberUpdate() {
+		return " views/memberUpdate";
+	}
+
+	// 회원정보 관리창 
+	@GetMapping("/memberInfo")
+	public String memberInfo(Criteria cri, Model model) throws Exception{
+		//List<AccuseVO> list = bs.listAll();
+		//model.addAttribute("List",list); 
+		System.out.println("listPage criteria : " + cri);
+		List<MemberVO> List = ms.listCriteria(cri);
+		model.addAttribute("List",List);
 		
-   }
-   @GetMapping("/findPass")
-   public String findPass() {
-	   return "/findPass";
-   }
-   
-   //비밀번호 변경 
-   @PostMapping("/changePass")
-   public String changePass(@ModelAttribute MemberVO vo,
-		                    Model model
-		   					) throws Exception{
-	   System.out.println(vo);
-	   ms.changePass(vo);
-	   return "redirect:/"; 
-   }
+		PageMaker pm = ms.getPageMaker(cri);
+		model.addAttribute("pm",pm);
+		
+		return "memberInfo"; 
+	}
+	
+	// 회원 이름 검색
+	// 게시글 검색
+		@RequestMapping("/memberSearch")
+		@ResponseBody 
+		public List<MemberVO> accuseSearch(String search){
+			System.out.println(search);
+			
+			search = "%" + search + "%";
+			
+			List<MemberVO> serchList = ms.accuseSearch(search);
+			
+			return serchList;
+		}
+	
 
-   
-   /*
-   @GetMapping("/changePass")
-   public String changePass() {
-	   return "/changePass";
-   }*/
-   
-   
-
-   // 회원 수정 창 
-   @GetMapping("/views/memberUpdate")
-   public String memberUpdate() {
-	   return" views/memberUpdate";
-   }
-   
-   
 }

@@ -111,5 +111,14 @@
 		</div>		
 	</header>
 	<div class="wrapper" style="display: flex;">
-		<div class="selfinfo">	
+		<div class="selfinfo">
+			<img src="${path}/resources/img/profile.jpg" height="100px"><br/>
+			<img src="${path}/resources/img/mail.jpg" height="30px"><br/>
+				<!-- 부서 이름 / 사원명 -->
+				<c:if test="${not empty loginMember}">					
+  		  			<h5>${loginMember.getUdep()} / ${loginMember.getUname()}</h5>
+				</c:if>
+				<c:if test="${empty loginMember}">
+					없음 
+				</c:if>		
 		</div>
