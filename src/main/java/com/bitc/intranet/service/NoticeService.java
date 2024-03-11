@@ -73,10 +73,18 @@ public class NoticeService {
 	/**
 	 * 게시글 수정 - 성공 유무에 따라 메세지 전달
 	 * @param board - 수정할 게시글 정보
-	 * @return - 수정 작업 완료 여부를 메시지로 반환
 	 */
-	public String modify(NoticeVO notice) throws Exception{
-		return mapper.modify(notice) != 0 ? "수정 완료" : "실패";
+	public void modify(NoticeVO notice) throws Exception{
+		mapper.modify(notice);
+		
+		attachMapper.deleteAttach(notice.getBno());
+		List<String> fileList = notice.getFiles();
+		if(fileList != null && !fileList.isEmpty()) {
+			for(String fullName : fileList) {
+				attachMapper.replaceAttach(notice.getBno(), fullName);
+			}
+		}
+		
 	}
 
 	/**

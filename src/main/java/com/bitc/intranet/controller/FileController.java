@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,7 +55,7 @@ public class FileController {
 		return entity;
 	}
 	
-	// 파일 이미지 노출하지않게 처리
+	// 파일 이미지 경로 노출하지않게 처리
 	@GetMapping("/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception{
 		return new ResponseEntity<>(
@@ -62,5 +63,25 @@ public class FileController {
 				FileUtil.getHeaders(fileName),
 				HttpStatus.OK);
 				
+	}
+	
+	// 파일 삭제 제거 요청
+	@PostMapping("/deleteFile")
+	public ResponseEntity<String> deleteFile(String fileName) throws Exception{
+		boolean isDeleted = FileUtil.deleteFile(realPath, fileName);
+		return new ResponseEntity<>(
+				isDeleted ? "DELETE" : "FAILED",
+				HttpStatus.OK
+				);
+	}
+	
+	// 요청받은 전체 파일 삭제
+	@PostMapping("/deleteAllfiles")
+	public ResponseEntity<String> deleteAllFiles(@RequestParam("files[]") String[] files) throws Exception{
+		boolean isDeleted = false;
+		for(String file : files) {
+			isDeleted = FileUtil.deleteFile(realPath, file);
+		}
+		return new ResponseEntity<>(isDeleted ? "DELETE" : "FAILED", HttpStatus.OK);
 	}
 }

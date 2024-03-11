@@ -109,7 +109,7 @@
 				<div id="border1">
 					<h3>공지사항</h3>
 					<h6>&nbsp;</h6>
-					<span onclick="location.href='Board/board';"><h5>더보기</h5></span>					
+					<span onclick="location.href='Notice/notice';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
 					<h3>&nbsp;</h3>
 					<table  cellspacing="10"  cellpadding="10" board="1">
@@ -130,7 +130,7 @@
 									${n.category}
 								</td>
 								<td>
-									<a href="Board/readPage?bno=${n.bno}">
+									<a href="Notice/noticeRead?bno=${n.bno}">
 										${n.title}
 									</a>
 								<td>
