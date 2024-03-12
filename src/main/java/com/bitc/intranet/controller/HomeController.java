@@ -42,7 +42,7 @@ public class HomeController {
 	public void main(Model model) throws Exception {
 		model.addAttribute("notice", bs.recentNotices());
 		model.addAttribute("free", fs.recentFree());
-		model.addAttribute("welfare", ws.recentWelfare());
+		model.addAttribute("welfareList", ws.recentWelfare());
 	}
 	
 	

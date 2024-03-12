@@ -124,7 +124,7 @@ public class MemberController {
 	}
 
 	// 회원정보 관리창
-	@GetMapping("/memberInfo")
+	@GetMapping("/memberList")
 	public String memberInfo(Criteria cri, Model model) throws Exception {
 		// List<AccuseVO> list = bs.listAll();
 		// model.addAttribute("List",list);
@@ -135,7 +135,7 @@ public class MemberController {
 		PageMaker pm = ms.getPageMaker(cri);
 		model.addAttribute("pm", pm);
 
-		return "memberInfo";
+		return "memberList";
 	}
 
 	// 회원 이름 검색

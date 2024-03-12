@@ -62,7 +62,7 @@
 									<td align="center">${m.uid}</td>
 									<td align="center">${m.upw}</td>
 									<td>
-										<a href="${path}/memberUpdate?uno=${m.uno}"> 
+										<a href="${path}/memberDelete?uno=${m.uno}"> 
 											&nbsp;${m.uname} 
 										</a>
 									</td>
@@ -136,7 +136,7 @@
 			                row.append($("<td>").text(data[i].uno));
 			                row.append($("<td>").text(data[i].uid));
 			                row.append($("<td>").text(data[i].upw));
-			                row.append($("<td>").append($("<a>").attr("href", "${path}/memberUpdate?uno=" + data[i].uno).text(data[i].uname)));
+			                row.append($("<td>").append($("<a>").attr("href", "${path}/memberDelete?uno=" + data[i].uno).text(data[i].uname)));
 			                row.append($("<td>").text(data[i].uemail));
 			                row.append($("<td>").text(data[i].udep));
 			                row.append($("<td>").text(data[i].ujob));
