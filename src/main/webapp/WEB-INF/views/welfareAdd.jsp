@@ -72,7 +72,7 @@
 <body>
 	<!-- 게시판 리스트 -->
 	<form id="welfareAdd" method="POST">
-		<h2>상품 추가하기</h2>	
+	<h2>상품 추가하기</h2>	
 		 <table border="1">
                <tr id="title">
                    <th>상품 이미지</th>
