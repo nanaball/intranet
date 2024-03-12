@@ -71,7 +71,7 @@
 </head>
 <body>
 	<!-- 게시판 리스트 -->
-	<form id="welfareModify" method="POST">
+	<form id="welfare" method="POST">
 		<div id="wrap">
 			<div id="detail">
 				<h2>상품 수정하기</h2>	
@@ -96,6 +96,7 @@
 	            <hr/>
 	            <br/>
 	            <input type="button" id="modify" value="수정하기" />
+	            <input type="button" id="delete" value="삭제하기" />
 	            <input type="button" id="cancel" value="취소하기" />
 			</div>
 		</div>
@@ -104,11 +105,20 @@
 		$(function(){
 			$("#modify").on("click",function(){
 				if(confirm("상품을 수정합니다.")){
-					$("#welfareModify").submit();
-					alert("서브밋");
+					$("#welfare").submit();
+					alert("수정 완료");
 					location.href="${pageContext.request.contextPath}/Welfare/welfare";
 				}
 			});
+			
+			/*
+			$("#delete").on("click",function(){
+				if(confirm("상품을 삭제합니다."))
+					$("#welfareDelete").submit());
+					alert("삭제 완료")
+					location.href="${pageContext.request.contextPath}/Welfare/welfare";
+			});
+		*/
 			
 			$("#cancel").on("click",function(){
 				if(confirm("상품 수정을 취소합니다.")){
@@ -118,4 +128,3 @@
 		});
 	</script>
 </body>
-</html>

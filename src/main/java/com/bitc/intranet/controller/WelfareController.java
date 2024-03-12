@@ -78,7 +78,7 @@ public class WelfareController {
 	}
 	
 	// 구매
-	@GetMapping("buy")
+	@PostMapping("buy")
 	public String buy(WelfareVO vo) throws Exception{
 		ws.buyWelfare(vo);
 		return "redirect:/Welfare/welfare";

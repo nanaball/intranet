@@ -22,16 +22,13 @@ public class WelfareMapperTest {
 	@Autowired
 	WelfareMapper ws;
 	
-	@Test
+//	@Test
 	public void testWelfare() throws Exception{
 		WelfareVO vo = new WelfareVO();
 		vo.setModel("크롱3");
 		vo.setIntro("크롱크롱");
 		vo.setPrice(30333);
 		vo.setStock(50);
-		
-		
-		
 		ws.addWelfare(vo);
 	}
 	
@@ -40,7 +37,14 @@ public class WelfareMapperTest {
 	public void testList() throws Exception{
 		List<WelfareVO> list = ws.list();
 		System.out.println(list);
-		
-
 	}
+	
+	@Test
+	public void testBuy(WelfareVO vo) throws Exception{
+		vo.getNum();
+		
+		ws.buy(vo);
+		
+	}
+	
 }
