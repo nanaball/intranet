@@ -108,17 +108,15 @@
 					<h6>&nbsp;</h6>
 					<span onclick="location.href='Notice/notice';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
-					<h3>&nbsp;</h3>
 					<table  cellspacing="10"  cellpadding="10" board="1">
-<!-- 		                
+                
 						<tr>
 		                    <th>글 번호</th>
 		                    <th>카테고리</th>
 		                    <th>제목</th>
 		                    <th>작성시간</th>
-		                    <th>조회수</th>
 		                </tr>
--->
+
 		                <c:if test="${!empty notice}">
 		                	<c:forEach var="n" items="${notice}">
 		                	<tr>

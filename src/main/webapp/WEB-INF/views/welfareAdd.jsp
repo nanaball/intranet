@@ -71,7 +71,7 @@
 </head>
 <body>
 	<!-- 게시판 리스트 -->
-	<form id="welfareAdd" method="POST">
+	<form action="welfareAdd" method="POST">
 		<h2>상품 추가하기</h2>	
 		 <table border="1">
                <tr id="title">
@@ -91,17 +91,17 @@
            </table>
            <hr/>
            <br/>
-           <input type="button" id="add" value="추가하기" />
+           <input type="submit" id="welfareAdd" value="추가하기" />
            <input type="button" id="cancel" value="취소하기" />
 	</form>
 	<script>
-		$(function(){
-			$("#add").on("click",function(){
+		$(function(){		
+			$("#welfareAdd").on("click",function(){
 				if(confirm("상품을 추가합니다.")){
 					$("#welfareAdd").submit();
-					location.href="${pageContext.request.contextPath}/Welfare/welfare";
+			 		location.href="${pageContext.request.contextPath}/Welfare/welfare"; 
 				}
-			});
+			}); 
 			
 			$("#cancel").on("click",function(){
 				if(confirm("상품 추가를 취소합니다.")){
