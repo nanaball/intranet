@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.WelfareService;
@@ -54,9 +56,9 @@ public class WelfareController {
 	
 	// 복지 수정
 	@GetMapping("welfareModify")
-	public String modifyGet(int num, Model model) throws Exception {
+	public String modifyGet(@RequestParam Integer num, Model model) throws Exception {
 		WelfareVO vo = ws.detail(num);
-		model.addAttribute(vo);
+		model.addAttribute("welfareVO", vo);
 		return "welfareModify";
 	}
 	
@@ -82,11 +84,11 @@ public class WelfareController {
 		return "redirect:/Welfare/welfare";
 	}
 	
-//	// 새로운 복지 제품 미리보기
-//	@GetMapping("/recentWelfare")
-//	@ResponseBody
-//	public List<WelfareVO> recentWelfare() thrwos Exception{
-//		return ws.recentWelfare();
-//	}
+	// 새로운 복지 제품 미리보기
+	@GetMapping("/recentWelfare")
+	@ResponseBody
+	public List<WelfareVO> recentWelfare() throws Exception{
+		return ws.recentWelfare();
+	}
 	
 }

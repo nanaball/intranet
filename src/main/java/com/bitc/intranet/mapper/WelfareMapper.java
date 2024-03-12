@@ -62,13 +62,12 @@ public interface WelfareMapper {
 	@Delete("DELETE FROM model WHERE num = #{num}")
 	void delete(int num) throws Exception;
 	
-//	/**
-//	 * 새 제품 미리보기 3개
-//	 * @return
-//	 * @throws Exception
-//	 */
-//	@Select("SELECT * FROM model ORDER BY num DESC LIMIT 3")
-//	List<WelfareVO> recentWelfare() throws Exception;
+	/** 새 제품 미리보기 3개
+	 * @return
+	 * @throws Exception
+	 */
+	@Select("SELECT * FROM model ORDER BY num DESC LIMIT 5")
+	List<WelfareVO> recentWelfare() throws Exception;
 	
 	/**
 	 * 복지 상품 조회수
@@ -76,5 +75,7 @@ public interface WelfareMapper {
 	 * @throws Exception
 	 */
 	void updateCnt(int num) throws Exception;
+
+
 	
 }

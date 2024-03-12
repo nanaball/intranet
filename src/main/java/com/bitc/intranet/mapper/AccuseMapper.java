@@ -18,7 +18,7 @@ public interface AccuseMapper {
 	 * @param 게시글 등록 정보
 	 * @return	성공 유무 메세지
 	 */
-	@Insert("INSERT INTO accuse(title,content,writer,uno) " 
+	@Insert("INSERT INTO accuse(title, content,writer,uno) " 
 			+ " VALUES(#{title}, #{content}, #{writer}, #{uno})")
 	void regist(AccuseVO board) throws Exception;
 	

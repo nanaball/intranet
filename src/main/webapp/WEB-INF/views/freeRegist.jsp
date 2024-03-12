@@ -9,7 +9,8 @@
 			<hr />
 			<br /> 
 			<br />
-			<form method="POST">
+			<form method="POST" action="regist">
+				<input type="hidden" name="uno" value="${loginMember.uno}" />
 				<table border="1">
 					<tr>
 						<th colspan="2"><h1>자유게시판 글쓰기</h1></th>
@@ -52,8 +53,9 @@
 		</div>
 	</div>
 	<script>
+	$(document).ready(function() {
 		// 작성완료 버튼 클릭시
-		$("#freesus").click(function() {
+		$("#regist").click(function() {
 
 			// 각 칸별 빈칸 알림
 			if ($("#category") == null) {
@@ -71,7 +73,7 @@
 			}
 
 			if ($("#content").val().length <= 0) {
-				alert("카테고리를 선택해주세요.");
+				alert("내용을 선택해주세요.");
 				$("#content").val("");
 				$("#content").focus();
 				return;

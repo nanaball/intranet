@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitc.intranet.service.NoticeService;
+import com.bitc.intranet.service.WelfareService;
 import com.bitc.intranet.service.FreeService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class HomeController {
 	
 	private final NoticeService bs;
 	private final FreeService fs;
+	private final WelfareService ws;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request, HttpSession session) {		
@@ -40,18 +42,12 @@ public class HomeController {
 	public void main(Model model) throws Exception {
 		model.addAttribute("notice", bs.recentNotices());
 		model.addAttribute("free", fs.recentFree());
+		model.addAttribute("welfare", ws.recentWelfare());
 	}
 	
 	
 
-	// 로그아웃
-	@GetMapping("/logOut")
-	public String logOut(HttpServletRequest request, HttpSession session) throws Exception {
-	// 세션에서 사용자 정보를 제거
-	session.removeAttribute("loginMember");
-
-	return "redirect:/";
-	}
+	
 	
 
 }

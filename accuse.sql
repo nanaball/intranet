@@ -17,3 +17,5 @@ CREATE TABLE accuse(
 );
 
 select * from accuse;
+
+select * from model;

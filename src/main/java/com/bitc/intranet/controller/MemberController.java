@@ -123,34 +123,42 @@ public class MemberController {
 		return " views/memberUpdate";
 	}
 
-	// 회원정보 관리창 
+	// 회원정보 관리창
 	@GetMapping("/memberInfo")
-	public String memberInfo(Criteria cri, Model model) throws Exception{
-		//List<AccuseVO> list = bs.listAll();
-		//model.addAttribute("List",list); 
+	public String memberInfo(Criteria cri, Model model) throws Exception {
+		// List<AccuseVO> list = bs.listAll();
+		// model.addAttribute("List",list);
 		System.out.println("listPage criteria : " + cri);
 		List<MemberVO> List = ms.listCriteria(cri);
-		model.addAttribute("List",List);
-		
+		model.addAttribute("List", List);
+
 		PageMaker pm = ms.getPageMaker(cri);
-		model.addAttribute("pm",pm);
-		
-		return "memberInfo"; 
+		model.addAttribute("pm", pm);
+
+		return "memberInfo";
 	}
-	
+
 	// 회원 이름 검색
 	// 게시글 검색
-		@RequestMapping("/memberSearch")
-		@ResponseBody 
-		public List<MemberVO> accuseSearch(String search){
-			System.out.println(search);
-			
-			search = "%" + search + "%";
-			
-			List<MemberVO> serchList = ms.accuseSearch(search);
-			
-			return serchList;
-		}
-	
+	@RequestMapping("/memberSearch")
+	@ResponseBody
+	public List<MemberVO> accuseSearch(String search) {
+		System.out.println(search);
+
+		search = "%" + search + "%";
+
+		List<MemberVO> serchList = ms.accuseSearch(search);
+
+		return serchList;
+	}
+
+	// 로그아웃
+	@GetMapping("/logOut")
+	public String logOut(HttpServletRequest request, HttpSession session) throws Exception {
+		// 세션에서 사용자 정보를 제거
+		session.removeAttribute("loginMember");
+
+		return "redirect:/";
+	}
 
 }

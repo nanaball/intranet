@@ -43,8 +43,8 @@
 			<br/>
 			 <table border="1" class="list" width="70%">
                 <tr >
-                    <th>글 번호</th>
-                    <th>글제목</th>
+                    <th>글번호</th>
+                    <th>제목</th>
                     <th>작성자</th>
                     <th>작성시간</th>
                     <th>조회수</th>
@@ -73,7 +73,7 @@
 											</td>
 											<td align="center">${b.writer}</td>
 											<td align="center">
-												<f:formatDate value="${b.regdate}" pattern="yyyy-MM-dd HH:mm" />
+												<f:formatDate value="${b.updatedate}" pattern="yyyy-MM-dd HH:mm" />
 											</td>
 											<td align="center">${b.viewcnt}</td>
 										</tr>
