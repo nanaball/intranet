@@ -29,6 +29,7 @@
 </style>
 </head>
 <body>
+<c:if test="${loginMember.getUjob() == '관리자'}">
 	<h3>게시글 수정</h3>
 		<!-- model boardVO -->
 		<!-- board/modify POST -->
@@ -117,6 +118,9 @@
 				</c:if>
 			</div>
 		</form>
+		</c:if>
+		
+		<button onclick="goBack()">뒤로가기</button>
 		<script>
 			// drag & drop 시 브라우저가 파일을 해석하려는 기본이벤트를 제거
 			$(".fileDrop").on("dragenter dragover", function(e){
@@ -178,7 +182,7 @@
 			var contextPath = '${path}'
 				
 			function getFileInfo(fullName){
-				let imgSrc, 	fileName,	getLink;
+				let imgSrc, fileName, getLink;
 				if(checkImage(fullName)){
 					imgSrc = contextPath+"/displayFile?fileName="+fullName;
 					getLink = contextPath+"/displayFile?fileName="+fullName.replace("s_","");
@@ -219,6 +223,11 @@
 				$("#modifyForm").append(str);
 				$("#modifyForm").submit();
 			});
+			
+			// 관리자가 아니면 페이지 나가기
+			function goBack(){
+				window.history.back();
+			}
 		</script>
 </body>
 </html>

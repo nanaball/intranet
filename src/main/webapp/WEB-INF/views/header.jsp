@@ -78,6 +78,11 @@
 		text-decoration: underline;
 	}
 
+	/* 실험 */
+	.wrapper{
+		display: flex;
+		height:auto;
+	}
 </style>
 
 </head>
@@ -109,6 +114,6 @@
 			</ul>
 		</div>		
 	</header>
-	<div class="wrapper" style="display: flex;">
+	<div class="wrapper">
 		<div class="selfinfo">	
 		</div>

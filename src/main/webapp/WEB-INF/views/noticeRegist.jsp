@@ -20,9 +20,11 @@
 	float:left;
 	padding:20px;
 	list-style:none;
-	color:black;
+	background-color: gray;
+	color:red;
 }
 </style>
+<c:if test="${loginMember.getUjob() == '관리자'}">
 	<form id="registerForm" method="POST"> 
 	<table border="1">
 		<tr>
@@ -78,7 +80,8 @@
 		</div>
 	</div>
 	</form>
-	
+	</c:if>
+	<button onclick="goBack()">뒤로가기</button>
 	<script>
 		// 작성완료 버튼 클릭시
 		$("#noticeSuccess").click(function(){
@@ -195,6 +198,11 @@
 				}
 			});
 		});
+		
+		// 관리자가 아니면 페이지 나가기
+		function goBack(){
+			window.history.back();
+		}
 	</script>
 	<div style="clear:both;"></div>
 <%@ include file = "footer.jsp" %>
