@@ -29,7 +29,7 @@
 					<td>카테고리</td>
 					<td>
 						<select name="category"  >
-							<option>${freeVO.category}</option>
+							<option>${read.category}</option>
 							<option value="공지">공지</option>
 							<option value="사담">사담</option>
 							<option value="질문">질문</option>
@@ -40,18 +40,18 @@
 				<tr>
 					<td>제목</td>
 					<td>
-						<input name="title" autofocus required style="width:800px;" value="${freeVO.title}"/>
+						<input name="title" autofocus required style="width:800px;" value="${read.title}"/>
 					</td>
 				</tr>
 				<tr>
 					<td>내용</td>
 					<td>
-						<textarea name="content" required style="resize:none; width:800px; height:200px;">${freeVO.content}</textarea>
+						<textarea name="content" required style="resize:none; width:800px; height:200px;">${read.content}</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th colspan="2">
-						<a href="readPage?bno=${freeVO.bno}">
+						<a href="readPage?bno=${read.bno}">
 							<input type="button" value="이전페이지"/>
 						</a>
 						<input type="reset"  value="수정취소" />
