@@ -211,7 +211,7 @@
 			}
 			
 			
-			
+			 
 			alert("정보가 수정되었습니다.");
 			location.href = "${pageContext.request.contextPath}/main";
 			$("#memberUpdate").submit();
