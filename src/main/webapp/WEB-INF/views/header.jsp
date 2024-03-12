@@ -25,7 +25,6 @@
 		border : 1px black;
 		margin-top:15px;
 		padding-left:100px;
-		height : 200px;
 		width: 200px;	
 	}
 	

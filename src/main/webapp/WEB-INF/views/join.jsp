@@ -9,6 +9,8 @@
 <style>
 	h3{
 		text-align:center;
+		color: #1BBC9B;
+
 	}
 	
 	body{
@@ -19,12 +21,16 @@
 	}
 	
 	table{
-		background-color:white;
+		background-color:#EEEFF1;
 		background-radius:30px;
 		padding : 20px;
 		margin : auto;
 		height:auto;
 		border-radius:10px;
+		transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+    left: 50%;
 		
 	}
 	
@@ -40,6 +46,7 @@
 	table tr td select{
 	outline: none;
 	border: none;
+	border-radius: 10px;
 	padding: 10px;
 	font-size: 14px;
 }
@@ -53,13 +60,44 @@
 		margin:0;
 		padding:0;
 }
+
+#joinsuc {
+	background-color: #1BBC9B;
+	margin-bottom: 10px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+}
+
+#joincan {
+	border: 1px solid #1BBC9B;
+	color: #1BBC9B;
+	margin-bottom: 10px;
+	border-radius: 7px;
+}
+
+
+
+#checkId {
+	background-color: #1BBC9B;
+	margin-bottom: 10px;
+	color: white;
+	border: none;
+	border-radius: 7px;
+}
+
+td{
+	color:#1BBC9B;
+	font-weight:bold;
+}
+
+
 </style>
  
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 	<form method="post" action="joinsuc" enctype="application/x-www-form-urlencoded">
-		<H3>회원가입</H3>
 		<table align="center">
 			<tr>
 				<th colspan="3"><h3>회원가입</h3></th>

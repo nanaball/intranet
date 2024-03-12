@@ -14,6 +14,10 @@ body {
 	background-position: center;
 }
 div {
+	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+    left: 50%;
 	margin: auto;
 	width: 300px;
 	background-color: #EEEFF1;
