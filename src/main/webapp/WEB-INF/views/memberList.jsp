@@ -62,7 +62,7 @@
 									<td align="center">${m.uid}</td>
 									<td align="center">${m.upw}</td>
 									<td>
-										<a href="${path}/memberDelete?uno=${m.uno}"> 
+										<a href="${path}/member/memberDel?uno=${m.uno}"> 
 											&nbsp;${m.uname} 
 										</a>
 									</td>

@@ -161,4 +161,11 @@ public class MemberController {
 		return "redirect:/";
 	}
 
+	// 회원 삭제 창(관리자)
+	@GetMapping("/memberDel")
+	public String memberDel(int uno, Model model, HttpSession session) throws Exception {
+		List<MemberVO> vo = ms.listAll();
+		model.addAttribute("Member", vo);
+		return "memberDel";
+	}
 }
