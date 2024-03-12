@@ -29,7 +29,7 @@
 </style>
 </head>
 <body>
-<c:if test="${loginMember.getUjob() == '관리자'}">
+<%-- <c:if test="${loginMember.getUjob() == '관리자'}"> --%>
 	<h3>게시글 수정</h3>
 		<!-- model boardVO -->
 		<!-- board/modify POST -->
@@ -118,9 +118,9 @@
 				</c:if>
 			</div>
 		</form>
-		</c:if>
+		<%-- </c:if> --%>
 		
-		<button onclick="goBack()">뒤로가기</button>
+		<!-- <button onclick="goBack()">뒤로가기</button> -->
 		<script>
 			// drag & drop 시 브라우저가 파일을 해석하려는 기본이벤트를 제거
 			$(".fileDrop").on("dragenter dragover", function(e){

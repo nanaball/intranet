@@ -262,7 +262,7 @@
 		});
 		
 		// 마우스 스크롤로 이벤트 처리
-		 $(window).scroll(function(){
+		/*  $(window).scroll(function(){
 			let dh = $(document).height();
 			let wh = $(window).height();
 			let wt = $(window).scrollTop();
@@ -272,6 +272,6 @@
 				page++;
 				listPage(page);
 			}
-		})
+		}) */
 		
 	</script>
