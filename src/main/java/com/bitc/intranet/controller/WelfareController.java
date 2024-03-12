@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.WelfareService;
@@ -76,11 +77,11 @@ public class WelfareController {
 		return "redirect:/Welfare/welfare";
 	}
 	
-//	// 새로운 복지 제품 미리보기
-//	@GetMapping("/recentWelfare")
-//	@ResponseBody
-//	public List<WelfareVO> recentWelfare() thrwos Exception{
-//		return ws.recentWelfare();
-//	}
+	// 새로운 복지 제품 미리보기
+	@GetMapping("/recentWelfare")
+	@ResponseBody
+	public List<WelfareVO> recentWelfare() throws Exception{
+		return ws.recentWelfare();
+	}
 	
 }

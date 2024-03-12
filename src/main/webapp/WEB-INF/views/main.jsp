@@ -192,7 +192,29 @@
 						</c:if>
 					</table>				
 				</div>
-				<div id="border4"><h3>직원복지</h3></div>
+				<div id="border4">
+					<h3>직원복지</h3>
+					<h6>&nbsp;</h6>
+					<span onclick="location.href='Welfare/welfare';"><h5>더보기</h5></span>					
+					<h3>&nbsp;</h3>
+					<h3>&nbsp;</h3>
+					<table boarder="1" cellspacing="10"  cellpadding="10" >
+						
+						 <c:if test="${!empty model}">
+		                	<c:forEach var="m" items="${model}">
+		                	<tr>
+								<td>${m.num}</td>
+								<td>
+									<a href="Welfare/welfareDetail?num=${m.num}">
+										${m.model}
+									</a>
+								<td>${m.price}</td>
+								<td>${m.stock}</td>
+							</tr>
+							</c:forEach>
+						</c:if>
+					</table>
+				</div>
 			</div>
 		</div>
 	<script>

@@ -66,13 +66,16 @@ public class WelfareService {
 	public void removeWelfare (int num) throws Exception{
 		mapper.delete(num);
 	}
+
+
+
 	
-//	/**
-//	 * 제품 미리보기
-//	 */
-//	public List<WelfareVO> recentWelfare() throws Exception{
-//		return mapper.recentWelfare();
-//	}
+	/**
+	 * 제품 미리보기
+	 */
+	public List<WelfareVO> recentWelfare() throws Exception{
+		return mapper.recentWelfare();
+	}
 	
 	
 //	/**
