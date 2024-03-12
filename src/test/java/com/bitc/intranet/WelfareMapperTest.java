@@ -40,11 +40,11 @@ public class WelfareMapperTest {
 		System.out.println(list);
 	}
 	
-	//@Test
+	@Test
 	public void testBuy(WelfareVO vo) throws Exception{
-		vo.getNum();
+		int minus = vo.getNum();
 		
-		ws.buy(vo);
+		minus = ws.buy(vo);
 		
 	}
 	

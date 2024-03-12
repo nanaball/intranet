@@ -70,7 +70,7 @@ public class WelfareController {
 	public String modifyPost(RedirectAttributes rtts, WelfareVO vo, Model model) throws Exception{
 		ws.modify(vo);
 		rtts.addAttribute("num", vo.getNum());
-		return "redirect:/Welfare/welfareDetail";
+		return "redirect:/Welfare/welfare";
 	}
 	
 	// 복지 삭제 요청
@@ -81,7 +81,7 @@ public class WelfareController {
 	}
 	
 	// 구매
-	@PostMapping("buy")
+	@GetMapping("buy")
 	public String buy(WelfareVO vo) throws Exception{
 		ws.buyWelfare(vo);
 		return "redirect:/Welfare/welfare";

@@ -100,7 +100,7 @@
 						<td>
 							<f:formatNumber value="${Detail.price}" type="number" /> 원
 						</td>
-						<td>
+						<td name="stock">
 							<f:formatNumber value="${Detail.stock}" type="number" /> 개
 						</td>
 					</tr>
@@ -122,13 +122,14 @@
 			$("#buy").on("click",function(){
 				if(confirm("상품을 구매합니다.")){
 					$("welfareBuy").submit();
-					alert("구매가 완료되었습니다.")
+					
 					location.href="${pageContext.request.contextPath}/Welfare/welfare";
+					alert("구매가 완료되었습니다.")
 				}
 			});
 			
-			$("#back").on("click",fucntion(){
-				location.href="${pageContext.request.contextPath}/Welfare/welfare"
+			$("#back").on("click",function(){
+				location.href="${pageContext.request.contextPath}/Welfare/welfare";
 			});
 			
 			$("#modify").on("click",function(){
