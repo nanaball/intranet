@@ -197,11 +197,16 @@
 					<h6>&nbsp;</h6>
 					<span onclick="location.href='Welfare/welfare';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
-					<h3>&nbsp;</h3>
+
 					<table boarder="1" cellspacing="10"  cellpadding="10" >
-						
-						 <c:if test="${!empty model}">
-		                	<c:forEach var="m" items="${model}">
+					<tr>
+		                    <th>글번호</th>
+		                    <th>상품명</th>
+		                    <th>가격</th>
+		                    <th>재고수량</th>
+		                </tr>
+						 <c:if test="${!empty welfareList}">
+		                	<c:forEach var="m" items="${welfareList}">
 		                	<tr>
 								<td>${m.num}</td>
 								<td>

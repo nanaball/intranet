@@ -18,4 +18,10 @@ CREATE TABLE accuse(
 
 select * from accuse;
 
+show tables;
+
 select * from model;
+
+desc model;
+
+
