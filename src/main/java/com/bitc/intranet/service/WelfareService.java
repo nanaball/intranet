@@ -20,7 +20,7 @@ public class WelfareService {
 	 * @param vo
 	 * @throws Exception
 	 */
-	public void addWelfare (WelfareVO vo) throws Exception{
+	public void addWelfare(WelfareVO vo) throws Exception{
 		mapper.addWelfare(vo);
 	}
 	
@@ -65,6 +65,15 @@ public class WelfareService {
 	 */
 	public void removeWelfare (int num) throws Exception{
 		mapper.delete(num);
+	}
+	
+	/**
+	 * 구매하기 눌렀을 때 재고 수량 -1
+	 * @param vo
+	 * @throws Exception
+	 */
+	public void buyWelfare(WelfareVO vo) throws Exception{
+		mapper.buy(vo);
 	}
 	
 //	/**

@@ -71,36 +71,34 @@
 </head>
 <body>
 	<!-- 게시판 리스트 -->
-	<div id="wrap">
-		<div id="detail">
-			<h2>상품 추가하기</h2>	
-			 <table border="1" class="list">
-                <tr id="title">
-                    <th>상품 이미지</th>
-                    <th>상품명</th>
-                    <th>상품 설명</th>
-                    <th>가격</th>
-                    <th>재고 수량</th>
-                </tr>
-                <tr>
-                	<td><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></td>
-					<td><input type="text" placeholder="상품명을 입력하세요." /></td>
-					<td><input type="text" placeholder="상품 설명을 입력하세요." /></td>
-					<td><input type="text" placeholder="상품 가격을 입력하세요." /></td>
-					<td><input type="text" placeholder="상품 재고를 입력하세요." /></td>
-				</tr>
-            </table>
-            <hr/>
-            <br/>
-            <input type="button" id="add" value="추가하기" />
-            <input type="button" id="cancel" value="취소하기" />
-		</div>
-	</div>
-	
+	<form id="welfareAdd" method="POST">
+		<h2>상품 추가하기</h2>	
+		 <table border="1">
+               <tr id="title">
+                   <th>상품 이미지</th>
+                   <th>상품명</th>
+                   <th>상품 설명</th>
+                   <th>가격</th>
+                   <th>재고 수량</th>
+               </tr>
+               <tr>
+               	<td><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" ></td>
+				<td><input type="text" name="model" placeholder="상품명을 입력하세요." /></td>
+				<td><input type="text" name="intro" placeholder="상품 설명을 입력하세요." /></td>
+				<td><input type="text" name="price" placeholder="상품 가격을 입력하세요." /></td>
+				<td><input type="text" name="stock" placeholder="상품 재고를 입력하세요." /></td>
+			</tr>
+           </table>
+           <hr/>
+           <br/>
+           <input type="button" id="add" value="추가하기" />
+           <input type="button" id="cancel" value="취소하기" />
+	</form>
 	<script>
 		$(function(){
 			$("#add").on("click",function(){
 				if(confirm("상품을 추가합니다.")){
+					$("#welfareAdd").submit();
 					location.href="${pageContext.request.contextPath}/Welfare/welfare";
 				}
 			});

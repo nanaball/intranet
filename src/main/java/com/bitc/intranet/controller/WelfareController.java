@@ -7,14 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.WelfareService;
-import com.bitc.intranet.util.Criteria;
-import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.WelfareVO;
 
 import lombok.RequiredArgsConstructor;
@@ -36,12 +33,13 @@ public class WelfareController {
 	
 	// 복지 추가
 	@GetMapping("welfareAdd")
-	public String addWelfare() throws Exception{
+	public String addWelfareGet() throws Exception{
 		return "welfareAdd";
 	}
 	
+	// 복지 추가 요청
 	@PostMapping("welfareAdd")
-	public String addWelfare(WelfareVO vo) throws Exception{
+	public String addWelfarePost(WelfareVO vo) throws Exception{
 		ws.addWelfare(vo);
 		return "redirect:/Welfare/welfare";
 	}
@@ -62,19 +60,25 @@ public class WelfareController {
 		return "welfareModify";
 	}
 	
-	// 복지 수정완료
-	@PostMapping("welfaremodify")
+	// 복지 수정 요청
+	@PostMapping("welfareModify")
 	public String modifyPost(RedirectAttributes rtts, WelfareVO vo, Model model) throws Exception{
-		String result = ws.modify(vo);
-		rtts.addFlashAttribute("result", result);
+		ws.modify(vo);
 		rtts.addAttribute("num", vo.getNum());
 		return "redirect:/Welfare/welfareDetail";
 	}
 	
-	// 복지 삭제요청
+	// 복지 삭제 요청
 	@GetMapping("delete")
 	public String delete(int num) throws Exception{
 		ws.removeWelfare(num);
+		return "redirect:/Welfare/welfare";
+	}
+	
+	// 구매
+	@GetMapping("buy")
+	public String buy(WelfareVO vo) throws Exception{
+		ws.buyWelfare(vo);
 		return "redirect:/Welfare/welfare";
 	}
 	
