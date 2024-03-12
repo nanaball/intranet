@@ -111,10 +111,10 @@
 					<table  cellspacing="10"  cellpadding="10" board="1">
                 
 						<tr>
-		                    <th>글 번호</th>
+		                    <th>번호</th>
 		                    <th>카테고리</th>
 		                    <th>제목</th>
-		                    <th>작성시간</th>
+		                    <th>작성일자</th>
 		                </tr>
 
 		                <c:if test="${!empty notice}">
@@ -142,7 +142,7 @@
 					<span onclick="location.href='messages/message';"><h5>더보기</h5></span>
 						<h3>&nbsp;</h3>
 					<h3>&nbsp;</h3>
-					<table boarder="1" cellspacing="10"  cellpadding="10" >
+					<table boarder="1" cellspacing="10" >
 						 <c:if test="${!empty message}">
 		                	<c:forEach var="m" items="${message}">
 		                	<tr>
@@ -167,8 +167,14 @@
 					<h6>&nbsp;</h6>
 					<span onclick="location.href='free/free';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
-					<h3>&nbsp;</h3>
-					<table boarder="1" cellspacing="10"  cellpadding="10" >
+					<table boarder="1" cellspacing="10" >
+						<tr>
+		                    <th>번호</th>
+		                    <th>카테고리</th>
+		                    <th>제목</th>
+		                    <th>작성자</th>
+		                    <th>작성일자</th>
+		                </tr>
 		                 <c:if test="${!empty free}">
 		                	<c:forEach var="f" items="${free}">
 		                	<tr>
@@ -196,7 +202,7 @@
 					<span onclick="location.href='Welfare/welfare';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
 
-					<table boarder="1" cellspacing="10"  cellpadding="10" >
+					<table boarder="1" cellspacing="10" >
 					<tr>
 		                    <th>번호</th>
 		                    <th>상품명</th>
