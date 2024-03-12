@@ -29,6 +29,7 @@ public class WelfareMapperTest {
 		vo.setIntro("크롱크롱");
 		vo.setPrice(30333);
 		vo.setStock(50);
+		
 		ws.addWelfare(vo);
 	}
 	
