@@ -51,7 +51,7 @@ public interface WelfareMapper {
 	 * 복지 제품 구입 시 재고 감소
 	 */
 	@Update("UPDATE model set stock = stock-1 where num = ${num}")
-	int buy(WelfareVO vo) throws Exception;
+	void buy(WelfareVO vo) throws Exception;
 	
 	/**
 	 * 복지 상품 삭제
