@@ -19,6 +19,10 @@ div {
 	border-radius: 10px;
 	text-align: center;
 	padding: 30px;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+    left: 50%;
 }
 
 input {
@@ -62,7 +66,7 @@ h2 {
 	<div>
 		<h2>로 그 인</h2>
 		<form name="loginForm" action="member/login" method="POST">
-			<input type="text" placeholder="아이디" name="uid" id="uid" class="in"> 
+			<input type="text" placeholder="아이디" name="uid" id="uid" class="in" autofocus> 
 			<input type="password" placeholder="비밀번호" name="upw"  id="upw" class="in"> 
 			<input type="button" id="btn" value="로그인"><br/>
 			<input type="button" id="btn2" value="회원가입"><br>

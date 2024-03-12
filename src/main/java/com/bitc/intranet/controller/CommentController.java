@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -82,10 +83,10 @@ public class CommentController {
 	}
 	
 	// 페이징처리
-	@GetMapping("/{bno}/{page}/{parPageNum}")
+	@GetMapping("/{bno}/{page}/{perPageNum}")
 	public Map<String, Object> listpage(
 			@PathVariable("bno") int bno,
-			Criteria cri) throws Exception{
+			@ModelAttribute("cri")Criteria cri) throws Exception{
 		System.out.println(cri);
 		return cs.commentListPage(bno, cri);
 	}

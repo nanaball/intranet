@@ -59,13 +59,29 @@
 	    cursor: pointer;
 	}
 	
+	input[type='submit']{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+		width : 130px;
+	}
+	
+	input[type='submit']:hover{
+	    color: black;
+	    cursor: pointer;
+	}
+	
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
 </head>
 <body>
 	<!-- 게시판 리스트 -->
-	<form id="welfareBuy" method="POST">
+	<form action="welfareBuy" method="POST">
 		<div id="wrap">
 			<div id="detail">
 				<h2>상품 상세보기</h2>	
@@ -91,7 +107,8 @@
 	            </table>
 	            <hr/>
 	            <br/>
-	            <input type="button" id="buy" value="구매하기" />
+	            <input type="submit" id="buy" value="구매하기" />
+	            <input type="button" id="back" value="뒤로가기" />
 	            <c:choose>
 						<c:when test="${'관리자' == loginMember.getUjob()}">
 							<input type="button" id="modify" value="상품 수정하기"/>
@@ -108,6 +125,10 @@
 					alert("구매가 완료되었습니다.")
 					location.href="${pageContext.request.contextPath}/Welfare/welfare";
 				}
+			});
+			
+			$("#back").on("click",fucntion(){
+				location.href="${pageContext.request.contextPath}/Welfare/welfare"
 			});
 			
 			$("#modify").on("click",function(){

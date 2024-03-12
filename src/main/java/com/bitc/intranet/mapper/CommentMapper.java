@@ -43,7 +43,7 @@ public interface CommentMapper {
 	 * @param cri 
 	 * @return - 페이징 처리된 게시글 목록
 	 */
-	@Select("SELECT * FROM notice_comment WHERE bno = #{bno} ORDER BY noti_cno DESC limit #{cri.startRow}, #{cri.perPageNum}")
+	@Select("SELECT * FROM notice_comment WHERE bno = #{bno} ORDER BY noti_cno DESC limit #{cri.startRow}, 5")
 	List<CommentVO> listPage(@Param("bno")int bno, @Param("cri")Criteria cri) throws Exception;
 	
 	/**

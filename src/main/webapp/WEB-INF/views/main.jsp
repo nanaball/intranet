@@ -108,29 +108,27 @@
 					<h6>&nbsp;</h6>
 					<span onclick="location.href='Notice/notice';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
-					<h3>&nbsp;</h3>
 					<table  cellspacing="10"  cellpadding="10" board="1">
-<!-- 		                
+                
 						<tr>
 		                    <th>글 번호</th>
 		                    <th>카테고리</th>
 		                    <th>제목</th>
 		                    <th>작성시간</th>
-		                    <th>조회수</th>
 		                </tr>
--->
+
 		                <c:if test="${!empty notice}">
 		                	<c:forEach var="n" items="${notice}">
 		                	<tr>
-								<td>${n.bno}</td>
-								<td>
+								<td align="center">${n.bno}</td>
+								<td align="center">
 									${n.category}
 								</td>
 								<td>
 									<a href="Notice/noticeRead?bno=${n.bno}">
 										${n.title}
 									</a>
-								<td>
+								<td align="center">
 									<f:formatDate value="${n.regdate}" pattern="yy-MM-dd" />
 							</tr>
 							</c:forEach>
@@ -174,18 +172,18 @@
 		                 <c:if test="${!empty free}">
 		                	<c:forEach var="f" items="${free}">
 		                	<tr>
-								<td>${f.bno}</td>
-								<td>
+								<td align="center">${f.bno}</td>
+								<td align="center">
 									${f.category}
 								</td>
 								<td>
 									<a href="free/readPage?bno=${f.bno}">
 										${f.title}
 									</a>
-								<td>
+								<td align="center">
 									${f.writer} 
 								</td>
-								<td>
+								<td align="center">
 									<f:formatDate value="${f.regdate}" pattern="yy-MM-dd" />
 							</tr>
 							</c:forEach>
@@ -200,21 +198,24 @@
 
 					<table boarder="1" cellspacing="10"  cellpadding="10" >
 					<tr>
-		                    <th>글번호</th>
+		                    <th>번호</th>
 		                    <th>상품명</th>
+		                    <th>상품설명</th>
 		                    <th>가격</th>
 		                    <th>재고수량</th>
 		                </tr>
 						 <c:if test="${!empty welfareList}">
 		                	<c:forEach var="m" items="${welfareList}">
 		                	<tr>
-								<td>${m.num}</td>
-								<td>
+								<td align="center">${m.num}</td>
+								<td align="center">
 									<a href="Welfare/welfareDetail?num=${m.num}">
 										${m.model}
 									</a>
-								<td>${m.price}</td>
-								<td>${m.stock}</td>
+								</td>
+								<td>${m.intro}</td>
+								<td align="center">${m.price}원</td>
+								<td align="center">${m.stock}개</td>
 							</tr>
 							</c:forEach>
 						</c:if>

@@ -65,13 +65,29 @@
 	    cursor: pointer;
 	}
 	
+	input[type='submit']{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+		width : 130px;
+	}
+	
+	input[type='submit']:hover{
+	    color: black;
+	    cursor: pointer;
+	}
+	
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
 </head>
 <body>
 	<!-- 게시판 리스트 -->
-	<form id="welfare" method="POST">
+	<form action="welfare" method="POST">
 		<div id="wrap">
 			<div id="detail">
 				<h2>상품 수정하기</h2>	
@@ -95,7 +111,7 @@
 	            </table>
 	            <hr/>
 	            <br/>
-	            <input type="button" id="modify" value="수정하기" />
+	            <input type="submit" id="modify" value="수정하기" />
 	            <input type="button" id="delete" value="삭제하기" />
 	            <input type="button" id="cancel" value="취소하기" />
 			</div>

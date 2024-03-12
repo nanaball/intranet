@@ -2,18 +2,24 @@
     pageEncoding="UTF-8"%>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
+	#commentWrite{
+		height:atuo;
+	}
+
 	#comments li{
 		list-style:none;
 		padding:10px;
-		border:1px solid blue;
+		border:1px solid gray;
+		border-radius:25px;
 		height:100px;
 		margin : 5px 0;
 	}
-	#modcom{
+ 	#modCom{
 		border:1px solid black;
 		padding:10px;
 		display:none;
 	}
+	
 	#comments span{
 		border:1px solid skyblue;
 		padding:5px 10px;
@@ -26,6 +32,15 @@
 		
 	}
 	
+	.commentAuth{
+		width:700px;
+	}
+	
+	.commentContent{
+		height:150px; 
+		width:700px;
+	}
+	
 </style>
 	<!-- 댓글 수정 화면 -->
 	<div id="modCom">
@@ -33,11 +48,11 @@
 		<div id="numCom"></div>
 		<div>
 		<!-- 댓글 작성자 -->
-			댓글 작성자 - <input type="text" name="writer" value="${loginMember.getUname()}" readonly />
+			댓글 작성자 - <input type="text" name="writer" class="commentAuth" value="${loginMember.getUname()}" readonly/>
 		</div>
 		<div>
 			<!-- 댓글 내용 수정 -->
-			댓글 내용 - <input type="text" id="comText"/>
+			댓글 내용 - <input type="text" id="comText" class="commentContent"/>
 		</div>
 		<div>
 			<button id="modBtn">수정</button>
@@ -45,14 +60,16 @@
 		</div>
 	</div>
 		<!-- 댓글 작성 -->
-		<div>
+		<div class="wrapper">
+		<div id="commentWrite">
 			<div>
-				작성자 : <input type="text" id="auth" value="${loginMember.getUname()}" readonly/>
+				작성자 : <input type="text" id="auth" class="commentAuth" value="${loginMember.getUname()}" readonly/>
 			</div>
 			<div>
-				댓글 내용 : <input type="text" id="commtext"/>
+				댓글 내용 : <input type="text" class="commentContent" id="commtext"/>
 			</div>
 			<button id="addBtn">등록</button>
+		</div>
 		</div>
 	
 	<!-- 전체 댓글 목록 -->
@@ -67,7 +84,7 @@
 		var perPageNum = 5;
 		var page = 1;
 		
-		//listPage(page);
+		listPage(page);
 		
 		function listPage(page){
 			$("#modCom").css("display","none");
@@ -90,7 +107,7 @@
 				let comment = list[i];
 				let cno = list[i].noti_cno;
 				let content = list[i].noti_content;
-				let auth = lint[i].author;
+				let auth = list[i].author;
 				console.log(comment, noti_cno, noti_content, auth);
 				str += `<li>\${noti_cno}-\${auth} - <span onclick='modifyPage(this,"\${noti_cno}","\${noti_content}","\${auth}");'>수정</span><br/><hr/>\${noti_content}</li>`;
 			}
@@ -245,12 +262,10 @@
 		});
 		
 		// 마우스 스크롤로 이벤트 처리
-/*		 $(window).scroll(function(){
+		 $(window).scroll(function(){
 			let dh = $(document).height();
 			let wh = $(window).height();
 			let wt = $(window).scrollTop();
-			
-			console.log(dh, wh, wt);
 			
 			if((wh+wt)>=(dh)){
 				console.log("조건에 만족");
@@ -258,5 +273,5 @@
 				listPage(page);
 			}
 		})
-*/		
+		
 	</script>

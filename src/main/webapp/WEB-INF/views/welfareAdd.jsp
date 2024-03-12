@@ -65,14 +65,31 @@
 	    cursor: pointer;
 	}
 	
+	input[type='submit']{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+		width : 130px;
+	}
+	
+	input[type='submit']:hover{
+	    color: black;
+	    cursor: pointer;
+	}
+	
+	
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
 </head>
 <body>
 	<!-- 게시판 리스트 -->
-	<form id="welfareAdd" method="POST">
-	<h2>상품 추가하기</h2>	
+	<form action="welfareAdd" method="POST">
+		<h2>상품 추가하기</h2>	
 		 <table border="1">
                <tr id="title">
                    <th>상품 이미지</th>
@@ -91,17 +108,17 @@
            </table>
            <hr/>
            <br/>
-           <input type="button" id="add" value="추가하기" />
+           <input type="submit" id="welfareAdd" value="추가하기" />
            <input type="button" id="cancel" value="취소하기" />
 	</form>
 	<script>
-		$(function(){
-			$("#add").on("click",function(){
+		$(function(){		
+			$("#welfareAdd").on("click",function(){
 				if(confirm("상품을 추가합니다.")){
 					$("#welfareAdd").submit();
-					location.href="${pageContext.request.contextPath}/Welfare/welfare";
+			 		location.href="${pageContext.request.contextPath}/Welfare/welfare"; 
 				}
-			});
+			}); 
 			
 			$("#cancel").on("click",function(){
 				if(confirm("상품 추가를 취소합니다.")){
