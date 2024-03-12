@@ -17,10 +17,12 @@ import com.bitc.intranet.service.WelfareService;
 import com.bitc.intranet.vo.WelfareVO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/Welfare")
 @RequiredArgsConstructor
+@Slf4j
 public class WelfareController {
 
 	private final WelfareService ws;
@@ -43,6 +45,7 @@ public class WelfareController {
 	@PostMapping("welfareAdd")
 	public String addWelfarePost(WelfareVO vo) throws Exception{
 		ws.addWelfare(vo);
+		System.out.println(vo);
 		return "redirect:/Welfare/welfare";
 	}
 	

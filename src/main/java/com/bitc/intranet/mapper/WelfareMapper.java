@@ -18,8 +18,7 @@ public interface WelfareMapper {
 	 * @param vo
 	 * @throws Exception
 	 */
-	@Insert("INSERT "
-			+ "INTO model (model, intro, price, stock) "
+	@Insert("INSERT INTO model (model, intro, price, stock) "
 			+ "VALUES (#{model}, #{intro}, #{price}, #{stock})")
 	int addWelfare(WelfareVO vo) throws Exception;
 	

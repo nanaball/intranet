@@ -25,15 +25,17 @@ select * from member;
 DROP TABLE member; -- member 테이블 지우기
 
 DESC member;
+
 -- 상품게시판
 CREATE TABLE IF NOT EXISTS model(
-	mNo		INT PRIMARY KEY	auto_increment,         -- 제품게시번호
-	mName	VARCHAR(150) 	NOT NULL,               -- 제품명
-	price	INT				NOT NULL,               -- 제품가격             
-	stock	INT				DEFAULT 0,              -- 재고수량
-	soldout char(1) NOT NULL DEFAULT	'Y',		-- 솔드아웃 Y -> 비활성화
-	pay     char(1) NOT NULL DEFAULT	'Y',        -- Y-> 결제완료
-	pDate	TIMESTAMP NOT NULL default now()        -- 결제 시간
+   num      INT PRIMARY KEY   auto_increment,         -- 제품게시번호
+   model   VARCHAR(150)    NOT NULL,               -- 제품명
+    intro   VARCHAR(300)   NOT NULL,            -- 제품설명
+   price   INT            NOT NULL,               -- 제품가격             
+   stock   INT            DEFAULT 0,              -- 재고수량
+   soldout char(1) NOT NULL DEFAULT   'Y',      -- 솔드아웃 Y -> 비활성화
+   pay     char(1) NOT NULL DEFAULT   'Y',        -- Y-> 결제완료
+   pDate   TIMESTAMP NOT NULL default now()        -- 결제 시간
 );
 
 -- 공문 게시판
