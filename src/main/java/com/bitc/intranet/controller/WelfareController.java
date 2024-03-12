@@ -7,14 +7,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.WelfareService;
-import com.bitc.intranet.util.Criteria;
-import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.WelfareVO;
 
 import lombok.RequiredArgsConstructor;
@@ -56,9 +54,9 @@ public class WelfareController {
 	
 	// 복지 수정
 	@GetMapping("welfareModify")
-	public String modifyGet(int num, Model model) throws Exception {
+	public String modifyGet(@RequestParam Integer num, Model model) throws Exception {
 		WelfareVO vo = ws.detail(num);
-		model.addAttribute(vo);
+		model.addAttribute("welfareVO", vo);
 		return "welfareModify";
 	}
 	
