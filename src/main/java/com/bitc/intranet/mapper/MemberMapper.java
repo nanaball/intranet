@@ -76,6 +76,6 @@ public interface MemberMapper {
 /*	public MemberVO read(@Param("uno") int uno) throws Exception;*/
 
 	@Delete("DELETE FROM member WHERE uno = #{uno}")
-	String remove(int uno) throws Exception;
+	void remove(int uno) throws Exception;
 
 }

@@ -81,7 +81,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	// 회원 정보 삭제
 	@Override
-	public String remove(int uno) throws Exception{
-		return mapper.remove(uno);
+	public void remove(int uno) throws Exception{
+		mapper.remove(uno);
 	}
 }
