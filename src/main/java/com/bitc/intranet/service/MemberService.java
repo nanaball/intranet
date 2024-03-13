@@ -61,7 +61,7 @@ public interface MemberService {
 	public MemberVO read(int uno) throws Exception;
 
 	// 회원 정보 삭제 
-	String remove(int uno) throws Exception;
+	public void remove(int uno) throws Exception;
 
 
 

@@ -8,13 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-/*
-	body{
-		background-image : url("resources/img/bg.jpg"); 
-		background-repeat: no-repeat;
-	}
-*/
-	
 	table{
 		margin : auto;
 		padding : auto;
@@ -27,8 +20,7 @@
 	  	transform: translate(-50%, -50%);
 		position: absolute;
 		top: 50%;
-  		 left: 50%;
-  		 
+  		left: 50%; 		 
 	}
   
 	table td{
@@ -36,7 +28,7 @@
 		padding:10px;
 	}
 	
-	input[type='button']{
+	#bye{
 		color: white;
 		background-color: #1BBC9B;
 		border : 1px;
@@ -47,10 +39,24 @@
 		width : 80px;
 	}
 	
-	input[type='button']:hover{
-	    color: black;
+	#cancel {
+	border: 1px solid #1BBC9B;
+	color: #1BBC9B;
+	border-radius : 10px;
+	padding : 10px;
+	margin-left : 20px;
+	margin-right : 20px;
+	width : 80px;
+	}
+	
+	#bye:hover{
 	    cursor: pointer;
 	}
+	
+	#cancel:hover{
+	    cursor: pointer;
+	}
+	
 	
 	table tr {
 		height: 50px;
@@ -85,7 +91,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form method="post" action="bye" enctype="application/x-www-form-urlencoded">
+	<form enctype="application/x-www-form-urlencoded">
 	<br/><br/><br/>
 		<table>
 			<tr>
@@ -125,16 +131,26 @@
  		<input type="hidden" name="uno" value="${Member.uno}"/>
  	</form>	
 
+
 	<script>
+	let formObj = $("#readForm");
 	
-	$("#bye").on("click",function() {
-					
-		var result = confirm('정말 회원을 탈퇴하시겠습니까?');	
+	$("#bye").click(function() {
+
+		if(confirm("게시글을 삭제하시겠습니까?")){		
+			formObj.attr("action","${path}/member/bye");			
+			formObj.attr("method","post");
+			formObj.submit();
+		}
+		
+	/*
 			
 		if(result){
 			alert("탈퇴 되었습니다.");			
 			location.href = "${path}/member/memberList";
-		}			
+		}
+	*/	
+	
 	}); 
 		
 	// 수정 취소 버튼 		

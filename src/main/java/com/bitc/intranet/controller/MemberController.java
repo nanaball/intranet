@@ -173,6 +173,6 @@ public class MemberController {
 	@PostMapping("bye")
 	public String bye(int uno) throws Exception{
 		ms.remove(uno);
-		return "redirect:/";
+		return "redirect:/member/memberList";
 	}
 }

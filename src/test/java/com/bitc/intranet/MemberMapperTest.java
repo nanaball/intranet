@@ -50,8 +50,9 @@ public class MemberMapperTest {
 		System.out.println("UNO" + read);
 	}
 	
+	// @Test
 	public void testDELETE() throws Exception{
-		String vo = mapper.remove(85);
-		System.out.println("delete" + vo);
+		mapper.remove(85);
+		System.out.println("delete");
 	}
 }
