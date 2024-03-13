@@ -139,7 +139,7 @@ td{
 				
 					<td>전화번호</td>
 					<td>
-						<input type="text" name="uphone"  placeholder="전화번호를 입력해주세요" required/>
+						<input type="text" name="uphone"  placeholder="전화번호를 입력해주세요(-제외)" required/>
 					</td>
 				</tr>
 				<tr>

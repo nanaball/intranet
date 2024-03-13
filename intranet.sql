@@ -120,4 +120,7 @@ WHERE 28 = 28;
 
 Cannot add or update a child row: a foreign key constraint fails (`intranet`.`accuse`, CONSTRAINT `fk_accuse_uno` FOREIGN KEY (`uno`) REFERENCES `member` (`uno`));
 
+SHOW VARIABLES LIKE '&event%';
 
+
+ALTER TABLE member add column deldate TIMESTAMP NULL DEFAULT now(), add column memberdel VARCHAR(10) NULL DEFAULT 'y';
