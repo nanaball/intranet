@@ -43,19 +43,43 @@ public class MessageController {
 	}
 	
 	// 결제하기 글 등록 처리 요청
-	@PostMapping("messageRegister")
+	@PostMapping("messageRegist")
 	public String register(MessageVO message) throws Exception{
 		ms.regist(message);
-		return "redirect:/messages/messageList";
+		return "redirect:/messages/message";
 	}
 	
-	//결제 페이지 상세보기
-	@GetMapping("readMessage")
-	public String readMessage(int mno, Model model, HttpSession session) throws Exception {
+	//출력할 view페이지와 출력할 게시글 정보
+	@GetMapping("read")
+	public String messageRead(int mno, Model model, HttpSession session) throws Exception {
 		MessageVO message = ms.read(mno);
 		model.addAttribute("read",message);
-		return "redirect:/messages/readMessage";
+		return "messageRead";
 	}
+	
+	// 게시글 상세보기 페이지 요청
+	@GetMapping("messageRead")
+	public String messageRead(int mno, RedirectAttributes rttr) throws Exception{
+		rttr.addAttribute("mno",mno);
+		return "redirect:/messages/read";
+	}
+	
+	
+	/*게시글 상세보기 페이지 요청
+	// /board/readPage - 조회수만 증가
+	@GetMapping("readPage")
+	public String readPage(int bno, RedirectAttributes rttr) throws Exception{
+		// 조회수 증가
+		bs.updateViewCnt(bno);
+		//redirect된 페이지에 get방식의 QueryString parameter 지정
+		rttr.addAttribute("bno",bno);
+		return "redirect:/board/read";
+		//return "redirect:/board/read?bno="+bno;
+	}*/
+	
+		
+	
+	
 	//메세지 수정 페이지 요청
 		@GetMapping("modify")
 		public String modifyGet(int mno, Model model) throws Exception {

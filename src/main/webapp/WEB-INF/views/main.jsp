@@ -135,7 +135,7 @@
 						</c:if>
 					</table>					
 				</div>
-				
+
 				<div id="border2">
 					<h3>결재</h3>
 					<h3>&nbsp;</h3>
@@ -143,18 +143,24 @@
 						<h3>&nbsp;</h3>
 					<h3>&nbsp;</h3>
 					<table boarder="1" cellspacing="10" >
+					<tr>
+		                    <th>번호</th>
+		                    <th>제목</th>
+		                    <th>작성자</th>
+		                    <th>작성일자</th>
+		                </tr>
 						 <c:if test="${!empty message}">
 		                	<c:forEach var="m" items="${message}">
 		                	<tr>
 								<td>${m.mno}</td>
 								<td>
-									${m.targetid}
-								</td>
-								<td>
-									<a href="free/readPage?bno=${f.mno}">
-										${m.message}
+									<a href="messages/messageRead?mno=${m.mno}">
+										${m.title}
 									</a>
-								<td>
+								<td align="center">
+									${m.writer} 
+								</td>
+								<td align="center">
 									<f:formatDate value="${m.senddate}" pattern="yy-MM-dd" />
 							</tr>
 							</c:forEach>

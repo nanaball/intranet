@@ -4,7 +4,7 @@
 
  <h2></h2>
  <form id="registerForm" method="POST">
- 	 <input type="hidden" name="uno" value="${LoginMember.uno}"/>
+ 	 <input type="hidden" name="uno" value="${loginMember.uno}"/>
 	 <table>
 	 	<tr>
 	 		<td>제목</td>
@@ -12,10 +12,17 @@
 	 			<input type="text" name="title" required/>
 	 		</td>
 	 	</tr>
+	 	
 	 	<tr>
 	 		<td>작성자</td>
 	 		<td>
 	 			<input type="text" name="writer" value="${loginMember.uname}" readonly/>
+	 		</td>
+	 	</tr>
+	 	<tr>
+	 		<td>받는사람 ID</td>
+	 		<td>
+	 			<input type="text" name="targetid" required/>
 	 		</td>
 	 	</tr>
 	 	<tr>
@@ -93,6 +100,84 @@ tinymce.init({
  		$("#registerForm").append(str);
  		$("#registerForm").submit();
  	});
+
+</script>
+<script>
+// 브라우저에서 file load 방지
+$(".fileDrop").on("dragenter dragover", function(e){
+	e.preventDefault();
+});
+
+$(".fileDrop").on("drop",function(e){
+	e.preventDefault();
+	
+	let files = e.originalEvent.dataTransfer.files;
+	
+	// console.log(files);
+	let maxSize = 31457280;			// 30MB
+	
+	let formData = new FormData();
+	for(let i =0; i<files.length; i++){
+		if(files[i].size > maxSize){
+			alert("업로드할수 없는 용량입니다.");
+			return false;
+		}
+		formData.append("file",files[i]);
+	}
+	$.ajax({
+		type : "POST",
+		url : "${path}/uploadFile",
+		data : formData,
+		contentType : false,
+		processData : false,
+		dataType : "json",
+		success : function(data){
+			for(let i = 0; i<data.length; i++){
+				console.log(data[i]);
+				let fileInfo = getFileInfo(data[i]);
+				console.log(fileInfo);
+				let html = "<li>";
+				html += "<img src='"+fileInfo.imgSrc+"'/>";
+				html += "<div>";
+				html += "<a href='"+fileInfo.getLink+"' target='_blank'>";
+				html += fileInfo.fileName;
+				html += "</a>"
+				html += "</div>";
+				html += "<div>";
+				// fullName == data[i]
+				html += "<a href='"+data[i]+"' class='delBtn'>[삭제]</a>";
+				html += "</div>";
+				html += "</li>";
+				console.log(html);
+				$(".uploadList").append(html);
+			}
+		},
+		error : function(res){
+			alert(res.responseText);
+		}
+	});
+});
+
+// 이미지 파일 확인
+function checkImage(fileName){
+	return fileName.indexOf("s_") > 0 ? true : false;
+}
+
+var contextPath = '${path}'
+
+function getFileInfo(fullName){
+	let imgSrc, fileName, getLink;
+	
+	if(checkImage(fullName)){
+		imgSrc = contextPath+"/displayFile?fileName="+fullName;
+		getLink = contextPath+"/displayFile?fileName="+fullName.replace("s_","");
+	}else{
+		imgSrc = contextPath + "/resources/img/file.png";
+		getLink = contextPath + "/displayFile?fileName="+fullName;
+	}
+	fileName = fullName.substr(fullName.lastIndexOf("_")+1);
+	return {fileName : fileName, imgSrc : imgSrc, getLink : getLink};
+}
 
 </script>
 
