@@ -32,30 +32,43 @@ public class AuthInterceptor implements HandlerInterceptor {
 			// 미로그인 사용자
 			response.sendRedirect(contextPath+"/");
 			return false;
-		}else {
+		}else{
 			// 로그인 된 사용자
 			if(requestURI.startsWith(contextPath+"/Notice/")) {
-				// 새 원본글 작성 요청
 				return true;
 			}
 			if(requestURI.startsWith(contextPath+"/free/")) {
-				// 새 원본글 작성 요청
 				return true;
 			}
 			if(requestURI.startsWith(contextPath+"/accuse/")) {
-				// 새 원본글 작성 요청
 				return true;
 			}
 			if(requestURI.startsWith(contextPath+"/Welfare/")) {
-				// 새 원본글 작성 요청
 				return true;
 			}
 			if(requestURI.startsWith(contextPath+"/message/")) {
-				// 새 원본글 작성 요청
 				return true;
 			}
 			
-		}// else end
+			if(requestURI.startsWith(contextPath+"/main/")) { 
+				return true; 
+			}
+			
+			// 관리자 페이지 요청
+			if(requestURI.equals(contextPath+"/member/memberList")){
+				
+				MemberVO member = (MemberVO)obj;
+				if(member.getUjob().equals("관리자")) {
+					// 관리자
+					return true;
+				}else {
+					// 일반
+					response.sendRedirect(contextPath+"/main");
+					return true;
+				}
+			}
+		}
+		
 		log.info("AuthInterceptor preHandler END");
 		return true;
 		

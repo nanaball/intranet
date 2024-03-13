@@ -18,7 +18,6 @@
     }
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
-	/* 2/28 작업 */
 	let result = '${result}';
 	if(result != '' ){
 		alert(result);
@@ -53,7 +52,6 @@
 									[${b.category}]
 								</td>
 								<td>
-		<!-- 추가된 내용 -->						
 									<a href="noticeRead${pm.makeQuery(pm.cri.page)}&bno=${b.bno}">
 										${b.title}
 									</a>
