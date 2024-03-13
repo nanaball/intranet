@@ -95,7 +95,7 @@ public interface FreeMapper {
 	 * 자유게시판에 등록된 게시글 최근 5개 목록
 	 * @return
 	 */
-	@Select("SELECT * FROM free WHERE showboard = 'y' ORDER BY bno LIMIT 5")
+	@Select("SELECT * FROM free WHERE showboard = 'y' ORDER BY origin DESC, seq ASC LIMIT 5")
     List<FreeVO> recentFree() throws Exception;
 
 	/**

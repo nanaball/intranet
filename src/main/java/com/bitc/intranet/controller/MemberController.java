@@ -157,7 +157,6 @@ public class MemberController {
 	public String logOut(HttpServletRequest request, HttpSession session) throws Exception {
 		// 세션에서 사용자 정보를 제거
 		session.removeAttribute("loginMember");
-
 		return "redirect:/";
 	}
 

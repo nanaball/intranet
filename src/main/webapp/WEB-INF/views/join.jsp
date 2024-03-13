@@ -171,7 +171,7 @@ td{
 							<option value="사원">사원</option>
 							<option value="팀장">팀장</option>
 							<!-- 관리자 선택은 숨김 -->	
-							<option hidden value="admin">관리자</option>				
+							<option hidden value="관리자">관리자</option>				
 						</select>
 					</td>
 				</tr>
