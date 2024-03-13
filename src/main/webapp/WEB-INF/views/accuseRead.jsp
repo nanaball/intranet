@@ -16,7 +16,21 @@
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td>${read.writer}</td>
+			<c:choose>
+				<c:when test="${'admin' == loginMember.getUid()}">
+					<td>${read.writer}</td>							
+				</c:when>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${read.writer == '관리자'}">
+							<td>관리자</td>
+						</c:when>
+						<c:otherwise>
+							<td></td>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
 		</tr>
 		<tr>
 			<td>작성시간</td>

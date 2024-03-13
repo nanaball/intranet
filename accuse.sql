@@ -1,4 +1,4 @@
-CREATE TABLE accuse(
+CREATE TABLE IF NOT EXISTS accuse(
 	bno INT PRIMARY KEY auto_increment,		-- 게시글 번호
 	title VARCHAR(300) NOT NULL,			-- 게시글 제목
 	content TEXT NOT NULL,					-- 게시글 내용
@@ -18,10 +18,29 @@ CREATE TABLE accuse(
 
 select * from accuse;
 
+drop table accuse;
+
 show tables;
 
 select * from model;
 
 desc model;
 
+-- 게시글 작성 했을 시 회원 탈퇴 불가로 조건 추가 
 
+ALTER TABLE accuse
+DROP FOREIGN KEY fk_accuse_uno,   -- 기존 외래 키 제약 조건 삭제
+ADD CONSTRAINT fk_accuse_member
+FOREIGN KEY (uno)
+REFERENCES member(uno)
+ON DELETE SET NULL; -- 새로운 외래 키 제약 조건 설정
+
+
+
+
+ALTER TABLE free
+DROP FOREIGN KEY fk_free_uno,   -- 기존 외래 키 제약 조건 삭제
+ADD CONSTRAINT fk_free_member
+FOREIGN KEY (uno)
+REFERENCES member(uno)
+ON DELETE CASCADE; -- 새로운 외래 키 제약 조건 설정

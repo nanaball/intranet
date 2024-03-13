@@ -71,7 +71,21 @@
 												&nbsp;${b.title} 
 											</a>
 											</td>
-											<td align="center">${b.writer}</td>
+											<c:choose>
+											    <c:when test="${'admin' == loginMember.getUid()}">
+											        <td align="center">${b.writer}</td>							
+											    </c:when>
+											    <c:otherwise>
+											        <c:choose>
+											            <c:when test="${b.writer == '관리자'}">
+											                <td align="center">관리자</td>
+											            </c:when>
+											            <c:otherwise>
+											                <td></td>
+											            </c:otherwise>
+											        </c:choose>
+											    </c:otherwise>
+											</c:choose>
 											<td align="center">
 												<f:formatDate value="${b.updatedate}" pattern="yyyy-MM-dd HH:mm" />
 											</td>
@@ -166,8 +180,11 @@
 			                let row = $("<tr>");
 			                row.append($("<td>").text(data[i].bno));
 			                row.append($("<td>").append($("<a>").attr("href", "${path}/accuse/readPage?bno=" + data[i].bno).text(data[i].title)));
-			                row.append($("<td>").text(data[i].writer));
-			                
+			                if (data[i].writer === '관리자') {
+			                    row.append($("<td>").text('관리자'));
+			                } else {
+			                    row.append($("<td>"));
+			                }			                
 			                let regdate = new Date(data[i].updatedate);
 			                let fmtUpdatedate = regdate.getFullYear().toString().substr(-2) + '-' + ('0' + (regdate.getMonth() + 1)).slice(-2) + '-' + ('0' + regdate.getDate()).slice(-2) + ' ' + ('0' + regdate.getHours()).slice(-2) + ':' + ('0' + regdate.getMinutes()).slice(-2);
 			                row.append($("<td>").text(fmtUpdatedate));
