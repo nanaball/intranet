@@ -25,12 +25,12 @@ public class CheckCookieIntercetor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("")!=null) {
+		if(session.getAttribute("userInfo")!=null) {
 			log.info("이미 로그인 된 사용자");
 			return true;
 		}
 		
-		Cookie cookie = WebUtils.getCookie(request, "signInCooie");
+		Cookie cookie = WebUtils.getCookie(request, "signInCookie");
 		if(cookie != null) {
 			String uid = cookie.getValue();
 			MemberVO userInfo = mapper.readMember(uid);

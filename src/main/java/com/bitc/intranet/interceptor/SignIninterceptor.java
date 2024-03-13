@@ -21,8 +21,8 @@ public class SignIninterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		if(session.getAttribute("userInfo") != null) {
-			session.removeAttribute("userInfo");
+		if(session.getAttribute("loginResult") != null) {
+			session.removeAttribute("loginResult");
 		}
 		return true;
 	}
@@ -31,18 +31,18 @@ public class SignIninterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		HttpSession session = request.getSession();
-		MemberVO userInfo = (MemberVO)session.getAttribute("userInfo");
-		log.info("------ interceptor user info : {}",userInfo);
+		MemberVO loginMember = (MemberVO)session.getAttribute("loginResult");
+		log.info("------ interceptor user info : {}",loginMember);
 		
 		ModelMap modelObj = modelAndView.getModelMap();
 		LoginDTO dto = (LoginDTO)modelObj.get("loginDTO");
 		log.info("------ interceptor login dto : {}",dto);
 		
-		if(userInfo != null) {
+		if(loginMember != null) {
 			// 정상적으로 로그인 된 상태
 			if(dto.isUserCookie()) {
 				// 자동로그인 요청
-				Cookie cookie = new Cookie("signInCookie",userInfo.getUid());
+				Cookie cookie = new Cookie("signInCookie",loginMember.getUid());
 				cookie.setPath("/");
 				cookie.setMaxAge(60*60*8);
 				response.addCookie(cookie);
@@ -52,7 +52,7 @@ public class SignIninterceptor implements HandlerInterceptor {
 			// 잘못된 사용자 정보로 로그인 요청
 			String message = "로그인 실패";
 			modelAndView.addObject("message",message);
-			modelAndView.setViewName("/user/signIn");
+			modelAndView.setViewName("redirect:/main");
 		}
 	}
 	

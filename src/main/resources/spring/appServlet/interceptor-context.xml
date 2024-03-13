@@ -8,20 +8,20 @@
 	<beans:bean id="checkCookie" class="com.bitc.intranet.interceptor.CheckCookieIntercetor" />
 	
 	<interceptors>
+		<!-- 
 		<interceptor>
-			<mapping path="/**"/>
-			<beans:ref bean = "checkCookie"/>
-		</interceptor>
-		
-		<interceptor>
-			<mapping path="/joinsuc"/>
+			<mapping path="/main"/>
+			<exclude-mapping path="/member/join"/>
 			<beans:bean class="com.bitc.intranet.interceptor.SignIninterceptor" />
 		</interceptor>
-		
+		 -->
 		<!-- 게시글 권한 체크 -->
 		<interceptor>
-			<mapping path="/Notice/*" />
-			<exclude-mapping path="/notice" />
+			<mapping path="/Notice/**" />		<!-- 이러한 요청이 들어오면 아래와 같이 처리하겠다 -->
+			<mapping path="/free/**"/>
+			<mapping path="/Welfare/**"/>
+			<mapping path="/accuse/**"/>
+			<mapping path="/messages/**"/>
 			<beans:bean class="com.bitc.intranet.interceptor.AuthInterceptor" />
 		</interceptor>
 	</interceptors>
