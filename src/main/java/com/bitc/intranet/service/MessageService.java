@@ -24,8 +24,7 @@ public class MessageService {
 		// 원본글 등록
 		mapper.register(message);
 		// 등록된 원본글 번호로 origin 컬럼 번호 수정
-		mapper.updateOrigin();
-		// 첨부된 파일 이름 리스트g
+		
 		List<String> files = message.getFiles();
 		if(files != null && !files.isEmpty()) {
 			for(String fullName : files) {
