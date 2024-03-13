@@ -54,7 +54,7 @@ public class MessageController {
 	public String readMessage(int mno, Model model, HttpSession session) throws Exception {
 		MessageVO message = ms.read(mno);
 		model.addAttribute("read",message);
-		return "";
+		return "redirect:/messages/readMessage";
 	}
 	//메세지 수정 페이지 요청
 		@GetMapping("modify")
@@ -85,7 +85,7 @@ public class MessageController {
 		@GetMapping("remove")
 		public String remove(int mno) throws Exception{
 			ms.remove(mno);
-			return "redirect:/Board/board";
+			return "redirect:/Messages/??";
 		}
 		
 		
