@@ -65,6 +65,23 @@
 	    cursor: pointer;
 	}
 	
+	input[type='submit']{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+		width : 130px;
+	}
+	
+	input[type='submit']:hover{
+	    color: black;
+	    cursor: pointer;
+	}
+	
+	
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>

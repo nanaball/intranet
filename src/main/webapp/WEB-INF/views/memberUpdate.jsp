@@ -93,42 +93,42 @@ table tr td input[type='text'], table tr td input[type='password'],
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" id="uid" name="uid"
+				<td><input type="text" name="uid"
 					value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" readonly
 					required /></td>
 			</tr>
 			<tr>
 				<td>기존 비밀번호</td>
-				<td><input type="password" id="upw" name="upw" data-msg="비밀번호"
+				<td><input type="password"  name="upw" data-msg="비밀번호"
 					placeholder="비밀번호를 입력해주세요" required /></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호</td>
-				<td><input type="password" id="newUpw" name="newUpw"
+				<td><input type="password" name="newUpw"
 					data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" id="uname" name="uname"
+				<td><input type="text" name="uname"
 					value="${loginMember.getUname()}" data-msg="이름"
 					placeholder="이름을 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" id="uaddr" name="uaddr"
+				<td><input type="text" name="uaddr"
 					value="${loginMember.getUaddr()}" data-msg="주소"
 					placeholder="주소를 입력해주세요" /></td>
 			</tr>
 			<tr>
 
 				<td>전화번호</td>
-				<td><input type="text" id="uphone" name="uphone"
+				<td><input type="text" name="uphone"
 					value="${loginMember.getUphone()}" data-msg="전화번호"
 					placeholder="전화번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="email" id="uemail" name="uemail"
+				<td><input type="email" name="uemail"
 					value="${loginMember.getUemail()}" data-msg="이메일"
 					placeholder="이메일을 입력해주세요" /></td>
 			</tr>
@@ -179,26 +179,28 @@ table tr td input[type='text'], table tr td input[type='password'],
 				return;
 			}
 			
+			/*
+			// 비밀번호 관련 다시 체크하기
 			// 비밀번호 중복 확인 
-			if($("#upw").val() == $("#newUpw").val()){
+			if(${MemberVO.upw}.val() == $("#newUpw").val()){
 				alert("새 비밀번호가 기존 비밀번호와 일치합니다.");
 				$("#newUpw").focus();
 				return;				
 			}		
 			
 			// 로그인한 비밀번호와 입력한 비밀번호의 일치 확인
-			if($("#upw").val() !== "${loginMember.getUpw()}"){
+			if($("#upw").val() !== ${MemberVO.upw}){
 				alert("기존 비밀번호가 일치하지 않습니다.");
 				$("#upw").val("");
 				$("#newUpw").val("");
 				return;
 			}
 			
-			memberUpdate.submit();
 			
 			alert("정보가 수정되었습니다.");
 			location.href = "${pageContext.request.contextPath}/main";
-			
+			$("#memberUpdate").submit();
+			*/
 		}); 
 		
 		// 수정 취소 버튼 		
@@ -210,12 +212,6 @@ table tr td input[type='text'], table tr td input[type='password'],
 			}
 			
 		});
-		
-
-			
-		
-		
-		
 		
 	</script>
 

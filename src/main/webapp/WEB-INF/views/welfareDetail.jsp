@@ -59,55 +59,73 @@
 	    cursor: pointer;
 	}
 	
+	input[type='submit']{
+		color: white;
+		background-color: #1BBC9B;
+		border : 1px;
+		border-radius : 10px;
+		padding : 10px;
+		margin-left : 20px;
+		margin-right : 20px;
+		width : 130px;
+	}
+	
+	input[type='submit']:hover{
+	    color: black;
+	    cursor: pointer;
+	}
+	
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js">
 </script>
 </head>
 <body>
 	<!-- 게시판 리스트 -->
-	<form id="welfareBuy" method="POST">
-		<div id="wrap">
-			<div id="detail">
-				<h2>상품 상세보기</h2>	
-				 <table border="1" class="list">
-	                <tr id="title">
-	                    <th>상품 이미지</th>
-	                    <th>상품명</th>
-	                    <th>상품 설명</th>
-	                    <th>가격</th>
-	                    <th>재고 수량</th>
-	                </tr>
-	                <tr>
-	                	<td>이미지</td>
-						<td>${Detail.model}</td>
-						<td>${Detail.intro}</td>
-						<td>
-							<f:formatNumber value="${Detail.price}" type="number" /> 원
-						</td>
-						<td>
-							<f:formatNumber value="${Detail.stock}" type="number" /> 개
-						</td>
-					</tr>
-	            </table>
-	            <hr/>
-	            <br/>
-	            <input type="button" id="buy" value="구매하기" />
-	            <c:choose>
-						<c:when test="${'관리자' == loginMember.getUjob()}">
-							<input type="button" id="modify" value="상품 수정하기"/>
-						</c:when>
-				</c:choose>
-			</div>
-		</div>
+	<form action="welfareBuy" method="POST">
+		<h2>상품 상세보기</h2>	
+		 <table border="1" class="list">
+               <tr id="title">
+                   <th>상품 이미지</th>
+                   <th>상품명</th>
+                   <th>상품 설명</th>
+                   <th>가격</th>
+                   <th>재고 수량</th>
+               </tr>
+               <tr>
+               	<td>이미지</td>
+				<td>${Detail.model}</td>
+				<td>${Detail.intro}</td>
+				<td>
+					<f:formatNumber value="${Detail.price}" type="number" /> 원
+				</td>
+				<td>
+					<f:formatNumber value="${Detail.stock}" type="number" /> 개
+				</td>
+			</tr>
+           </table>
+           <hr/>
+           <br/>
+           <input type="submit" id="buy" value="구매하기" />
+           <c:choose>
+				<c:when test="${'관리자' == loginMember.getUjob()}">
+					<input type="button" id="modify" value="상품 수정하기"/>
+				</c:when>
+		</c:choose>
+           <input type="button" id="back" value="뒤로가기" />
 	</form>
 	<script>
 		$(function(){
 			$("#buy").on("click",function(){
 				if(confirm("상품을 구매합니다.")){
 					$("welfareBuy").submit();
-					alert("구매가 완료되었습니다.")
+					
 					location.href="${pageContext.request.contextPath}/Welfare/welfare";
+					alert("구매가 완료되었습니다.")
 				}
+			});
+			
+			$("#back").on("click",function(){
+				location.href="${pageContext.request.contextPath}/Welfare/welfare";
 			});
 			
 			$("#modify").on("click",function(){

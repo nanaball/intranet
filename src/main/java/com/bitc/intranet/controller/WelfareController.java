@@ -59,7 +59,7 @@ public class WelfareController {
 	
 	// 복지 수정
 	@GetMapping("welfareModify")
-	public String modifyGet(@RequestParam Integer num, Model model) throws Exception {
+	public String modifyGet(int num, Model model) throws Exception {
 		WelfareVO vo = ws.detail(num);
 		model.addAttribute("welfareVO", vo);
 		return "welfareModify";
@@ -67,21 +67,21 @@ public class WelfareController {
 	
 	// 복지 수정 요청
 	@PostMapping("welfareModify")
-	public String modifyPost(RedirectAttributes rtts, WelfareVO vo, Model model) throws Exception{
+	public String modifyPost(RedirectAttributes rtts, WelfareVO vo) throws Exception{
 		ws.modify(vo);
 		rtts.addAttribute("num", vo.getNum());
-		return "redirect:/Welfare/welfareDetail";
+		return "redirect:/Welfare/welfare";
 	}
 	
 	// 복지 삭제 요청
-	@GetMapping("delete")
+	@PostMapping("delete")
 	public String delete(int num) throws Exception{
 		ws.removeWelfare(num);
 		return "redirect:/Welfare/welfare";
 	}
 	
 	// 구매
-	@PostMapping("buy")
+	@GetMapping("buy")
 	public String buy(WelfareVO vo) throws Exception{
 		ws.buyWelfare(vo);
 		return "redirect:/Welfare/welfare";
