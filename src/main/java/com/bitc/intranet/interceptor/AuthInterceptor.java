@@ -55,7 +55,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 			}
 			
 			// 관리자 페이지 요청
-			if(requestURI.equals(contextPath+"/member/memberList")){
+			if(requestURI.equals(contextPath+"/member/memberList") ||
+				requestURI.equals(contextPath+"/member/memberDel")){
 				
 				MemberVO member = (MemberVO)obj;
 				if(member.getUjob().equals("관리자")) {
