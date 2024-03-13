@@ -57,6 +57,12 @@ public interface MemberService {
 	// 회원 이름 검색
 	public List<MemberVO> accuseSearch(String search);
 
+	// 회원번호로 회원정보 찾기 
+	public MemberVO read(int uno) throws Exception;
+
+	// 회원 정보 삭제 
+	String remove(int uno) throws Exception;
+
 
 
 

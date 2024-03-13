@@ -66,10 +66,22 @@ public class MemberServiceImpl implements MemberService {
 		PageMaker pm = new PageMaker(cri, totalCount);
 		return pm;
 	}
-
+	
+	// 회원 이름으로 회원 찾기
 	@Override
 	public List<MemberVO> accuseSearch(String search) {
 		return mapper.accuseSearch(search);
 	}
 
+	// 회원번호로 회원정보 찾기 
+	@Override
+	public MemberVO read(int uno) throws Exception {
+		return mapper.read(uno);
+	}
+	
+	// 회원 정보 삭제
+	@Override
+	public String remove(int uno) throws Exception{
+		return mapper.remove(uno);
+	}
 }

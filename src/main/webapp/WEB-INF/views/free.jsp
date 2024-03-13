@@ -171,7 +171,9 @@
 			                row.append($("<td>").text(data[i].category));
 			                row.append($("<td>").append($("<a>").attr("href", "${path}/free/readPage?bno=" + data[i].bno).text(data[i].title)));
 			                row.append($("<td>").text(data[i].writer));
-			                row.append($("<td>").text(data[i].regdate));
+			                let updatedate = new Date(data[i].updatedate);
+			                let fmtUpdatedate = updatedate.getFullYear().toString().substr(-2) + '-' + ('0' + (updatedate.getMonth() + 1)).slice(-2) + '-' + ('0' + updatedate.getDate()).slice(-2) + ' ' + ('0' + updatedate.getHours()).slice(-2) + ':' + ('0' + updatedate.getMinutes()).slice(-2);
+			                row.append($("<td>").text(fmtUpdatedate));
 			                row.append($("<td>").text(data[i].viewcnt));
 			                html.append(row);
 			            }			           
@@ -183,6 +185,14 @@
 					console.log("error message : " , e.responseText);
 				}
 			});
+		});
+		
+		$(function(){
+			$("#search").keydown(function(event){
+				if(event.keyCode === 13){
+					$("#searchBtn").click();
+				}
+			})
 		});
 	</script>
 

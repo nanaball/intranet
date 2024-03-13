@@ -120,7 +120,7 @@ public interface AccuseMapper {
 	 * @param search
 	 * @return
 	 */
-	@Select("SELECT * FROM accuse WHERE title LIKE CONCAT('%',#{search},'%') ")
+	@Select("SELECT * FROM accuse WHERE title LIKE CONCAT('%',#{search},'%') AND showboard = 'y' ORDER BY origin DESC, seq ASC ")
 	/* + " ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}") */ 
 	public List<AccuseVO> accuseSearch(String search);
 
