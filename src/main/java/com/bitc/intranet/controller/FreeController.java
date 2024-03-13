@@ -62,7 +62,7 @@ public class FreeController {
 			fs.updateCnt(bno);
 			rttr.addAttribute("bno",bno);
 			return "redirect:/free/read";
-			}
+		}
 
 		// 게시글 수정 페이지 요청
 		@GetMapping("modify")

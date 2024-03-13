@@ -50,6 +50,7 @@
                     <th>비밀번호</th>
                     <th>회원이름</th>
                     <th>이메일</th>
+                    <th>전화번호</th>
                     <th>부서</th>
                     <th>직책</th>
                     <th>입사일</th>
@@ -66,28 +67,32 @@
 											&nbsp;${m.uname} 
 										</a>
 									</td>
-									<td align="center">${m.uemail}</td>											<td align="center">${m.uphone}</td>										</td>
+									<td align="center">${m.uemail}</td>											
+									<td align="center">${m.uphone}</td>										
 									<td align="center">${m.udep}</td>
-									<td align="center">${m.ujob}</td>
+									<td align="center">${m.ujob}</td>									 
+									<td align="center">
+										<f:formatDate value="${m.udate}" pattern="yy-MM-dd" />
+									</td>
 								</tr>
 							</c:forEach>
 							<c:if test="${!empty pm and pm.maxPage > 1}">
 								<tr>
-									<th colspan="8">
+									<th colspan="9">
 										<c:if test="${pm.first}">
-											<a href="memberInfo?page=1">[&laquo;]</a>
+											<a href="memberList?page=1">[&laquo;]</a>
 										</c:if>
 										<c:if test="${pm.prev}">
-											<a href="memberInfo?page=${pm.startPage-1}">[%lt;]</a>
+											<a href="memberList?page=${pm.startPage-1}">[%lt;]</a>
 										</c:if>
 										<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
-											<a href="memberInfo?page=${i}">[${i}]</a>
+											<a href="memberList?page=${i}">[${i}]</a>
 										</c:forEach>
 										<c:if test="${pm.next}">
-											<a href="memberInfo?page=${pm.endPage+1}">[&gt;]</a>
+											<a href="memberList?page=${pm.endPage+1}">[&gt;]</a>
 										</c:if>
 										<c:if test="${pm.last}">
-											<a href="memberInfo?page=${pm.maxPage}">[&raquo;]</a>
+											<a href="memberList?page=${pm.maxPage}">[&raquo;]</a>
 										</c:if>
 									</th>
 								</tr>
@@ -129,18 +134,23 @@
 			            // 검색 결과를 테이블에 추가.
 
 			          
-			            html.append("<tr><th>회원번호</th><th>아이디</th><th>비밀번호</th><th>회원이름</th><th>이메일</th><th>부서</th><th>직책</th><th>입사일</th></tr>");
+			            html.append("<tr><th>회원번호</th><th>아이디</th><th>비밀번호</th><th>회원이름</th><th>이메일</th><th>전화번호</th><th>부서</th><th>직책</th><th>입사일</th></tr>");
 			            for (let i = 0; i < data.length; i++) {
 			            	console.log(data[i]);
 			                let row = $("<tr>");
 			                row.append($("<td>").text(data[i].uno));
 			                row.append($("<td>").text(data[i].uid));
 			                row.append($("<td>").text(data[i].upw));
-			                row.append($("<td>").append($("<a>").attr("href", "${path}/memberDelete?uno=" + data[i].uno).text(data[i].uname)));
+			                row.append($("<td>").append($("<a>").attr("href", "${path}/memberDel?uno=" + data[i].uno).text(data[i].uname)));
 			                row.append($("<td>").text(data[i].uemail));
+			                row.append($("<td>").text(data[i].uphone));
 			                row.append($("<td>").text(data[i].udep));
 			                row.append($("<td>").text(data[i].ujob));
-			                row.append($("<td>").text(data[i].udate));
+			                
+			                let udate = new Date(data[i].udate);
+	             			let fmtUdate = udate.getFullYear().toString().substr(-2) + '-' + ('0' + (udate.getMonth() + 1)).slice(-2) + '-' + ('0' + udate.getDate()).slice(-2);							
+			                row.append($("<td>").text(fmtUdate));
+			                
 			                html.append(row);
 			            }			           
 				 },

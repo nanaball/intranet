@@ -10,6 +10,7 @@ import com.bitc.intranet.mapper.FreeMapper;
 import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.AccuseVO;
 import com.bitc.intranet.vo.FreeVO;
+import com.bitc.intranet.vo.MemberVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -31,5 +32,9 @@ public class FreeMapperTest {
 		fs.regist(vo);
 	}
 	
+	public void testREAD() throws Exception{
+		FreeVO read = fs.read(4);
+		System.out.println(read);
+	}
 
 }

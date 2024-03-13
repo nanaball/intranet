@@ -28,6 +28,7 @@
 		position: absolute;
 		top: 50%;
   		 left: 50%;
+  		 
 	}
   
 	table td{
@@ -84,15 +85,15 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form method="post" action="joinsuc" enctype="application/x-www-form-urlencoded">
+	<form method="post" action="bye" enctype="application/x-www-form-urlencoded">
 	<br/><br/><br/>
-		<table align="center">
+		<table>
 			<tr>
-				<th colspan="3"><h3>😪 회원 등록 삭제 😥<h3></th>
+				<th colspan="2"><h3>😪 회원 등록 삭제 😥<h3></th>
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" id="uid" name="uid" value="${Member.uid}"  readonly required /></td>			
+				<td><input type="text" id="uid" name="uid" value="${Member.uid}"  readonly /></td>			
 			</tr>
 			<tr>
 				<td>이름</td>
@@ -101,7 +102,19 @@
 				</td>
 			</tr>
 			<tr>
-				<th colspan="3" >
+				<td>부서</td>
+				<td>
+					<input type="text" id="udep" name="udep" value="${Member.udep}" readonly />
+				</td>
+			</tr>
+			<tr>
+				<td>직책</td>
+				<td>
+					<input type="text" id="ujob" name="ujob" value="${Member.ujob}" readonly />
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2" >
 					<input type="button" id="cancel" value="탈퇴 취소" />
 					<input type="button" id="bye" value="회원 탈퇴" />
 				</th>
@@ -120,7 +133,7 @@
 			
 		if(result){
 			alert("탈퇴 되었습니다.");			
-			location.href = "${pageContext.request.contextPath}";
+			location.href = "${path}/member/memberList";
 		}			
 	}); 
 		
@@ -129,7 +142,7 @@
 		var result = confirm('탈퇴를 취소하시겠습니까?');
 			
 		if(result){
-			location.href = "${pageContext.request.contextPath}/main";
+			location.href = "${path}/member/memberList";
 		}			
 	});		
 	</script>

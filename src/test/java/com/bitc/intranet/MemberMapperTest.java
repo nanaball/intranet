@@ -35,12 +35,23 @@ public class MemberMapperTest {
 		mapper.create(vo);
 	}
 	
-	@Test
+	// @Test
 	public void testList() throws Exception{
 		List<MemberVO> list = mapper.listAll();
 		System.out.println("회원 전체 목록" + list);
 		
 		MemberVO read = mapper.readMember("id001");
 		System.out.println(read);
+	}
+	
+	// @Test
+	public void testREAD() throws Exception{
+		MemberVO read = mapper.read(1);
+		System.out.println("UNO" + read);
+	}
+	
+	public void testDELETE() throws Exception{
+		String vo = mapper.remove(85);
+		System.out.println("delete" + vo);
 	}
 }
