@@ -118,7 +118,6 @@
 			$("#buy").on("click",function(){
 				if(confirm("상품을 구매합니다.")){
 					$("welfareBuy").submit();
-					
 					location.href="${pageContext.request.contextPath}/Welfare/welfare";
 					alert("구매가 완료되었습니다.")
 				}

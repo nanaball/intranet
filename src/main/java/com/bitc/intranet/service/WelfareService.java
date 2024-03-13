@@ -72,8 +72,8 @@ public class WelfareService {
 	 * @param vo
 	 * @throws Exception
 	 */
-	public void buyWelfare(WelfareVO vo) throws Exception{
-		mapper.buy(vo);
+	public void buyWelfare(int num) throws Exception{
+		mapper.buy(num);
 	}
 	
 	/**
