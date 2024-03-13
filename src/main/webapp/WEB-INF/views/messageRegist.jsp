@@ -26,7 +26,7 @@
 	 	</tr>
 	 	<tr>
 	 		<th colspan="2">
-	 			<input type="button" id="saveBtn" value="보내기"/>
+	 			<input type="button" id="sendBtn" value="보내기"/>
 	 		</th>
 	 	</tr>
 	 </table>
@@ -83,7 +83,7 @@ tinymce.init({
 </script>
 <script>
 	
- 	$("#saveBtn").click(function(){
+ 	$("#sendBtn").click(function(){
  		let str = "";
  		let fileList = $(".uploadList .delBtn");
  		console.log(fileList);
