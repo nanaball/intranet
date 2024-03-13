@@ -82,40 +82,36 @@
 <body>
 	<!-- 게시판 리스트 -->
 	<form action="welfareBuy" method="POST">
-		<div id="wrap">
-			<div id="detail">
-				<h2>상품 상세보기</h2>	
-				 <table border="1" class="list">
-	                <tr id="title">
-	                    <th>상품 이미지</th>
-	                    <th>상품명</th>
-	                    <th>상품 설명</th>
-	                    <th>가격</th>
-	                    <th>재고 수량</th>
-	                </tr>
-	                <tr>
-	                	<td>이미지</td>
-						<td>${Detail.model}</td>
-						<td>${Detail.intro}</td>
-						<td>
-							<f:formatNumber value="${Detail.price}" type="number" /> 원
-						</td>
-						<td name="stock">
-							<f:formatNumber value="${Detail.stock}" type="number" /> 개
-						</td>
-					</tr>
-	            </table>
-	            <hr/>
-	            <br/>
-	            <input type="submit" id="buy" value="구매하기" />
-	            <input type="button" id="back" value="뒤로가기" />
-	            <c:choose>
-						<c:when test="${'관리자' == loginMember.getUjob()}">
-							<input type="button" id="modify" value="상품 수정하기"/>
-						</c:when>
-				</c:choose>
-			</div>
-		</div>
+		<h2>상품 상세보기</h2>	
+		 <table border="1" class="list">
+               <tr id="title">
+                   <th>상품 이미지</th>
+                   <th>상품명</th>
+                   <th>상품 설명</th>
+                   <th>가격</th>
+                   <th>재고 수량</th>
+               </tr>
+               <tr>
+               	<td>이미지</td>
+				<td>${Detail.model}</td>
+				<td>${Detail.intro}</td>
+				<td>
+					<f:formatNumber value="${Detail.price}" type="number" /> 원
+				</td>
+				<td>
+					<f:formatNumber value="${Detail.stock}" type="number" /> 개
+				</td>
+			</tr>
+           </table>
+           <hr/>
+           <br/>
+           <input type="submit" id="buy" value="구매하기" />
+           <c:choose>
+				<c:when test="${'관리자' == loginMember.getUjob()}">
+					<input type="button" id="modify" value="상품 수정하기"/>
+				</c:when>
+		</c:choose>
+           <input type="button" id="back" value="뒤로가기" />
 	</form>
 	<script>
 		$(function(){

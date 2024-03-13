@@ -65,10 +65,24 @@
 	    cursor: pointer;
 	}
 	
+	#delete{
+		border : 1px;
+		border-radius : 10px;
+		background-color: #1BBC9B;
+		color : black;
+		height:20px;
+		width:20px;
+	}
+	
+	#delete:hover{
+		color:white;
+		cursor:pinter;
+	}
+	
 </style>
 </head>
 <body>
-<form method="post" action="welfare" enctype="application/x-www-form-urlencoded">
+<form method="post" action="delete" enctype="application/x-www-form-urlencoded">
 	<br/>
 	<br/>
 	<div id="wrap"> 
@@ -80,6 +94,11 @@
 					<th>상품 이름</th>
 					<th>상품 설명</th>
 					<th>상품 가격</th>
+					<c:choose>
+						<c:when test="${'관리자' == loginMember.getUjob()}">
+							<th>상품 삭제</th>
+						</c:when>
+					</c:choose>
 				</tr>
 				<c:choose>
 					<c:when test="${!empty List}">
@@ -96,6 +115,12 @@
 									<td>
 										<f:formatNumber value="${m.price}" type="number" /> 원
 									</td>
+									<c:choose>
+											<c:when test="${'관리자' == loginMember.getUjob()}">
+												<td><input type="submit" id="delete" value="X" /></td>
+											</c:when>
+									</c:choose>
+								
 							</tr>
 						</c:forEach>
 					</c:when>				
@@ -125,6 +150,13 @@
 		$(function(){
 			$("#add").on("click",function(){
 				location.href="${pageContext.request.contextPath}/Welfare/welfareAdd";
+			});
+			
+			$("#delete").on("click", function(){
+				if(confirm("상품을 삭제합니다.")){
+					$("#delete").submit();
+					location.href="${pageContext.request.contextPath}/Welfare/welfare";
+				}
 			});
 			
 		});

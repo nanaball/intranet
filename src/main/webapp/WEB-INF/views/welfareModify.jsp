@@ -88,32 +88,27 @@
 <body>
 	<!-- 게시판 리스트 -->
 	<form action="welfareModify" method="POST">
-		<div id="wrap">
-			<div id="detail">
-				<h2>상품 수정하기</h2>	
-				 <table border="1" class="list">
-	                <tr id="title">
-	                    <th>상품 이미지</th>
-	                    <th>상품명</th>
-	                    <th>상품 설명</th>
-	                    <th>가격</th>
-	                    <th>재고 수량</th>
-	                </tr>
-	                <tr>
-	                	<td><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" alt="제품 사진"></td>
-						<td><input type="text" name="model" value="${welfareVO.model}" placeholder="상품명을 입력하세요." /></td>
-						<td><input type="text" name="intro" value="${welfareVO.intro}" placeholder="상품 설명을 입력하세요." /></td>
-						<td><input type="text" name="price" value="${welfareVO.price}" placeholder="상품 가격을 입력하세요." /></td>
-						<td><input type="text" name="stock" value="${welfareVO.stock}" placeholder="상품 재고를 입력하세요." /></td>
-					</tr>
-	            </table>
-	            <hr/>
-	            <br/>
-	            <input type="submit" id="welfareModify" value="수정하기" />
-	            <input type="button" id="delete" value="삭제하기" />
-	            <input type="button" id="cancel" value="취소하기" />
-			</div>
-		</div>
+		<h2>상품 수정하기</h2>	
+		 <table border="1" class="list">
+               <tr id="title">
+                   <th>상품 이미지</th>
+                   <th>상품명</th>
+                   <th>상품 설명</th>
+                   <th>가격</th>
+                   <th>재고 수량</th>
+               </tr>
+               <tr>
+               	<td><img src="https://static.ebs.co.kr/images/public/lectures/2014/06/19/10/bhpImg/44deb98d-1c50-4073-9bd7-2c2c28d65f9e.jpg" height="300px" alt="제품 사진"></td>
+				<td><input type="text" name="model" value="${welfareVO.model}" placeholder="상품명을 입력하세요." /></td>
+				<td><input type="text" name="intro" value="${welfareVO.intro}" placeholder="상품 설명을 입력하세요." /></td>
+				<td><input type="text" name="price" value="${welfareVO.price}" placeholder="상품 가격을 입력하세요." /></td>
+				<td><input type="text" name="stock" value="${welfareVO.stock}" placeholder="상품 재고를 입력하세요." /></td>
+			</tr>
+           </table>
+           <hr/>
+           <br/>
+           <input type="submit" id="welfareModify" value="수정하기" />
+           <input type="button" id="cancel" value="취소하기" />
 	</form>
 	<script>
 		$(function(){
@@ -124,15 +119,6 @@
 					location.href="${pageContext.request.contextPath}/Welfare/welfare";
 				}
 			});
-			
-			/*
-			$("#delete").on("click",function(){
-				if(confirm("상품을 삭제합니다."))
-					$("#welfareDelete").submit());
-					alert("삭제 완료")
-					location.href="${pageContext.request.contextPath}/Welfare/welfare";
-			});
-		*/
 			
 			$("#cancel").on("click",function(){
 				if(confirm("상품 수정을 취소합니다.")){
