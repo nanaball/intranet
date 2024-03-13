@@ -162,10 +162,17 @@ public class MemberController {
 	}
 
 	// 회원 삭제 창(관리자)
-	@GetMapping("/memberDel")
-	public String memberDel(int uno, Model model, HttpSession session) throws Exception {
-		List<MemberVO> vo = ms.listAll();
-		model.addAttribute("Member", vo);
+	@GetMapping("memberDel")
+	public String memberDel(int uno, Model model) throws Exception {
+		MemberVO Member = ms.read(uno);
+		model.addAttribute("Member", Member);
 		return "memberDel";
+	}
+
+	// 회원 삭제
+	@PostMapping("bye")
+	public String bye(int uno) throws Exception{
+		ms.remove(uno);
+		return "redirect:/";
 	}
 }

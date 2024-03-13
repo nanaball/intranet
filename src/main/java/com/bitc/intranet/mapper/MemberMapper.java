@@ -1,14 +1,13 @@
 package com.bitc.intranet.mapper;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.bitc.intranet.util.Criteria;
-import com.bitc.intranet.vo.AccuseVO;
 import com.bitc.intranet.vo.MemberVO;
 
 public interface MemberMapper {
@@ -71,5 +70,12 @@ public interface MemberMapper {
 	@Select("SELECT * FROM member WHERE uname LIKE CONCAT('%',#{search},'%') ")
 	/* + " ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}") */ 
 	public List<MemberVO> accuseSearch(String search);
+
+	@Select("SELECT * FROM member WHERE uno = #{uno}")
+	MemberVO read(int uno) throws Exception;
+/*	public MemberVO read(@Param("uno") int uno) throws Exception;*/
+
+	@Delete("DELETE FROM member WHERE uno = #{uno}")
+	String remove(int uno) throws Exception;
 
 }
