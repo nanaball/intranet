@@ -50,6 +50,22 @@ input[type='button']:hover {
 	cursor: pointer;
 }
 
+input[type='submit'] {
+	color: white;
+	background-color: #1BBC9B;
+	border: 1px;
+	border-radius: 10px;
+	padding: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+	width: 80px;
+}
+
+input[type='submit']:hover {
+	color: black;
+	cursor: pointer;
+}
+
 table tr {
 	height: 50px;
 }
@@ -98,37 +114,37 @@ table tr td input[type='text'], table tr td input[type='password'],
 			</tr>
 			<tr>
 				<td>기존 비밀번호</td>
-				<td><input type="password"  name="upw" id="upw"
+				<td><input type="password"  name="upw"
 					placeholder="비밀번호를 입력해주세요" required /></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호</td>
-				<td><input type="password" name="newUpw" id="newUpw"
+				<td><input type="password" name="newUpw"
 					data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>이름</td>
 				<td><input type="text" name="uname"
-					value="${loginMember.getUname()}" data-msg="이름"
+					value="${loginMember.getUname()}"
 					placeholder="이름을 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>주소</td>
 				<td><input type="text" name="uaddr"
-					value="${loginMember.getUaddr()}" data-msg="주소"
+					value="${loginMember.getUaddr()}"
 					placeholder="주소를 입력해주세요" /></td>
 			</tr>
 			<tr>
 
 				<td>전화번호</td>
 				<td><input type="text" name="uphone"
-					value="${loginMember.getUphone()}" data-msg="전화번호"
+					value="${loginMember.getUphone()}"
 					placeholder="전화번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
 				<td><input type="email" name="uemail"
-					value="${loginMember.getUemail()}" data-msg="이메일"
+					value="${loginMember.getUemail()}"
 					placeholder="이메일을 입력해주세요" /></td>
 			</tr>
 			<tr>
@@ -185,22 +201,33 @@ table tr td input[type='text'], table tr td input[type='password'],
 				return;
 			}
 			
+			// --------- 여기부터
 			
-			// 비밀번호 관련 다시 체크하기
-			// 비밀번호 중복 확인 
-			
+			// 기존 비밀번호, 새 비밀번호 중복 확인 
+			if($("#upw").equals($("#newUpw")){
+				alert("비밀번호가 똑같아요");
+				return;
+			}
 			
 			// 로그인한 비밀번호와 입력한 비밀번호의 일치 확인
+			if($(MemberVO.upw) == ("#upw")){
+				alert("번호가 달라요");
+				return;
+			}
 			
+			// 새 비밀번호 입력 안 하면 그냥 넘기도록 하기
+			if($("#newUpw").val().length <= 0){
+				$("#newUpw").val("#upw");
+				return;
+			}
 			
-			// 새 비밀번호 입력 X 일 시 반영 안 되도록?
-			
+			// -------- 여기까지 다 안 됨 
 			
 			$("#memberUpdate").submit();
 			
 		}); 
 		
-		// 수정 취소 버튼 		
+		// 수정 취소 버튼 ---- 얘도 안됨;; 		
 		$("#cancel").on("click",function(){
 			if(confirm("회원 수정을 취소하시겠습니까?")){
 				location.href = "${pageContext.request.contextPath}/main";
