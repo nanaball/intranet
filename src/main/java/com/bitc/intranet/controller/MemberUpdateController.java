@@ -1,6 +1,7 @@
 package com.bitc.intranet.controller;
 
-import org.apache.ibatis.javassist.compiler.ast.Member;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +21,18 @@ public class MemberUpdateController {
 	
 	private final MemberUpdateService mus;
 
-	@GetMapping("/memberUpdate")
-	public String Update() throws Exception{
+	@GetMapping("memberUpdate")
+	public String detail(String uno, Model model, HttpSession session) throws Exception{
+		MemberVO vo = mus.detail(uno);
+		model.addAttribute("detail", vo);
+		
 		return "memberUpdate";
 	}
 	
-   @PostMapping("/memberUpdate")
+   @PostMapping("memberUpdate")
    public String changePass(@ModelAttribute MemberVO vo, Model model) throws Exception{
 	   System.out.println(vo);
-	   mus.memberUpdate(vo);
+	   mus.updateMember(vo);
 	   return "memberUpdate"; 
    }
 	
