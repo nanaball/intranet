@@ -21,7 +21,7 @@ public interface MessageMapper {
 	@Select("SELECT * FROM message_tbl ORDER BY mno DESC")
 	List<MessageVO> list() throws Exception;
 
-	@Update("UPDATE message_tbl SET title=#{title}, content=#{content}, writer=#{writer}, updatedate=now() WHERE bno=${bno}")
+	@Update("UPDATE message_tbl SET title=#{title}, content=#{content}, writer=#{writer}, updatedate=now() WHERE mno=${mno}")
 	String modify(MessageVO vo)throws Exception;
 
 	@Update("UPDATE message_tbl SET showboard='n',updatedate=now() WHERE mno=${mno}")
@@ -34,8 +34,10 @@ public interface MessageMapper {
 	MessageVO readMessage(int mno) throws Exception;
 
 	@Select("SELECT * FROM message_tbl ORDER BY mno DESC LIMIT 5")
-    List<NoticeVO> recentNotices() throws Exception;
+    List<MessageVO> recentMessage() throws Exception;
 	
 }
+
+
 
 

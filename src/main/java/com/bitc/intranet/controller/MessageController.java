@@ -114,10 +114,10 @@ public class MessageController {
 		
 		
 		// 메인화면에 공지사항 최신글 5개 미리보기
-		@GetMapping("/recentNotices")
+		@GetMapping("/recentMessage")
 		@ResponseBody
-		public List<NoticeVO> recentNotices() throws Exception {		 
-			return ms.recentNotices();
+		public List<MessageVO> recentMessage() throws Exception {		 
+			return ms.recentMessage();
 			 
 		 }
 		
