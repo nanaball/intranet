@@ -9,11 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.MessageService;
-import com.bitc.intranet.vo.NoticeVO;
+import com.bitc.intranet.vo.MemberVO;
 import com.bitc.intranet.vo.MessageVO;
 
 import lombok.RequiredArgsConstructor;
@@ -29,10 +28,20 @@ public class MessageController {
 	
 	
 	@GetMapping("message")
-	public String message(Model model) throws Exception{
-		List<MessageVO> list = ms.list();
+	public String message(Model model, HttpSession session) throws Exception{
+		MemberVO memberVO = (MemberVO)session.getAttribute("loginMember");
+		List<MessageVO> list = ms.list(memberVO.getUname());
 		model.addAttribute("list",list);
 		return "message";
+	}
+	
+	//+더보기 에서 수신함 List 추가
+	@GetMapping("messageList")
+	public String messageList(Model model, HttpSession session) throws Exception{
+		MemberVO memberVO = (MemberVO)session.getAttribute("loginMember");
+		List<MessageVO> sendList = ms.sendList(memberVO.getUid());
+		model.addAttribute("sendList",sendList);
+		return "messageList";
 	}
 	
 	
@@ -111,16 +120,6 @@ public class MessageController {
 			ms.remove(mno);
 			return "redirect:/Messages/??";
 		}
-		
-		
-		// 메인화면에 공지사항 최신글 5개 미리보기
-		@GetMapping("/recentMessage")
-		@ResponseBody
-		public List<MessageVO> recentMessage() throws Exception {		 
-			return ms.recentMessage();
-			 
-		 }
-		
 
 
 }
