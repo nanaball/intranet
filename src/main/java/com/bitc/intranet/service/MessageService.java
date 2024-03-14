@@ -78,7 +78,7 @@ public class MessageService {
 		
 	}
 	//메인에서 게시글 5개 미리보기
-	public List<NoticeVO> recentNotices() throws Exception{
+	public List<MessageVO> recentNotices() throws Exception{
 		return mapper.recentNotices();
 	}
 

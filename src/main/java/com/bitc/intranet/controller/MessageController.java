@@ -116,7 +116,7 @@ public class MessageController {
 		// 메인화면에 공지사항 최신글 5개 미리보기
 		@GetMapping("/recentNotices")
 		@ResponseBody
-		public List<NoticeVO> recentNotices() throws Exception {		 
+		public List<MessageVO> recentNotices() throws Exception {		 
 			return ms.recentNotices();
 			 
 		 }

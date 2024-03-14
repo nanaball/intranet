@@ -34,7 +34,7 @@ public interface MessageMapper {
 	MessageVO readMessage(int mno) throws Exception;
 
 	@Select("SELECT * FROM message_tbl ORDER BY mno DESC LIMIT 5")
-    List<NoticeVO> recentNotices() throws Exception;
+    List<MessageVO> recentNotices() throws Exception;
 	
 }
 
