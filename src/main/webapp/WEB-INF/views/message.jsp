@@ -47,17 +47,17 @@
                    
                 </tr>
 				<c:choose>
-					<c:when test="${!empty List}">
-						<c:forEach var="m" items="${List}">
+					<c:when test="${!empty list}">
+						<c:forEach var="m" items="${list}">
 							<tr>
 								<td>${m.mno}</td>
 								<td>
-									<a href="readPage?mno=${m.mno}">
+									<a href="messageRead?mno=${m.mno}">
 										${m.title}
 									</a>
 								</td>
 								<td>
-									${m.sender}
+									${m.writer}
 								</td>
 								<td>
 									<f:formatDate value="${m.senddate}" pattern="yyyy-MM-dd HH:mm" />

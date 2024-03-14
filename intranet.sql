@@ -80,26 +80,28 @@ drop table ;
 -- 메세지전달
 
 CREATE TABLE message_tbl(
- 	mno INT  PRIMARY KEY auto_increment,		-- 메세지 번호
- 	title	 VARCHAR(50) NOT NULL, 	
+ 	mno INT  PRIMARY KEY auto_increment,		-- 메세지 번호	
 	targetid VARCHAR(50) NOT NULL,				-- 수신자 아이디
-	sender   VARCHAR(50),                       -- 수신자 아이디(로그인된 사용자 생략가능)
-	message TEXT NOT NULL,						-- 발신 메세지
+	writer   VARCHAR(50),                       -- 수신자 아이디(로그인된 사용자 생략가능)
+	title	VARCHAR(50) NOT NULL, 				-- 제목
+	content TEXT NOT NULL, 						-- 발신 메세지
 	opendate TIMESTAMP NULL,					-- 수신 확인 시간
 	senddate TIMESTAMP NOT NULL DEFAULT now(),	-- 발신 시간
-	FOREIGN KEY(targetid) REFERENCES member(uid),
-	FOREIGN KEY(sender) REFERENCES member(uid)
+	FOREIGN KEY(targetid) REFERENCES member(uid)
 );
 
+DROP TABLE message_tbl;
+
 SELECT * FROM message_tbl;
+
 
 -- 첨부파일 저장 table
 CREATE TABLE attach_tbl(
 	fullName VARCHAR(300) NOT NULL,			-- 첨부파일 이름
 	mno INT NOT NULL,						-- 게시글 번호
 	regdate TIMESTAMP NULL DEFAULT now(),	-- 등록 시간
-	CONSTRAINT fk_tbl_attach FOREIGN KEY(bno)
-	REFERENCES re_tbl_board(bno)
+	CONSTRAINT attach_tbl FOREIGN KEY(mno)
+	REFERENCES message_tbl(mno)
 );
 
 SELECT * FROM attach_tbl;
@@ -120,4 +122,7 @@ WHERE 28 = 28;
 
 Cannot add or update a child row: a foreign key constraint fails (`intranet`.`accuse`, CONSTRAINT `fk_accuse_uno` FOREIGN KEY (`uno`) REFERENCES `member` (`uno`));
 
+SHOW VARIABLES LIKE '&event%';
 
+
+ALTER TABLE member add column deldate TIMESTAMP NULL DEFAULT now(), add column memberdel VARCHAR(10) NULL DEFAULT 'y';

@@ -75,7 +75,15 @@ public interface MemberMapper {
 	MemberVO read(int uno) throws Exception;
 /*	public MemberVO read(@Param("uno") int uno) throws Exception;*/
 
-	@Delete("DELETE FROM member WHERE uno = #{uno}")
+	/**
+	 * 
+	 * @param uno
+	 * @throws Exception
+	 */
+	@Update("UPDATE member set " 
+			+ " memberdel = 'n' , " 
+			+ " deldate = now() "
+			+ " WHERE uno = #{uno}")
 	void remove(int uno) throws Exception;
 
 }

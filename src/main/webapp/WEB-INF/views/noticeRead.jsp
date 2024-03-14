@@ -29,10 +29,10 @@
 	</tr>
 	<tr> 
 		<td colspan="2" align="center">
-		<%-- <c:if test="${loginMember.getUjob() == '관리자'}"> --%>
+		<c:if test="${loginMember.getUjob() == '관리자'}">
 			<a href="modify?bno=${read.bno}">수정</a> |
 			<a href="remove?bno=${read.bno}">삭제</a> |
-		<%-- </c:if>	 --%>
+		</c:if>
 			<a href="${path}/Notice/notice">목록으로</a>
 		</td>
 	</tr>

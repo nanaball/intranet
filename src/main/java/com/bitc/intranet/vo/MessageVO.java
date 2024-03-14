@@ -8,10 +8,12 @@ import lombok.Data;
 @Data
 public class MessageVO {
 
+	private int uno;
 	private int mno;
+	private String title;
+	private String content;
 	private String targetid;
-	private String sender;
-	private String message;
+	private String Writer;
 	private Date opendate;
 	private Date senddate;
 
