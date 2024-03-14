@@ -1,5 +1,7 @@
 package com.bitc.intranet.interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +10,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.bitc.intranet.mapper.NoticeMapper;
 import com.bitc.intranet.vo.MemberVO;
-import com.bitc.intranet.vo.NoticeVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,11 @@ public class AuthInterceptor implements HandlerInterceptor {
 		Object obj = request.getSession().getAttribute("loginMember");
 		if(obj == null) {
 			// 미로그인 사용자
-			response.sendRedirect(contextPath+"/");
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('fail!!!'); location.href='"+contextPath+"/';</script>");
+			out.flush();
+			// response.sendRedirect(contextPath+"/");
 			return false;
 		}else{
 			// 로그인 된 사용자
@@ -64,7 +69,11 @@ public class AuthInterceptor implements HandlerInterceptor {
 					return true;
 				}else {
 					// 일반
-					response.sendRedirect(contextPath+"/main");
+					response.setContentType("text/html; charset=utf-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('fail!!!'); location.href='"+contextPath+"/main';</script>");
+					out.flush();
+					//response.sendRedirect(contextPath+"/main");
 					return true;
 				}
 			}
