@@ -141,7 +141,7 @@
 					<h3>&nbsp;</h3>
 					<span onclick="location.href='messages/message';"><h5>더보기</h5></span>
 						<h3>&nbsp;</h3>
-					<h3>&nbsp;</h3>
+
 					<table boarder="1" cellspacing="10" >
 					<tr>
 		                    <th>번호</th>
@@ -167,6 +167,8 @@
 						</c:if>
 					</table>
 				</div>
+				
+				
 				
 				<div id="border3">
 					<h3>자유게시판</h3>

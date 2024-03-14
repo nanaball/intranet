@@ -110,6 +110,12 @@
             	<input type="text" id="search" placeholder="검색할 회원 이름" style="border:1px solid gray;" />
 				<input type="button" id="searchBtn" value="검색" />
 			</span>
+			<!-- 한번에 보여줄 게시글 개수 지정 -->
+ 		<select name="perPageNum" onchange="form.submit();">
+ 			<c:forEach var="num" begin="5" end="20" step="5">
+	 			<option value="${num}" ${num eq cri.perPageNum ? 'selected' : ''}>${num}개씩 보기</option>
+ 			</c:forEach>
+ 		</select>
 		</div>
 	</div>
 	
