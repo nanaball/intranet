@@ -59,7 +59,7 @@ public interface WelfareMapper {
 	 * @throws Exception
 	 */
 	@Delete("DELETE FROM model WHERE num = #{num}")
-	void delete(int num) throws Exception;
+	int delete(int num) throws Exception;
 	
 	/** 새 제품 미리보기 3개
 	 * @return

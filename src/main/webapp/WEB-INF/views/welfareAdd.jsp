@@ -116,7 +116,6 @@
 			$("#welfareAdd").on("click",function(){
 				if(confirm("상품을 추가합니다.")){
 					$("#welfareAdd").submit();
-			 		location.href="${pageContext.request.contextPath}/Welfare/welfare"; 
 				}
 			}); 
 			

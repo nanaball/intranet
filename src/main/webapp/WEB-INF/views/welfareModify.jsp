@@ -103,6 +103,7 @@
 				<td><input type="text" name="intro" value="${welfareVO.intro}" placeholder="상품 설명을 입력하세요." /></td>
 				<td><input type="text" name="price" value="${welfareVO.price}" placeholder="상품 가격을 입력하세요." /></td>
 				<td><input type="text" name="stock" value="${welfareVO.stock}" placeholder="상품 재고를 입력하세요." /></td>
+				<td><input type="hidden" name="num" value="${welfareVO.num}"/></td>
 			</tr>
            </table>
            <hr/>
@@ -115,8 +116,6 @@
 			$("#welfareModify").on("click",function(){
 				if(confirm("상품을 수정합니다.")){
 					$("#welfareModify").submit();
-					alert("수정 완료");
-					location.href="${pageContext.request.contextPath}/Welfare/welfare";
 				}
 			});
 			

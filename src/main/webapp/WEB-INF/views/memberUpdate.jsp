@@ -80,8 +80,7 @@ table tr td input[type='text'], table tr td input[type='password'],
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form name="memberUpdate" method="post" action="memberUpdate"
-		enctype="application/x-www-form-urlencoded">
+	<form method="post" action="memberUpdate">
 		<br />
 		<br />
 		<br />
@@ -99,12 +98,12 @@ table tr td input[type='text'], table tr td input[type='password'],
 			</tr>
 			<tr>
 				<td>기존 비밀번호</td>
-				<td><input type="password"  name="upw" data-msg="비밀번호"
+				<td><input type="password"  name="upw" id="upw"
 					placeholder="비밀번호를 입력해주세요" required /></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호</td>
-				<td><input type="password" name="newUpw"
+				<td><input type="password" name="newUpw" id="newUpw"
 					data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
@@ -133,7 +132,7 @@ table tr td input[type='text'], table tr td input[type='password'],
 					placeholder="이메일을 입력해주세요" /></td>
 			</tr>
 			<tr>
-				<th colspan="3"><input type="button" id="done" value="수정 완료" />
+				<th colspan="3"><input type="submit" id="done" value="수정 완료" />
 					<input type="button" id="cancel" value="수정 취소" /></th>
 			</tr>
 		</table>
@@ -165,6 +164,13 @@ table tr td input[type='text'], table tr td input[type='password'],
 				return;
 			}
 			
+			if($("#uaddr").val().length <= 0){
+				alert("주소를 입력해주세요");
+				$("#uaddr").val("");
+				$("#uaddr").focus();
+				return;
+			}
+			
 			if($("#uemail").val().length <= 0){
 				alert("이메일을 입력해주세요");
 				$("#uemail").val("");
@@ -179,38 +185,26 @@ table tr td input[type='text'], table tr td input[type='password'],
 				return;
 			}
 			
-			/*
+			
 			// 비밀번호 관련 다시 체크하기
 			// 비밀번호 중복 확인 
-			if(${MemberVO.upw}.val() == $("#newUpw").val()){
-				alert("새 비밀번호가 기존 비밀번호와 일치합니다.");
-				$("#newUpw").focus();
-				return;				
-			}		
+			
 			
 			// 로그인한 비밀번호와 입력한 비밀번호의 일치 확인
-			if($("#upw").val() !== ${MemberVO.upw}){
-				alert("기존 비밀번호가 일치하지 않습니다.");
-				$("#upw").val("");
-				$("#newUpw").val("");
-				return;
-			}
 			
 			
-			alert("정보가 수정되었습니다.");
-			location.href = "${pageContext.request.contextPath}/main";
+			// 새 비밀번호 입력 X 일 시 반영 안 되도록?
+			
+			
 			$("#memberUpdate").submit();
-			*/
+			
 		}); 
 		
 		// 수정 취소 버튼 		
 		$("#cancel").on("click",function(){
-			var result = confirm('회원 수정을 취소하시겠습니까?');
-			
-			if(result){
+			if(confirm("회원 수정을 취소하시겠습니까?")){
 				location.href = "${pageContext.request.contextPath}/main";
 			}
-			
 		});
 		
 	</script>

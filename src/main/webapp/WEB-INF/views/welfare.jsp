@@ -85,12 +85,14 @@
 <form method="post" action="welfareDelete">
 	<br/>
 	<br/>
+	
 		<table>
 			<tr>
 				<th>상품 이미지</th>
 				<th>상품 이름</th>
 				<th>상품 설명</th>
 				<th>상품 가격</th>
+				<input type="hidden" name="num" value="${welfareVO.num}"/>
 				<c:choose>
 					<c:when test="${'관리자' == loginMember.getUjob()}">
 						<th>상품 삭제</th>
@@ -127,6 +129,7 @@
 					</tr>
 				</c:otherwise>
 			</c:choose>
+			
 		</table>
 		
 		<!-- 관리자만 보이게 -->
@@ -149,8 +152,7 @@
 			
 			$("#delete").on("click", function(){
 				if(confirm("상품을 삭제합니다.")){
-					$("#delete").submit();
-					location.href="${pageContext.request.contextPath}/Welfare/welfare";
+					$("#welfareDelete").submit();
 				}
 			});
 			
