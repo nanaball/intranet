@@ -50,7 +50,7 @@ public interface WelfareMapper {
 	 * 복지 제품 구입 시 재고 감소
 	 */
 	@Update("UPDATE model set stock = stock-1 WHERE num = #{num}")
-	int buy(WelfareVO vo) throws Exception;
+	int buy(int num) throws Exception;
 	
 	/**
 	 * 복지 상품 삭제
@@ -59,7 +59,7 @@ public interface WelfareMapper {
 	 * @throws Exception
 	 */
 	@Delete("DELETE FROM model WHERE num = #{num}")
-	void delete(int num) throws Exception;
+	int delete(int num) throws Exception;
 	
 	/** 새 제품 미리보기 3개
 	 * @return

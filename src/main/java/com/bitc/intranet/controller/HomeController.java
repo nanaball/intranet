@@ -15,6 +15,7 @@ import com.bitc.intranet.service.FreeService;
 import com.bitc.intranet.service.MessageService;
 import com.bitc.intranet.service.NoticeService;
 import com.bitc.intranet.service.WelfareService;
+import com.bitc.intranet.vo.MemberVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -41,11 +42,12 @@ public class HomeController {
 
 	// 메인에 최근 게시글 5개 띄우기
 	@GetMapping("main")
-	public void main(Model model) throws Exception {
+	public void main(Model model, HttpSession session) throws Exception {
+		MemberVO memberVO = (MemberVO)session.getAttribute("loginMember");
 		model.addAttribute("notice", bs.recentNotices());
 		model.addAttribute("free", fs.recentFree());
 		model.addAttribute("welfareList", ws.recentWelfare());
-		model.addAttribute("message", ms.recentMessage());
+		model.addAttribute("message", ms.recentMessage(memberVO.getUid()));
 	}
 	
 	

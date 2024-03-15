@@ -2,43 +2,41 @@
     pageEncoding="UTF-8"%>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
-	#commentWrite{
-		height:atuo;
-	}
-
-	#comments li{
+	#comments li {
 		list-style:none;
 		padding:10px;
-		border:1px solid gray;
-		border-radius:25px;
-		height:100px;
+		border: 1px solid #ccc;
+		height:150px;
 		margin : 5px 0;
 	}
- 	#modCom{
+	
+	#modDiv{
 		border:1px solid black;
 		padding:10px;
 		display:none;
 	}
 	
-	#comments span{
+	#pagination{
+		margin : 0 auto;
+		display:flex;
+		justify-content: center;
+	}
+	
+	
+	#pagination li{
+		list-style:none;
+		padding:3px;
 		border:1px solid skyblue;
-		padding:5px 10px;
+		margin:3px;
 	}
 	
-	#comments span:hover{
-		border:1px solid black;
-		color:#D1B2FF;
-		cursor:pointer;
-		
+	#pagination li a{
+		text-decoration: none;
+		color:black;
 	}
 	
-	.commentAuth{
-		width:700px;
-	}
-	
-	.commentContent{
-		height:150px; 
-		width:700px;
+	#pagination li a.active{
+		color:red;
 	}
 	
 </style>
@@ -57,6 +55,7 @@
 		<div>
 			<button id="modBtn">수정</button>
 			<button id="deleteBtn">삭제</button>
+			<button id="closeBtn">닫기</button>
 		</div>
 	</div>
 		<!-- 댓글 작성 -->
@@ -92,7 +91,7 @@
 			let url = "${path}/comment/"+bno+"/"+page+"/"+perPageNum;
 			$.getJSON(url,function(data){
 				console.log(data);
-				printpage(data);
+				printPage(data);
 			});
 		}
 		
@@ -231,9 +230,10 @@
 					noti_content : content
 				}),
 				dataType : "text",
-				success : function(result){
-					alert(result);
-					page = 1;
+				success : function(data){
+					alert(data);
+					$("#modCom").slideUp("fast");
+					//page = 1;
 					listPage(page);
 				},
 				error : function(res){
@@ -250,8 +250,8 @@
 				type : "DELETE",
 				url : "${path}/comment/"+cno,
 				dataType : "text",
-				success : function(result){
-					alert(result);
+				success : function(data){
+					alert(data);
 					page = 1;
 					//listPage(page);
 				},
@@ -259,6 +259,11 @@
 					console.log(res);
 				}
 			});
+		});
+		
+		// 수정창 닫기  Close modDiv
+		$("#closeBtn").click(function(){
+			$("#modCom").slideUp("slow");			
 		});
 		
 		// 마우스 스크롤로 이벤트 처리

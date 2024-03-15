@@ -32,13 +32,22 @@ public class MessageService {
 			}
 		}
 	}
-	public List<MessageVO> list() throws Exception {
-		List<MessageVO> list = mapper.list();
+	public List<MessageVO> list(String uname) throws Exception {
+		List<MessageVO> list = mapper.list(uname);
 		for(MessageVO v : list) {
 			MessageVO message = new MessageVO();
 			message.setFiles(filemapper.getAttach(v.getMno()));
 		}
 		return list;
+	}
+	//+더보기 수신함 List
+	public List<MessageVO> sendList(String uid) throws Exception {
+		List<MessageVO> sendList = mapper.sendList(uid);
+		for(MessageVO v : sendList) {
+			MessageVO message = new MessageVO();
+			message.setFiles(filemapper.getAttach(v.getMno()));
+		}
+		return sendList;
 	}
 	
 	
@@ -78,9 +87,13 @@ public class MessageService {
 		
 	}
 	//메인에서 게시글 5개 미리보기
-	public List<MessageVO> recentMessage() throws Exception{
-		return mapper.recentMessage();
+
+	public List<MessageVO> recentMessage(String uid) throws Exception{
+		return mapper.recentMessage(uid);
+
 	}
+	
+
 
 
 }

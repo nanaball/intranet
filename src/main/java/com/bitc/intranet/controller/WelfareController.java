@@ -67,24 +67,29 @@ public class WelfareController {
 	
 	// 복지 수정 요청
 	@PostMapping("welfareModify")
-	public String modifyPost(RedirectAttributes rtts, WelfareVO vo) throws Exception{
-		ws.modify(vo);
+	public String modifyPost(RedirectAttributes rtts, WelfareVO vo, Model model) throws Exception{
+		String result = ws.modify(vo);
 		rtts.addAttribute("num", vo.getNum());
-		return "redirect:/Welfare/welfare";
+		rtts.addFlashAttribute("message", result);
+		return "redirect:/Welfare/welfareDetail";
 	}
 	
 	// 복지 삭제 요청
-	@PostMapping("delete")
-	public String delete(int num) throws Exception{
-		ws.removeWelfare(num);
+	@PostMapping("welfareDelete")
+	public String delete(int num, RedirectAttributes rttr, Model model) throws Exception{
+		ws.welfareDelete(num);
+		rttr.addFlashAttribute("message","삭제완료 되었습니다.");
+		rttr.addAttribute("num",num);
 		return "redirect:/Welfare/welfare";
 	}
 	
 	// 구매
-	@GetMapping("buy")
-	public String buy(WelfareVO vo) throws Exception{
-		ws.buyWelfare(vo);
-		return "redirect:/Welfare/welfare";
+	@PostMapping("welfareBuy")
+	public String buy(int num, RedirectAttributes rttr) throws Exception{
+		ws.buyWelfare(num);
+		rttr.addFlashAttribute("message","구매완료 되었습니다.");
+		rttr.addAttribute("num",num);
+		return "redirect:/Welfare/welfareDetail";
 	}
 	
 	// 새로운 복지 제품 미리보기
@@ -95,3 +100,11 @@ public class WelfareController {
 	}
 	
 }
+
+
+
+
+
+
+
+

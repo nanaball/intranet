@@ -106,21 +106,25 @@
            <hr/>
            <br/>
            <input type="submit" id="buy" value="구매하기" />
+           <td><input type="hidden" name="num" value="${Detail.num}"/></td>
            <c:choose>
 				<c:when test="${'관리자' == loginMember.getUjob()}">
 					<input type="button" id="modify" value="상품 수정하기"/>
 				</c:when>
 		</c:choose>
            <input type="button" id="back" value="뒤로가기" />
+          	
 	</form>
 	<script>
+		var msg = '${message}';
+		if(msg != ''){
+			alert(msg);
+		}
+	
 		$(function(){
 			$("#buy").on("click",function(){
 				if(confirm("상품을 구매합니다.")){
-					$("welfareBuy").submit();
-					
-					location.href="${pageContext.request.contextPath}/Welfare/welfare";
-					alert("구매가 완료되었습니다.")
+					$("#welfareBuy").submit();
 				}
 			});
 			

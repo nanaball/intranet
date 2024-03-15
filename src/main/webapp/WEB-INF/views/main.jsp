@@ -117,7 +117,9 @@
 				<div id="border2">
 					<h3>결재</h3>
 					<h3>&nbsp;</h3>
+
 					<span id="plus"  onclick="location.href='messages/message';"><h5>더보기</h5></span>
+
 						<h3>&nbsp;</h3>
 
 					<table boarder="1" cellspacing="10" >
