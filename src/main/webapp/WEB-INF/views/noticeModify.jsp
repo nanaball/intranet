@@ -30,14 +30,13 @@
 </head>
 <body>
 <c:if test="${loginMember.getUjob() == '관리자'}">
-	<h3>게시글 수정</h3>
 		<!-- model boardVO -->
 		<!-- board/modify POST -->
 		<form id="modifyForm" method="POST">
 			<input type="hidden" name="bno" value="${noticeVO.bno}"/>
 			<table border="1">
 				<tr>
-					<th colspan = "2"><h1>공지글 작성</h1></th>
+					<th colspan = "2"><h1>게시글 수정</h1></th>
 				</tr>
 				<tr>
 					<td>작성자</td>
@@ -89,12 +88,12 @@
 				<c:if test="${!empty noticeVO.files}">
 					<ul class="uploadList">
 						<c:forEach var="file" items="${noticeVO.files}">
-							<li data-src="${file}">
+							<li data-src="${file}" >
 								<c:choose>
 									<c:when test="${fn:contains(file,'s_')}">
 										<img src="${path}/displayFile?fileName=${file}"/>
 										<div>
-											<a href="${path}/displayFile?fileName=${fn:replace(file,'s_','')}" target="_blank">
+											<a href="${path}/displayFile?fileName=${fn:replace(file,'s_','')}" target="_blank"  style="color:black;">
 												${fn:substringAfter(fn:replace(file,'s_',''),'_')}
 											</a>
 										</div>
@@ -103,14 +102,14 @@
 										<!-- 일반 파일 -->
 										<img src="${path}/resources/img/file.png"/>
 										<div>
-											<a href="${path}/displayFile?fileName=${file}">
+											<a href="${path}/displayFile?fileName=${file}" style="color:black;">
 												${fn:substringAfter(file,'_')}
 											</a>
 										</div>
 									</c:otherwise>
 								</c:choose>
 								<div>
-									<a href="${file}" class="delBtn">[삭제]</a>
+									<a href="${file}" class="delBtn" style="color:black;">[삭제]</a>
 								</div>
 							</li>
 						</c:forEach>
@@ -119,7 +118,6 @@
 			</div>
 		</form>
 		</c:if>
-		<button onclick="goBack()">뒤로가기</button>
 		<!-- <button onclick="goBack()">뒤로가기</button> -->
 		<script>
 			// drag & drop 시 브라우저가 파일을 해석하려는 기본이벤트를 제거
