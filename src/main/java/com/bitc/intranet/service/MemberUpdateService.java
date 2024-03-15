@@ -27,8 +27,8 @@ public class MemberUpdateService {
 	}
 	
 	// 회원 정보 읽기
-	public MemberVO detail(String uno) throws Exception{
-		return mapper.memberDetail(uno);
+	public MemberVO detail(int uno) throws Exception{
+		return mapper.detail(uno);
 	}
 	
 	// 회원이 작성한 수정 정보 입력

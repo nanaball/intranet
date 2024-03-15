@@ -1,12 +1,12 @@
 package com.bitc.intranet.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.MemberUpdateService;
 import com.bitc.intranet.vo.MemberVO;
@@ -22,21 +22,18 @@ public class MemberUpdateController {
 	private final MemberUpdateService mus;
 
 	@GetMapping("memberUpdate")
-	public String detail(String uno, Model model, HttpSession session) throws Exception{
+	public String detail(int uno, Model model) throws Exception{
 		MemberVO vo = mus.detail(uno);
 		model.addAttribute("detail", vo);
-		
 		return "memberUpdate";
 	}
 	
    @PostMapping("memberUpdate")
-   public String changePass(@ModelAttribute MemberVO vo, Model model) throws Exception{
+   public String changePass(@ModelAttribute MemberVO vo, Model model, int uno) throws Exception{
 	   System.out.println(vo);
+	   System.out.println(uno);
 	   mus.updateMember(vo);
-	   return "memberUpdate"; 
+	   return "redirect:/main"; 
    }
-	
-	@GetMapping("memberDelete")
-	public void memberDelete() {}
 	
 }
