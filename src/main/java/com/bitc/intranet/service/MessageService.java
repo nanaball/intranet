@@ -67,7 +67,7 @@ public class MessageService {
 	}
 	public void messageModify(MessageVO vo) throws Exception{
 		//targetid, message 수정하기
-		((MessageMapper) mapper).messageModify(vo);
+		mapper.messageModify(vo);
 		
 		filemapper.deleteAttach(vo.getMno());
 		//변경된 첨부파일 목록등록
@@ -80,8 +80,6 @@ public class MessageService {
 
 		
 	}
-	
-	
 	
 	public void remove(int mno) throws Exception{
 		filemapper.deleteAttach(mno);
@@ -97,15 +95,9 @@ public class MessageService {
 	
 
 	
-	/**
-	 * 페이징 처리된 리스트 목록
-	 * @param  
-	 * @param cri - 페이징 처리된 게시글 목록을 불러올 정보 <br/>
-	 * 				page 요청 페이지    <br/> 
-	 * 				startrow(검색 시작 행 인덱시 번호)	<br/>
-	 * 				perPageNum(검색할 게시글 개수) 	<br/>
-	 * @return - 페이징 처리된 게시글 목록을 리스트로 반환
-	 */
+	
+	//작성자 이름으로 쓰인 결제 페이징처리
+	 
 	public List<MessageVO> listCriteria(Criteria Cri,String uname)throws Exception{
 		return mapper.listCriteria(Cri, uname);
 	};

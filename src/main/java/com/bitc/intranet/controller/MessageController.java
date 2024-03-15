@@ -87,18 +87,18 @@ public class MessageController {
 		
 		// 메세지 수정완료 요청
 		@PostMapping("messageModify")
-		public String modifyPost(RedirectAttributes rtts, MessageVO vo, Model model) {
+		public String messageModify(RedirectAttributes rtts, MessageVO message, Model model) {
 			String result = "";
 			
 			try {
-				ms.messageModify(vo);
+				ms.messageModify(message);
 				result="수정완료";
 			} catch (Exception e) {
 				result="수정사항을 확인해주세요";
 			}
 			
 			rtts.addFlashAttribute("result",result);
-			rtts.addAttribute("mno",vo.getMno());
+			rtts.addAttribute("mno",message.getMno());
 			return "redirect:/messages/messageModify";
 		}
 		
@@ -106,7 +106,7 @@ public class MessageController {
 		@GetMapping("remove")
 		public String remove(int mno) throws Exception{
 			ms.remove(mno);
-			return "redirect:/Messages/??";
+			return "redirect:/messages/message";
 		}
 
 		@GetMapping("message")

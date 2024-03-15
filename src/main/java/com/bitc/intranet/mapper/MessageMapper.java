@@ -30,7 +30,7 @@ public interface MessageMapper {
 	@Update("UPDATE message_tbl SET title=#{title}, content=#{content}, targetid=#{targetid}, updatedate=now() WHERE mno=${mno}")
 	void messageModify(MessageVO vo) throws Exception;
 
-	@Update("UPDATE message_tbl SET showboard='n',updatedate=now() WHERE mno=${mno}")
+	@Update("DELETE FROM message_tbl WHERE mno=${mno}")
 	void remove(int mno) throws Exception;
 
 	/**
