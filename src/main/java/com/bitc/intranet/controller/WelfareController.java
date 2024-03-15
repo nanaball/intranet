@@ -76,7 +76,7 @@ public class WelfareController {
 	
 	// 복지 삭제 요청
 	@PostMapping("welfareDelete")
-	public String delete(int num, RedirectAttributes rttr, Model model) throws Exception{
+	public String delete(int num, RedirectAttributes rttr) throws Exception{
 		ws.welfareDelete(num);
 		rttr.addFlashAttribute("message","삭제완료 되었습니다.");
 		rttr.addAttribute("num",num);

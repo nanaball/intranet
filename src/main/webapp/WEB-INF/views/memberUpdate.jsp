@@ -101,6 +101,7 @@ table tr td input[type='text'], table tr td input[type='password'],
 		<br />
 		<br />
 		<table align="center">
+		
 			<tr>
 				<th colspan="3"><h3>
 						👨 회원 정보 수정 👩
@@ -108,48 +109,51 @@ table tr td input[type='text'], table tr td input[type='password'],
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="uid"
-					value="${loginMember.getUid()}" placeholder="아이디를 입력해주세요" readonly
+				<td><input type="text" name="uid" id="uid"
+					value="${detail.uid}" placeholder="아이디를 입력해주세요" readonly
 					required /></td>
 			</tr>
 			<tr>
 				<td>기존 비밀번호</td>
-				<td><input type="password"  name="upw"
-					placeholder="비밀번호를 입력해주세요" required /></td>
+				<td><input type="password"  name="upw" id="upw"
+					placeholder="비밀번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호</td>
-				<td><input type="password" name="newUpw"
+				<td><input type="password" name="newUpw" id="newUpw"
 					data-msg="비밀번호" placeholder="비밀번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="uname"
-					value="${loginMember.getUname()}"
+				<td><input type="text" name="uname" id="uname"
+					value="${detail.uname}"
 					placeholder="이름을 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" name="uaddr"
-					value="${loginMember.getUaddr()}"
+				<td><input type="text" name="uaddr" id="uaddr"
+					value="${detail.uaddr}"
 					placeholder="주소를 입력해주세요" /></td>
 			</tr>
 			<tr>
 
 				<td>전화번호</td>
-				<td><input type="text" name="uphone"
-					value="${loginMember.getUphone()}"
+				<td><input type="text" name="uphone" id="uphone"
+					value="${detail.uphone}"
 					placeholder="전화번호를 입력해주세요" /></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="email" name="uemail"
-					value="${loginMember.getUemail()}"
+				<td><input type="email" name="uemail" id="uemail"
+					value="${detail.uemail}"
 					placeholder="이메일을 입력해주세요" /></td>
 			</tr>
 			<tr>
-				<th colspan="3"><input type="submit" id="done" value="수정 완료" />
-					<input type="button" id="cancel" value="수정 취소" /></th>
+				<th colspan="3">
+					<input type="submit" id="done" value="수정 완료" />
+					<input type="hidden" name="uno" value="${detail.uno}"/>
+					<input type="button" id="cancel" value="수정 취소" />
+				</th>
 			</tr>
 		</table>
 	</form>
@@ -163,71 +167,82 @@ table tr td input[type='text'], table tr td input[type='password'],
 				alert("사용자아이디를 입력해주세요");
 				$("#uid").val("");
 				$("#uid").focus();
-				return ;
+				return false;
 			}
 			
 			if($("#upw").val().length <= 0){
 				alert("비밀번호를 입력해주세요");
 				$("#upw").val("");
 				$("#upw").focus();
-				return;
+				return false;
 			}
 			
 			if($("#uname").val().length <= 0){
 				alert("이름을 입력해주세요");
 				$("#uname").val("");
 				$("#uname").focus();
-				return;
+				return false;
 			}
 			
 			if($("#uaddr").val().length <= 0){
 				alert("주소를 입력해주세요");
 				$("#uaddr").val("");
 				$("#uaddr").focus();
-				return;
+				return false;
 			}
 			
 			if($("#uemail").val().length <= 0){
 				alert("이메일을 입력해주세요");
 				$("#uemail").val("");
 				$("#uemail").focus();
-				return;
+				return false;
 			}
 			
 			if($("#uphone").val().length <= 0){
 				alert("휴대폰 번호를 입력해주세요");
 				$("#uphone").val("");
 				$("#uphone").focus();
-				return;
+				return false;
 			}
 			
-			// --------- 여기부터
-			
-			// 기존 비밀번호, 새 비밀번호 중복 확인 
-			if($("#upw").equals($("#newUpw")){
-				alert("비밀번호가 똑같아요");
-				return;
+			// 기존 비밀번호, 새 비밀번호 중복 확인  
+			if($("#upw").val() == $("#newUpw").val()){
+				alert("기존 비밀번호와 새 비밀번호가 동일합니다.");
+				$("#upw").val("");
+				$("#newUpw").val("");
+				$("#upw").focus();
+				return false;
 			}
 			
-			// 로그인한 비밀번호와 입력한 비밀번호의 일치 확인
-			if($(MemberVO.upw) == ("#upw")){
-				alert("번호가 달라요");
-				return;
-			}
+			// 기존 비밀번호가 로그인 비밀번호와 일치하는지 확인
+ 			var loggedInPassword = "${detail.upw}";
 			
-			// 새 비밀번호 입력 안 하면 그냥 넘기도록 하기
-			if($("#newUpw").val().length <= 0){
-				$("#newUpw").val("#upw");
-				return;
-			}
+		    // 입력된 기존 비밀번호
+		    var oldPassword = $("#upw").val();
+ 			
+		    // 기존 비밀번호와 로그인 비밀번호가 일치하는지 확인
+		    if (oldPassword !== loggedInPassword) {
+		        alert("기존 비밀번호가 일치하지 않습니다.");
+		        $("#upw").val("");      // 비밀번호 입력란 초기화
+		        $("#newUpw").val("");   // 새 비밀번호 입력란 초기화
+		        $("#upw").focus();      // 기존 비밀번호 입력란에 포커스
+		        return false;           // submit 동작 중지
+		    }
+		   
+			// 새 비밀번호를 입력하지 않으면 기존 비밀번호 유지
+			var newPassword = $("#newUpw").val().trim(); // 새 비밀번호 입력값 가져오기
 			
-			// -------- 여기까지 다 안 됨 
+		    if (newPassword.length === 0) {
+		        $("#newUpw").val(loggedInPassword); // 새 비밀번호를 입력하지 않으면 기존 비밀번호로 설정
+		    }
+			
+			alert("수정이 완료되었습니다.");
 			
 			$("#memberUpdate").submit();
 			
 		}); 
 		
-		// 수정 취소 버튼 ---- 얘도 안됨;; 		
+		// 수정 취소 버튼	
 		$("#cancel").on("click",function(){
 			if(confirm("회원 수정을 취소하시겠습니까?")){
 				location.href = "${pageContext.request.contextPath}/main";
