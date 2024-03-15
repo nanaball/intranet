@@ -81,6 +81,7 @@ drop table ;
 
 CREATE TABLE message_tbl(
  	mno INT  PRIMARY KEY auto_increment,		-- 메세지 번호	
+
 	targetid VARCHAR(50) NOT NULL,				-- 수신자 아이디
 	writer   VARCHAR(50),                       -- 발신자 아이디(로그인된 사용자 생략가능)
 	title	VARCHAR(50) NOT NULL, 				-- 제목
@@ -89,6 +90,13 @@ CREATE TABLE message_tbl(
 	senddate TIMESTAMP NOT NULL DEFAULT now(),	-- 발신 시간
 	FOREIGN KEY(targetid) REFERENCES member(uid)
 );
+
+DELETE FROM message_tbl WHERE targetid = '삭제할 회원 아이디';
+
+
+
+
+desc message_tbl;
 
 DROP TABLE message_tbl;
 
@@ -128,3 +136,8 @@ SHOW VARIABLES LIKE '&event%';
 
 
 ALTER TABLE member add column deldate TIMESTAMP NULL DEFAULT now(), add column memberdel VARCHAR(10) NULL DEFAULT 'y';
+
+
+ALTER TABLE member
+DROP COLUMN deldate,
+DROP COLUMN memberdel;

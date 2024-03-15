@@ -38,7 +38,9 @@
 			<hr/>
 			<br/>
 			<br/>
-			 <table border="1" class="list"  width="70%">
+
+	<table border="1" class="list"  width="70%">
+
                 <tr>
                     <th>글 번호</th>
                     <th>제목</th>

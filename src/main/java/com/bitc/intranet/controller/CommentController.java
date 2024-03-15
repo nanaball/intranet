@@ -24,7 +24,7 @@ import com.bitc.intranet.vo.CommentVO;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/comment/*")
+@RequestMapping("/comment")
 @RequiredArgsConstructor
 public class CommentController {
 	
@@ -39,7 +39,7 @@ public class CommentController {
 	}
 	
 	// 댓글 등록
-	@PostMapping("joinComment")
+	@PostMapping("/joinComment")
 	public ResponseEntity<String> addComment(CommentVO vo){
 		System.out.println(vo);
 		ResponseEntity<String> entity = null;
@@ -60,7 +60,7 @@ public class CommentController {
 	public ResponseEntity<String> update(
 			@PathVariable(name="noti_cno") int cno,
 			@RequestBody CommentVO vo
-			){
+			)throws Exception{
 		System.out.println("noti_cno : " + cno);
 		System.out.println("vo : " + vo);
 		vo.setNoti_cno(cno);

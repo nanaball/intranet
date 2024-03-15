@@ -80,10 +80,7 @@ public interface MemberMapper {
 	 * @param uno
 	 * @throws Exception
 	 */
-	@Update("UPDATE member set " 
-			+ " memberdel = 'n' , " 
-			+ " deldate = now() "
-			+ " WHERE uno = #{uno}")
+	@Delete("DELETE FROM member WHERE uno = #{uno}")
 	void remove(int uno) throws Exception;
 
 }

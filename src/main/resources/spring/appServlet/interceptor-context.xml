@@ -22,6 +22,7 @@
 			<mapping path="/Welfare/**"/>
 			<mapping path="/accuse/**"/>
 			<mapping path="/messages/**"/>
+			<mapping path="/main/"/>
 			<mapping path="/member/memberList"/>
 			<mapping path="/member/memberDel"/>
 			<beans:bean class="com.bitc.intranet.interceptor.AuthInterceptor" />

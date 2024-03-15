@@ -9,7 +9,6 @@ import com.bitc.intranet.mapper.MessageFileMapper;
 import com.bitc.intranet.mapper.MessageMapper;
 import com.bitc.intranet.util.Criteria;
 import com.bitc.intranet.util.PageMaker;
-import com.bitc.intranet.vo.NoticeVO;
 import com.bitc.intranet.vo.MessageVO;
 
 import lombok.RequiredArgsConstructor;
