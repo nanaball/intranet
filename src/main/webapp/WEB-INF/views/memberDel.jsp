@@ -137,7 +137,7 @@
 	
 	$("#bye").click(function() {
 
-		if(confirm("게시글을 삭제하시겠습니까?")){		
+		if(confirm("회원삭제를 삭제하시겠습니까?")){		
 			formObj.attr("action","${path}/member/bye");			
 			formObj.attr("method","post");
 			formObj.submit();

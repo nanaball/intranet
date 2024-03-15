@@ -171,9 +171,8 @@
 			            let html = $("#borders table.list tbody");
 			            // 이전 검색 결과를 삭제
 			            html.empty();
-			            // 검색 결과를 테이블에 추가
-
-			          
+			            
+			            // 검색 결과를 테이블에 추가			          
 			            html.append("<tr><th>글번호</th><th>제목</th><th>작성자</th><th>작성시간</th><th>조회수</th></tr>");
 			            for (let i = 0; i < data.length; i++) {
 			            	console.log(data[i]);

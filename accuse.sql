@@ -26,6 +26,8 @@ select * from model;
 
 desc model;
 
+ALTER TABLE accuse MODIFY COLUMN uno INT NULL;
+
 -- 게시글 작성 했을 시 회원 탈퇴 불가로 조건 추가 
 
 ALTER TABLE accuse
@@ -43,4 +45,4 @@ DROP FOREIGN KEY fk_free_uno,   -- 기존 외래 키 제약 조건 삭제
 ADD CONSTRAINT fk_free_member
 FOREIGN KEY (uno)
 REFERENCES member(uno)
-ON DELETE CASCADE; -- 새로운 외래 키 제약 조건 설정
+ON DELETE SET NULL; -- 새로운 외래 키 제약 조건 설정
