@@ -10,80 +10,83 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
-    	div{
-		text-align: center;
-	}
-	
-	table{
-		margin : 100px;
-		padding : 100px;
-		background-color: white;
-	  	border-collapse: collapse;
-	  	border-radius: 10px;
-	  	border-style: hidden;
-	  	box-shadow: 0 0 0 1px #000;
-	  	text-align: center;
-	  	table-layout: fixed;
-	  	word-spacing: normal;
-	}
-  
-	
-	table tr td{
-		width : 1500px;
-		height : 200px;
-		border-top: 1px solid black;
-		border-bottom: 1px solid #ccc;
-		border-right: 1px solid #ccc;
-		padding:10px;
-		text-align: center;
-		word-spacing: normal;
-	}
-	
-	table tr th{
-		text-align:center;
-		height : 30px;
-	}
-	
-	#title{
-		height: 50px;
-		border-bottom: 1px solid black;
-	}
-	
-	.product:hover{
-		cursor: pointer;
-		
-	}
-	
-	input[type='button']{
-		color: white;
-		background-color: #1BBC9B;
-		border : 1px;
-		border-radius : 10px;
-		padding : 10px;
-		margin-left : 20px;
-		margin-right : 20px;
-		width : 130px;
-	}
-	
-	input[type='button']:hover{
-	    color: black;
-	    cursor: pointer;
-	}
-	
-	.delete{
-		border : 1px;
-		border-radius : 10px;
-		background-color: #1BBC9B;
-		color : black;
-		height:20px;
-		width:20px;
-	}
-	
-	.delete:hover{
-		color:white;
-		cursor:pinter;
-	}
-	
+    div {
+        text-align: center;
+    }
+    
+    table {
+        margin: 100px;
+        padding: 100px;
+        background-color: white;
+        border-collapse: collapse;
+        border-radius: 10px;
+        border-style: hidden;
+        box-shadow: 0 0 0 1px #000;
+        text-align: center;
+        table-layout: fixed;
+        word-spacing: normal;
+    }
+    
+    table tr td {
+        width: 1500px;
+        height: 200px;
+        border-top: 1px solid black;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        word-spacing: normal;
+    }
+    
+    table tr th {
+        text-align: center;
+        height: 30px;
+    }
+    
+    #title {
+        height: 50px;
+        border-bottom: 1px solid black;
+    }
+    
+    .product:hover {
+        cursor: pointer;
+        
+    }
+    
+    input[type='button'] {
+        color: white;
+        background-color: #1BBC9B;
+        border: 1px;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 130px;
+    }
+    
+    input[type='button']:hover {
+        color: black;
+        cursor: pointer;
+    }
+    
+    .delete {
+        border: 1px;
+        border-radius: 10px;
+        background-color: #1BBC9B;
+        color: black;
+        height: 20px;
+        width: 20px;
+    }
+    
+    .delete:hover {
+        color: white;
+        cursor: pointer;
+    }
+    
+    .sold-out {
+        color: red;
+        font-weight: bold;
+    }
 </style>
 </head>
 <body>
@@ -95,10 +98,10 @@
             <th>상품 설명</th>
             <th>상품 가격</th>
             <c:choose>
-	            <c:when test="${'관리자' == loginMember.getUjob()}">
-	            	<th>상품 삭제</th> <!-- 수정: 이 부분 추가 -->
-	            </c:when>
-        	</c:choose>
+                <c:when test="${'관리자' == loginMember.getUjob()}">
+                    <th>상품 삭제</th> <!-- 수정: 이 부분 추가 -->
+                </c:when>
+            </c:choose>
         </tr>
         <c:choose>
             <c:when test="${!empty List}">
@@ -113,10 +116,19 @@
                             <f:formatNumber value="${m.price}" type="number" /> 원
                         </td>
                         <c:choose>
-                            <c:when test="${'관리자' == loginMember.getUjob()}">
-                                <!-- 각 삭제 버튼은 해당 상품의 번호를 전달하여 삭제 동작을 수행 -->
-                                <td><input type="submit" class="delete" name="num" value="${m.num}" /></td>
+                            <c:when test="${m.stock eq 0}">
+                                <td><span class="sold-out">품절</span></td>
                             </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${'관리자' == loginMember.getUjob()}">
+                                        <td><input type="submit" class="delete" name="num" value="${m.num}" /></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td></td> <!-- 관리자가 아닌 경우에는 빈 셀을 출력하여 공백 처리 -->
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:otherwise>
                         </c:choose>
                     </tr>
                 </c:forEach>
