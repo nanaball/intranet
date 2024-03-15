@@ -49,30 +49,8 @@
         justify-content:space-between;
         height:620px;
     }
-
-    /*  
-    #border1 {
- 	   border: 2px solid #1BBC9B; 
-	}
-    
-     #border2{
-    	border: 2px solid #1BBC9B; 
-    }
-    
-     #border3{
-    	border:2px solid #1BBC9B; 	
-    }
-    
-    #border4{
-    	border:2px solid #1BBC9B;
-    }
-    
-    #border5{
-    	border:2px solid #1BBC9B;
-    }
-     */
 	
-	span{
+	#plus{
 		float:right;
 	}
 	
@@ -106,7 +84,7 @@
 				<div id="border1">
 					<h3>공지사항</h3>
 					<h6>&nbsp;</h6>
-					<span onclick="location.href='Notice/notice';"><h5>더보기</h5></span>					
+					<span id="plus" onclick="location.href='Notice/notice';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
 					<table  cellspacing="10"  cellpadding="10" board="1">
                 
@@ -139,7 +117,7 @@
 				<div id="border2">
 					<h3>결재</h3>
 					<h3>&nbsp;</h3>
-					<span onclick="location.href='messages/message';"><h5>더보기</h5></span>
+					<span id="plus"  onclick="location.href='messages/message';"><h5>더보기</h5></span>
 						<h3>&nbsp;</h3>
 
 					<table boarder="1" cellspacing="10" >
@@ -173,7 +151,7 @@
 				<div id="border3">
 					<h3>자유게시판</h3>
 					<h6>&nbsp;</h6>
-					<span onclick="location.href='free/free';"><h5>더보기</h5></span>					
+					<span id="plus" onclick="location.href='free/free';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
 					<table boarder="1" cellspacing="10" >
 						<tr>
@@ -207,7 +185,7 @@
 				<div id="border4">
 					<h3>직원복지</h3>
 					<h6>&nbsp;</h6>
-					<span onclick="location.href='Welfare/welfare';"><h5>더보기</h5></span>					
+					<span id="plus"  onclick="location.href='Welfare/welfare';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
 
 					<table boarder="1" cellspacing="10" >

@@ -84,7 +84,7 @@
 		height:auto;
 	}
 </style>
-
+<link rel="stylesheet" href="${path}/resources/css/css.css"/>
 </head>
 <body>
 	<header>

@@ -38,6 +38,7 @@
 			<hr/>
 			<br/>
 			<br/>
+			<!-- 조건 추가 -->
 			 <table border="1" class="list">
                 <tr>
                     <th>글 번호</th>
