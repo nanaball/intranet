@@ -73,4 +73,3 @@
 	<hr style="clear:both;"/>
 	</div>
 <%@ include file="comment.jsp" %>
-</div>
