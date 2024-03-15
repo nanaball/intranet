@@ -44,7 +44,7 @@ public interface MessageMapper {
     List<MessageVO> recentMessage(String uid) throws Exception;
 	
 	
-	
+    //보낸결재 페이징처리
 	@Select("SELECT * FROM message_tbl WHERE writer = #{uname} ORDER BY mno DESC LIMIT #{cri.startRow}, #{cri.perPageNum}")
 	List<MessageVO> listCriteria(@Param("cri") Criteria cri, @Param("uname")String uname) throws Exception;
 	
