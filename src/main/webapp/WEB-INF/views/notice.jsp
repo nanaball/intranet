@@ -92,6 +92,8 @@
 				</c:choose>
 			
             </table>
+            <hr/>
+            <hr/>
             <c:if test="${loginMember.getUjob() == '관리자' }">
            		<input type="button" id="regist" value="새 글 작성" />
             </c:if>
