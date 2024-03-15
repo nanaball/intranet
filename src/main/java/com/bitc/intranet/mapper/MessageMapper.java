@@ -52,7 +52,6 @@ public interface MessageMapper {
 	@Select("SELECT count(*) FROM message_tbl")
 	int totalCount();
 
-	
 }
 
 
