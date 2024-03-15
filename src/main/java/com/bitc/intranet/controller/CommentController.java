@@ -40,6 +40,7 @@ public class CommentController {
 	
 	// 댓글 등록
 	@PostMapping("/joinComment")
+	@ResponseBody
 	public ResponseEntity<String> addComment(CommentVO vo){
 		System.out.println(vo);
 		ResponseEntity<String> entity = null;
@@ -57,6 +58,7 @@ public class CommentController {
 	
 	// 댓글 수정
 	@PatchMapping(value="/{noti_cno}", produces="text/plain;charset=utf-8")
+	@ResponseBody
 	public ResponseEntity<String> update(
 			@PathVariable(name="noti_cno") int cno,
 			@RequestBody CommentVO vo
@@ -75,6 +77,7 @@ public class CommentController {
 	
 	// 댓글 삭제
 	@DeleteMapping(value="/{cno}",produces="text/plain;charset=utf-8")
+	@ResponseBody
 	public String delete(
 			@PathVariable(name="cno") int cno
 			) throws Exception{
@@ -84,6 +87,7 @@ public class CommentController {
 	
 	// 페이징처리
 	@GetMapping("/{bno}/{page}/{perPageNum}")
+	@ResponseBody
 	public Map<String, Object> listpage(
 			@PathVariable("bno") int bno,
 			@ModelAttribute("cri")Criteria cri) throws Exception{

@@ -6,8 +6,9 @@
 		list-style:none;
 		padding:10px;
 		border: 1px solid #ccc;
-		height:150px;
-		margin : 5px 0;
+		height:130px;
+		margin : 5px 5px;
+		width : 900px;
 	}
 	
 	#modDiv{
@@ -107,17 +108,18 @@
 				let cno = list[i].noti_cno;
 				let content = list[i].noti_content;
 				let auth = list[i].author;
-				console.log(comment, noti_cno, noti_content, auth);
-				str += `<li>\${noti_cno}-\${auth} - <span onclick='modifyPage(this,"\${noti_cno}","\${noti_content}","\${auth}");'>수정</span><br/><hr/>\${noti_content}</li>`;
+				console.log(comment, cno, content, auth);
+				str += `<li>\${cno}-\${auth} - <span onclick='modifyPage(this,"\${cno}","\${content}","\${auth}");'>수정</span><br/><hr/>\${content}</li>`;
 			}
 			if(page == 1){
 				$("#comments").html(str);
 			}else{
 				$("#comments").append(str);	
 			}
+			
 		}
 		
-		getCommentList();
+		//getCommentList();
 		
 		// 댓글 전체 리스트
 		function getCommentList(){
@@ -150,32 +152,40 @@
 			let auth = $("#auth").val();
 			let text = $("#commtext").val();
 			
-			$.ajax({
-				type : "POST",
-				url : "${path}/comment/joinComment",
-				data : {
-					bno : bno,
-					noti_content : text,
-					author : auth,
-				},
-				dataType : "text",
-				success : function(result){
-					alert(result);
-					$("#auth").val("");
-					$("#commtext").val("");
-					getCommentList();
-				},
-				error : function(res){
-					console.log(res);
-					if(res.status === 400){
-						alert("잘못된 요청입니다.");
-						alert(res.responseText);
-					}else if(res.status === 404){
-						alert("요청 경로를 확인하세요.");
+			if($("#auth").val().length == 0){
+				alert("사용자 아이디를 입력해주세요.");
+				return false;
+			}else if($("#commtext").val().length == 0){
+				alert("내용을 입력해주세요.");
+				return false;
+			}else{
+				$.ajax({
+					type : "POST",
+					url : "${path}/comment/joinComment",
+					data : {
+						bno : bno,
+						noti_content : text,
+						author : auth,
+					},
+					dataType : "text",
+					success : function(result){
+						alert(result);
+						$("#auth").val("");
+						$("#commtext").val("");
+						getCommentList();
+					},
+					error : function(res){
+						console.log(res);
+						if(res.status === 400){
+							alert("잘못된 요청입니다.");
+							alert(res.responseText);
+						}else if(res.status === 404){
+							alert("요청 경로를 확인하세요.");
+						}
 					}
-				}
-				
-			});
+					
+				});
+			}
 		});
 		
 		// 댓글 수정 - 삭제 창 호출
@@ -207,7 +217,7 @@
 			
 			$(span).parent().after($("#modCom"));
 			
-			$("#modCom").toggle("slow");
+			$("#modCom").toggle("fast");
 		}
 		
 		// 댓글 수정 요청 처리
@@ -216,7 +226,6 @@
 			let content = $("#comText").val();
 			let auth = $("#auth").val();
 			console.log(cno,content,auth);
-/* 화면에 바로 노출되지않음 */		
 			$.ajax({
 				type : "PATCH",
 				url : "${path}/comment/"+cno,
@@ -250,10 +259,10 @@
 				type : "DELETE",
 				url : "${path}/comment/"+cno,
 				dataType : "text",
-				success : function(data){
-					alert(data);
+				success : function(result){
+					alert(result);
 					page = 1;
-					//listPage(page);
+					listPage(page);
 				},
 				error : function(res){
 					console.log(res);
@@ -267,7 +276,7 @@
 		});
 		
 		// 마우스 스크롤로 이벤트 처리
-		/*  $(window).scroll(function(){
+		  $(window).scroll(function(){
 			let dh = $(document).height();
 			let wh = $(window).height();
 			let wt = $(window).scrollTop();
@@ -277,6 +286,6 @@
 				page++;
 				listPage(page);
 			}
-		}) */
+		}); 
 		
 	</script>
