@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bitc.intranet.service.MessageService;
+import com.bitc.intranet.util.Criteria;
+import com.bitc.intranet.util.PageMaker;
 import com.bitc.intranet.vo.MemberVO;
 import com.bitc.intranet.vo.MessageVO;
+import com.bitc.intranet.vo.NoticeVO;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +29,7 @@ public class MessageController {
 	
 	private final MessageService ms;
 	
-	
+	/*
 	@GetMapping("message")
 	public String message(Model model, HttpSession session) throws Exception{
 		MemberVO memberVO = (MemberVO)session.getAttribute("loginMember");
@@ -34,6 +37,7 @@ public class MessageController {
 		model.addAttribute("list",list);
 		return "message";
 	}
+	*/
 	
 	//+더보기 에서 수신함 List 추가
 	@GetMapping("messageList")
@@ -73,45 +77,29 @@ public class MessageController {
 		return "redirect:/messages/read";
 	}
 	
-	
-	/*게시글 상세보기 페이지 요청
-	// /board/readPage - 조회수만 증가
-	@GetMapping("readPage")
-	public String readPage(int bno, RedirectAttributes rttr) throws Exception{
-		// 조회수 증가
-		bs.updateViewCnt(bno);
-		//redirect된 페이지에 get방식의 QueryString parameter 지정
-		rttr.addAttribute("bno",bno);
-		return "redirect:/board/read";
-		//return "redirect:/board/read?bno="+bno;
-	}*/
-	
-		
-	
-	
 	//메세지 수정 페이지 요청
-		@GetMapping("modify")
-		public String modifyGet(int mno, Model model) throws Exception {
+		@GetMapping("messageModify")
+		public String messageModify(int mno, Model model) throws Exception {
 			MessageVO message = ms.read(mno);
 			model.addAttribute(message);
-			return "messageRegister";
+			return "messageModify";
 		}
 		
 		// 메세지 수정완료 요청
-		@PostMapping("modify")
+		@PostMapping("messageModify")
 		public String modifyPost(RedirectAttributes rtts, MessageVO vo, Model model) {
 			String result = "";
 			
 			try {
-				ms.modify(vo);
+				ms.messageModify(vo);
 				result="수정완료";
 			} catch (Exception e) {
 				result="수정사항을 확인해주세요";
 			}
 			
 			rtts.addFlashAttribute("result",result);
-			rtts.addAttribute("bno",vo.getMno());
-			return "redirect:/message/??";
+			rtts.addAttribute("mno",vo.getMno());
+			return "redirect:/messages/messageModify";
 		}
 		
 		// 게시글 삭제요청
@@ -121,5 +109,19 @@ public class MessageController {
 			return "redirect:/Messages/??";
 		}
 
+		@GetMapping("message")
+		public String message(Criteria cri, Model model,HttpSession session) throws Exception{
+			MemberVO memberVO = (MemberVO)session.getAttribute("loginMember");
+			//List<MessageVO> list = ms.list(memberVO.getUname());
+			//model.addAttribute("list",list);
+			System.out.println("listPage criteria : " + cri);
+			List<MessageVO> list = ms.listCriteria(cri, memberVO.getUname());
+			model.addAttribute("list",list);
+			
+			PageMaker pm = ms.getPageMaker(cri);
+			model.addAttribute("pm",pm);
+			return "message";
+		}
+		
 
 }

@@ -33,12 +33,12 @@
 	<!-- 게시판 리스트 -->
 	<div id="wrap">
 		<div id="borders">
-			<h2>결제사항</h2>	
+			<h2>받은 결재사항</h2>	
 			<br/>
 			<hr/>
 			<br/>
 			<br/>
-			 <table border="1" class="list">
+			 <table border="1" class="list"  width="70%">
                 <tr>
                     <th>글 번호</th>
                     <th>제목</th>
@@ -73,6 +73,7 @@
 				</c:choose>
 			
             </table>
+            <br/>
 		</div>
 	</div>
 </body>

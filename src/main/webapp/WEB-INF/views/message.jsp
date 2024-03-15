@@ -38,7 +38,7 @@
 			<hr/>
 			<br/>
 			<br/>
-			 <table border="1" class="list">
+			 <table border="1" class="list"  width="70%">
                 <tr>
                     <th>글 번호</th>
                     <th>제목</th>
@@ -64,6 +64,30 @@
 								</td>
 							</tr>
 						</c:forEach>
+						<!-- 페이징처리 -->
+						<c:if test="${!empty pm and pm.maxPage > 1}">
+								<tr>
+									<th colspan="5">
+										<c:if test="${pm.first}">
+											<a href="message?page=1">[&laquo;]</a>
+										</c:if>
+										<c:if test="${pm.prev}">
+											<a href="message?page=${pm.startPage-1}">[%lt;]</a>
+										</c:if>
+										<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+											<a href="message?page=${i}">[${i}]</a>
+										</c:forEach>
+										<c:if test="${pm.next}">
+											<a href="message?page=${pm.endPage+1}">[&gt;]</a>
+										</c:if>
+										<c:if test="${pm.last}">
+											<a href="message?page=${pm.maxPage}">[&raquo;]</a>
+										</c:if>
+									</th>
+								</tr>
+							</c:if>
+						
+						
 					</c:when>
 					<c:otherwise>
 						<tr>
@@ -73,6 +97,7 @@
 				</c:choose>
 			
             </table>
+            <br/>
             <input type="button" id="regist" value="새 글 작성" />
 		</div>
 	</div>
