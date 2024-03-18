@@ -37,29 +37,23 @@ public interface MemberMapper {
 	 */
 	@Select("SELECT * FROM member ORDER BY uno DESC")
 	List<MemberVO> listAll() throws Exception;
-
-	/**
-	 * 
-	 * @param uid와 upw 가 일치하는 로그인정보
-	 */
-	@Select("SELECT * FROM Member WHERE uid = #{uid} and upw = #{upw}")
-	MemberVO loginMember(MemberVO vo) throws Exception;
 	
 	@Update("UPDATE * FROM member SET upw = #{upw}, uname = #{uname}, uemail = #{uemail}, uphone = #{uphone} WHERE uid = #{uid}")
 	MemberVO updateMember(MemberVO vo) throws Exception;
+
+	
+	//uid와 upw 가 일치하는 로그인정보
+	@Select("SELECT * FROM Member WHERE uid = #{uid} and upw = #{upw}")
+	MemberVO loginMember(MemberVO vo) throws Exception;
 	 
-	/**
-	 * 비밀번호 찾기
-	 * @param uid, uname이 일치하는 회원정보 검색
-	 */
+	//비밀번호 찾기-uid, uname이 일치하는 회원정보 검색
 	@Select("SELECT * FROM Member WHERE uid = #{uid} and uname = #{uname} and uemail = #{uemail}")
 	MemberVO findPass(MemberVO vo) throws Exception;
 	
-	/**
-	 * repw로 비밀번호 변경하기
-	 */
+	// repw로 비밀번호 변경하기
 	@Update("UPDATE member SET upw=#{repw} WHERE uid= #{uid}")
 	void changePass(MemberVO vo) throws Exception;
+	 
 
 	@Select("SELECT count(*) FROM member")
 	int totalCount();

@@ -82,7 +82,6 @@ h2 {
 			}
 		})
 	});
-	// 여기까지 추가
     $(function(){
     	
     	$("#btn").click(function(){
@@ -103,8 +102,7 @@ h2 {
 	    	loginForm.submit();
 	    	
     	});
-    	
-	    $("#btn2").on("click",function(){
+    	$("#btn2").on("click",function(){
 			if(confirm("회원가입 페이지로 이동합니다.")){		
 				location.href = "/intranet/member/join";
 			}
