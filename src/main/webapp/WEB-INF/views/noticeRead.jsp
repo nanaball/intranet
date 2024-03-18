@@ -73,3 +73,4 @@
 	<hr style="clear:both;"/>
 	</div>
 <%@ include file="comment.jsp" %>
+<%@ include file="/WEB-INF/views/footer.jsp" %>

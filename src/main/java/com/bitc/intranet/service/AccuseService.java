@@ -133,5 +133,20 @@ public class AccuseService {
 		return mapper.accuseSearch(search);
 	}
 
+
+
+	public PageMaker getPageMaker( String search, Criteria cri) throws Exception {
+	    int totalCount = mapper.totalCountt(search);
+	    PageMaker pageMaker = new PageMaker(cri, totalCount);
+	    return pageMaker;
+	}
+
+
+	public List<AccuseVO> accuseSearchPage(String search, Criteria cri) throws Exception {
+	    return mapper.listPage(search, cri);
+	}
+
+
+
 	
 }
