@@ -39,7 +39,8 @@
 	 </table>
 	 </form>
  <!-- Place the first <script> tag in your HTML's <head> -->
-<script src="https://cdn.tiny.cloud/1/ap1f056585x6jymzi07is63leo72fk9o06qhw1eekg5x4s75/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/ap1f056585x6jymzi07is63leo72fk9o06qhw1eekg5x4s75/tinymce/6/tinymce.min.js" 
+referrerpolicy="origin"></script>
 <script>
 tinymce.init({
 	  selector: '#content',
@@ -50,7 +51,8 @@ tinymce.init({
 	  /* enable automatic uploads of images represented by blob or data URIs*/
 	  automatic_uploads: true,
 	  /*
-	    URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+	    URL of our upload handler (for more details check: https://www.tiny.cloud/docs
+	    /configure/file-image-upload/#images_upload_url)
 	    images_upload_url: 'postAcceptor.php',
 	    here we add custom filepicker only to Image dialog
 	  */

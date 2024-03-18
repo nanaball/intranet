@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "header.jsp" %>
 
- <h2></h2>
+
  <form id="modifyForm" method="POST">
  	 <input type="hidden" name="uno" value="${loginMember.uno}"/>
 	 <table>
