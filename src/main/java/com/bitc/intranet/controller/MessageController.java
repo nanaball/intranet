@@ -29,16 +29,6 @@ public class MessageController {
 	
 	private final MessageService ms;
 	
-	/*
-	@GetMapping("message")
-	public String message(Model model, HttpSession session) throws Exception{
-		MemberVO memberVO = (MemberVO)session.getAttribute("loginMember");
-		List<MessageVO> list = ms.list(memberVO.getUname());
-		model.addAttribute("list",list);
-		return "message";
-	}
-	*/
-	
 	//+더보기 에서 수신함 List 추가
 	@GetMapping("messageList")
 	public String messageList(Model model, HttpSession session) throws Exception{
@@ -64,7 +54,8 @@ public class MessageController {
 	
 	//출력할 view페이지와 출력할 게시글 정보
 	@GetMapping("read")
-	public String messageRead(int mno, Model model, HttpSession session) throws Exception {
+	public String messageRead(int mno, Model model, 
+							  HttpSession session) throws Exception {
 		MessageVO message = ms.read(mno);
 		model.addAttribute("read",message);
 		return "messageRead";
@@ -77,7 +68,7 @@ public class MessageController {
 		return "redirect:/messages/read";
 	}
 	
-	//메세지 수정 페이지 요청
+	    //메세지 수정 페이지 요청
 		@GetMapping("messageModify")
 		public String messageModify(int mno, Model model) throws Exception {
 			MessageVO message = ms.read(mno);

@@ -15,18 +15,15 @@ public interface MessageMapper {
 	@Insert("INSERT INTO message_tbl(title,targetid,content,writer,mno) "
 			+ " VALUES(#{title},#{targetid}, #{content}, #{writer}, #{mno})")
 	void register(MessageVO vo) throws Exception;
-	/**
-	 * 전체 원본글 게시글 목록을 검색
-	 * origin으로 정렬 후 같은 origin 값이면 seq 오름차순으로 정렬
-	 */
+	
+	//내가쓴 결제서류 리스트
 	@Select("SELECT * FROM message_tbl WHERE writer = #{uname} ORDER BY mno DESC")
 	List<MessageVO> list(String uname) throws Exception;
 	
-	//+더보기 수신함
+	//받은결제사항 정리
 	@Select("SELECT * FROM message_tbl WHERE targetid = #{uid} ORDER BY mno DESC")
 	List<MessageVO> sendList(String uid) throws Exception;
 	
-
 	@Update("UPDATE message_tbl SET title=#{title}, content=#{content}, targetid=#{targetid}, updatedate=now() WHERE mno=${mno}")
 	void messageModify(MessageVO vo) throws Exception;
 
@@ -43,8 +40,7 @@ public interface MessageMapper {
 	@Select("SELECT * FROM message_tbl WHERE targetid = #{uid} ORDER BY mno DESC LIMIT 5")
     List<MessageVO> recentMessage(String uid) throws Exception;
 	
-	
-    //보낸결재 페이징처리
+	//보낸결재 페이징처리
 	@Select("SELECT * FROM message_tbl WHERE writer = #{uname} ORDER BY mno DESC LIMIT #{cri.startRow}, #{cri.perPageNum}")
 	List<MessageVO> listCriteria(@Param("cri") Criteria cri, @Param("uname")String uname) throws Exception;
 	
