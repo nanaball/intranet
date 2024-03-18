@@ -6,7 +6,6 @@
 	width:100%;
 	height:150px;
 	border:1px solid red;
-	background-color:lightgray;
 	margin:auto;
 }
 
@@ -20,8 +19,7 @@
 	float:left;
 	padding:20px;
 	list-style:none;
-	background-color: gray;
-	color:red;
+	color:black;
 }
 </style>
 <c:if test="${loginMember.getUjob() == '관리자'}">
@@ -81,7 +79,9 @@
 	</div>
 	</form>
 	</c:if>
-	<button onclick="goBack()">뒤로가기</button>
+		<c:if test="${loginMember.getUjob() != '관리자'}">
+		<button onclick="goBack()">뒤로가기</button>
+		</c:if>
 	<script>
 		// 작성완료 버튼 클릭시
 		$("#noticeSuccess").click(function(){
@@ -143,13 +143,13 @@
 						let html = "<li>";
 						html += "<img src='"+fileInfo.imgSrc+"'/>";
 						html += "<div>";
-						html += "<a href='"+fileInfo.getLink+"' target='_blank'>";
+						html += "<a href='"+fileInfo.getLink+"' target='_blank' style='color:black;'>";
 						html += fileInfo.fileName;
 						html += "</a>"
 						html += "</div>";
 						html += "<div>";
 						// fullName == data[i]
-						html += "<a href='"+data[i]+"' class='delBtn'>[삭제]</a>";
+						html += "<a href='"+data[i]+"' class='delBtn' style='color:black;'>[삭제]</a>";
 						html += "</div>";
 						html += "</li>";
 						console.log(html);
