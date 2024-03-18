@@ -23,10 +23,9 @@
 	</tr>
 	<tr> 
 		<td colspan="2" align="center">
-		<%-- <c:if test="${loginMember.getUjob() == '관리자'}"> --%>
+		
 			<a href="messageModify?mno=${read.mno}">수정</a> |
 			<a href="remove?mno=${read.mno}">삭제</a> |
-		<%-- </c:if>	 --%>
 			<a href="${path}/messages/message">목록으로</a>
 		</td>
 	</tr>

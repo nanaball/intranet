@@ -77,10 +77,7 @@ public class MessageService {
 				filemapper.replaceAttach(vo.getMno(), fullName);
 			}
 		}
-
-		
 	}
-	
 	public void remove(int mno) throws Exception{
 		filemapper.deleteAttach(mno);
 		mapper.remove(mno);

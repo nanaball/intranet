@@ -130,7 +130,6 @@
 						                    <br/>
 						                    <br/>
 						                    <input type="submit" class="delete" name="num" value="${m.num}"/>
-
 						                    <br/>
 						                    <br/>
 						                    <f:formatNumber value="${m.stock}" type="number" /> 개
@@ -201,3 +200,4 @@
 </script>
 </body>
 </html>
+<%@ include file="/WEB-INF/views/footer.jsp" %>

@@ -29,11 +29,8 @@
 </style>
 </head>
 <body>
-<c:if test="${loginMember.getUjob() == '관리자'}">
-		<!-- model boardVO -->
-		<!-- board/modify POST -->
-		<form id="modifyForm" method="POST">
-			<input type="hidden" name="bno" value="${noticeVO.bno}"/>
+	<c:if test="${loginMember.getUjob() == '관리자'}">
+		<input type="hidden" name="bno" value="${noticeVO.bno}"/>
 			<table border="1">
 				<tr>
 					<th colspan = "2"><h1>게시글 수정</h1></th>
@@ -84,7 +81,6 @@
 			<div>
 			<label>파일을 넣어주세요</label>
 			<div class="fileDrop"></div>
-				<!-- 게시글 : board, 첨부파일 : board.files -->
 				<c:if test="${!empty noticeVO.files}">
 					<ul class="uploadList">
 						<c:forEach var="file" items="${noticeVO.files}">
@@ -229,3 +225,4 @@
 		</script>
 </body>
 </html>
+<%@ include file="/WEB-INF/views/footer.jsp" %>

@@ -139,7 +139,7 @@ td{
 				
 					<td>전화번호</td>
 					<td>
-						<input type="text" name="uphone"  placeholder="전화번호를 입력해주세요(-제외)" required/>
+						<input type="text" name="uphone"  placeholder="전화번호를 입력해주세요" required/>
 					</td>
 				</tr>
 				<tr>
@@ -199,63 +199,63 @@ td{
 				alert("사용자아이디를 입력해주세요");
 				$("#uid").val("");
 				$("#uid").focus();
-				return false;
+				return;
 			}
 			
 			if($("#upw").val().length <= 0){
 				alert("비밀번호를 입력해주세요");
 				$("#upw").val("");
 				$("#upw").focus();
-				return false;
+				return;
 			}
 			
 			if($("#upw2").val().length <= 0){
 				alert("비밀번호를 재입력해주세요");
 				$("#upw2").val("");
 				$("#upw2").focus();
-				return false;
+				return;
 			}
 			
 			if($("#uname").val().length <= 0){
 				alert("이름을 입력해주세요");
 				$("#uid").val("");
 				$("#uid").focus();
-				return false;
+				return;
 			}
 			
 			if($("#uemail").val().length <= 0){
 				alert("이메일을 입력해주세요");
 				$("#uemail").val("");
 				$("#uemail").focus();
-				return false;
+				return;
 			}
 			
 			if($("#uphone").val().length <= 0){
 				alert("휴대폰 번호를 입력해주세요");
 				$("#uphone").val("");
 				$("#uphone").focus();
-				return false;
+				return;
 			}
 			
 			if($("#udep").val().length <= 0){
 				alert("해당부서를 입력해주세요");
 				$("#udep").val("");
 				$("#udep").focus();
-				return false;
+				return;
 			}
 			
 			if($("#ujob").val().length <= 0){
 				alert("직책을 입력해주세요");
 				$("#ujob").val("");
 				$("#ujob").focus();
-				return false;
+				return;
 			}
 			
 			if($("#udate").val().length <= 0){
 				alert("입사일을 입력해주세요");
 				$("#udate").val("");
 				$("#udate").focus();
-				return false;
+				return;
 			}
 			
 			
@@ -263,7 +263,7 @@ td{
 			if($("#upw").val() != $("#upw2").val()){
 				alert("비밀번호가 일치하지 않습니다.");
 				$("#upw2").focus();
-				return false;			
+				return;			
 			}		
 		}); // $("#joinsuc").on("click",function(){	
 		

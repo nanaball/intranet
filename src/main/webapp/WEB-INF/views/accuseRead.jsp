@@ -58,6 +58,9 @@
 	<form id="readForm">
  		<input type="hidden" name="bno" value="${read.bno}"/>
  	</form>	
+ 	<div>
+<%@ include file="/WEB-INF/views/footer.jsp" %>
+</div>
  	<script>
 
  	// 게시글 목록 페이지 이동

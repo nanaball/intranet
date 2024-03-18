@@ -39,8 +39,6 @@ public class MemberController {
 	}
 
 	// 회원가입 -- 완
-	// TODO 추후 비밀번호 재 확인 다른부분에도 null 값이 아니면 회원가입되는거 수정하기
-	// TODO 중복 아이디 일때 null 값이 아니면 회원 가입 창 뜨는것도 수정
 	@PostMapping("/joinsuc")
 	public String join(MemberVO vo,
 //			HttpServletRequest request,
@@ -49,7 +47,6 @@ public class MemberController {
 		ms.addMember(vo);
 		rttr.addFlashAttribute("message", "회원가입 성공");
 		return "redirect:/";
-
 	}
 
 	// 아이디 중복 확인 -- 완

@@ -1,6 +1,8 @@
 package com.bitc.intranet.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -142,14 +145,10 @@ public class AccuseController {
 	}
 
 	
-	
-	
-
 	// 게시글 검색
 	@RequestMapping("/accuseSearch")
 	@ResponseBody 
 	public List<AccuseVO> accuseSearch(String search){
-		System.out.println(search);
 		
 		search = "%" + search + "%";
 		
@@ -160,4 +159,21 @@ public class AccuseController {
 
 	
 	
+
+	// 게시글 검색 리스트 처리
+	// List<AccuseVO>, PageMaker
+	@RequestMapping("/accuseSearch/{page}/{search}")
+	@ResponseBody 
+	public Map<String, Object> accuseSearch(@PathVariable("page") int page, @PathVariable("search") String search) throws Exception {
+	    Map<String, Object> map = new HashMap<>();
+	    Criteria cri = new Criteria(page, 5); 
+	    System.out.println("map"+ map);
+	    List<AccuseVO> list = as.accuseSearchPage(search, cri);
+	    PageMaker pm = as.getPageMaker(search, cri);
+	    map.put("pm", pm);
+	    map.put("list", list);
+	    return map;
+	
+	}
+
 }

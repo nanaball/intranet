@@ -156,11 +156,18 @@
 
 			
 		// 게시글 제목 검색
-		$("#searchBtn").click(function(){
+		$("#searchBtn").click(function(){		
 			let search = $("#search").val();
+			let page = 1; // 페이지 번호는 기본적으로 1로 설정
+
+			searchAccuse(search, page);
 			
+		});
+
+		function searchAccuse(search, page) {
+		
 			$.ajax({
-				url : "${path}/accuse/accuseSearch",
+				url : "${path}/accuse/accuseSearch/" + page,
 				type : "get",
 				datatype:"json",
 				data:{
@@ -189,7 +196,11 @@
 			                row.append($("<td>").text(fmtUpdatedate));
 			                row.append($("<td>").text(data[i].viewcnt));
 			                html.append(row);
-			            }			           
+			            }	
+			            
+			         // 페이징 처리
+			            let pagingHtml = generatePagingHtml(data.pm);
+			            $("#paging").html(pagingHtml);
 				 },
 				error:function(e, status){
 					alert(e);
@@ -198,7 +209,28 @@
 					console.log("error message : " , e.responseText);
 				}
 			});
-		});
+
+		}
+		
+		function generatePagingHtml(pm) {
+		    let pagingHtml = "";
+
+		    if (pm.totalCount > 0) {
+		        pagingHtml += "<tr><th colspan='5'>";
+		        if (pm.prev) {
+		            pagingHtml += "<a href='#' onclick='searchAccuse(\"" + search + "\", " + (pm.startPage - 1) + ")'>Previous</a>";
+		        }
+		        for (let i = pm.startPage; i <= pm.endPage; i++) {
+		            pagingHtml += "<a href='#' onclick='searchAccuse(\"" + search + "\", " + i + ")'>" + i + "</a>";
+		        }
+		        if (pm.next) {
+		            pagingHtml += "<a href='#' onclick='searchAccuse(\"" + search + "\", " + (pm.endPage + 1) + ")'>Next</a>";
+		        }
+		        pagingHtml += "</th></tr>";
+		    }
+
+		    return pagingHtml;
+		}
 		
 		$(function(){
 			$("#search").keydown(function(event){
@@ -209,5 +241,5 @@
 		});
 	</script>
 
-
+<%@ include file="/WEB-INF/views/footer.jsp" %>
 
