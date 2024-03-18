@@ -86,7 +86,7 @@
 	<header>
 		<div>
 			<ul>
-				<li><a href="${path}/main">회사명</a></li>	
+				<li><a href="${path}/main">HJSY</a></li>	
 				<li> </li>	
 				<li> </li>				
 
