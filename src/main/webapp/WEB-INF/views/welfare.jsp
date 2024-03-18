@@ -101,6 +101,9 @@
                 <c:when test="${'관리자' == loginMember.getUjob()}">
                     <th>상품 삭제</th> <!-- 수정: 이 부분 추가 -->
                 </c:when>
+                <c:otherwise>
+                	<th>상품 재고</th>
+                </c:otherwise>
             </c:choose>
         </tr>
         <c:choose>
@@ -115,21 +118,36 @@
                         <td>
                             <f:formatNumber value="${m.price}" type="number" /> 원
                         </td>
-                        <c:choose>
-                            <c:when test="${m.stock eq 0}">
-                                <td><span class="sold-out">품절</span></td>
-                            </c:when>
-                            <c:otherwise>
-                                <c:choose>
-                                    <c:when test="${'관리자' == loginMember.getUjob()}">
-                                        <td><input type="submit" class="delete" name="num" value="${m.num}" /></td>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <td></td> <!-- 관리자가 아닌 경우에는 빈 셀을 출력하여 공백 처리 -->
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:otherwise>
-                        </c:choose>
+                        <td>
+						    <c:choose>
+						        <c:when test="${m.stock eq 0}">
+						            <!-- 품절된 상품인 경우 -->
+						            <span class="sold-out">품절</span>
+						            <!-- 삭제 버튼 -->
+						            <c:choose>
+						                <c:when test="${'관리자' == loginMember.getUjob()}">
+						                    <!-- 관리자인 경우에만 삭제 버튼을 표시 -->
+						                    <input type="submit" class="delete" name="num" value="${m.num}" />
+						                </c:when>
+						                <c:otherwise>
+						                    <!-- 관리자가 아닌 경우에는 아무 것도 표시하지 않음 -->
+						                </c:otherwise>
+						            </c:choose>
+						        </c:when>
+						        <c:otherwise>
+						            <!-- 품절되지 않은 상품인 경우 -->
+						            <c:choose>
+						                <c:when test="${'관리자' == loginMember.getUjob()}">
+						                    <!-- 관리자인 경우에만 삭제 버튼을 표시 -->
+						                    <input type="submit" class="delete" name="num" value="${m.num}" />
+						                </c:when>
+						                <c:otherwise>
+						                    <!-- 관리자가 아닌 경우에는 아무 것도 표시하지 않음 -->
+						                </c:otherwise>
+						            </c:choose>
+						        </c:otherwise>
+						    </c:choose>
+						</td>
                     </tr>
                 </c:forEach>
             </c:when>                
