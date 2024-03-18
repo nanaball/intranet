@@ -33,7 +33,7 @@
 	<!-- 게시판 리스트 -->
 	<div id="wrap">
 		<div id="borders">
-			<h2>결제사항</h2>	
+			<h2>결재사항</h2>	
 			<br/>
 			<hr/>
 			<br/>
