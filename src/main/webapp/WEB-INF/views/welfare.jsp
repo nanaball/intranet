@@ -129,12 +129,11 @@
 						                    <!-- 관리자인 경우에만 삭제 버튼을 표시 -->
 						                    <br/>
 						                    <br/>
-						                    <input type="submit" class="delete" name="num" value="제품 삭제" />
+						                    <input type="submit" class="delete" name="num" value="${m.num}"/>
+
 						                    <br/>
 						                    <br/>
 						                    <f:formatNumber value="${m.stock}" type="number" /> 개
-						                    
-						                    <input type="hidden" class="11" name="num" value="${m.num}" />
 						                </c:when>
 						                <c:otherwise>
 						                    <!-- 상품 재고 표시 -->
@@ -147,11 +146,11 @@
 						            <c:choose>
 						                <c:when test="${'관리자' == loginMember.getUjob()}">
 						                    <!-- 관리자인 경우에만 삭제 버튼을 표시 -->
-						                    <input type="submit" class="delete" name="num" value="제품 삭제" />
+						                    <input type="submit" class="delete" name="num" value="${m.num}" />
+
 						                    <br/>
 						                    <br/>
 						                    <f:formatNumber value="${m.stock}" type="number" /> 개
-						                    <input type="hidden" class="11" name="num" value="${m.num}" />
 						                </c:when>
 						                <c:otherwise>
 						                   <!-- 상품 재고 표시 -->
@@ -185,19 +184,20 @@
     <br/>
 </form>
 <script>
-    $(function(){
-        $("#add").on("click",function(){
-            location.href="${pageContext.request.contextPath}/Welfare/welfareAdd";
-        });
-
-        // 삭제 버튼 클릭 시 확인 대화상자 표시 후 폼 제출
-        $(".delete").on("click", function(){
-            if(confirm("상품을 삭제합니다.")){
-                // 폼 제출
-                $(this).closest("form").submit();
-            }
-        });
-    });
+	$(function(){
+	    $("#add").on("click", function(){
+	        location.href = "${pageContext.request.contextPath}/Welfare/welfareAdd";
+	    });
+	
+	    // 삭제 버튼 클릭 시 확인 대화상자 표시 후 폼 제출
+	    $(".delete").on("click", function(){
+	        var form = $(this).closest("form"); // 현재 삭제 버튼이 속한 폼을 찾음
+	        if(confirm("상품을 삭제합니다.")){
+	            // 폼 제출
+	            form.submit();
+	        }
+	    });
+	});
 </script>
 </body>
 </html>
