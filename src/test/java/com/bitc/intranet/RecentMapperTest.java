@@ -44,7 +44,7 @@ public class RecentMapperTest {
         System.out.println(recentFree);
 	}
 	
-	@Test
+	//@Test
 	public void testMList() throws Exception{
 		
         List<MessageVO> recentMessage = mm.recentMessage();

@@ -124,7 +124,29 @@ public interface AccuseMapper {
 	/* + " ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}") */ 
 	public List<AccuseVO> accuseSearch(String search);
 
+	/*
+	@Select("SELECT * FROM accuse "
+			+ " WHERE bno = #{bno} ORDER BY bno DESC "
+			+ " limit #{cri.startRow}, #{cri.perPageNum}") 
+	List<AccuseVO> listPage(
+			@Param("bno") int bno, 
+			@Param("cri")Criteria cri) throws Exception;
+
+*/	
 	
+	@Select("SELECT COUNT(*) FROM accuse "
+			+ " WHERE title LIKE CONCAT('%', #{search}, '%') AND showboard = 'y'")
+	int totalCountt(String search);
+
+	
+
+	@Select(" SELECT * FROM accuse "
+			+ " WHERE title LIKE CONCAT('%', #{search}, '%') AND showboard = 'y' "
+			+ " ORDER BY origin DESC, seq ASC "
+			+ " LIMIT #{startRow}, #{perPageNum}")
+	List<AccuseVO> listPage(String search, Criteria cri);
+
+
 
 
 

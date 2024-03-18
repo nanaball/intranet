@@ -253,3 +253,4 @@ table tr td input[type='text'], table tr td input[type='password'],
 
 </body>
 </html>
+<%@ include file="/WEB-INF/views/footer.jsp" %>

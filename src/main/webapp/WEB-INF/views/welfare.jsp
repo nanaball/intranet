@@ -201,3 +201,4 @@
 </script>
 </body>
 </html>
+<%@ include file="/WEB-INF/views/footer.jsp" %>

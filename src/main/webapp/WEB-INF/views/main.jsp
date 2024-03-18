@@ -153,7 +153,7 @@
 				<div id="border3">
 					<h3>자유게시판</h3>
 					<h6>&nbsp;</h6>
-					<span id="plus" onclick="location.href='free/free';"><h5>더보기</h5></span>					
+					<span id="plus" onclick="location.href='${path}/free/free';"><h5>더보기</h5></span>					
 					<h3>&nbsp;</h3>
 					<table boarder="1" cellspacing="10" >
 						<tr>
