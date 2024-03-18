@@ -109,7 +109,7 @@
 						<li><a href="${path}/member/memberList">회원정보관리</a></li>
 					</c:when>
 				</c:choose>														
-				<li><a href="${path}/memberUpdate" >회원정보수정</a></li>
+				<li><a href="${path}/memberUpdate?uno=${loginMember.getUno()}" >회원정보수정</a></li>
 				<li><a href="${path}/member/logOut" onclick="return confirm('로그아웃 하시겠습니까')">로그아웃</a></li>
 			</ul>
 		</div>		
