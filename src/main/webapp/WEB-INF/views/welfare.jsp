@@ -74,8 +74,8 @@
         border-radius: 10px;
         background-color: #1BBC9B;
         color: black;
-        height: 20px;
-        width: 20px;
+        height: 30px;
+        width: 80px;
     }
     
     .delete:hover {
@@ -99,7 +99,7 @@
             <th>상품 가격</th>
             <c:choose>
                 <c:when test="${'관리자' == loginMember.getUjob()}">
-                    <th>상품 삭제</th> <!-- 수정: 이 부분 추가 -->
+                    <th>상품 재고 / 삭제</th> <!-- 수정: 이 부분 추가 -->
                 </c:when>
                 <c:otherwise>
                 	<th>상품 재고</th>
@@ -127,10 +127,18 @@
 						            <c:choose>
 						                <c:when test="${'관리자' == loginMember.getUjob()}">
 						                    <!-- 관리자인 경우에만 삭제 버튼을 표시 -->
-						                    <input type="submit" class="delete" name="num" value="${m.num}" />
+						                    <br/>
+						                    <br/>
+						                    <input type="submit" class="delete" name="num" value="제품 삭제" />
+						                    <br/>
+						                    <br/>
+						                    <f:formatNumber value="${m.stock}" type="number" /> 개
+						                    
+						                    <input type="hidden" class="11" name="num" value="${m.num}" />
 						                </c:when>
 						                <c:otherwise>
-						                    <!-- 관리자가 아닌 경우에는 아무 것도 표시하지 않음 -->
+						                    <!-- 상품 재고 표시 -->
+						                    <f:formatNumber value="${m.stock}" type="number" /> 개
 						                </c:otherwise>
 						            </c:choose>
 						        </c:when>
@@ -139,10 +147,15 @@
 						            <c:choose>
 						                <c:when test="${'관리자' == loginMember.getUjob()}">
 						                    <!-- 관리자인 경우에만 삭제 버튼을 표시 -->
-						                    <input type="submit" class="delete" name="num" value="${m.num}" />
+						                    <input type="submit" class="delete" name="num" value="제품 삭제" />
+						                    <br/>
+						                    <br/>
+						                    <f:formatNumber value="${m.stock}" type="number" /> 개
+						                    <input type="hidden" class="11" name="num" value="${m.num}" />
 						                </c:when>
 						                <c:otherwise>
-						                    <!-- 관리자가 아닌 경우에는 아무 것도 표시하지 않음 -->
+						                   <!-- 상품 재고 표시 -->
+						                   <f:formatNumber value="${m.stock}" type="number" /> 개
 						                </c:otherwise>
 						            </c:choose>
 						        </c:otherwise>
